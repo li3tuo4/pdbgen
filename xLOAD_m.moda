@@ -1,0 +1,35 @@
+variable{
+    wire[31:0] addr;
+    wire[31:0] bigE_word;
+}
+stage1{
+    wire[3:0] flag;
+
+    <addr,flag> = ALU1.add(source0,source1);
+    null = FWUL0.lock1(rt);
+    null = FWUL1.lock1(rt);
+    null = FWUL2.lock1(rt);
+    null = FWUL3.lock1(rt);
+}
+stage2{
+    wire addr_err;
+    wire[31:0] result;
+
+    <result,addr_err> = Dmem.ope(addr);
+    //collect event mem read 
+    CONVERT0(result, bigE_word)
+
+    FW1MEM1(rt,bigE_word)
+    null = FWUL0.lock3(rt);
+    null = FWUL1.lock3(rt);
+    null = FWUL2.lock3(rt);
+    null = FWUL3.lock3(rt);
+}
+stage3{
+    FW1MEM2(rt,bigE_word)
+}
+stage4{
+    null = GPR.write0(rt,bigE_word);
+    //collect event regf write
+    FW1WB(rt,bigE_word)
+}

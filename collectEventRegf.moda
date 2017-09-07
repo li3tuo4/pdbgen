@@ -1,0 +1,18 @@
+//collect event regf read
+variable{
+    }
+stage1{
+    wire f0c;
+    wire f1c;
+    wire f2c;
+    wire f3c;
+
+    f0c=;
+    f1c=;
+    f2c=;
+    f3c=;
+    event_enc=<f0c,f1c,f2c,f3c>;
+    addr=moncounter.read();
+    null=moncounter.inc();
+    null=monmem.s(event_enc);
+    }

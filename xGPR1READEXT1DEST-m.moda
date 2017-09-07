@@ -1,0 +1,12 @@
+variable{
+    wire [31:0] source0;
+    wire [31:0] source0;
+}
+stage1{
+    wire[31:0] tmp_source0;
+
+    tmp_source0 = GPR.read0(arg1);
+    source0 = FWUL0.forward(arg1,tmp_source0);
+    //collect regf read event
+    source1 = EXT1.sign(arg2);
+}

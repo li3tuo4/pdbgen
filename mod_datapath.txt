@@ -1,0 +1,4 @@
+1. notes needed to construct event triggers in datapath
+    1) branch information (control flow)
+    2) architectural state read/write (data flow)
+    3) global primitive information (clock cycle counter)

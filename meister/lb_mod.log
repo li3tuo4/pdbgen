@@ -1,0 +1,18 @@
+Generating simulation model...
+rtgen: warning: the following variable was never used: source0: instruction: BLEZ.
+rtgen: warning: the following variable was never used: source1: instruction: BLEZ.
+rtgen: warning: the following variable was never used: source0: instruction: BGTZ.
+rtgen: warning: the following variable was never used: source1: instruction: BGTZ.
+rtgen: warning: the following variable was never used: source0: instruction: BLTZ.
+rtgen: warning: the following variable was never used: source1: instruction: BLTZ.
+rtgen: warning: the following variable was never used: source0: instruction: BGEZ.
+rtgen: warning: the following variable was never used: source1: instruction: BGEZ.
+rtgen: warning: the following variable was never used: source0: instruction: BLEZm.
+rtgen: warning: the following variable was never used: source1: instruction: BLEZm.
+rtgen: warning: the following variable was never used: source0: instruction: BGTZm.
+rtgen: warning: the following variable was never used: source1: instruction: BGTZm.
+rtgen: warning: the following variable was never used: source0: instruction: BLTZm.
+rtgen: warning: the following variable was never used: source1: instruction: BLTZm.
+rtgen: warning: the following variable was never used: source0: instruction: BGEZm.
+rtgen: warning: the following variable was never used: source1: instruction: BGEZm.
+Generating model was finished.

@@ -1,0 +1,5107 @@
+DLW_RR global
+variables:
+('rt', 5)
+('shamt', 8)
+('bigE_word0', 32)
+('bigE_word1', 32)
+('rs', 5)
+('nextRT', 5)
+('rd', 5)
+('source0', 32)
+('source1', 32)
+('addr2', 32)
+('tmp_pc', 32)
+('addr1', 32)
+DLW_RR 1
+variables:
+('current_pc', 32)
+('inst0', 64)
+('iramaddr_err', 1)
+statements:
+{'in': [], 'fu': ['CPC.read'], 'out': ['current_pc']}
+{'in': ['current_pc'], 'fu': ['na'], 'out': ['tmp_pc']}
+{'in': ['current_pc'], 'fu': ['Imem.ld_64'], 'out': ['inst0', 'iramaddr_err']}
+{'in': ['inst0'], 'fu': ['IReg.write'], 'out': []}
+{'in': [], 'fu': ['CPC.inc'], 'out': []}
+DLW_RR 2
+variables:
+('tmp_source0', 32)
+('tmp_ir', 64)
+('tmp_source1', 32)
+statements:
+{'in': [], 'fu': ['IReg.read'], 'out': ['tmp_ir']}
+{'in': ['tmp_ir'], 'fu': ['28:24'], 'out': ['rs']}
+{'in': ['tmp_ir'], 'fu': ['20:16'], 'out': ['rt']}
+{'in': ['tmp_ir'], 'fu': ['12:8'], 'out': ['rd']}
+{'in': ['tmp_ir'], 'fu': ['7:0'], 'out': ['shamt']}
+{'in': ['rs'], 'fu': ['GPR.read0'], 'out': ['tmp_source0']}
+{'in': ['rd'], 'fu': ['GPR.read1'], 'out': ['tmp_source1']}
+{'in': ['rs', 'tmp_source0'], 'fu': ['FWUL0.forward'], 'out': ['source0']}
+{'in': ['rd', 'tmp_source1'], 'fu': ['FWUL1.forward'], 'out': ['source1']}
+DLW_RR 3
+variables:
+('tmpRT', 4)
+('flag', 4)
+('one', 1)
+statements:
+{'in': ['source0', 'source1'], 'fu': ['ALU1.add'], 'out': ['addr1', 'flag']}
+{'in': ['1'], 'fu': ['na'], 'out': ['one']}
+{'in': ['rt'], 'fu': ['4:1'], 'out': ['tmpRT']}
+{'in': ['tmpRT', 'one'], 'fu': ['na'], 'out': ['nextRT']}
+{'in': ['rt'], 'fu': ['FWUL0.lock1'], 'out': []}
+{'in': ['rt'], 'fu': ['FWUL1.lock1'], 'out': []}
+{'in': ['rt'], 'fu': ['FWUL2.lock1'], 'out': []}
+{'in': ['rt'], 'fu': ['FWUL3.lock1'], 'out': []}
+{'in': ['nextRT'], 'fu': ['FWUL0.lock2'], 'out': []}
+{'in': ['nextRT'], 'fu': ['FWUL1.lock2'], 'out': []}
+{'in': ['nextRT'], 'fu': ['FWUL2.lock2'], 'out': []}
+{'in': ['nextRT'], 'fu': ['FWUL3.lock2'], 'out': []}
+DLW_RR 4
+variables:
+('four32bit', 32)
+('cout', 1)
+('byte2', 8)
+('byte3', 8)
+('cin', 1)
+('byte1', 8)
+('result1', 32)
+('addr_err', 1)
+('byte0', 8)
+statements:
+{'in': ['0'], 'fu': ['na'], 'out': ['cin']}
+{'in': ['00000000000000000000000000000100'], 'fu': ['na'], 'out': ['four32bit']}
+{'in': ['addr1'], 'fu': ['Dmem.ld_32'], 'out': ['result1', 'addr_err']}
+{'in': ['result1'], 'fu': ['31:24'], 'out': ['byte0']}
+{'in': ['result1'], 'fu': ['23:16'], 'out': ['byte1']}
+{'in': ['result1'], 'fu': ['15:8'], 'out': ['byte2']}
+{'in': ['result1'], 'fu': ['7:0'], 'out': ['byte3']}
+{'in': ['byte3', 'byte2', 'byte1', 'byte0'], 'fu': ['na'], 'out': ['bigE_word0']}
+{'in': ['rt', 'bigE_word0'], 'fu': ['FWUL0.forward3'], 'out': []}
+{'in': ['rt', 'bigE_word0'], 'fu': ['FWUL1.forward3'], 'out': []}
+{'in': ['rt', 'bigE_word0'], 'fu': ['FWUL2.forward3'], 'out': []}
+{'in': ['rt', 'bigE_word0'], 'fu': ['FWUL3.forward3'], 'out': []}
+{'in': ['addr1', 'four32bit', 'cin'], 'fu': ['ADDER2.adc'], 'out': ['addr2', 'cout']}
+{'in': ['rt'], 'fu': ['FWUL0.lock3'], 'out': []}
+{'in': ['rt'], 'fu': ['FWUL1.lock3'], 'out': []}
+{'in': ['rt'], 'fu': ['FWUL2.lock3'], 'out': []}
+{'in': ['rt'], 'fu': ['FWUL3.lock3'], 'out': []}
+{'in': ['nextRT'], 'fu': ['FWUL0.lock4'], 'out': []}
+{'in': ['nextRT'], 'fu': ['FWUL1.lock4'], 'out': []}
+{'in': ['nextRT'], 'fu': ['FWUL2.lock4'], 'out': []}
+{'in': ['nextRT'], 'fu': ['FWUL3.lock4'], 'out': []}
+DLW_RR 5
+variables:
+('result2', 32)
+('byte3', 8)
+('byte2', 8)
+('byte1', 8)
+('byte0', 8)
+('addr_err', 1)
+statements:
+{'in': ['addr2'], 'fu': ['Dmem.ld_32'], 'out': ['result2', 'addr_err']}
+{'in': ['result2'], 'fu': ['31:24'], 'out': ['byte0']}
+{'in': ['result2'], 'fu': ['23:16'], 'out': ['byte1']}
+{'in': ['result2'], 'fu': ['15:8'], 'out': ['byte2']}
+{'in': ['result2'], 'fu': ['7:0'], 'out': ['byte3']}
+{'in': ['byte3', 'byte2', 'byte1', 'byte0'], 'fu': ['na'], 'out': ['bigE_word1']}
+{'in': ['rt', 'bigE_word0'], 'fu': ['FWUL0.forward5'], 'out': []}
+{'in': ['rt', 'bigE_word0'], 'fu': ['FWUL1.forward5'], 'out': []}
+{'in': ['rt', 'bigE_word0'], 'fu': ['FWUL2.forward5'], 'out': []}
+{'in': ['rt', 'bigE_word0'], 'fu': ['FWUL3.forward5'], 'out': []}
+{'in': ['nextRT', 'bigE_word1'], 'fu': ['FWUL0.forward6'], 'out': []}
+{'in': ['nextRT', 'bigE_word1'], 'fu': ['FWUL1.forward6'], 'out': []}
+{'in': ['nextRT', 'bigE_word1'], 'fu': ['FWUL2.forward6'], 'out': []}
+{'in': ['nextRT', 'bigE_word1'], 'fu': ['FWUL3.forward6'], 'out': []}
+{'in': ['nextRT'], 'fu': ['FWUL0.lock5'], 'out': []}
+{'in': ['nextRT'], 'fu': ['FWUL1.lock5'], 'out': []}
+{'in': ['nextRT'], 'fu': ['FWUL2.lock5'], 'out': []}
+{'in': ['nextRT'], 'fu': ['FWUL3.lock5'], 'out': []}
+DLW_RR 6
+variables:
+statements:
+{'in': ['rt', 'bigE_word0'], 'fu': ['FWUL0.forward7'], 'out': []}
+{'in': ['rt', 'bigE_word0'], 'fu': ['FWUL1.forward7'], 'out': []}
+{'in': ['rt', 'bigE_word0'], 'fu': ['FWUL2.forward7'], 'out': []}
+{'in': ['rt', 'bigE_word0'], 'fu': ['FWUL3.forward7'], 'out': []}
+{'in': ['nextRT', 'bigE_word1'], 'fu': ['FWUL0.forward8'], 'out': []}
+{'in': ['nextRT', 'bigE_word1'], 'fu': ['FWUL1.forward8'], 'out': []}
+{'in': ['nextRT', 'bigE_word1'], 'fu': ['FWUL2.forward8'], 'out': []}
+{'in': ['nextRT', 'bigE_word1'], 'fu': ['FWUL3.forward8'], 'out': []}
+{'in': ['rt', 'bigE_word0'], 'fu': ['GPR.write0'], 'out': []}
+{'in': ['nextRT', 'bigE_word1'], 'fu': ['GPR.write1'], 'out': []}
+BLTZ global
+variables:
+('rt', 5)
+('target', 32)
+('rs', 5)
+('imm', 16)
+('source0', 32)
+('src0', 32)
+('source1', 32)
+('tmp_pc', 32)
+BLTZ 1
+variables:
+('current_pc', 32)
+('inst0', 64)
+('iramaddr_err', 1)
+statements:
+{'in': [], 'fu': ['CPC.read'], 'out': ['current_pc']}
+{'in': ['current_pc'], 'fu': ['na'], 'out': ['tmp_pc']}
+{'in': ['current_pc'], 'fu': ['Imem.ld_64'], 'out': ['inst0', 'iramaddr_err']}
+{'in': ['inst0'], 'fu': ['IReg.write'], 'out': []}
+{'in': [], 'fu': ['CPC.inc'], 'out': []}
+BLTZ 2
+variables:
+('tmp', 30)
+('tmp_source0', 32)
+('cout', 1)
+('cin', 1)
+('ext_imm', 32)
+('tmp_ir', 64)
+('offset', 32)
+('tmp_cpc', 32)
+('zero2', 2)
+statements:
+{'in': [], 'fu': ['IReg.read'], 'out': ['tmp_ir']}
+{'in': ['tmp_ir'], 'fu': ['28:24'], 'out': ['rs']}
+{'in': ['tmp_ir'], 'fu': ['20:16'], 'out': ['rt']}
+{'in': ['tmp_ir'], 'fu': ['15:0'], 'out': ['imm']}
+{'in': ['rs'], 'fu': ['GPR.read0'], 'out': ['tmp_source0']}
+{'in': ['rs', 'tmp_source0'], 'fu': ['FWU0.forward'], 'out': ['src0']}
+{'in': ['0'], 'fu': ['na'], 'out': ['cin']}
+{'in': ['00'], 'fu': ['na'], 'out': ['zero2']}
+{'in': ['imm'], 'fu': ['EXT1.sign'], 'out': ['ext_imm']}
+{'in': ['ext_imm'], 'fu': ['29:0'], 'out': ['tmp']}
+{'in': ['tmp', 'zero2'], 'fu': ['na'], 'out': ['offset']}
+{'in': [], 'fu': ['CPC.read'], 'out': ['tmp_cpc']}
+{'in': ['tmp_cpc', 'offset', 'cin'], 'fu': ['ADD1.adc'], 'out': ['target', 'cout']}
+BLTZ 3
+variables:
+('flag', 4)
+('cond', 1)
+('N', 1)
+statements:
+{'in': ['src0'], 'fu': ['ALU1.cmpz'], 'out': ['flag']}
+{'in': ['flag'], 'fu': ['1'], 'out': ['N']}
+{'in': ['N', '1'], 'fu': [" == '"], 'out': ['cond']}
+{'in': ['cond', 'target'], 'fu': ['sel', 'CPC.write'], 'out': []}
+BLTZ 4
+variables:
+statements:
+BLTZ 5
+variables:
+statements:
+BLTZ 6
+variables:
+statements:
+SWL global
+variables:
+('rt', 5)
+('addr', 32)
+('rs', 5)
+('imm', 16)
+('source2', 32)
+('source0', 32)
+('source1', 32)
+('result', 32)
+('tmp_pc', 32)
+SWL 1
+variables:
+('current_pc', 32)
+('inst0', 64)
+('iramaddr_err', 1)
+statements:
+{'in': [], 'fu': ['CPC.read'], 'out': ['current_pc']}
+{'in': ['current_pc'], 'fu': ['na'], 'out': ['tmp_pc']}
+{'in': ['current_pc'], 'fu': ['Imem.ld_64'], 'out': ['inst0', 'iramaddr_err']}
+{'in': ['inst0'], 'fu': ['IReg.write'], 'out': []}
+{'in': [], 'fu': ['CPC.inc'], 'out': []}
+SWL 2
+variables:
+('tmp_source0', 32)
+('tmp_ir', 64)
+('tmp_source1', 32)
+statements:
+{'in': [], 'fu': ['IReg.read'], 'out': ['tmp_ir']}
+{'in': ['tmp_ir'], 'fu': ['28:24'], 'out': ['rs']}
+{'in': ['tmp_ir'], 'fu': ['20:16'], 'out': ['rt']}
+{'in': ['tmp_ir'], 'fu': ['15:0'], 'out': ['imm']}
+{'in': ['rs'], 'fu': ['GPR.read0'], 'out': ['tmp_source0']}
+{'in': ['rt'], 'fu': ['GPR.read1'], 'out': ['tmp_source1']}
+{'in': ['imm'], 'fu': ['EXT1.sign'], 'out': ['source2']}
+{'in': ['rs', 'tmp_source0'], 'fu': ['FWUL0.forward'], 'out': ['source0']}
+{'in': ['rt', 'tmp_source1'], 'fu': ['FWUL1.forward'], 'out': ['source1']}
+SWL 3
+variables:
+('flag', 4)
+statements:
+{'in': ['source0', 'source2'], 'fu': ['ALU1.add'], 'out': ['addr', 'flag']}
+SWL 4
+variables:
+('result0', 32)
+('target', 32)
+('nData', 32)
+('byte2', 8)
+('data1', 8)
+('result1', 32)
+('byte1', 8)
+('reg2', 8)
+('reg3', 8)
+('result3', 32)
+('reg1', 8)
+('result2', 32)
+('byte3', 8)
+('byte0', 8)
+('zero2', 2)
+('vAddr10', 2)
+('addr_err', 1)
+('data2', 8)
+('data', 32)
+('data3', 8)
+('addr_mask', 30)
+statements:
+{'in': ['addr'], 'fu': ['31:2'], 'out': ['addr_mask']}
+{'in': ['addr'], 'fu': ['1:0'], 'out': ['vAddr10']}
+{'in': ['00'], 'fu': ['na'], 'out': ['zero2']}
+{'in': ['addr_mask', 'zero2'], 'fu': ['na'], 'out': ['target']}
+{'in': ['target'], 'fu': ['Dmem.ld_32'], 'out': ['data', 'addr_err']}
+{'in': ['data'], 'fu': ['31:24'], 'out': ['byte0']}
+{'in': ['data'], 'fu': ['23:16'], 'out': ['byte1']}
+{'in': ['data'], 'fu': ['15:8'], 'out': ['byte2']}
+{'in': ['data'], 'fu': ['7:0'], 'out': ['byte3']}
+{'in': ['byte3', 'byte2', 'byte1', 'byte0'], 'fu': ['na'], 'out': ['nData']}
+{'in': ['nData'], 'fu': ['31:24'], 'out': ['data3']}
+{'in': ['nData'], 'fu': ['23:16'], 'out': ['data2']}
+{'in': ['nData'], 'fu': ['15:8'], 'out': ['data1']}
+{'in': ['source1'], 'fu': ['31:24'], 'out': ['reg3']}
+{'in': ['source1'], 'fu': ['23:16'], 'out': ['reg2']}
+{'in': ['source1'], 'fu': ['15:8'], 'out': ['reg1']}
+{'in': ['source1'], 'fu': ['na'], 'out': ['result3']}
+{'in': ['data3', 'reg3', 'reg2', 'reg1'], 'fu': ['na'], 'out': ['result2']}
+{'in': ['data3', 'data2', 'reg3', 'reg2'], 'fu': ['na'], 'out': ['result1']}
+{'in': ['data3', 'data2', 'data1', 'reg3'], 'fu': ['na'], 'out': ['result0']}
+{'in': ['result0', 'result1', 'result2', 'result3', 'vAddr10'], 'fu': ['MUXw32p4.sel'], 'out': ['result']}
+SWL 5
+variables:
+('target', 32)
+('byte3', 8)
+('byte2', 8)
+('byte1', 8)
+('byte0', 8)
+('zero2', 2)
+('nResult', 32)
+('addr_err', 1)
+('addr_mask', 30)
+statements:
+{'in': ['addr'], 'fu': ['31:2'], 'out': ['addr_mask']}
+{'in': ['00'], 'fu': ['na'], 'out': ['zero2']}
+{'in': ['addr_mask', 'zero2'], 'fu': ['na'], 'out': ['target']}
+{'in': ['result'], 'fu': ['31:24'], 'out': ['byte0']}
+{'in': ['result'], 'fu': ['23:16'], 'out': ['byte1']}
+{'in': ['result'], 'fu': ['15:8'], 'out': ['byte2']}
+{'in': ['result'], 'fu': ['7:0'], 'out': ['byte3']}
+{'in': ['byte3', 'byte2', 'byte1', 'byte0'], 'fu': ['na'], 'out': ['nResult']}
+{'in': ['target', 'nResult'], 'fu': ['Dmem.s_32'], 'out': ['addr_err']}
+SWL 6
+variables:
+statements:
+MFLO global
+variables:
+('rt', 5)
+('shamt', 8)
+('rs', 5)
+('rd', 5)
+('tmp_pc', 32)
+('result', 32)
+MFLO 1
+variables:
+('current_pc', 32)
+('inst0', 64)
+('iramaddr_err', 1)
+statements:
+{'in': [], 'fu': ['CPC.read'], 'out': ['current_pc']}
+{'in': ['current_pc'], 'fu': ['na'], 'out': ['tmp_pc']}
+{'in': ['current_pc'], 'fu': ['Imem.ld_64'], 'out': ['inst0', 'iramaddr_err']}
+{'in': ['inst0'], 'fu': ['IReg.write'], 'out': []}
+{'in': [], 'fu': ['CPC.inc'], 'out': []}
+MFLO 2
+variables:
+('one1b0', 1)
+('tmp_ir', 64)
+('zero1b', 1)
+statements:
+{'in': [], 'fu': ['IReg.read'], 'out': ['tmp_ir']}
+{'in': ['tmp_ir'], 'fu': ['28:24'], 'out': ['rs']}
+{'in': ['tmp_ir'], 'fu': ['20:16'], 'out': ['rt']}
+{'in': ['tmp_ir'], 'fu': ['12:8'], 'out': ['rd']}
+{'in': ['tmp_ir'], 'fu': ['7:0'], 'out': ['shamt']}
+{'in': ['1'], 'fu': ['na'], 'out': ['one1b0']}
+{'in': ['0'], 'fu': ['na'], 'out': ['zero1b']}
+{'in': [], 'fu': ['LO.read'], 'out': ['result']}
+MFLO 3
+variables:
+statements:
+{'in': ['rd', 'result'], 'fu': ['FWUL0.forward1'], 'out': []}
+{'in': ['rd', 'result'], 'fu': ['FWUL1.forward1'], 'out': []}
+{'in': ['rd', 'result'], 'fu': ['FWUL2.forward1'], 'out': []}
+{'in': ['rd', 'result'], 'fu': ['FWUL3.forward1'], 'out': []}
+MFLO 4
+variables:
+statements:
+{'in': ['rd', 'result'], 'fu': ['FWUL0.forward3'], 'out': []}
+{'in': ['rd', 'result'], 'fu': ['FWUL1.forward3'], 'out': []}
+{'in': ['rd', 'result'], 'fu': ['FWUL2.forward3'], 'out': []}
+{'in': ['rd', 'result'], 'fu': ['FWUL3.forward3'], 'out': []}
+MFLO 5
+variables:
+statements:
+{'in': ['rd', 'result'], 'fu': ['FWUL0.forward5'], 'out': []}
+{'in': ['rd', 'result'], 'fu': ['FWUL1.forward5'], 'out': []}
+{'in': ['rd', 'result'], 'fu': ['FWUL2.forward5'], 'out': []}
+{'in': ['rd', 'result'], 'fu': ['FWUL3.forward5'], 'out': []}
+MFLO 6
+variables:
+statements:
+{'in': ['rd', 'result'], 'fu': ['GPR.write0'], 'out': []}
+{'in': ['rd', 'result'], 'fu': ['FWUL0.forward7'], 'out': []}
+{'in': ['rd', 'result'], 'fu': ['FWUL1.forward7'], 'out': []}
+{'in': ['rd', 'result'], 'fu': ['FWUL2.forward7'], 'out': []}
+{'in': ['rd', 'result'], 'fu': ['FWUL3.forward7'], 'out': []}
+ADDIU global
+variables:
+('rt', 5)
+('rs', 5)
+('imm', 16)
+('source0', 32)
+('source1', 32)
+('result', 32)
+('tmp_pc', 32)
+ADDIU 1
+variables:
+('current_pc', 32)
+('inst0', 64)
+('iramaddr_err', 1)
+statements:
+{'in': [], 'fu': ['CPC.read'], 'out': ['current_pc']}
+{'in': ['current_pc'], 'fu': ['na'], 'out': ['tmp_pc']}
+{'in': ['current_pc'], 'fu': ['Imem.ld_64'], 'out': ['inst0', 'iramaddr_err']}
+{'in': ['inst0'], 'fu': ['IReg.write'], 'out': []}
+{'in': [], 'fu': ['CPC.inc'], 'out': []}
+ADDIU 2
+variables:
+('tmp_source0', 32)
+('tmp_ir', 64)
+statements:
+{'in': [], 'fu': ['IReg.read'], 'out': ['tmp_ir']}
+{'in': ['tmp_ir'], 'fu': ['28:24'], 'out': ['rs']}
+{'in': ['tmp_ir'], 'fu': ['20:16'], 'out': ['rt']}
+{'in': ['tmp_ir'], 'fu': ['15:0'], 'out': ['imm']}
+{'in': ['rs'], 'fu': ['GPR.read0'], 'out': ['tmp_source0']}
+{'in': ['rs', 'tmp_source0'], 'fu': ['FWUL0.forward'], 'out': ['source0']}
+{'in': ['imm'], 'fu': ['EXT1.sign'], 'out': ['source1']}
+ADDIU 3
+variables:
+('flag', 4)
+statements:
+{'in': ['source0', 'source1'], 'fu': ['ALU1.addu'], 'out': ['result', 'flag']}
+{'in': ['rt', 'result'], 'fu': ['FWUL0.forward1'], 'out': []}
+{'in': ['rt', 'result'], 'fu': ['FWUL1.forward1'], 'out': []}
+{'in': ['rt', 'result'], 'fu': ['FWUL2.forward1'], 'out': []}
+{'in': ['rt', 'result'], 'fu': ['FWUL3.forward1'], 'out': []}
+ADDIU 4
+variables:
+statements:
+{'in': ['rt', 'result'], 'fu': ['FWUL0.forward3'], 'out': []}
+{'in': ['rt', 'result'], 'fu': ['FWUL1.forward3'], 'out': []}
+{'in': ['rt', 'result'], 'fu': ['FWUL2.forward3'], 'out': []}
+{'in': ['rt', 'result'], 'fu': ['FWUL3.forward3'], 'out': []}
+ADDIU 5
+variables:
+statements:
+{'in': ['rt', 'result'], 'fu': ['FWUL0.forward5'], 'out': []}
+{'in': ['rt', 'result'], 'fu': ['FWUL1.forward5'], 'out': []}
+{'in': ['rt', 'result'], 'fu': ['FWUL2.forward5'], 'out': []}
+{'in': ['rt', 'result'], 'fu': ['FWUL3.forward5'], 'out': []}
+ADDIU 6
+variables:
+statements:
+{'in': ['rt', 'result'], 'fu': ['GPR.write0'], 'out': []}
+{'in': ['rt', 'result'], 'fu': ['FWUL0.forward7'], 'out': []}
+{'in': ['rt', 'result'], 'fu': ['FWUL1.forward7'], 'out': []}
+{'in': ['rt', 'result'], 'fu': ['FWUL2.forward7'], 'out': []}
+{'in': ['rt', 'result'], 'fu': ['FWUL3.forward7'], 'out': []}
+LWR global
+variables:
+('rt', 5)
+('addr', 32)
+('rs', 5)
+('imm', 16)
+('source2', 32)
+('source0', 32)
+('source1', 32)
+('result', 32)
+('tmp_pc', 32)
+LWR 1
+variables:
+('current_pc', 32)
+('inst0', 64)
+('iramaddr_err', 1)
+statements:
+{'in': [], 'fu': ['CPC.read'], 'out': ['current_pc']}
+{'in': ['current_pc'], 'fu': ['na'], 'out': ['tmp_pc']}
+{'in': ['current_pc'], 'fu': ['Imem.ld_64'], 'out': ['inst0', 'iramaddr_err']}
+{'in': ['inst0'], 'fu': ['IReg.write'], 'out': []}
+{'in': [], 'fu': ['CPC.inc'], 'out': []}
+LWR 2
+variables:
+('tmp_source0', 32)
+('tmp_ir', 64)
+('tmp_source1', 32)
+statements:
+{'in': [], 'fu': ['IReg.read'], 'out': ['tmp_ir']}
+{'in': ['tmp_ir'], 'fu': ['28:24'], 'out': ['rs']}
+{'in': ['tmp_ir'], 'fu': ['20:16'], 'out': ['rt']}
+{'in': ['tmp_ir'], 'fu': ['15:0'], 'out': ['imm']}
+{'in': ['rs'], 'fu': ['GPR.read0'], 'out': ['tmp_source0']}
+{'in': ['rt'], 'fu': ['GPR.read1'], 'out': ['tmp_source1']}
+{'in': ['imm'], 'fu': ['EXT1.sign'], 'out': ['source2']}
+{'in': ['rs', 'tmp_source0'], 'fu': ['FWUL0.forward'], 'out': ['source0']}
+{'in': ['rt', 'tmp_source1'], 'fu': ['FWUL1.forward'], 'out': ['source1']}
+LWR 3
+variables:
+('flag', 4)
+statements:
+{'in': ['source0', 'source2'], 'fu': ['ALU1.add'], 'out': ['addr', 'flag']}
+{'in': ['rt'], 'fu': ['FWUL0.lock1'], 'out': []}
+{'in': ['rt'], 'fu': ['FWUL1.lock1'], 'out': []}
+{'in': ['rt'], 'fu': ['FWUL2.lock1'], 'out': []}
+{'in': ['rt'], 'fu': ['FWUL3.lock1'], 'out': []}
+LWR 4
+variables:
+('result0', 32)
+('target', 32)
+('byte2', 8)
+('data1', 8)
+('result1', 32)
+('bigE_data', 32)
+('reg2', 8)
+('reg3', 8)
+('result3', 32)
+('reg1', 8)
+('result2', 32)
+('byte3', 8)
+('byte0', 8)
+('zero2', 2)
+('vAddr10', 2)
+('addr_err', 1)
+('data2', 8)
+('data', 32)
+('byte1', 8)
+('data3', 8)
+('addr_mask', 30)
+statements:
+{'in': ['addr'], 'fu': ['31:2'], 'out': ['addr_mask']}
+{'in': ['addr'], 'fu': ['1:0'], 'out': ['vAddr10']}
+{'in': ['00'], 'fu': ['na'], 'out': ['zero2']}
+{'in': ['addr_mask', 'zero2'], 'fu': ['na'], 'out': ['target']}
+{'in': ['target'], 'fu': ['Dmem.ld_32'], 'out': ['data', 'addr_err']}
+{'in': ['data'], 'fu': ['31:24'], 'out': ['byte0']}
+{'in': ['data'], 'fu': ['23:16'], 'out': ['byte1']}
+{'in': ['data'], 'fu': ['15:8'], 'out': ['byte2']}
+{'in': ['data'], 'fu': ['7:0'], 'out': ['byte3']}
+{'in': ['byte3', 'byte2', 'byte1', 'byte0'], 'fu': ['na'], 'out': ['bigE_data']}
+{'in': ['bigE_data'], 'fu': ['31:24'], 'out': ['data3']}
+{'in': ['bigE_data'], 'fu': ['23:16'], 'out': ['data2']}
+{'in': ['bigE_data'], 'fu': ['15:8'], 'out': ['data1']}
+{'in': ['source1'], 'fu': ['31:24'], 'out': ['reg3']}
+{'in': ['source1'], 'fu': ['23:16'], 'out': ['reg2']}
+{'in': ['source1'], 'fu': ['15:8'], 'out': ['reg1']}
+{'in': ['reg3', 'reg2', 'reg1', 'data3'], 'fu': ['na'], 'out': ['result3']}
+{'in': ['reg3', 'reg2', 'data3', 'data2'], 'fu': ['na'], 'out': ['result2']}
+{'in': ['reg3', 'data3', 'data2', 'data1'], 'fu': ['na'], 'out': ['result1']}
+{'in': ['bigE_data'], 'fu': ['na'], 'out': ['result0']}
+{'in': ['result0', 'result1', 'result2', 'result3', 'vAddr10'], 'fu': ['MUXw32p4.sel'], 'out': ['result']}
+{'in': ['rt', 'result'], 'fu': ['FWUL0.forward3'], 'out': []}
+{'in': ['rt', 'result'], 'fu': ['FWUL1.forward3'], 'out': []}
+{'in': ['rt', 'result'], 'fu': ['FWUL2.forward3'], 'out': []}
+{'in': ['rt', 'result'], 'fu': ['FWUL3.forward3'], 'out': []}
+{'in': ['rt'], 'fu': ['FWUL0.lock3'], 'out': []}
+{'in': ['rt'], 'fu': ['FWUL1.lock3'], 'out': []}
+{'in': ['rt'], 'fu': ['FWUL2.lock3'], 'out': []}
+{'in': ['rt'], 'fu': ['FWUL3.lock3'], 'out': []}
+LWR 5
+variables:
+statements:
+{'in': ['rt', 'result'], 'fu': ['FWUL0.forward5'], 'out': []}
+{'in': ['rt', 'result'], 'fu': ['FWUL1.forward5'], 'out': []}
+{'in': ['rt', 'result'], 'fu': ['FWUL2.forward5'], 'out': []}
+{'in': ['rt', 'result'], 'fu': ['FWUL3.forward5'], 'out': []}
+LWR 6
+variables:
+statements:
+{'in': ['rt', 'result'], 'fu': ['GPR.write0'], 'out': []}
+{'in': ['rt', 'result'], 'fu': ['FWUL0.forward7'], 'out': []}
+{'in': ['rt', 'result'], 'fu': ['FWUL1.forward7'], 'out': []}
+{'in': ['rt', 'result'], 'fu': ['FWUL2.forward7'], 'out': []}
+{'in': ['rt', 'result'], 'fu': ['FWUL3.forward7'], 'out': []}
+SLTI global
+variables:
+('rt', 5)
+('rs', 5)
+('imm', 16)
+('source0', 32)
+('source1', 32)
+('result', 32)
+('tmp_pc', 32)
+SLTI 1
+variables:
+('current_pc', 32)
+('inst0', 64)
+('iramaddr_err', 1)
+statements:
+{'in': [], 'fu': ['CPC.read'], 'out': ['current_pc']}
+{'in': ['current_pc'], 'fu': ['na'], 'out': ['tmp_pc']}
+{'in': ['current_pc'], 'fu': ['Imem.ld_64'], 'out': ['inst0', 'iramaddr_err']}
+{'in': ['inst0'], 'fu': ['IReg.write'], 'out': []}
+{'in': [], 'fu': ['CPC.inc'], 'out': []}
+SLTI 2
+variables:
+('tmp_source0', 32)
+('tmp_ir', 64)
+statements:
+{'in': [], 'fu': ['IReg.read'], 'out': ['tmp_ir']}
+{'in': ['tmp_ir'], 'fu': ['28:24'], 'out': ['rs']}
+{'in': ['tmp_ir'], 'fu': ['20:16'], 'out': ['rt']}
+{'in': ['tmp_ir'], 'fu': ['15:0'], 'out': ['imm']}
+{'in': ['rs'], 'fu': ['GPR.read0'], 'out': ['tmp_source0']}
+{'in': ['rs', 'tmp_source0'], 'fu': ['FWUL0.forward'], 'out': ['source0']}
+{'in': ['imm'], 'fu': ['EXT1.sign'], 'out': ['source1']}
+SLTI 3
+variables:
+('zero31', 31)
+('VnN', 1)
+('flag', 4)
+('cond', 1)
+('flag2', 2)
+('NnV', 1)
+statements:
+{'in': ['0000000000000000000000000000000'], 'fu': ['na'], 'out': ['zero31']}
+{'in': ['source0', 'source1'], 'fu': ['ALU1.cmp'], 'out': ['flag']}
+{'in': ['flag'], 'fu': ['1:0'], 'out': ['flag2']}
+{'in': ['flag2', '10'], 'fu': [' == "'], 'out': ['NnV']}
+{'in': ['flag', '1001'], 'fu': [' == "'], 'out': ['VnN']}
+{'in': ['NnV', 'VnN'], 'fu': [' | '], 'out': ['cond']}
+{'in': ['zero31', 'cond'], 'fu': ['na'], 'out': ['result']}
+{'in': ['rt', 'result'], 'fu': ['FWUL0.forward1'], 'out': []}
+{'in': ['rt', 'result'], 'fu': ['FWUL1.forward1'], 'out': []}
+{'in': ['rt', 'result'], 'fu': ['FWUL2.forward1'], 'out': []}
+{'in': ['rt', 'result'], 'fu': ['FWUL3.forward1'], 'out': []}
+SLTI 4
+variables:
+statements:
+{'in': ['rt', 'result'], 'fu': ['FWUL0.forward3'], 'out': []}
+{'in': ['rt', 'result'], 'fu': ['FWUL1.forward3'], 'out': []}
+{'in': ['rt', 'result'], 'fu': ['FWUL2.forward3'], 'out': []}
+{'in': ['rt', 'result'], 'fu': ['FWUL3.forward3'], 'out': []}
+SLTI 5
+variables:
+statements:
+{'in': ['rt', 'result'], 'fu': ['FWUL0.forward5'], 'out': []}
+{'in': ['rt', 'result'], 'fu': ['FWUL1.forward5'], 'out': []}
+{'in': ['rt', 'result'], 'fu': ['FWUL2.forward5'], 'out': []}
+{'in': ['rt', 'result'], 'fu': ['FWUL3.forward5'], 'out': []}
+SLTI 6
+variables:
+statements:
+{'in': ['rt', 'result'], 'fu': ['GPR.write0'], 'out': []}
+{'in': ['rt', 'result'], 'fu': ['FWUL0.forward7'], 'out': []}
+{'in': ['rt', 'result'], 'fu': ['FWUL1.forward7'], 'out': []}
+{'in': ['rt', 'result'], 'fu': ['FWUL2.forward7'], 'out': []}
+{'in': ['rt', 'result'], 'fu': ['FWUL3.forward7'], 'out': []}
+MFHI global
+variables:
+('rt', 5)
+('shamt', 8)
+('rs', 5)
+('rd', 5)
+('tmp_pc', 32)
+('result', 32)
+MFHI 1
+variables:
+('current_pc', 32)
+('inst0', 64)
+('iramaddr_err', 1)
+statements:
+{'in': [], 'fu': ['CPC.read'], 'out': ['current_pc']}
+{'in': ['current_pc'], 'fu': ['na'], 'out': ['tmp_pc']}
+{'in': ['current_pc'], 'fu': ['Imem.ld_64'], 'out': ['inst0', 'iramaddr_err']}
+{'in': ['inst0'], 'fu': ['IReg.write'], 'out': []}
+{'in': [], 'fu': ['CPC.inc'], 'out': []}
+MFHI 2
+variables:
+('one1b0', 1)
+('tmp_ir', 64)
+('zero1b', 1)
+statements:
+{'in': [], 'fu': ['IReg.read'], 'out': ['tmp_ir']}
+{'in': ['tmp_ir'], 'fu': ['28:24'], 'out': ['rs']}
+{'in': ['tmp_ir'], 'fu': ['20:16'], 'out': ['rt']}
+{'in': ['tmp_ir'], 'fu': ['12:8'], 'out': ['rd']}
+{'in': ['tmp_ir'], 'fu': ['7:0'], 'out': ['shamt']}
+{'in': ['1'], 'fu': ['na'], 'out': ['one1b0']}
+{'in': ['0'], 'fu': ['na'], 'out': ['zero1b']}
+{'in': [], 'fu': ['HI.read'], 'out': ['result']}
+MFHI 3
+variables:
+statements:
+{'in': ['rd', 'result'], 'fu': ['FWUL0.forward1'], 'out': []}
+{'in': ['rd', 'result'], 'fu': ['FWUL1.forward1'], 'out': []}
+{'in': ['rd', 'result'], 'fu': ['FWUL2.forward1'], 'out': []}
+{'in': ['rd', 'result'], 'fu': ['FWUL3.forward1'], 'out': []}
+MFHI 4
+variables:
+statements:
+{'in': ['rd', 'result'], 'fu': ['FWUL0.forward3'], 'out': []}
+{'in': ['rd', 'result'], 'fu': ['FWUL1.forward3'], 'out': []}
+{'in': ['rd', 'result'], 'fu': ['FWUL2.forward3'], 'out': []}
+{'in': ['rd', 'result'], 'fu': ['FWUL3.forward3'], 'out': []}
+MFHI 5
+variables:
+statements:
+{'in': ['rd', 'result'], 'fu': ['FWUL0.forward5'], 'out': []}
+{'in': ['rd', 'result'], 'fu': ['FWUL1.forward5'], 'out': []}
+{'in': ['rd', 'result'], 'fu': ['FWUL2.forward5'], 'out': []}
+{'in': ['rd', 'result'], 'fu': ['FWUL3.forward5'], 'out': []}
+MFHI 6
+variables:
+statements:
+{'in': ['rd', 'result'], 'fu': ['GPR.write0'], 'out': []}
+{'in': ['rd', 'result'], 'fu': ['FWUL0.forward7'], 'out': []}
+{'in': ['rd', 'result'], 'fu': ['FWUL1.forward7'], 'out': []}
+{'in': ['rd', 'result'], 'fu': ['FWUL2.forward7'], 'out': []}
+{'in': ['rd', 'result'], 'fu': ['FWUL3.forward7'], 'out': []}
+JR global
+variables:
+('rt', 5)
+('shamt', 8)
+('target', 32)
+('rs', 5)
+('rd', 5)
+('tmp_pc', 32)
+JR 1
+variables:
+('current_pc', 32)
+('inst0', 64)
+('iramaddr_err', 1)
+statements:
+{'in': [], 'fu': ['CPC.read'], 'out': ['current_pc']}
+{'in': ['current_pc'], 'fu': ['na'], 'out': ['tmp_pc']}
+{'in': ['current_pc'], 'fu': ['Imem.ld_64'], 'out': ['inst0', 'iramaddr_err']}
+{'in': ['inst0'], 'fu': ['IReg.write'], 'out': []}
+{'in': [], 'fu': ['CPC.inc'], 'out': []}
+JR 2
+variables:
+('tmp_ir', 64)
+('tmp_source', 32)
+statements:
+{'in': [], 'fu': ['IReg.read'], 'out': ['tmp_ir']}
+{'in': ['tmp_ir'], 'fu': ['28:24'], 'out': ['rs']}
+{'in': ['tmp_ir'], 'fu': ['20:16'], 'out': ['rt']}
+{'in': ['tmp_ir'], 'fu': ['12:8'], 'out': ['rd']}
+{'in': ['tmp_ir'], 'fu': ['7:0'], 'out': ['shamt']}
+{'in': ['rs'], 'fu': ['GPR.read0'], 'out': ['tmp_source']}
+{'in': ['rs', 'tmp_source'], 'fu': ['FWUL0.forward'], 'out': ['target']}
+JR 3
+variables:
+statements:
+{'in': ['target'], 'fu': ['CPC.write'], 'out': []}
+JR 4
+variables:
+statements:
+JR 5
+variables:
+statements:
+JR 6
+variables:
+statements:
+BLEZ global
+variables:
+('rt', 5)
+('target', 32)
+('rs', 5)
+('imm', 16)
+('source0', 32)
+('src0', 32)
+('source1', 32)
+('tmp_pc', 32)
+BLEZ 1
+variables:
+('current_pc', 32)
+('inst0', 64)
+('iramaddr_err', 1)
+statements:
+{'in': [], 'fu': ['CPC.read'], 'out': ['current_pc']}
+{'in': ['current_pc'], 'fu': ['na'], 'out': ['tmp_pc']}
+{'in': ['current_pc'], 'fu': ['Imem.ld_64'], 'out': ['inst0', 'iramaddr_err']}
+{'in': ['inst0'], 'fu': ['IReg.write'], 'out': []}
+{'in': [], 'fu': ['CPC.inc'], 'out': []}
+BLEZ 2
+variables:
+('tmp', 30)
+('tmp_source0', 32)
+('cout', 1)
+('cin', 1)
+('ext_imm', 32)
+('tmp_ir', 64)
+('offset', 32)
+('tmp_cpc', 32)
+('zero2', 2)
+statements:
+{'in': [], 'fu': ['IReg.read'], 'out': ['tmp_ir']}
+{'in': ['tmp_ir'], 'fu': ['28:24'], 'out': ['rs']}
+{'in': ['tmp_ir'], 'fu': ['20:16'], 'out': ['rt']}
+{'in': ['tmp_ir'], 'fu': ['15:0'], 'out': ['imm']}
+{'in': ['rs'], 'fu': ['GPR.read0'], 'out': ['tmp_source0']}
+{'in': ['rs', 'tmp_source0'], 'fu': ['FWU0.forward'], 'out': ['src0']}
+{'in': ['0'], 'fu': ['na'], 'out': ['cin']}
+{'in': ['00'], 'fu': ['na'], 'out': ['zero2']}
+{'in': ['imm'], 'fu': ['EXT1.sign'], 'out': ['ext_imm']}
+{'in': ['ext_imm'], 'fu': ['29:0'], 'out': ['tmp']}
+{'in': ['tmp', 'zero2'], 'fu': ['na'], 'out': ['offset']}
+{'in': [], 'fu': ['CPC.read'], 'out': ['tmp_cpc']}
+{'in': ['tmp_cpc', 'offset', 'cin'], 'fu': ['ADD1.adc'], 'out': ['target', 'cout']}
+BLEZ 3
+variables:
+('cond_tmp', 1)
+('Z', 1)
+('cond', 1)
+('flag', 4)
+('N', 1)
+statements:
+{'in': ['src0'], 'fu': ['ALU1.cmpz'], 'out': ['flag']}
+{'in': ['flag'], 'fu': ['1'], 'out': ['N']}
+{'in': ['flag'], 'fu': ['2'], 'out': ['Z']}
+{'in': ['N', 'Z'], 'fu': ['|'], 'out': ['cond_tmp']}
+{'in': ['cond_tmp', '1'], 'fu': [" == '"], 'out': ['cond']}
+{'in': ['cond', 'target'], 'fu': ['sel', 'CPC.write'], 'out': []}
+BLEZ 4
+variables:
+statements:
+BLEZ 5
+variables:
+statements:
+BLEZ 6
+variables:
+statements:
+LBU_RR global
+variables:
+('rt', 5)
+('shamt', 8)
+('bigE_word', 32)
+('addr', 32)
+('rs', 5)
+('rd', 5)
+('source0', 32)
+('source1', 32)
+('tmp_pc', 32)
+LBU_RR 1
+variables:
+('current_pc', 32)
+('inst0', 64)
+('iramaddr_err', 1)
+statements:
+{'in': [], 'fu': ['CPC.read'], 'out': ['current_pc']}
+{'in': ['current_pc'], 'fu': ['na'], 'out': ['tmp_pc']}
+{'in': ['current_pc'], 'fu': ['Imem.ld_64'], 'out': ['inst0', 'iramaddr_err']}
+{'in': ['inst0'], 'fu': ['IReg.write'], 'out': []}
+{'in': [], 'fu': ['CPC.inc'], 'out': []}
+LBU_RR 2
+variables:
+('tmp_source0', 32)
+('tmp_ir', 64)
+('tmp_source1', 32)
+statements:
+{'in': [], 'fu': ['IReg.read'], 'out': ['tmp_ir']}
+{'in': ['tmp_ir'], 'fu': ['28:24'], 'out': ['rs']}
+{'in': ['tmp_ir'], 'fu': ['20:16'], 'out': ['rt']}
+{'in': ['tmp_ir'], 'fu': ['12:8'], 'out': ['rd']}
+{'in': ['tmp_ir'], 'fu': ['7:0'], 'out': ['shamt']}
+{'in': ['rs'], 'fu': ['GPR.read0'], 'out': ['tmp_source0']}
+{'in': ['rd'], 'fu': ['GPR.read1'], 'out': ['tmp_source1']}
+{'in': ['rs', 'tmp_source0'], 'fu': ['FWUL0.forward'], 'out': ['source0']}
+{'in': ['rd', 'tmp_source1'], 'fu': ['FWUL1.forward'], 'out': ['source1']}
+LBU_RR 3
+variables:
+('flag', 4)
+statements:
+{'in': ['source0', 'source1'], 'fu': ['ALU1.add'], 'out': ['addr', 'flag']}
+{'in': ['rt'], 'fu': ['FWUL0.lock1'], 'out': []}
+{'in': ['rt'], 'fu': ['FWUL1.lock1'], 'out': []}
+{'in': ['rt'], 'fu': ['FWUL2.lock1'], 'out': []}
+{'in': ['rt'], 'fu': ['FWUL3.lock1'], 'out': []}
+LBU_RR 4
+variables:
+('byte3', 8)
+('byte2', 8)
+('byte1', 8)
+('byte0', 8)
+('result', 32)
+('addr_err', 1)
+statements:
+{'in': ['addr'], 'fu': ['Dmem.ldu_8'], 'out': ['result', 'addr_err']}
+{'in': ['result'], 'fu': ['31:24'], 'out': ['byte0']}
+{'in': ['result'], 'fu': ['23:16'], 'out': ['byte1']}
+{'in': ['result'], 'fu': ['15:8'], 'out': ['byte2']}
+{'in': ['result'], 'fu': ['7:0'], 'out': ['byte3']}
+{'in': ['byte3', 'byte2', 'byte1', 'byte0'], 'fu': ['na'], 'out': ['bigE_word']}
+{'in': ['rt', 'bigE_word'], 'fu': ['FWUL0.forward3'], 'out': []}
+{'in': ['rt', 'bigE_word'], 'fu': ['FWUL1.forward3'], 'out': []}
+{'in': ['rt', 'bigE_word'], 'fu': ['FWUL2.forward3'], 'out': []}
+{'in': ['rt', 'bigE_word'], 'fu': ['FWUL3.forward3'], 'out': []}
+{'in': ['rt'], 'fu': ['FWUL0.lock3'], 'out': []}
+{'in': ['rt'], 'fu': ['FWUL1.lock3'], 'out': []}
+{'in': ['rt'], 'fu': ['FWUL2.lock3'], 'out': []}
+{'in': ['rt'], 'fu': ['FWUL3.lock3'], 'out': []}
+LBU_RR 5
+variables:
+statements:
+{'in': ['rt', 'bigE_word'], 'fu': ['FWUL0.forward5'], 'out': []}
+{'in': ['rt', 'bigE_word'], 'fu': ['FWUL1.forward5'], 'out': []}
+{'in': ['rt', 'bigE_word'], 'fu': ['FWUL2.forward5'], 'out': []}
+{'in': ['rt', 'bigE_word'], 'fu': ['FWUL3.forward5'], 'out': []}
+LBU_RR 6
+variables:
+statements:
+{'in': ['rt', 'bigE_word'], 'fu': ['GPR.write0'], 'out': []}
+{'in': ['rt', 'bigE_word'], 'fu': ['FWUL0.forward7'], 'out': []}
+{'in': ['rt', 'bigE_word'], 'fu': ['FWUL1.forward7'], 'out': []}
+{'in': ['rt', 'bigE_word'], 'fu': ['FWUL2.forward7'], 'out': []}
+{'in': ['rt', 'bigE_word'], 'fu': ['FWUL3.forward7'], 'out': []}
+SRAV global
+variables:
+('rt', 5)
+('shamt', 8)
+('rs', 5)
+('rd', 5)
+('source0', 32)
+('source1', 32)
+('result', 32)
+('tmp_pc', 32)
+SRAV 1
+variables:
+('current_pc', 32)
+('inst0', 64)
+('iramaddr_err', 1)
+statements:
+{'in': [], 'fu': ['CPC.read'], 'out': ['current_pc']}
+{'in': ['current_pc'], 'fu': ['na'], 'out': ['tmp_pc']}
+{'in': ['current_pc'], 'fu': ['Imem.ld_64'], 'out': ['inst0', 'iramaddr_err']}
+{'in': ['inst0'], 'fu': ['IReg.write'], 'out': []}
+{'in': [], 'fu': ['CPC.inc'], 'out': []}
+SRAV 2
+variables:
+('tmp_source0', 32)
+('tmp_ir', 64)
+('tmp_source1', 32)
+statements:
+{'in': [], 'fu': ['IReg.read'], 'out': ['tmp_ir']}
+{'in': ['tmp_ir'], 'fu': ['28:24'], 'out': ['rs']}
+{'in': ['tmp_ir'], 'fu': ['20:16'], 'out': ['rt']}
+{'in': ['tmp_ir'], 'fu': ['12:8'], 'out': ['rd']}
+{'in': ['tmp_ir'], 'fu': ['7:0'], 'out': ['shamt']}
+{'in': ['rs'], 'fu': ['GPR.read0'], 'out': ['tmp_source0']}
+{'in': ['rt'], 'fu': ['GPR.read1'], 'out': ['tmp_source1']}
+{'in': ['rs', 'tmp_source0'], 'fu': ['FWUL0.forward'], 'out': ['source0']}
+{'in': ['rt', 'tmp_source1'], 'fu': ['FWUL1.forward'], 'out': ['source1']}
+SRAV 3
+variables:
+('shift', 5)
+statements:
+{'in': ['source0'], 'fu': ['4:0'], 'out': ['shift']}
+{'in': ['source1', 'shift'], 'fu': ['SFT1.sra'], 'out': ['result']}
+{'in': ['rd', 'result'], 'fu': ['FWUL0.forward1'], 'out': []}
+{'in': ['rd', 'result'], 'fu': ['FWUL1.forward1'], 'out': []}
+{'in': ['rd', 'result'], 'fu': ['FWUL2.forward1'], 'out': []}
+{'in': ['rd', 'result'], 'fu': ['FWUL3.forward1'], 'out': []}
+SRAV 4
+variables:
+statements:
+{'in': ['rd', 'result'], 'fu': ['FWUL0.forward3'], 'out': []}
+{'in': ['rd', 'result'], 'fu': ['FWUL1.forward3'], 'out': []}
+{'in': ['rd', 'result'], 'fu': ['FWUL2.forward3'], 'out': []}
+{'in': ['rd', 'result'], 'fu': ['FWUL3.forward3'], 'out': []}
+SRAV 5
+variables:
+statements:
+{'in': ['rd', 'result'], 'fu': ['FWUL0.forward5'], 'out': []}
+{'in': ['rd', 'result'], 'fu': ['FWUL1.forward5'], 'out': []}
+{'in': ['rd', 'result'], 'fu': ['FWUL2.forward5'], 'out': []}
+{'in': ['rd', 'result'], 'fu': ['FWUL3.forward5'], 'out': []}
+SRAV 6
+variables:
+statements:
+{'in': ['rd', 'result'], 'fu': ['GPR.write0'], 'out': []}
+{'in': ['rd', 'result'], 'fu': ['FWUL0.forward7'], 'out': []}
+{'in': ['rd', 'result'], 'fu': ['FWUL1.forward7'], 'out': []}
+{'in': ['rd', 'result'], 'fu': ['FWUL2.forward7'], 'out': []}
+{'in': ['rd', 'result'], 'fu': ['FWUL3.forward7'], 'out': []}
+SRA global
+variables:
+('rt', 5)
+('shamt', 8)
+('rs', 5)
+('rd', 5)
+('source0', 32)
+('source1', 32)
+('result', 32)
+('tmp_pc', 32)
+SRA 1
+variables:
+('current_pc', 32)
+('inst0', 64)
+('iramaddr_err', 1)
+statements:
+{'in': [], 'fu': ['CPC.read'], 'out': ['current_pc']}
+{'in': ['current_pc'], 'fu': ['na'], 'out': ['tmp_pc']}
+{'in': ['current_pc'], 'fu': ['Imem.ld_64'], 'out': ['inst0', 'iramaddr_err']}
+{'in': ['inst0'], 'fu': ['IReg.write'], 'out': []}
+{'in': [], 'fu': ['CPC.inc'], 'out': []}
+SRA 2
+variables:
+('zero24', 24)
+('tmp_source0', 32)
+('tmp_ir', 64)
+statements:
+{'in': [], 'fu': ['IReg.read'], 'out': ['tmp_ir']}
+{'in': ['tmp_ir'], 'fu': ['28:24'], 'out': ['rs']}
+{'in': ['tmp_ir'], 'fu': ['20:16'], 'out': ['rt']}
+{'in': ['tmp_ir'], 'fu': ['12:8'], 'out': ['rd']}
+{'in': ['tmp_ir'], 'fu': ['7:0'], 'out': ['shamt']}
+{'in': ['000000000000000000000000'], 'fu': ['na'], 'out': ['zero24']}
+{'in': ['rt'], 'fu': ['GPR.read0'], 'out': ['tmp_source0']}
+{'in': ['rt', 'tmp_source0'], 'fu': ['FWUL0.forward'], 'out': ['source0']}
+{'in': ['zero24', 'shamt'], 'fu': ['na'], 'out': ['source1']}
+SRA 3
+variables:
+('shift', 5)
+statements:
+{'in': ['source1'], 'fu': ['4:0'], 'out': ['shift']}
+{'in': ['source0', 'shift'], 'fu': ['SFT1.sra'], 'out': ['result']}
+{'in': ['rd', 'result'], 'fu': ['FWUL0.forward1'], 'out': []}
+{'in': ['rd', 'result'], 'fu': ['FWUL1.forward1'], 'out': []}
+{'in': ['rd', 'result'], 'fu': ['FWUL2.forward1'], 'out': []}
+{'in': ['rd', 'result'], 'fu': ['FWUL3.forward1'], 'out': []}
+SRA 4
+variables:
+statements:
+{'in': ['rd', 'result'], 'fu': ['FWUL0.forward3'], 'out': []}
+{'in': ['rd', 'result'], 'fu': ['FWUL1.forward3'], 'out': []}
+{'in': ['rd', 'result'], 'fu': ['FWUL2.forward3'], 'out': []}
+{'in': ['rd', 'result'], 'fu': ['FWUL3.forward3'], 'out': []}
+SRA 5
+variables:
+statements:
+{'in': ['rd', 'result'], 'fu': ['FWUL0.forward5'], 'out': []}
+{'in': ['rd', 'result'], 'fu': ['FWUL1.forward5'], 'out': []}
+{'in': ['rd', 'result'], 'fu': ['FWUL2.forward5'], 'out': []}
+{'in': ['rd', 'result'], 'fu': ['FWUL3.forward5'], 'out': []}
+SRA 6
+variables:
+statements:
+{'in': ['rd', 'result'], 'fu': ['GPR.write0'], 'out': []}
+{'in': ['rd', 'result'], 'fu': ['FWUL0.forward7'], 'out': []}
+{'in': ['rd', 'result'], 'fu': ['FWUL1.forward7'], 'out': []}
+{'in': ['rd', 'result'], 'fu': ['FWUL2.forward7'], 'out': []}
+{'in': ['rd', 'result'], 'fu': ['FWUL3.forward7'], 'out': []}
+LWL global
+variables:
+('rt', 5)
+('addr', 32)
+('rs', 5)
+('imm', 16)
+('source2', 32)
+('source0', 32)
+('source1', 32)
+('result', 32)
+('tmp_pc', 32)
+LWL 1
+variables:
+('current_pc', 32)
+('inst0', 64)
+('iramaddr_err', 1)
+statements:
+{'in': [], 'fu': ['CPC.read'], 'out': ['current_pc']}
+{'in': ['current_pc'], 'fu': ['na'], 'out': ['tmp_pc']}
+{'in': ['current_pc'], 'fu': ['Imem.ld_64'], 'out': ['inst0', 'iramaddr_err']}
+{'in': ['inst0'], 'fu': ['IReg.write'], 'out': []}
+{'in': [], 'fu': ['CPC.inc'], 'out': []}
+LWL 2
+variables:
+('tmp_source0', 32)
+('tmp_ir', 64)
+('tmp_source1', 32)
+statements:
+{'in': [], 'fu': ['IReg.read'], 'out': ['tmp_ir']}
+{'in': ['tmp_ir'], 'fu': ['28:24'], 'out': ['rs']}
+{'in': ['tmp_ir'], 'fu': ['20:16'], 'out': ['rt']}
+{'in': ['tmp_ir'], 'fu': ['15:0'], 'out': ['imm']}
+{'in': ['rs'], 'fu': ['GPR.read0'], 'out': ['tmp_source0']}
+{'in': ['rt'], 'fu': ['GPR.read1'], 'out': ['tmp_source1']}
+{'in': ['imm'], 'fu': ['EXT1.sign'], 'out': ['source2']}
+{'in': ['rs', 'tmp_source0'], 'fu': ['FWUL0.forward'], 'out': ['source0']}
+{'in': ['rt', 'tmp_source1'], 'fu': ['FWUL1.forward'], 'out': ['source1']}
+LWL 3
+variables:
+('flag', 4)
+statements:
+{'in': ['source0', 'source2'], 'fu': ['ALU1.add'], 'out': ['addr', 'flag']}
+{'in': ['rt'], 'fu': ['FWUL0.lock1'], 'out': []}
+{'in': ['rt'], 'fu': ['FWUL1.lock1'], 'out': []}
+{'in': ['rt'], 'fu': ['FWUL2.lock1'], 'out': []}
+{'in': ['rt'], 'fu': ['FWUL3.lock1'], 'out': []}
+LWL 4
+variables:
+('result0', 32)
+('target', 32)
+('byte2', 8)
+('data1', 8)
+('result1', 32)
+('bigE_data', 32)
+('reg2', 8)
+('result3', 32)
+('reg0', 8)
+('reg1', 8)
+('result2', 32)
+('byte3', 8)
+('byte0', 8)
+('zero2', 2)
+('vAddr10', 2)
+('addr_err', 1)
+('data2', 8)
+('data', 32)
+('data0', 8)
+('byte1', 8)
+('addr_mask', 30)
+statements:
+{'in': ['addr'], 'fu': ['31:2'], 'out': ['addr_mask']}
+{'in': ['addr'], 'fu': ['1:0'], 'out': ['vAddr10']}
+{'in': ['00'], 'fu': ['na'], 'out': ['zero2']}
+{'in': ['addr_mask', 'zero2'], 'fu': ['na'], 'out': ['target']}
+{'in': ['target'], 'fu': ['Dmem.ld_32'], 'out': ['data', 'addr_err']}
+{'in': ['data'], 'fu': ['31:24'], 'out': ['byte0']}
+{'in': ['data'], 'fu': ['23:16'], 'out': ['byte1']}
+{'in': ['data'], 'fu': ['15:8'], 'out': ['byte2']}
+{'in': ['data'], 'fu': ['7:0'], 'out': ['byte3']}
+{'in': ['byte3', 'byte2', 'byte1', 'byte0'], 'fu': ['na'], 'out': ['bigE_data']}
+{'in': ['bigE_data'], 'fu': ['23:16'], 'out': ['data2']}
+{'in': ['bigE_data'], 'fu': ['15:8'], 'out': ['data1']}
+{'in': ['bigE_data'], 'fu': ['7:0'], 'out': ['data0']}
+{'in': ['source1'], 'fu': ['23:16'], 'out': ['reg2']}
+{'in': ['source1'], 'fu': ['15:8'], 'out': ['reg1']}
+{'in': ['source1'], 'fu': ['7:0'], 'out': ['reg0']}
+{'in': ['data0', 'reg2', 'reg1', 'reg0'], 'fu': ['na'], 'out': ['result0']}
+{'in': ['data1', 'data0', 'reg1', 'reg0'], 'fu': ['na'], 'out': ['result1']}
+{'in': ['data2', 'data1', 'data0', 'reg0'], 'fu': ['na'], 'out': ['result2']}
+{'in': ['bigE_data'], 'fu': ['na'], 'out': ['result3']}
+{'in': ['result0', 'result1', 'result2', 'result3', 'vAddr10'], 'fu': ['MUXw32p4.sel'], 'out': ['result']}
+{'in': ['rt', 'result'], 'fu': ['FWUL0.forward3'], 'out': []}
+{'in': ['rt', 'result'], 'fu': ['FWUL1.forward3'], 'out': []}
+{'in': ['rt', 'result'], 'fu': ['FWUL2.forward3'], 'out': []}
+{'in': ['rt', 'result'], 'fu': ['FWUL3.forward3'], 'out': []}
+{'in': ['rt'], 'fu': ['FWUL0.lock3'], 'out': []}
+{'in': ['rt'], 'fu': ['FWUL1.lock3'], 'out': []}
+{'in': ['rt'], 'fu': ['FWUL2.lock3'], 'out': []}
+{'in': ['rt'], 'fu': ['FWUL3.lock3'], 'out': []}
+LWL 5
+variables:
+statements:
+{'in': ['rt', 'result'], 'fu': ['FWUL0.forward5'], 'out': []}
+{'in': ['rt', 'result'], 'fu': ['FWUL1.forward5'], 'out': []}
+{'in': ['rt', 'result'], 'fu': ['FWUL2.forward5'], 'out': []}
+{'in': ['rt', 'result'], 'fu': ['FWUL3.forward5'], 'out': []}
+LWL 6
+variables:
+statements:
+{'in': ['rt', 'result'], 'fu': ['GPR.write0'], 'out': []}
+{'in': ['rt', 'result'], 'fu': ['FWUL0.forward7'], 'out': []}
+{'in': ['rt', 'result'], 'fu': ['FWUL1.forward7'], 'out': []}
+{'in': ['rt', 'result'], 'fu': ['FWUL2.forward7'], 'out': []}
+{'in': ['rt', 'result'], 'fu': ['FWUL3.forward7'], 'out': []}
+LW_RR global
+variables:
+('rt', 5)
+('shamt', 8)
+('bigE_word', 32)
+('addr', 32)
+('rs', 5)
+('rd', 5)
+('source0', 32)
+('source1', 32)
+('tmp_pc', 32)
+LW_RR 1
+variables:
+('current_pc', 32)
+('inst0', 64)
+('iramaddr_err', 1)
+statements:
+{'in': [], 'fu': ['CPC.read'], 'out': ['current_pc']}
+{'in': ['current_pc'], 'fu': ['na'], 'out': ['tmp_pc']}
+{'in': ['current_pc'], 'fu': ['Imem.ld_64'], 'out': ['inst0', 'iramaddr_err']}
+{'in': ['inst0'], 'fu': ['IReg.write'], 'out': []}
+{'in': [], 'fu': ['CPC.inc'], 'out': []}
+LW_RR 2
+variables:
+('tmp_source0', 32)
+('tmp_ir', 64)
+('tmp_source1', 32)
+statements:
+{'in': [], 'fu': ['IReg.read'], 'out': ['tmp_ir']}
+{'in': ['tmp_ir'], 'fu': ['28:24'], 'out': ['rs']}
+{'in': ['tmp_ir'], 'fu': ['20:16'], 'out': ['rt']}
+{'in': ['tmp_ir'], 'fu': ['12:8'], 'out': ['rd']}
+{'in': ['tmp_ir'], 'fu': ['7:0'], 'out': ['shamt']}
+{'in': ['rs'], 'fu': ['GPR.read0'], 'out': ['tmp_source0']}
+{'in': ['rd'], 'fu': ['GPR.read1'], 'out': ['tmp_source1']}
+{'in': ['rs', 'tmp_source0'], 'fu': ['FWUL0.forward'], 'out': ['source0']}
+{'in': ['rd', 'tmp_source1'], 'fu': ['FWUL1.forward'], 'out': ['source1']}
+LW_RR 3
+variables:
+('flag', 4)
+statements:
+{'in': ['source0', 'source1'], 'fu': ['ALU1.add'], 'out': ['addr', 'flag']}
+{'in': ['rt'], 'fu': ['FWUL0.lock1'], 'out': []}
+{'in': ['rt'], 'fu': ['FWUL1.lock1'], 'out': []}
+{'in': ['rt'], 'fu': ['FWUL2.lock1'], 'out': []}
+{'in': ['rt'], 'fu': ['FWUL3.lock1'], 'out': []}
+LW_RR 4
+variables:
+('byte3', 8)
+('byte2', 8)
+('byte1', 8)
+('byte0', 8)
+('result', 32)
+('addr_err', 1)
+statements:
+{'in': ['addr'], 'fu': ['Dmem.ld_32'], 'out': ['result', 'addr_err']}
+{'in': ['result'], 'fu': ['31:24'], 'out': ['byte0']}
+{'in': ['result'], 'fu': ['23:16'], 'out': ['byte1']}
+{'in': ['result'], 'fu': ['15:8'], 'out': ['byte2']}
+{'in': ['result'], 'fu': ['7:0'], 'out': ['byte3']}
+{'in': ['byte3', 'byte2', 'byte1', 'byte0'], 'fu': ['na'], 'out': ['bigE_word']}
+{'in': ['rt', 'bigE_word'], 'fu': ['FWUL0.forward3'], 'out': []}
+{'in': ['rt', 'bigE_word'], 'fu': ['FWUL1.forward3'], 'out': []}
+{'in': ['rt', 'bigE_word'], 'fu': ['FWUL2.forward3'], 'out': []}
+{'in': ['rt', 'bigE_word'], 'fu': ['FWUL3.forward3'], 'out': []}
+{'in': ['rt'], 'fu': ['FWUL0.lock3'], 'out': []}
+{'in': ['rt'], 'fu': ['FWUL1.lock3'], 'out': []}
+{'in': ['rt'], 'fu': ['FWUL2.lock3'], 'out': []}
+{'in': ['rt'], 'fu': ['FWUL3.lock3'], 'out': []}
+LW_RR 5
+variables:
+statements:
+{'in': ['rt', 'bigE_word'], 'fu': ['FWUL0.forward5'], 'out': []}
+{'in': ['rt', 'bigE_word'], 'fu': ['FWUL1.forward5'], 'out': []}
+{'in': ['rt', 'bigE_word'], 'fu': ['FWUL2.forward5'], 'out': []}
+{'in': ['rt', 'bigE_word'], 'fu': ['FWUL3.forward5'], 'out': []}
+LW_RR 6
+variables:
+statements:
+{'in': ['rt', 'bigE_word'], 'fu': ['GPR.write0'], 'out': []}
+{'in': ['rt', 'bigE_word'], 'fu': ['FWUL0.forward7'], 'out': []}
+{'in': ['rt', 'bigE_word'], 'fu': ['FWUL1.forward7'], 'out': []}
+{'in': ['rt', 'bigE_word'], 'fu': ['FWUL2.forward7'], 'out': []}
+{'in': ['rt', 'bigE_word'], 'fu': ['FWUL3.forward7'], 'out': []}
+XOR global
+variables:
+('rt', 5)
+('shamt', 8)
+('rs', 5)
+('rd', 5)
+('source0', 32)
+('source1', 32)
+('result', 32)
+('tmp_pc', 32)
+XOR 1
+variables:
+('current_pc', 32)
+('inst0', 64)
+('iramaddr_err', 1)
+statements:
+{'in': [], 'fu': ['CPC.read'], 'out': ['current_pc']}
+{'in': ['current_pc'], 'fu': ['na'], 'out': ['tmp_pc']}
+{'in': ['current_pc'], 'fu': ['Imem.ld_64'], 'out': ['inst0', 'iramaddr_err']}
+{'in': ['inst0'], 'fu': ['IReg.write'], 'out': []}
+{'in': [], 'fu': ['CPC.inc'], 'out': []}
+XOR 2
+variables:
+('tmp_source0', 32)
+('tmp_ir', 64)
+('tmp_source1', 32)
+statements:
+{'in': [], 'fu': ['IReg.read'], 'out': ['tmp_ir']}
+{'in': ['tmp_ir'], 'fu': ['28:24'], 'out': ['rs']}
+{'in': ['tmp_ir'], 'fu': ['20:16'], 'out': ['rt']}
+{'in': ['tmp_ir'], 'fu': ['12:8'], 'out': ['rd']}
+{'in': ['tmp_ir'], 'fu': ['7:0'], 'out': ['shamt']}
+{'in': ['rs'], 'fu': ['GPR.read0'], 'out': ['tmp_source0']}
+{'in': ['rt'], 'fu': ['GPR.read1'], 'out': ['tmp_source1']}
+{'in': ['rs', 'tmp_source0'], 'fu': ['FWUL0.forward'], 'out': ['source0']}
+{'in': ['rt', 'tmp_source1'], 'fu': ['FWUL1.forward'], 'out': ['source1']}
+XOR 3
+variables:
+('flag', 4)
+statements:
+{'in': ['source0', 'source1'], 'fu': ['ALU1.xor'], 'out': ['result', 'flag']}
+{'in': ['rd', 'result'], 'fu': ['FWUL0.forward1'], 'out': []}
+{'in': ['rd', 'result'], 'fu': ['FWUL1.forward1'], 'out': []}
+{'in': ['rd', 'result'], 'fu': ['FWUL2.forward1'], 'out': []}
+{'in': ['rd', 'result'], 'fu': ['FWUL3.forward1'], 'out': []}
+XOR 4
+variables:
+statements:
+{'in': ['rd', 'result'], 'fu': ['FWUL0.forward3'], 'out': []}
+{'in': ['rd', 'result'], 'fu': ['FWUL1.forward3'], 'out': []}
+{'in': ['rd', 'result'], 'fu': ['FWUL2.forward3'], 'out': []}
+{'in': ['rd', 'result'], 'fu': ['FWUL3.forward3'], 'out': []}
+XOR 5
+variables:
+statements:
+{'in': ['rd', 'result'], 'fu': ['FWUL0.forward5'], 'out': []}
+{'in': ['rd', 'result'], 'fu': ['FWUL1.forward5'], 'out': []}
+{'in': ['rd', 'result'], 'fu': ['FWUL2.forward5'], 'out': []}
+{'in': ['rd', 'result'], 'fu': ['FWUL3.forward5'], 'out': []}
+XOR 6
+variables:
+statements:
+{'in': ['rd', 'result'], 'fu': ['GPR.write0'], 'out': []}
+{'in': ['rd', 'result'], 'fu': ['FWUL0.forward7'], 'out': []}
+{'in': ['rd', 'result'], 'fu': ['FWUL1.forward7'], 'out': []}
+{'in': ['rd', 'result'], 'fu': ['FWUL2.forward7'], 'out': []}
+{'in': ['rd', 'result'], 'fu': ['FWUL3.forward7'], 'out': []}
+DIV global
+variables:
+('rt', 5)
+('shamt', 8)
+('rs', 5)
+('resulthi', 32)
+('rd', 5)
+('source0', 32)
+('source1', 32)
+('tmp_pc', 32)
+('resultlo', 32)
+DIV 1
+variables:
+('current_pc', 32)
+('inst0', 64)
+('iramaddr_err', 1)
+statements:
+{'in': [], 'fu': ['CPC.read'], 'out': ['current_pc']}
+{'in': ['current_pc'], 'fu': ['na'], 'out': ['tmp_pc']}
+{'in': ['current_pc'], 'fu': ['Imem.ld_64'], 'out': ['inst0', 'iramaddr_err']}
+{'in': ['inst0'], 'fu': ['IReg.write'], 'out': []}
+{'in': [], 'fu': ['CPC.inc'], 'out': []}
+DIV 2
+variables:
+('tmp_source0', 32)
+('tmp_ir', 64)
+('tmp_source1', 32)
+statements:
+{'in': [], 'fu': ['IReg.read'], 'out': ['tmp_ir']}
+{'in': ['tmp_ir'], 'fu': ['28:24'], 'out': ['rs']}
+{'in': ['tmp_ir'], 'fu': ['20:16'], 'out': ['rt']}
+{'in': ['tmp_ir'], 'fu': ['12:8'], 'out': ['rd']}
+{'in': ['tmp_ir'], 'fu': ['7:0'], 'out': ['shamt']}
+{'in': ['rs'], 'fu': ['GPR.read0'], 'out': ['tmp_source0']}
+{'in': ['rt'], 'fu': ['GPR.read1'], 'out': ['tmp_source1']}
+{'in': ['rs', 'tmp_source0'], 'fu': ['FWUL0.forward'], 'out': ['source0']}
+{'in': ['rt', 'tmp_source1'], 'fu': ['FWUL1.forward'], 'out': ['source1']}
+DIV 3
+variables:
+('flag', 1)
+statements:
+{'in': ['source0', 'source1'], 'fu': ['DIV1.div'], 'out': ['resultlo', 'resulthi', 'flag']}
+{'in': ['resultlo'], 'fu': ['LO.write'], 'out': []}
+{'in': ['resulthi'], 'fu': ['HI.write'], 'out': []}
+DIV 4
+variables:
+statements:
+DIV 5
+variables:
+statements:
+DIV 6
+variables:
+statements:
+SWR global
+variables:
+('rt', 5)
+('addr', 32)
+('rs', 5)
+('imm', 16)
+('source2', 32)
+('source0', 32)
+('source1', 32)
+('result', 32)
+('tmp_pc', 32)
+SWR 1
+variables:
+('current_pc', 32)
+('inst0', 64)
+('iramaddr_err', 1)
+statements:
+{'in': [], 'fu': ['CPC.read'], 'out': ['current_pc']}
+{'in': ['current_pc'], 'fu': ['na'], 'out': ['tmp_pc']}
+{'in': ['current_pc'], 'fu': ['Imem.ld_64'], 'out': ['inst0', 'iramaddr_err']}
+{'in': ['inst0'], 'fu': ['IReg.write'], 'out': []}
+{'in': [], 'fu': ['CPC.inc'], 'out': []}
+SWR 2
+variables:
+('tmp_source0', 32)
+('tmp_ir', 64)
+('tmp_source1', 32)
+statements:
+{'in': [], 'fu': ['IReg.read'], 'out': ['tmp_ir']}
+{'in': ['tmp_ir'], 'fu': ['28:24'], 'out': ['rs']}
+{'in': ['tmp_ir'], 'fu': ['20:16'], 'out': ['rt']}
+{'in': ['tmp_ir'], 'fu': ['15:0'], 'out': ['imm']}
+{'in': ['rs'], 'fu': ['GPR.read0'], 'out': ['tmp_source0']}
+{'in': ['rt'], 'fu': ['GPR.read1'], 'out': ['tmp_source1']}
+{'in': ['imm'], 'fu': ['EXT1.sign'], 'out': ['source2']}
+{'in': ['rs', 'tmp_source0'], 'fu': ['FWUL0.forward'], 'out': ['source0']}
+{'in': ['rt', 'tmp_source1'], 'fu': ['FWUL1.forward'], 'out': ['source1']}
+SWR 3
+variables:
+('flag', 4)
+statements:
+{'in': ['source0', 'source2'], 'fu': ['ALU1.add'], 'out': ['addr', 'flag']}
+SWR 4
+variables:
+('result0', 32)
+('target', 32)
+('nData', 32)
+('byte2', 8)
+('data1', 8)
+('result1', 32)
+('byte1', 8)
+('reg2', 8)
+('result3', 32)
+('reg0', 8)
+('reg1', 8)
+('result2', 32)
+('byte3', 8)
+('byte0', 8)
+('zero2', 2)
+('vAddr10', 2)
+('addr_err', 1)
+('data2', 8)
+('data', 32)
+('data0', 8)
+('addr_mask', 30)
+statements:
+{'in': ['addr'], 'fu': ['31:2'], 'out': ['addr_mask']}
+{'in': ['addr'], 'fu': ['1:0'], 'out': ['vAddr10']}
+{'in': ['00'], 'fu': ['na'], 'out': ['zero2']}
+{'in': ['addr_mask', 'zero2'], 'fu': ['na'], 'out': ['target']}
+{'in': ['target'], 'fu': ['Dmem.ld_32'], 'out': ['data', 'addr_err']}
+{'in': ['data'], 'fu': ['31:24'], 'out': ['byte0']}
+{'in': ['data'], 'fu': ['23:16'], 'out': ['byte1']}
+{'in': ['data'], 'fu': ['15:8'], 'out': ['byte2']}
+{'in': ['data'], 'fu': ['7:0'], 'out': ['byte3']}
+{'in': ['byte3', 'byte2', 'byte1', 'byte0'], 'fu': ['na'], 'out': ['nData']}
+{'in': ['nData'], 'fu': ['23:16'], 'out': ['data2']}
+{'in': ['nData'], 'fu': ['15:8'], 'out': ['data1']}
+{'in': ['nData'], 'fu': ['7:0'], 'out': ['data0']}
+{'in': ['source1'], 'fu': ['23:16'], 'out': ['reg2']}
+{'in': ['source1'], 'fu': ['15:8'], 'out': ['reg1']}
+{'in': ['source1'], 'fu': ['7:0'], 'out': ['reg0']}
+{'in': ['source1'], 'fu': ['na'], 'out': ['result0']}
+{'in': ['reg2', 'reg1', 'reg0', 'data0'], 'fu': ['na'], 'out': ['result1']}
+{'in': ['reg1', 'reg0', 'data1', 'data0'], 'fu': ['na'], 'out': ['result2']}
+{'in': ['reg0', 'data2', 'data1', 'data0'], 'fu': ['na'], 'out': ['result3']}
+{'in': ['result0', 'result1', 'result2', 'result3', 'vAddr10'], 'fu': ['MUXw32p4.sel'], 'out': ['result']}
+SWR 5
+variables:
+('target', 32)
+('byte3', 8)
+('byte2', 8)
+('byte1', 8)
+('byte0', 8)
+('zero2', 2)
+('nResult', 32)
+('addr_err', 1)
+('addr_mask', 30)
+statements:
+{'in': ['addr'], 'fu': ['31:2'], 'out': ['addr_mask']}
+{'in': ['00'], 'fu': ['na'], 'out': ['zero2']}
+{'in': ['result'], 'fu': ['31:24'], 'out': ['byte0']}
+{'in': ['result'], 'fu': ['23:16'], 'out': ['byte1']}
+{'in': ['result'], 'fu': ['15:8'], 'out': ['byte2']}
+{'in': ['result'], 'fu': ['7:0'], 'out': ['byte3']}
+{'in': ['byte3', 'byte2', 'byte1', 'byte0'], 'fu': ['na'], 'out': ['nResult']}
+{'in': ['addr_mask', 'zero2'], 'fu': ['na'], 'out': ['target']}
+{'in': ['target', 'nResult'], 'fu': ['Dmem.s_32'], 'out': ['addr_err']}
+SWR 6
+variables:
+statements:
+LBm global
+variables:
+('rt', 5)
+('bigE_word', 32)
+('addr', 32)
+('rs', 5)
+('imm', 16)
+('source0', 32)
+('source1', 32)
+('tmp_pc', 32)
+LBm 1
+variables:
+('current_pc', 32)
+('inst0', 64)
+('iramaddr_err', 1)
+statements:
+{'in': [], 'fu': ['CPC.read'], 'out': ['current_pc']}
+{'in': ['current_pc'], 'fu': ['na'], 'out': ['tmp_pc']}
+{'in': ['current_pc'], 'fu': ['Imem.ld_64'], 'out': ['inst0', 'iramaddr_err']}
+{'in': ['inst0'], 'fu': ['IReg.write'], 'out': []}
+{'in': [], 'fu': ['CPC.inc'], 'out': []}
+LBm 2
+variables:
+('tmp_source0', 32)
+('tmp_ir', 64)
+statements:
+{'in': [], 'fu': ['IReg.read'], 'out': ['tmp_ir']}
+{'in': ['tmp_ir'], 'fu': ['28:24'], 'out': ['rs']}
+{'in': ['tmp_ir'], 'fu': ['20:16'], 'out': ['rt']}
+{'in': ['tmp_ir'], 'fu': ['15:0'], 'out': ['imm']}
+{'in': ['rs'], 'fu': ['GPR.read0'], 'out': ['tmp_source0']}
+{'in': ['rs', 'tmp_source0'], 'fu': ['FWUL0.forward'], 'out': ['source0']}
+{'in': ['imm'], 'fu': ['EXT1.sign'], 'out': ['source1']}
+LBm 3
+variables:
+('flag', 4)
+statements:
+{'in': ['source0', 'source1'], 'fu': ['ALU1.add'], 'out': ['addr', 'flag']}
+{'in': ['rt'], 'fu': ['FWUL0.lock1'], 'out': []}
+{'in': ['rt'], 'fu': ['FWUL1.lock1'], 'out': []}
+{'in': ['rt'], 'fu': ['FWUL2.lock1'], 'out': []}
+{'in': ['rt'], 'fu': ['FWUL3.lock1'], 'out': []}
+LBm 4
+variables:
+('byte3', 8)
+('byte2', 8)
+('byte1', 8)
+('byte0', 8)
+('result', 32)
+('addr_err', 1)
+statements:
+{'in': ['addr'], 'fu': ['Dmem.ld_8'], 'out': ['result', 'addr_err']}
+{'in': ['result'], 'fu': ['31:24'], 'out': ['byte0']}
+{'in': ['result'], 'fu': ['23:16'], 'out': ['byte1']}
+{'in': ['result'], 'fu': ['15:8'], 'out': ['byte2']}
+{'in': ['result'], 'fu': ['7:0'], 'out': ['byte3']}
+{'in': ['byte3', 'byte2', 'byte1', 'byte0'], 'fu': ['na'], 'out': ['bigE_word']}
+{'in': ['rt', 'bigE_word'], 'fu': ['FWUL0.forward3'], 'out': []}
+{'in': ['rt', 'bigE_word'], 'fu': ['FWUL1.forward3'], 'out': []}
+{'in': ['rt', 'bigE_word'], 'fu': ['FWUL2.forward3'], 'out': []}
+{'in': ['rt', 'bigE_word'], 'fu': ['FWUL3.forward3'], 'out': []}
+{'in': ['rt'], 'fu': ['FWUL0.lock3'], 'out': []}
+{'in': ['rt'], 'fu': ['FWUL1.lock3'], 'out': []}
+{'in': ['rt'], 'fu': ['FWUL2.lock3'], 'out': []}
+{'in': ['rt'], 'fu': ['FWUL3.lock3'], 'out': []}
+LBm 5
+variables:
+statements:
+{'in': ['rt', 'bigE_word'], 'fu': ['FWUL0.forward5'], 'out': []}
+{'in': ['rt', 'bigE_word'], 'fu': ['FWUL1.forward5'], 'out': []}
+{'in': ['rt', 'bigE_word'], 'fu': ['FWUL2.forward5'], 'out': []}
+{'in': ['rt', 'bigE_word'], 'fu': ['FWUL3.forward5'], 'out': []}
+LBm 6
+variables:
+statements:
+{'in': ['rt', 'bigE_word'], 'fu': ['GPR.write0'], 'out': []}
+{'in': ['rt', 'bigE_word'], 'fu': ['FWUL0.forward7'], 'out': []}
+{'in': ['rt', 'bigE_word'], 'fu': ['FWUL1.forward7'], 'out': []}
+{'in': ['rt', 'bigE_word'], 'fu': ['FWUL2.forward7'], 'out': []}
+LH_RR global
+variables:
+('rt', 5)
+('shamt', 8)
+('bigE_word', 32)
+('addr', 32)
+('rs', 5)
+('rd', 5)
+('source0', 32)
+('source1', 32)
+('tmp_pc', 32)
+LH_RR 1
+variables:
+('current_pc', 32)
+('inst0', 64)
+('iramaddr_err', 1)
+statements:
+{'in': [], 'fu': ['CPC.read'], 'out': ['current_pc']}
+{'in': ['current_pc'], 'fu': ['na'], 'out': ['tmp_pc']}
+{'in': ['current_pc'], 'fu': ['Imem.ld_64'], 'out': ['inst0', 'iramaddr_err']}
+{'in': ['inst0'], 'fu': ['IReg.write'], 'out': []}
+{'in': [], 'fu': ['CPC.inc'], 'out': []}
+LH_RR 2
+variables:
+('tmp_source0', 32)
+('tmp_ir', 64)
+('tmp_source1', 32)
+statements:
+{'in': [], 'fu': ['IReg.read'], 'out': ['tmp_ir']}
+{'in': ['tmp_ir'], 'fu': ['28:24'], 'out': ['rs']}
+{'in': ['tmp_ir'], 'fu': ['20:16'], 'out': ['rt']}
+{'in': ['tmp_ir'], 'fu': ['12:8'], 'out': ['rd']}
+{'in': ['tmp_ir'], 'fu': ['7:0'], 'out': ['shamt']}
+{'in': ['rs'], 'fu': ['GPR.read0'], 'out': ['tmp_source0']}
+{'in': ['rd'], 'fu': ['GPR.read1'], 'out': ['tmp_source1']}
+{'in': ['rs', 'tmp_source0'], 'fu': ['FWUL0.forward'], 'out': ['source0']}
+{'in': ['rd', 'tmp_source1'], 'fu': ['FWUL1.forward'], 'out': ['source1']}
+LH_RR 3
+variables:
+('flag', 4)
+statements:
+{'in': ['source0', 'source1'], 'fu': ['ALU1.add'], 'out': ['addr', 'flag']}
+{'in': ['rt'], 'fu': ['FWUL0.lock1'], 'out': []}
+{'in': ['rt'], 'fu': ['FWUL1.lock1'], 'out': []}
+{'in': ['rt'], 'fu': ['FWUL2.lock1'], 'out': []}
+{'in': ['rt'], 'fu': ['FWUL3.lock1'], 'out': []}
+LH_RR 4
+variables:
+('byte3', 8)
+('byte2', 8)
+('byte1', 8)
+('byte0', 8)
+('result', 32)
+('addr_err', 1)
+statements:
+{'in': ['addr'], 'fu': ['Dmem.ld_16'], 'out': ['result', 'addr_err']}
+{'in': ['result'], 'fu': ['31:24'], 'out': ['byte0']}
+{'in': ['result'], 'fu': ['23:16'], 'out': ['byte1']}
+{'in': ['result'], 'fu': ['15:8'], 'out': ['byte2']}
+{'in': ['result'], 'fu': ['7:0'], 'out': ['byte3']}
+{'in': ['byte3', 'byte2', 'byte1', 'byte0'], 'fu': ['na'], 'out': ['bigE_word']}
+{'in': ['rt', 'bigE_word'], 'fu': ['FWUL0.forward3'], 'out': []}
+{'in': ['rt', 'bigE_word'], 'fu': ['FWUL1.forward3'], 'out': []}
+{'in': ['rt', 'bigE_word'], 'fu': ['FWUL2.forward3'], 'out': []}
+{'in': ['rt', 'bigE_word'], 'fu': ['FWUL3.forward3'], 'out': []}
+{'in': ['rt'], 'fu': ['FWUL0.lock3'], 'out': []}
+{'in': ['rt'], 'fu': ['FWUL1.lock3'], 'out': []}
+{'in': ['rt'], 'fu': ['FWUL2.lock3'], 'out': []}
+{'in': ['rt'], 'fu': ['FWUL3.lock3'], 'out': []}
+LH_RR 5
+variables:
+statements:
+{'in': ['rt', 'bigE_word'], 'fu': ['FWUL0.forward5'], 'out': []}
+{'in': ['rt', 'bigE_word'], 'fu': ['FWUL1.forward5'], 'out': []}
+{'in': ['rt', 'bigE_word'], 'fu': ['FWUL2.forward5'], 'out': []}
+{'in': ['rt', 'bigE_word'], 'fu': ['FWUL3.forward5'], 'out': []}
+LH_RR 6
+variables:
+statements:
+{'in': ['rt', 'bigE_word'], 'fu': ['GPR.write0'], 'out': []}
+{'in': ['rt', 'bigE_word'], 'fu': ['FWUL0.forward7'], 'out': []}
+{'in': ['rt', 'bigE_word'], 'fu': ['FWUL1.forward7'], 'out': []}
+{'in': ['rt', 'bigE_word'], 'fu': ['FWUL2.forward7'], 'out': []}
+{'in': ['rt', 'bigE_word'], 'fu': ['FWUL3.forward7'], 'out': []}
+SB_RR global
+variables:
+('rt', 5)
+('rd', 5)
+('addr', 32)
+('rs', 5)
+('shamt', 8)
+('source2', 32)
+('source0', 32)
+('source1', 32)
+('tmp_pc', 32)
+SB_RR 1
+variables:
+('current_pc', 32)
+('inst0', 64)
+('iramaddr_err', 1)
+statements:
+{'in': [], 'fu': ['CPC.read'], 'out': ['current_pc']}
+{'in': ['current_pc'], 'fu': ['na'], 'out': ['tmp_pc']}
+{'in': ['current_pc'], 'fu': ['Imem.ld_64'], 'out': ['inst0', 'iramaddr_err']}
+{'in': ['inst0'], 'fu': ['IReg.write'], 'out': []}
+{'in': [], 'fu': ['CPC.inc'], 'out': []}
+SB_RR 2
+variables:
+('tmp_source0', 32)
+('tmp_ir', 64)
+('tmp_source2', 32)
+('tmp_source1', 32)
+statements:
+{'in': [], 'fu': ['IReg.read'], 'out': ['tmp_ir']}
+{'in': ['tmp_ir'], 'fu': ['28:24'], 'out': ['rs']}
+{'in': ['tmp_ir'], 'fu': ['20:16'], 'out': ['rt']}
+{'in': ['tmp_ir'], 'fu': ['12:8'], 'out': ['rd']}
+{'in': ['tmp_ir'], 'fu': ['7:0'], 'out': ['shamt']}
+{'in': ['rs'], 'fu': ['GPR.read0'], 'out': ['tmp_source0']}
+{'in': ['rt'], 'fu': ['GPR.read1'], 'out': ['tmp_source1']}
+{'in': ['rd'], 'fu': ['GPR.read2'], 'out': ['tmp_source2']}
+{'in': ['rs', 'tmp_source0'], 'fu': ['FWUL0.forward'], 'out': ['source0']}
+{'in': ['rt', 'tmp_source1'], 'fu': ['FWUL1.forward'], 'out': ['source1']}
+{'in': ['rd', 'tmp_source2'], 'fu': ['FWUL2.forward'], 'out': ['source2']}
+SB_RR 3
+variables:
+('flag', 4)
+statements:
+{'in': ['source0', 'source2'], 'fu': ['ALU1.add'], 'out': ['addr', 'flag']}
+SB_RR 4
+variables:
+statements:
+SB_RR 5
+variables:
+('LE_source1', 32)
+('byte3', 8)
+('byte2', 8)
+('byte1', 8)
+('byte0', 8)
+('addr_err', 1)
+statements:
+{'in': ['source1'], 'fu': ['31:24'], 'out': ['byte0']}
+{'in': ['source1'], 'fu': ['23:16'], 'out': ['byte1']}
+{'in': ['source1'], 'fu': ['15:8'], 'out': ['byte2']}
+{'in': ['source1'], 'fu': ['7:0'], 'out': ['byte3']}
+{'in': ['byte3', 'byte2', 'byte1', 'byte0'], 'fu': ['na'], 'out': ['LE_source1']}
+{'in': ['addr', 'LE_source1'], 'fu': ['Dmem.s_8'], 'out': ['addr_err']}
+SB_RR 6
+variables:
+statements:
+LUI global
+variables:
+('rt', 5)
+('tmp_pc', 32)
+('imm', 16)
+('result', 32)
+('rs', 5)
+LUI 1
+variables:
+('current_pc', 32)
+('inst0', 64)
+('iramaddr_err', 1)
+statements:
+{'in': [], 'fu': ['CPC.read'], 'out': ['current_pc']}
+{'in': ['current_pc'], 'fu': ['na'], 'out': ['tmp_pc']}
+{'in': ['current_pc'], 'fu': ['Imem.ld_64'], 'out': ['inst0', 'iramaddr_err']}
+{'in': ['inst0'], 'fu': ['IReg.write'], 'out': []}
+{'in': [], 'fu': ['CPC.inc'], 'out': []}
+LUI 2
+variables:
+('zero16', 16)
+('tmp_ir', 64)
+statements:
+{'in': [], 'fu': ['IReg.read'], 'out': ['tmp_ir']}
+{'in': ['tmp_ir'], 'fu': ['28:24'], 'out': ['rs']}
+{'in': ['tmp_ir'], 'fu': ['20:16'], 'out': ['rt']}
+{'in': ['tmp_ir'], 'fu': ['15:0'], 'out': ['imm']}
+{'in': ['0000000000000000'], 'fu': ['na'], 'out': ['zero16']}
+{'in': ['imm', 'zero16'], 'fu': ['na'], 'out': ['result']}
+LUI 3
+variables:
+statements:
+{'in': ['rt', 'result'], 'fu': ['FWUL0.forward1'], 'out': []}
+{'in': ['rt', 'result'], 'fu': ['FWUL1.forward1'], 'out': []}
+{'in': ['rt', 'result'], 'fu': ['FWUL2.forward1'], 'out': []}
+{'in': ['rt', 'result'], 'fu': ['FWUL3.forward1'], 'out': []}
+LUI 4
+variables:
+statements:
+{'in': ['rt', 'result'], 'fu': ['FWUL0.forward3'], 'out': []}
+{'in': ['rt', 'result'], 'fu': ['FWUL1.forward3'], 'out': []}
+{'in': ['rt', 'result'], 'fu': ['FWUL2.forward3'], 'out': []}
+{'in': ['rt', 'result'], 'fu': ['FWUL3.forward3'], 'out': []}
+LUI 5
+variables:
+statements:
+{'in': ['rt', 'result'], 'fu': ['FWUL0.forward5'], 'out': []}
+{'in': ['rt', 'result'], 'fu': ['FWUL1.forward5'], 'out': []}
+{'in': ['rt', 'result'], 'fu': ['FWUL2.forward5'], 'out': []}
+{'in': ['rt', 'result'], 'fu': ['FWUL3.forward5'], 'out': []}
+LUI 6
+variables:
+statements:
+{'in': ['rt', 'result'], 'fu': ['GPR.write0'], 'out': []}
+{'in': ['rt', 'result'], 'fu': ['FWUL0.forward7'], 'out': []}
+{'in': ['rt', 'result'], 'fu': ['FWUL1.forward7'], 'out': []}
+{'in': ['rt', 'result'], 'fu': ['FWUL2.forward7'], 'out': []}
+{'in': ['rt', 'result'], 'fu': ['FWUL3.forward7'], 'out': []}
+SLTU global
+variables:
+('rt', 5)
+('shamt', 8)
+('rs', 5)
+('rd', 5)
+('source0', 32)
+('source1', 32)
+('result', 32)
+('tmp_pc', 32)
+SLTU 1
+variables:
+('current_pc', 32)
+('inst0', 64)
+('iramaddr_err', 1)
+statements:
+{'in': [], 'fu': ['CPC.read'], 'out': ['current_pc']}
+{'in': ['current_pc'], 'fu': ['na'], 'out': ['tmp_pc']}
+{'in': ['current_pc'], 'fu': ['Imem.ld_64'], 'out': ['inst0', 'iramaddr_err']}
+{'in': ['inst0'], 'fu': ['IReg.write'], 'out': []}
+{'in': [], 'fu': ['CPC.inc'], 'out': []}
+SLTU 2
+variables:
+('tmp_source0', 32)
+('tmp_ir', 64)
+('tmp_source1', 32)
+statements:
+{'in': [], 'fu': ['IReg.read'], 'out': ['tmp_ir']}
+{'in': ['tmp_ir'], 'fu': ['28:24'], 'out': ['rs']}
+{'in': ['tmp_ir'], 'fu': ['20:16'], 'out': ['rt']}
+{'in': ['tmp_ir'], 'fu': ['12:8'], 'out': ['rd']}
+{'in': ['tmp_ir'], 'fu': ['7:0'], 'out': ['shamt']}
+{'in': ['rs'], 'fu': ['GPR.read0'], 'out': ['tmp_source0']}
+{'in': ['rt'], 'fu': ['GPR.read1'], 'out': ['tmp_source1']}
+{'in': ['rs', 'tmp_source0'], 'fu': ['FWUL0.forward'], 'out': ['source0']}
+{'in': ['rt', 'tmp_source1'], 'fu': ['FWUL1.forward'], 'out': ['source1']}
+SLTU 3
+variables:
+('zero31', 31)
+('flag', 4)
+('cond', 1)
+('flag2', 2)
+statements:
+{'in': ['0000000000000000000000000000000'], 'fu': ['na'], 'out': ['zero31']}
+{'in': ['source0', 'source1'], 'fu': ['ALU1.cmpu'], 'out': ['flag']}
+{'in': ['flag'], 'fu': ['3:2'], 'out': ['flag2']}
+{'in': ['flag2', '00'], 'fu': [' == "'], 'out': ['cond']}
+{'in': ['zero31', 'cond'], 'fu': ['na'], 'out': ['result']}
+{'in': ['rd', 'result'], 'fu': ['FWUL0.forward1'], 'out': []}
+{'in': ['rd', 'result'], 'fu': ['FWUL1.forward1'], 'out': []}
+{'in': ['rd', 'result'], 'fu': ['FWUL2.forward1'], 'out': []}
+{'in': ['rd', 'result'], 'fu': ['FWUL3.forward1'], 'out': []}
+SLTU 4
+variables:
+statements:
+{'in': ['rd', 'result'], 'fu': ['FWUL0.forward3'], 'out': []}
+{'in': ['rd', 'result'], 'fu': ['FWUL1.forward3'], 'out': []}
+{'in': ['rd', 'result'], 'fu': ['FWUL2.forward3'], 'out': []}
+{'in': ['rd', 'result'], 'fu': ['FWUL3.forward3'], 'out': []}
+SLTU 5
+variables:
+statements:
+{'in': ['rd', 'result'], 'fu': ['FWUL0.forward5'], 'out': []}
+{'in': ['rd', 'result'], 'fu': ['FWUL1.forward5'], 'out': []}
+{'in': ['rd', 'result'], 'fu': ['FWUL2.forward5'], 'out': []}
+{'in': ['rd', 'result'], 'fu': ['FWUL3.forward5'], 'out': []}
+SLTU 6
+variables:
+statements:
+{'in': ['rd', 'result'], 'fu': ['GPR.write0'], 'out': []}
+{'in': ['rd', 'result'], 'fu': ['FWUL0.forward7'], 'out': []}
+{'in': ['rd', 'result'], 'fu': ['FWUL1.forward7'], 'out': []}
+{'in': ['rd', 'result'], 'fu': ['FWUL2.forward7'], 'out': []}
+{'in': ['rd', 'result'], 'fu': ['FWUL3.forward7'], 'out': []}
+BEQ global
+variables:
+('rt', 5)
+('target', 32)
+('rs', 5)
+('imm', 16)
+('source0', 32)
+('source1', 32)
+('tmp_pc', 32)
+BEQ 1
+variables:
+('current_pc', 32)
+('inst0', 64)
+('iramaddr_err', 1)
+statements:
+{'in': [], 'fu': ['CPC.read'], 'out': ['current_pc']}
+{'in': ['current_pc'], 'fu': ['na'], 'out': ['tmp_pc']}
+{'in': ['current_pc'], 'fu': ['Imem.ld_64'], 'out': ['inst0', 'iramaddr_err']}
+{'in': ['inst0'], 'fu': ['IReg.write'], 'out': []}
+{'in': [], 'fu': ['CPC.inc'], 'out': []}
+BEQ 2
+variables:
+('tmp', 30)
+('tmp_source0', 32)
+('cout', 1)
+('cin', 1)
+('tmp_source1', 32)
+('ext_imm', 32)
+('zero2', 2)
+('offset', 32)
+('tmp_cpc', 32)
+('tmp_ir', 64)
+statements:
+{'in': [], 'fu': ['IReg.read'], 'out': ['tmp_ir']}
+{'in': ['tmp_ir'], 'fu': ['28:24'], 'out': ['rs']}
+{'in': ['tmp_ir'], 'fu': ['20:16'], 'out': ['rt']}
+{'in': ['tmp_ir'], 'fu': ['15:0'], 'out': ['imm']}
+{'in': ['rs'], 'fu': ['GPR.read0'], 'out': ['tmp_source0']}
+{'in': ['rt'], 'fu': ['GPR.read1'], 'out': ['tmp_source1']}
+{'in': ['rs', 'tmp_source0'], 'fu': ['FWUL0.forward'], 'out': ['source0']}
+{'in': ['rt', 'tmp_source1'], 'fu': ['FWUL1.forward'], 'out': ['source1']}
+{'in': ['0'], 'fu': ['na'], 'out': ['cin']}
+{'in': ['00'], 'fu': ['na'], 'out': ['zero2']}
+{'in': ['imm'], 'fu': ['EXT1.sign'], 'out': ['ext_imm']}
+{'in': ['ext_imm'], 'fu': ['29:0'], 'out': ['tmp']}
+{'in': ['tmp', 'zero2'], 'fu': ['na'], 'out': ['offset']}
+{'in': [], 'fu': ['CPC.read'], 'out': ['tmp_cpc']}
+{'in': ['tmp_cpc', 'offset', 'cin'], 'fu': ['ADD1.adc'], 'out': ['target', 'cout']}
+BEQ 3
+variables:
+('zero', 1)
+('cond', 1)
+('flag', 4)
+statements:
+{'in': ['source0', 'source1'], 'fu': ['ALU1.cmp'], 'out': ['flag']}
+{'in': ['flag'], 'fu': ['2'], 'out': ['zero']}
+{'in': ['zero', '1'], 'fu': [" =='"], 'out': ['cond']}
+{'in': ['cond', 'target'], 'fu': ['sel', 'CPC.write'], 'out': []}
+BEQ 4
+variables:
+statements:
+BEQ 5
+variables:
+statements:
+BEQ 6
+variables:
+statements:
+LBU global
+variables:
+('rt', 5)
+('bigE_word', 32)
+('addr', 32)
+('rs', 5)
+('imm', 16)
+('source0', 32)
+('source1', 32)
+('tmp_pc', 32)
+LBU 1
+variables:
+('current_pc', 32)
+('inst0', 64)
+('iramaddr_err', 1)
+statements:
+{'in': [], 'fu': ['CPC.read'], 'out': ['current_pc']}
+{'in': ['current_pc'], 'fu': ['na'], 'out': ['tmp_pc']}
+{'in': ['current_pc'], 'fu': ['Imem.ld_64'], 'out': ['inst0', 'iramaddr_err']}
+{'in': ['inst0'], 'fu': ['IReg.write'], 'out': []}
+{'in': [], 'fu': ['CPC.inc'], 'out': []}
+LBU 2
+variables:
+('tmp_source0', 32)
+('tmp_ir', 64)
+statements:
+{'in': [], 'fu': ['IReg.read'], 'out': ['tmp_ir']}
+{'in': ['tmp_ir'], 'fu': ['28:24'], 'out': ['rs']}
+{'in': ['tmp_ir'], 'fu': ['20:16'], 'out': ['rt']}
+{'in': ['tmp_ir'], 'fu': ['15:0'], 'out': ['imm']}
+{'in': ['rs'], 'fu': ['GPR.read0'], 'out': ['tmp_source0']}
+{'in': ['rs', 'tmp_source0'], 'fu': ['FWUL0.forward'], 'out': ['source0']}
+{'in': ['imm'], 'fu': ['EXT1.sign'], 'out': ['source1']}
+LBU 3
+variables:
+('flag', 4)
+statements:
+{'in': ['source0', 'source1'], 'fu': ['ALU1.add'], 'out': ['addr', 'flag']}
+{'in': ['rt'], 'fu': ['FWUL0.lock1'], 'out': []}
+{'in': ['rt'], 'fu': ['FWUL1.lock1'], 'out': []}
+{'in': ['rt'], 'fu': ['FWUL2.lock1'], 'out': []}
+{'in': ['rt'], 'fu': ['FWUL3.lock1'], 'out': []}
+LBU 4
+variables:
+('byte3', 8)
+('byte2', 8)
+('byte1', 8)
+('byte0', 8)
+('result', 32)
+('addr_err', 1)
+statements:
+{'in': ['addr'], 'fu': ['Dmem.ldu_8'], 'out': ['result', 'addr_err']}
+{'in': ['result'], 'fu': ['31:24'], 'out': ['byte0']}
+{'in': ['result'], 'fu': ['23:16'], 'out': ['byte1']}
+{'in': ['result'], 'fu': ['15:8'], 'out': ['byte2']}
+{'in': ['result'], 'fu': ['7:0'], 'out': ['byte3']}
+{'in': ['byte3', 'byte2', 'byte1', 'byte0'], 'fu': ['na'], 'out': ['bigE_word']}
+{'in': ['rt', 'bigE_word'], 'fu': ['FWUL0.forward3'], 'out': []}
+{'in': ['rt', 'bigE_word'], 'fu': ['FWUL1.forward3'], 'out': []}
+{'in': ['rt', 'bigE_word'], 'fu': ['FWUL2.forward3'], 'out': []}
+{'in': ['rt', 'bigE_word'], 'fu': ['FWUL3.forward3'], 'out': []}
+{'in': ['rt'], 'fu': ['FWUL0.lock3'], 'out': []}
+{'in': ['rt'], 'fu': ['FWUL1.lock3'], 'out': []}
+{'in': ['rt'], 'fu': ['FWUL2.lock3'], 'out': []}
+{'in': ['rt'], 'fu': ['FWUL3.lock3'], 'out': []}
+LBU 5
+variables:
+statements:
+{'in': ['rt', 'bigE_word'], 'fu': ['FWUL0.forward5'], 'out': []}
+{'in': ['rt', 'bigE_word'], 'fu': ['FWUL1.forward5'], 'out': []}
+{'in': ['rt', 'bigE_word'], 'fu': ['FWUL2.forward5'], 'out': []}
+{'in': ['rt', 'bigE_word'], 'fu': ['FWUL3.forward5'], 'out': []}
+LBU 6
+variables:
+statements:
+{'in': ['rt', 'bigE_word'], 'fu': ['GPR.write0'], 'out': []}
+{'in': ['rt', 'bigE_word'], 'fu': ['FWUL0.forward7'], 'out': []}
+{'in': ['rt', 'bigE_word'], 'fu': ['FWUL1.forward7'], 'out': []}
+{'in': ['rt', 'bigE_word'], 'fu': ['FWUL2.forward7'], 'out': []}
+{'in': ['rt', 'bigE_word'], 'fu': ['FWUL3.forward7'], 'out': []}
+DSW_RR global
+variables:
+('rt', 5)
+('rd', 5)
+('rs', 5)
+('shamt', 8)
+('source2', 32)
+('source3', 32)
+('source0', 32)
+('source1', 32)
+('addr2', 32)
+('tmp_pc', 32)
+('addr1', 32)
+DSW_RR 1
+variables:
+('current_pc', 32)
+('inst0', 64)
+('iramaddr_err', 1)
+statements:
+{'in': [], 'fu': ['CPC.read'], 'out': ['current_pc']}
+{'in': ['current_pc'], 'fu': ['na'], 'out': ['tmp_pc']}
+{'in': ['current_pc'], 'fu': ['Imem.ld_64'], 'out': ['inst0', 'iramaddr_err']}
+{'in': ['inst0'], 'fu': ['IReg.write'], 'out': []}
+{'in': [], 'fu': ['CPC.inc'], 'out': []}
+DSW_RR 2
+variables:
+('tmp_source0', 32)
+('tmp_source1', 32)
+('tmp_source2', 32)
+('tmp_source3', 32)
+('one', 1)
+('tmp_ir', 64)
+('rt2', 5)
+('oldrt', 4)
+statements:
+{'in': [], 'fu': ['IReg.read'], 'out': ['tmp_ir']}
+{'in': ['tmp_ir'], 'fu': ['28:24'], 'out': ['rs']}
+{'in': ['tmp_ir'], 'fu': ['20:16'], 'out': ['rt']}
+{'in': ['tmp_ir'], 'fu': ['12:8'], 'out': ['rd']}
+{'in': ['tmp_ir'], 'fu': ['7:0'], 'out': ['shamt']}
+{'in': ['1'], 'fu': ['na'], 'out': ['one']}
+{'in': ['rt'], 'fu': ['4:1'], 'out': ['oldrt']}
+{'in': ['oldrt', 'one'], 'fu': ['na'], 'out': ['rt2']}
+{'in': ['rs'], 'fu': ['GPR.read0'], 'out': ['tmp_source0']}
+{'in': ['rt'], 'fu': ['GPR.read1'], 'out': ['tmp_source1']}
+{'in': ['rd'], 'fu': ['GPR.read2'], 'out': ['tmp_source2']}
+{'in': ['rt2'], 'fu': ['GPR.read3'], 'out': ['tmp_source3']}
+{'in': ['rs', 'tmp_source0'], 'fu': ['FWUL0.forward'], 'out': ['source0']}
+{'in': ['rt', 'tmp_source1'], 'fu': ['FWUL1.forward'], 'out': ['source1']}
+{'in': ['rd', 'tmp_source2'], 'fu': ['FWUL2.forward'], 'out': ['source2']}
+{'in': ['rt2', 'tmp_source3'], 'fu': ['FWUL3.forward'], 'out': ['source3']}
+DSW_RR 3
+variables:
+('four32bit', 32)
+('flag', 4)
+('cin', 1)
+('cout', 1)
+statements:
+{'in': ['source0', 'source2'], 'fu': ['ALU1.add'], 'out': ['addr1', 'flag']}
+{'in': ['1'], 'fu': ['na'], 'out': ['cin']}
+{'in': ['00000000000000000000000000000100'], 'fu': ['na'], 'out': ['four32bit']}
+{'in': ['addr1', 'four32bit', 'cin'], 'fu': ['ADDER2.adc'], 'out': ['addr2', 'cout']}
+DSW_RR 4
+variables:
+statements:
+DSW_RR 5
+variables:
+('LE_source1', 32)
+('byte3', 8)
+('byte2', 8)
+('byte1', 8)
+('byte0', 8)
+('addr_err', 1)
+statements:
+{'in': ['source1'], 'fu': ['31:24'], 'out': ['byte0']}
+{'in': ['source1'], 'fu': ['23:16'], 'out': ['byte1']}
+{'in': ['source1'], 'fu': ['15:8'], 'out': ['byte2']}
+{'in': ['source1'], 'fu': ['7:0'], 'out': ['byte3']}
+{'in': ['byte3', 'byte2', 'byte1', 'byte0'], 'fu': ['na'], 'out': ['LE_source1']}
+{'in': ['addr1', 'LE_source1'], 'fu': ['Dmem.s_32'], 'out': ['addr_err']}
+DSW_RR 6
+variables:
+('LE_source3', 32)
+('byte3', 8)
+('byte2', 8)
+('byte1', 8)
+('byte0', 8)
+('addr_err', 1)
+statements:
+{'in': ['source3'], 'fu': ['31:24'], 'out': ['byte0']}
+{'in': ['source3'], 'fu': ['23:16'], 'out': ['byte1']}
+{'in': ['source3'], 'fu': ['15:8'], 'out': ['byte2']}
+{'in': ['source3'], 'fu': ['7:0'], 'out': ['byte3']}
+{'in': ['byte3', 'byte2', 'byte1', 'byte0'], 'fu': ['na'], 'out': ['LE_source3']}
+{'in': ['addr2', 'LE_source3'], 'fu': ['Dmem.s_32'], 'out': ['addr_err']}
+LB_RR global
+variables:
+('rt', 5)
+('shamt', 8)
+('bigE_word', 32)
+('addr', 32)
+('rs', 5)
+('rd', 5)
+('source0', 32)
+('source1', 32)
+('tmp_pc', 32)
+LB_RR 1
+variables:
+('current_pc', 32)
+('inst0', 64)
+('iramaddr_err', 1)
+statements:
+{'in': [], 'fu': ['CPC.read'], 'out': ['current_pc']}
+{'in': ['current_pc'], 'fu': ['na'], 'out': ['tmp_pc']}
+{'in': ['current_pc'], 'fu': ['Imem.ld_64'], 'out': ['inst0', 'iramaddr_err']}
+{'in': ['inst0'], 'fu': ['IReg.write'], 'out': []}
+{'in': [], 'fu': ['CPC.inc'], 'out': []}
+LB_RR 2
+variables:
+('tmp_source0', 32)
+('tmp_ir', 64)
+('tmp_source1', 32)
+statements:
+{'in': [], 'fu': ['IReg.read'], 'out': ['tmp_ir']}
+{'in': ['tmp_ir'], 'fu': ['28:24'], 'out': ['rs']}
+{'in': ['tmp_ir'], 'fu': ['20:16'], 'out': ['rt']}
+{'in': ['tmp_ir'], 'fu': ['12:8'], 'out': ['rd']}
+{'in': ['tmp_ir'], 'fu': ['7:0'], 'out': ['shamt']}
+{'in': ['rs'], 'fu': ['GPR.read0'], 'out': ['tmp_source0']}
+{'in': ['rd'], 'fu': ['GPR.read1'], 'out': ['tmp_source1']}
+{'in': ['rs', 'tmp_source0'], 'fu': ['FWUL0.forward'], 'out': ['source0']}
+{'in': ['rd', 'tmp_source1'], 'fu': ['FWUL1.forward'], 'out': ['source1']}
+LB_RR 3
+variables:
+('flag', 4)
+statements:
+{'in': ['source0', 'source1'], 'fu': ['ALU1.add'], 'out': ['addr', 'flag']}
+{'in': ['rt'], 'fu': ['FWUL0.lock1'], 'out': []}
+{'in': ['rt'], 'fu': ['FWUL1.lock1'], 'out': []}
+{'in': ['rt'], 'fu': ['FWUL2.lock1'], 'out': []}
+{'in': ['rt'], 'fu': ['FWUL3.lock1'], 'out': []}
+LB_RR 4
+variables:
+('byte3', 8)
+('byte2', 8)
+('byte1', 8)
+('byte0', 8)
+('result', 32)
+('addr_err', 1)
+statements:
+{'in': ['addr'], 'fu': ['Dmem.ld_8'], 'out': ['result', 'addr_err']}
+{'in': ['result'], 'fu': ['31:24'], 'out': ['byte0']}
+{'in': ['result'], 'fu': ['23:16'], 'out': ['byte1']}
+{'in': ['result'], 'fu': ['15:8'], 'out': ['byte2']}
+{'in': ['result'], 'fu': ['7:0'], 'out': ['byte3']}
+{'in': ['byte3', 'byte2', 'byte1', 'byte0'], 'fu': ['na'], 'out': ['bigE_word']}
+{'in': ['rt', 'bigE_word'], 'fu': ['FWUL0.forward3'], 'out': []}
+{'in': ['rt', 'bigE_word'], 'fu': ['FWUL1.forward3'], 'out': []}
+{'in': ['rt', 'bigE_word'], 'fu': ['FWUL2.forward3'], 'out': []}
+{'in': ['rt', 'bigE_word'], 'fu': ['FWUL3.forward3'], 'out': []}
+{'in': ['rt'], 'fu': ['FWUL0.lock3'], 'out': []}
+{'in': ['rt'], 'fu': ['FWUL1.lock3'], 'out': []}
+{'in': ['rt'], 'fu': ['FWUL2.lock3'], 'out': []}
+{'in': ['rt'], 'fu': ['FWUL3.lock3'], 'out': []}
+LB_RR 5
+variables:
+statements:
+{'in': ['rt', 'bigE_word'], 'fu': ['FWUL0.forward5'], 'out': []}
+{'in': ['rt', 'bigE_word'], 'fu': ['FWUL1.forward5'], 'out': []}
+{'in': ['rt', 'bigE_word'], 'fu': ['FWUL2.forward5'], 'out': []}
+{'in': ['rt', 'bigE_word'], 'fu': ['FWUL3.forward5'], 'out': []}
+LB_RR 6
+variables:
+statements:
+{'in': ['rt', 'bigE_word'], 'fu': ['GPR.write0'], 'out': []}
+{'in': ['rt', 'bigE_word'], 'fu': ['FWUL0.forward7'], 'out': []}
+{'in': ['rt', 'bigE_word'], 'fu': ['FWUL1.forward7'], 'out': []}
+{'in': ['rt', 'bigE_word'], 'fu': ['FWUL2.forward7'], 'out': []}
+{'in': ['rt', 'bigE_word'], 'fu': ['FWUL3.forward7'], 'out': []}
+ANDI global
+variables:
+('rt', 5)
+('rs', 5)
+('imm', 16)
+('source0', 32)
+('source1', 32)
+('result', 32)
+('tmp_pc', 32)
+ANDI 1
+variables:
+('current_pc', 32)
+('inst0', 64)
+('iramaddr_err', 1)
+statements:
+{'in': [], 'fu': ['CPC.read'], 'out': ['current_pc']}
+{'in': ['current_pc'], 'fu': ['na'], 'out': ['tmp_pc']}
+{'in': ['current_pc'], 'fu': ['Imem.ld_64'], 'out': ['inst0', 'iramaddr_err']}
+{'in': ['inst0'], 'fu': ['IReg.write'], 'out': []}
+{'in': [], 'fu': ['CPC.inc'], 'out': []}
+ANDI 2
+variables:
+('tmp_source0', 32)
+('tmp_ir', 64)
+statements:
+{'in': [], 'fu': ['IReg.read'], 'out': ['tmp_ir']}
+{'in': ['tmp_ir'], 'fu': ['28:24'], 'out': ['rs']}
+{'in': ['tmp_ir'], 'fu': ['20:16'], 'out': ['rt']}
+{'in': ['tmp_ir'], 'fu': ['15:0'], 'out': ['imm']}
+{'in': ['rs'], 'fu': ['GPR.read0'], 'out': ['tmp_source0']}
+{'in': ['rs', 'tmp_source0'], 'fu': ['FWUL0.forward'], 'out': ['source0']}
+{'in': ['imm'], 'fu': ['EXT1.zero'], 'out': ['source1']}
+ANDI 3
+variables:
+('flag', 4)
+statements:
+{'in': ['source0', 'source1'], 'fu': ['ALU1.and'], 'out': ['result', 'flag']}
+{'in': ['rt', 'result'], 'fu': ['FWUL0.forward1'], 'out': []}
+{'in': ['rt', 'result'], 'fu': ['FWUL1.forward1'], 'out': []}
+{'in': ['rt', 'result'], 'fu': ['FWUL2.forward1'], 'out': []}
+{'in': ['rt', 'result'], 'fu': ['FWUL3.forward1'], 'out': []}
+ANDI 4
+variables:
+statements:
+{'in': ['rt', 'result'], 'fu': ['FWUL0.forward3'], 'out': []}
+{'in': ['rt', 'result'], 'fu': ['FWUL1.forward3'], 'out': []}
+{'in': ['rt', 'result'], 'fu': ['FWUL2.forward3'], 'out': []}
+{'in': ['rt', 'result'], 'fu': ['FWUL3.forward3'], 'out': []}
+ANDI 5
+variables:
+statements:
+{'in': ['rt', 'result'], 'fu': ['FWUL0.forward5'], 'out': []}
+{'in': ['rt', 'result'], 'fu': ['FWUL1.forward5'], 'out': []}
+{'in': ['rt', 'result'], 'fu': ['FWUL2.forward5'], 'out': []}
+{'in': ['rt', 'result'], 'fu': ['FWUL3.forward5'], 'out': []}
+ANDI 6
+variables:
+statements:
+{'in': ['rt', 'result'], 'fu': ['GPR.write0'], 'out': []}
+{'in': ['rt', 'result'], 'fu': ['FWUL0.forward7'], 'out': []}
+{'in': ['rt', 'result'], 'fu': ['FWUL1.forward7'], 'out': []}
+{'in': ['rt', 'result'], 'fu': ['FWUL2.forward7'], 'out': []}
+{'in': ['rt', 'result'], 'fu': ['FWUL3.forward7'], 'out': []}
+LH global
+variables:
+('rt', 5)
+('bigE_word', 32)
+('addr', 32)
+('rs', 5)
+('imm', 16)
+('source0', 32)
+('source1', 32)
+('tmp_pc', 32)
+LH 1
+variables:
+('current_pc', 32)
+('inst0', 64)
+('iramaddr_err', 1)
+statements:
+{'in': [], 'fu': ['CPC.read'], 'out': ['current_pc']}
+{'in': ['current_pc'], 'fu': ['na'], 'out': ['tmp_pc']}
+{'in': ['current_pc'], 'fu': ['Imem.ld_64'], 'out': ['inst0', 'iramaddr_err']}
+{'in': ['inst0'], 'fu': ['IReg.write'], 'out': []}
+{'in': [], 'fu': ['CPC.inc'], 'out': []}
+LH 2
+variables:
+('tmp_source0', 32)
+('tmp_ir', 64)
+statements:
+{'in': [], 'fu': ['IReg.read'], 'out': ['tmp_ir']}
+{'in': ['tmp_ir'], 'fu': ['28:24'], 'out': ['rs']}
+{'in': ['tmp_ir'], 'fu': ['20:16'], 'out': ['rt']}
+{'in': ['tmp_ir'], 'fu': ['15:0'], 'out': ['imm']}
+{'in': ['rs'], 'fu': ['GPR.read0'], 'out': ['tmp_source0']}
+{'in': ['rs', 'tmp_source0'], 'fu': ['FWUL0.forward'], 'out': ['source0']}
+{'in': ['imm'], 'fu': ['EXT1.sign'], 'out': ['source1']}
+LH 3
+variables:
+('flag', 4)
+statements:
+{'in': ['source0', 'source1'], 'fu': ['ALU1.add'], 'out': ['addr', 'flag']}
+{'in': ['rt'], 'fu': ['FWUL0.lock1'], 'out': []}
+{'in': ['rt'], 'fu': ['FWUL1.lock1'], 'out': []}
+{'in': ['rt'], 'fu': ['FWUL2.lock1'], 'out': []}
+{'in': ['rt'], 'fu': ['FWUL3.lock1'], 'out': []}
+LH 4
+variables:
+('byte3', 8)
+('byte2', 8)
+('byte1', 8)
+('byte0', 8)
+('result', 32)
+('addr_err', 1)
+statements:
+{'in': ['addr'], 'fu': ['Dmem.ld_16'], 'out': ['result', 'addr_err']}
+{'in': ['result'], 'fu': ['31:24'], 'out': ['byte0']}
+{'in': ['result'], 'fu': ['23:16'], 'out': ['byte1']}
+{'in': ['result'], 'fu': ['15:8'], 'out': ['byte2']}
+{'in': ['result'], 'fu': ['7:0'], 'out': ['byte3']}
+{'in': ['byte3', 'byte2', 'byte1', 'byte0'], 'fu': ['na'], 'out': ['bigE_word']}
+{'in': ['rt', 'bigE_word'], 'fu': ['FWUL0.forward3'], 'out': []}
+{'in': ['rt', 'bigE_word'], 'fu': ['FWUL1.forward3'], 'out': []}
+{'in': ['rt', 'bigE_word'], 'fu': ['FWUL2.forward3'], 'out': []}
+{'in': ['rt', 'bigE_word'], 'fu': ['FWUL3.forward3'], 'out': []}
+{'in': ['rt'], 'fu': ['FWUL0.lock3'], 'out': []}
+{'in': ['rt'], 'fu': ['FWUL1.lock3'], 'out': []}
+{'in': ['rt'], 'fu': ['FWUL2.lock3'], 'out': []}
+{'in': ['rt'], 'fu': ['FWUL3.lock3'], 'out': []}
+LH 5
+variables:
+statements:
+{'in': ['rt', 'bigE_word'], 'fu': ['FWUL0.forward5'], 'out': []}
+{'in': ['rt', 'bigE_word'], 'fu': ['FWUL1.forward5'], 'out': []}
+{'in': ['rt', 'bigE_word'], 'fu': ['FWUL2.forward5'], 'out': []}
+{'in': ['rt', 'bigE_word'], 'fu': ['FWUL3.forward5'], 'out': []}
+LH 6
+variables:
+statements:
+{'in': ['rt', 'bigE_word'], 'fu': ['GPR.write0'], 'out': []}
+{'in': ['rt', 'bigE_word'], 'fu': ['FWUL0.forward7'], 'out': []}
+{'in': ['rt', 'bigE_word'], 'fu': ['FWUL1.forward7'], 'out': []}
+{'in': ['rt', 'bigE_word'], 'fu': ['FWUL2.forward7'], 'out': []}
+{'in': ['rt', 'bigE_word'], 'fu': ['FWUL3.forward7'], 'out': []}
+LW global
+variables:
+('rt', 5)
+('bigE_word', 32)
+('addr', 32)
+('rs', 5)
+('imm', 16)
+('source0', 32)
+('source1', 32)
+('tmp_pc', 32)
+LW 1
+variables:
+('current_pc', 32)
+('inst0', 64)
+('iramaddr_err', 1)
+statements:
+{'in': [], 'fu': ['CPC.read'], 'out': ['current_pc']}
+{'in': ['current_pc'], 'fu': ['na'], 'out': ['tmp_pc']}
+{'in': ['current_pc'], 'fu': ['Imem.ld_64'], 'out': ['inst0', 'iramaddr_err']}
+{'in': ['inst0'], 'fu': ['IReg.write'], 'out': []}
+{'in': [], 'fu': ['CPC.inc'], 'out': []}
+LW 2
+variables:
+('tmp_source0', 32)
+('tmp_ir', 64)
+statements:
+{'in': [], 'fu': ['IReg.read'], 'out': ['tmp_ir']}
+{'in': ['tmp_ir'], 'fu': ['28:24'], 'out': ['rs']}
+{'in': ['tmp_ir'], 'fu': ['20:16'], 'out': ['rt']}
+{'in': ['tmp_ir'], 'fu': ['15:0'], 'out': ['imm']}
+{'in': ['rs'], 'fu': ['GPR.read0'], 'out': ['tmp_source0']}
+{'in': ['rs', 'tmp_source0'], 'fu': ['FWUL0.forward'], 'out': ['source0']}
+{'in': ['imm'], 'fu': ['EXT1.sign'], 'out': ['source1']}
+LW 3
+variables:
+('flag', 4)
+statements:
+{'in': ['source0', 'source1'], 'fu': ['ALU1.add'], 'out': ['addr', 'flag']}
+{'in': ['rt'], 'fu': ['FWUL0.lock1'], 'out': []}
+{'in': ['rt'], 'fu': ['FWUL1.lock1'], 'out': []}
+{'in': ['rt'], 'fu': ['FWUL2.lock1'], 'out': []}
+{'in': ['rt'], 'fu': ['FWUL3.lock1'], 'out': []}
+LW 4
+variables:
+('byte3', 8)
+('byte2', 8)
+('byte1', 8)
+('byte0', 8)
+('result', 32)
+('addr_err', 1)
+statements:
+{'in': ['addr'], 'fu': ['Dmem.ld_32'], 'out': ['result', 'addr_err']}
+{'in': ['result'], 'fu': ['31:24'], 'out': ['byte0']}
+{'in': ['result'], 'fu': ['23:16'], 'out': ['byte1']}
+{'in': ['result'], 'fu': ['15:8'], 'out': ['byte2']}
+{'in': ['result'], 'fu': ['7:0'], 'out': ['byte3']}
+{'in': ['byte3', 'byte2', 'byte1', 'byte0'], 'fu': ['na'], 'out': ['bigE_word']}
+{'in': ['rt', 'bigE_word'], 'fu': ['FWUL0.forward3'], 'out': []}
+{'in': ['rt', 'bigE_word'], 'fu': ['FWUL1.forward3'], 'out': []}
+{'in': ['rt', 'bigE_word'], 'fu': ['FWUL2.forward3'], 'out': []}
+{'in': ['rt', 'bigE_word'], 'fu': ['FWUL3.forward3'], 'out': []}
+{'in': ['rt'], 'fu': ['FWUL0.lock3'], 'out': []}
+{'in': ['rt'], 'fu': ['FWUL1.lock3'], 'out': []}
+{'in': ['rt'], 'fu': ['FWUL2.lock3'], 'out': []}
+{'in': ['rt'], 'fu': ['FWUL3.lock3'], 'out': []}
+LW 5
+variables:
+statements:
+{'in': ['rt', 'bigE_word'], 'fu': ['FWUL0.forward5'], 'out': []}
+{'in': ['rt', 'bigE_word'], 'fu': ['FWUL1.forward5'], 'out': []}
+{'in': ['rt', 'bigE_word'], 'fu': ['FWUL2.forward5'], 'out': []}
+{'in': ['rt', 'bigE_word'], 'fu': ['FWUL3.forward5'], 'out': []}
+LW 6
+variables:
+statements:
+{'in': ['rt', 'bigE_word'], 'fu': ['GPR.write0'], 'out': []}
+{'in': ['rt', 'bigE_word'], 'fu': ['FWUL0.forward7'], 'out': []}
+{'in': ['rt', 'bigE_word'], 'fu': ['FWUL1.forward7'], 'out': []}
+{'in': ['rt', 'bigE_word'], 'fu': ['FWUL2.forward7'], 'out': []}
+{'in': ['rt', 'bigE_word'], 'fu': ['FWUL3.forward7'], 'out': []}
+MULT global
+variables:
+('rt', 5)
+('shamt', 8)
+('rs', 5)
+('resulthi', 32)
+('rd', 5)
+('source0', 32)
+('source1', 32)
+('result', 64)
+('tmp_pc', 32)
+('resultlo', 32)
+MULT 1
+variables:
+('current_pc', 32)
+('inst0', 64)
+('iramaddr_err', 1)
+statements:
+{'in': [], 'fu': ['CPC.read'], 'out': ['current_pc']}
+{'in': ['current_pc'], 'fu': ['na'], 'out': ['tmp_pc']}
+{'in': ['current_pc'], 'fu': ['Imem.ld_64'], 'out': ['inst0', 'iramaddr_err']}
+{'in': ['inst0'], 'fu': ['IReg.write'], 'out': []}
+{'in': [], 'fu': ['CPC.inc'], 'out': []}
+MULT 2
+variables:
+('tmp_source0', 32)
+('tmp_ir', 64)
+('tmp_source1', 32)
+statements:
+{'in': [], 'fu': ['IReg.read'], 'out': ['tmp_ir']}
+{'in': ['tmp_ir'], 'fu': ['28:24'], 'out': ['rs']}
+{'in': ['tmp_ir'], 'fu': ['20:16'], 'out': ['rt']}
+{'in': ['tmp_ir'], 'fu': ['12:8'], 'out': ['rd']}
+{'in': ['tmp_ir'], 'fu': ['7:0'], 'out': ['shamt']}
+{'in': ['rs'], 'fu': ['GPR.read0'], 'out': ['tmp_source0']}
+{'in': ['rt'], 'fu': ['GPR.read1'], 'out': ['tmp_source1']}
+{'in': ['rs', 'tmp_source0'], 'fu': ['FWUL0.forward'], 'out': ['source0']}
+{'in': ['rt', 'tmp_source1'], 'fu': ['FWUL1.forward'], 'out': ['source1']}
+MULT 3
+variables:
+statements:
+{'in': ['source0', 'source1'], 'fu': ['MUL1.mul'], 'out': ['result']}
+{'in': ['result'], 'fu': ['63:32'], 'out': ['resulthi']}
+{'in': ['result'], 'fu': ['31:0'], 'out': ['resultlo']}
+{'in': ['resultlo'], 'fu': ['LO.write'], 'out': []}
+{'in': ['resulthi'], 'fu': ['HI.write'], 'out': []}
+MULT 4
+variables:
+statements:
+MULT 5
+variables:
+statements:
+MULT 6
+variables:
+statements:
+LHU_RR global
+variables:
+('rt', 5)
+('shamt', 8)
+('bigE_word', 32)
+('addr', 32)
+('rs', 5)
+('rd', 5)
+('source0', 32)
+('source1', 32)
+('tmp_pc', 32)
+LHU_RR 1
+variables:
+('current_pc', 32)
+('inst0', 64)
+('iramaddr_err', 1)
+statements:
+{'in': [], 'fu': ['CPC.read'], 'out': ['current_pc']}
+{'in': ['current_pc'], 'fu': ['na'], 'out': ['tmp_pc']}
+{'in': ['current_pc'], 'fu': ['Imem.ld_64'], 'out': ['inst0', 'iramaddr_err']}
+{'in': ['inst0'], 'fu': ['IReg.write'], 'out': []}
+{'in': [], 'fu': ['CPC.inc'], 'out': []}
+LHU_RR 2
+variables:
+('tmp_source0', 32)
+('tmp_ir', 64)
+('tmp_source1', 32)
+statements:
+{'in': [], 'fu': ['IReg.read'], 'out': ['tmp_ir']}
+{'in': ['tmp_ir'], 'fu': ['28:24'], 'out': ['rs']}
+{'in': ['tmp_ir'], 'fu': ['20:16'], 'out': ['rt']}
+{'in': ['tmp_ir'], 'fu': ['12:8'], 'out': ['rd']}
+{'in': ['tmp_ir'], 'fu': ['7:0'], 'out': ['shamt']}
+{'in': ['rs'], 'fu': ['GPR.read0'], 'out': ['tmp_source0']}
+{'in': ['rd'], 'fu': ['GPR.read1'], 'out': ['tmp_source1']}
+{'in': ['rs', 'tmp_source0'], 'fu': ['FWUL0.forward'], 'out': ['source0']}
+{'in': ['rd', 'tmp_source1'], 'fu': ['FWUL1.forward'], 'out': ['source1']}
+LHU_RR 3
+variables:
+('flag', 4)
+statements:
+{'in': ['source0', 'source1'], 'fu': ['ALU1.add'], 'out': ['addr', 'flag']}
+{'in': ['rt'], 'fu': ['FWUL0.lock1'], 'out': []}
+{'in': ['rt'], 'fu': ['FWUL1.lock1'], 'out': []}
+{'in': ['rt'], 'fu': ['FWUL2.lock1'], 'out': []}
+{'in': ['rt'], 'fu': ['FWUL3.lock1'], 'out': []}
+LHU_RR 4
+variables:
+('byte3', 8)
+('byte2', 8)
+('byte1', 8)
+('byte0', 8)
+('result', 32)
+('addr_err', 1)
+statements:
+{'in': ['addr'], 'fu': ['Dmem.ldu_16'], 'out': ['result', 'addr_err']}
+{'in': ['result'], 'fu': ['31:24'], 'out': ['byte0']}
+{'in': ['result'], 'fu': ['23:16'], 'out': ['byte1']}
+{'in': ['result'], 'fu': ['15:8'], 'out': ['byte2']}
+{'in': ['result'], 'fu': ['7:0'], 'out': ['byte3']}
+{'in': ['byte3', 'byte2', 'byte1', 'byte0'], 'fu': ['na'], 'out': ['bigE_word']}
+{'in': ['rt', 'bigE_word'], 'fu': ['FWUL0.forward3'], 'out': []}
+{'in': ['rt', 'bigE_word'], 'fu': ['FWUL1.forward3'], 'out': []}
+{'in': ['rt', 'bigE_word'], 'fu': ['FWUL2.forward3'], 'out': []}
+{'in': ['rt', 'bigE_word'], 'fu': ['FWUL3.forward3'], 'out': []}
+{'in': ['rt'], 'fu': ['FWUL0.lock3'], 'out': []}
+{'in': ['rt'], 'fu': ['FWUL1.lock3'], 'out': []}
+{'in': ['rt'], 'fu': ['FWUL2.lock3'], 'out': []}
+{'in': ['rt'], 'fu': ['FWUL3.lock3'], 'out': []}
+LHU_RR 5
+variables:
+statements:
+{'in': ['rt', 'bigE_word'], 'fu': ['FWUL0.forward5'], 'out': []}
+{'in': ['rt', 'bigE_word'], 'fu': ['FWUL1.forward5'], 'out': []}
+{'in': ['rt', 'bigE_word'], 'fu': ['FWUL2.forward5'], 'out': []}
+{'in': ['rt', 'bigE_word'], 'fu': ['FWUL3.forward5'], 'out': []}
+LHU_RR 6
+variables:
+statements:
+{'in': ['rt', 'bigE_word'], 'fu': ['GPR.write0'], 'out': []}
+{'in': ['rt', 'bigE_word'], 'fu': ['FWUL0.forward7'], 'out': []}
+{'in': ['rt', 'bigE_word'], 'fu': ['FWUL1.forward7'], 'out': []}
+{'in': ['rt', 'bigE_word'], 'fu': ['FWUL2.forward7'], 'out': []}
+{'in': ['rt', 'bigE_word'], 'fu': ['FWUL3.forward7'], 'out': []}
+SRLV global
+variables:
+('rt', 5)
+('shamt', 8)
+('rs', 5)
+('rd', 5)
+('source0', 32)
+('source1', 32)
+('result', 32)
+('tmp_pc', 32)
+SRLV 1
+variables:
+('current_pc', 32)
+('inst0', 64)
+('iramaddr_err', 1)
+statements:
+{'in': [], 'fu': ['CPC.read'], 'out': ['current_pc']}
+{'in': ['current_pc'], 'fu': ['na'], 'out': ['tmp_pc']}
+{'in': ['current_pc'], 'fu': ['Imem.ld_64'], 'out': ['inst0', 'iramaddr_err']}
+{'in': ['inst0'], 'fu': ['IReg.write'], 'out': []}
+{'in': [], 'fu': ['CPC.inc'], 'out': []}
+SRLV 2
+variables:
+('tmp_source0', 32)
+('tmp_ir', 64)
+('tmp_source1', 32)
+statements:
+{'in': [], 'fu': ['IReg.read'], 'out': ['tmp_ir']}
+{'in': ['tmp_ir'], 'fu': ['28:24'], 'out': ['rs']}
+{'in': ['tmp_ir'], 'fu': ['20:16'], 'out': ['rt']}
+{'in': ['tmp_ir'], 'fu': ['12:8'], 'out': ['rd']}
+{'in': ['tmp_ir'], 'fu': ['7:0'], 'out': ['shamt']}
+{'in': ['rs'], 'fu': ['GPR.read0'], 'out': ['tmp_source0']}
+{'in': ['rt'], 'fu': ['GPR.read1'], 'out': ['tmp_source1']}
+{'in': ['rs', 'tmp_source0'], 'fu': ['FWUL0.forward'], 'out': ['source0']}
+{'in': ['rt', 'tmp_source1'], 'fu': ['FWUL1.forward'], 'out': ['source1']}
+SRLV 3
+variables:
+('shift', 5)
+statements:
+{'in': ['source0'], 'fu': ['4:0'], 'out': ['shift']}
+{'in': ['source1', 'shift'], 'fu': ['SFT1.srl'], 'out': ['result']}
+{'in': ['rd', 'result'], 'fu': ['FWUL0.forward1'], 'out': []}
+{'in': ['rd', 'result'], 'fu': ['FWUL1.forward1'], 'out': []}
+{'in': ['rd', 'result'], 'fu': ['FWUL2.forward1'], 'out': []}
+{'in': ['rd', 'result'], 'fu': ['FWUL3.forward1'], 'out': []}
+SRLV 4
+variables:
+statements:
+{'in': ['rd', 'result'], 'fu': ['FWUL0.forward3'], 'out': []}
+{'in': ['rd', 'result'], 'fu': ['FWUL1.forward3'], 'out': []}
+{'in': ['rd', 'result'], 'fu': ['FWUL2.forward3'], 'out': []}
+{'in': ['rd', 'result'], 'fu': ['FWUL3.forward3'], 'out': []}
+SRLV 5
+variables:
+statements:
+{'in': ['rd', 'result'], 'fu': ['FWUL0.forward5'], 'out': []}
+{'in': ['rd', 'result'], 'fu': ['FWUL1.forward5'], 'out': []}
+{'in': ['rd', 'result'], 'fu': ['FWUL2.forward5'], 'out': []}
+{'in': ['rd', 'result'], 'fu': ['FWUL3.forward5'], 'out': []}
+SRLV 6
+variables:
+statements:
+{'in': ['rd', 'result'], 'fu': ['GPR.write0'], 'out': []}
+{'in': ['rd', 'result'], 'fu': ['FWUL0.forward7'], 'out': []}
+{'in': ['rd', 'result'], 'fu': ['FWUL1.forward7'], 'out': []}
+{'in': ['rd', 'result'], 'fu': ['FWUL2.forward7'], 'out': []}
+{'in': ['rd', 'result'], 'fu': ['FWUL3.forward7'], 'out': []}
+BREAK global
+variables:
+('tmp_pc', 32)
+('tmp_cpc', 32)
+BREAK 1
+variables:
+('current_pc', 32)
+('inst0', 64)
+('iramaddr_err', 1)
+statements:
+{'in': [], 'fu': ['CPC.read'], 'out': ['current_pc']}
+{'in': ['current_pc'], 'fu': ['na'], 'out': ['tmp_pc']}
+{'in': ['current_pc'], 'fu': ['Imem.ld_64'], 'out': ['inst0', 'iramaddr_err']}
+{'in': ['inst0'], 'fu': ['IReg.write'], 'out': []}
+{'in': [], 'fu': ['CPC.inc'], 'out': []}
+BREAK 2
+variables:
+('tmp_ir', 64)
+statements:
+{'in': [], 'fu': ['IReg.read'], 'out': ['tmp_ir']}
+{'in': [], 'fu': ['CPC.read'], 'out': ['tmp_cpc']}
+BREAK 3
+variables:
+('result', 32)
+statements:
+{'in': ['tmp_cpc'], 'fu': ['SYSREG.write'], 'out': []}
+{'in': ['00000000000000000000000000110000'], 'fu': ['na'], 'out': ['result']}
+{'in': ['result'], 'fu': ['CPC.write'], 'out': []}
+BREAK 4
+variables:
+statements:
+BREAK 5
+variables:
+statements:
+BREAK 6
+variables:
+statements:
+SUBU global
+variables:
+('rt', 5)
+('shamt', 8)
+('rs', 5)
+('rd', 5)
+('source0', 32)
+('source1', 32)
+('result', 32)
+('tmp_pc', 32)
+SUBU 1
+variables:
+('current_pc', 32)
+('inst0', 64)
+('iramaddr_err', 1)
+statements:
+{'in': [], 'fu': ['CPC.read'], 'out': ['current_pc']}
+{'in': ['current_pc'], 'fu': ['na'], 'out': ['tmp_pc']}
+{'in': ['current_pc'], 'fu': ['Imem.ld_64'], 'out': ['inst0', 'iramaddr_err']}
+{'in': ['inst0'], 'fu': ['IReg.write'], 'out': []}
+{'in': [], 'fu': ['CPC.inc'], 'out': []}
+SUBU 2
+variables:
+('tmp_source0', 32)
+('tmp_ir', 64)
+('tmp_source1', 32)
+statements:
+{'in': [], 'fu': ['IReg.read'], 'out': ['tmp_ir']}
+{'in': ['tmp_ir'], 'fu': ['28:24'], 'out': ['rs']}
+{'in': ['tmp_ir'], 'fu': ['20:16'], 'out': ['rt']}
+{'in': ['tmp_ir'], 'fu': ['12:8'], 'out': ['rd']}
+{'in': ['tmp_ir'], 'fu': ['7:0'], 'out': ['shamt']}
+{'in': ['rs'], 'fu': ['GPR.read0'], 'out': ['tmp_source0']}
+{'in': ['rt'], 'fu': ['GPR.read1'], 'out': ['tmp_source1']}
+{'in': ['rs', 'tmp_source0'], 'fu': ['FWUL0.forward'], 'out': ['source0']}
+{'in': ['rt', 'tmp_source1'], 'fu': ['FWUL1.forward'], 'out': ['source1']}
+SUBU 3
+variables:
+('flag', 4)
+statements:
+{'in': ['source0', 'source1'], 'fu': ['ALU1.subu'], 'out': ['result', 'flag']}
+{'in': ['rd', 'result'], 'fu': ['FWUL0.forward1'], 'out': []}
+{'in': ['rd', 'result'], 'fu': ['FWUL1.forward1'], 'out': []}
+{'in': ['rd', 'result'], 'fu': ['FWUL2.forward1'], 'out': []}
+{'in': ['rd', 'result'], 'fu': ['FWUL3.forward1'], 'out': []}
+SUBU 4
+variables:
+statements:
+{'in': ['rd', 'result'], 'fu': ['FWUL0.forward3'], 'out': []}
+{'in': ['rd', 'result'], 'fu': ['FWUL1.forward3'], 'out': []}
+{'in': ['rd', 'result'], 'fu': ['FWUL2.forward3'], 'out': []}
+{'in': ['rd', 'result'], 'fu': ['FWUL3.forward3'], 'out': []}
+SUBU 5
+variables:
+statements:
+{'in': ['rd', 'result'], 'fu': ['FWUL0.forward5'], 'out': []}
+{'in': ['rd', 'result'], 'fu': ['FWUL1.forward5'], 'out': []}
+{'in': ['rd', 'result'], 'fu': ['FWUL2.forward5'], 'out': []}
+{'in': ['rd', 'result'], 'fu': ['FWUL3.forward5'], 'out': []}
+SUBU 6
+variables:
+statements:
+{'in': ['rd', 'result'], 'fu': ['GPR.write0'], 'out': []}
+{'in': ['rd', 'result'], 'fu': ['FWUL0.forward7'], 'out': []}
+{'in': ['rd', 'result'], 'fu': ['FWUL1.forward7'], 'out': []}
+{'in': ['rd', 'result'], 'fu': ['FWUL2.forward7'], 'out': []}
+{'in': ['rd', 'result'], 'fu': ['FWUL3.forward7'], 'out': []}
+DSZ global
+variables:
+('rt', 5)
+('rs', 5)
+('imm', 16)
+('source2', 32)
+('source0', 32)
+('source1', 32)
+('addr2', 32)
+('tmp_pc', 32)
+('addr1', 32)
+DSZ 1
+variables:
+('current_pc', 32)
+('inst0', 64)
+('iramaddr_err', 1)
+statements:
+{'in': [], 'fu': ['CPC.read'], 'out': ['current_pc']}
+{'in': ['current_pc'], 'fu': ['na'], 'out': ['tmp_pc']}
+{'in': ['current_pc'], 'fu': ['Imem.ld_64'], 'out': ['inst0', 'iramaddr_err']}
+{'in': ['inst0'], 'fu': ['IReg.write'], 'out': []}
+{'in': [], 'fu': ['CPC.inc'], 'out': []}
+DSZ 2
+variables:
+('zero5', 5)
+('tmp_source0', 32)
+('tmp_ir', 64)
+('tmp_source1', 32)
+statements:
+{'in': [], 'fu': ['IReg.read'], 'out': ['tmp_ir']}
+{'in': ['tmp_ir'], 'fu': ['28:24'], 'out': ['rs']}
+{'in': ['tmp_ir'], 'fu': ['20:16'], 'out': ['rt']}
+{'in': ['tmp_ir'], 'fu': ['15:0'], 'out': ['imm']}
+{'in': ['00000'], 'fu': ['na'], 'out': ['zero5']}
+{'in': ['rs'], 'fu': ['GPR.read0'], 'out': ['tmp_source0']}
+{'in': ['zero5'], 'fu': ['GPR.read1'], 'out': ['tmp_source1']}
+{'in': ['rs', 'tmp_source0'], 'fu': ['FWUL0.forward'], 'out': ['source0']}
+{'in': ['zero5', 'tmp_source1'], 'fu': ['FWUL1.forward'], 'out': ['source1']}
+{'in': ['imm'], 'fu': ['EXT1.sign'], 'out': ['source2']}
+DSZ 3
+variables:
+('flag', 4)
+statements:
+{'in': ['source0', 'source2'], 'fu': ['ALU1.add'], 'out': ['addr1', 'flag']}
+DSZ 4
+variables:
+('four32bit', 32)
+('cin', 1)
+('cout', 1)
+statements:
+{'in': ['1'], 'fu': ['na'], 'out': ['cin']}
+{'in': ['00000000000000000000000000000100'], 'fu': ['na'], 'out': ['four32bit']}
+{'in': ['addr1', 'four32bit', 'cin'], 'fu': ['ADDER2.adc'], 'out': ['addr2', 'cout']}
+DSZ 5
+variables:
+('addr_err', 1)
+statements:
+{'in': ['addr1', 'source1'], 'fu': ['Dmem.s_32'], 'out': ['addr_err']}
+DSZ 6
+variables:
+('addr_err', 1)
+statements:
+{'in': ['addr2', 'source1'], 'fu': ['Dmem.s_32'], 'out': ['addr_err']}
+MTHI global
+variables:
+('rt', 5)
+('shamt', 8)
+('rs', 5)
+('rd', 5)
+('source0', 32)
+('tmp_pc', 32)
+MTHI 1
+variables:
+('current_pc', 32)
+('inst0', 64)
+('iramaddr_err', 1)
+statements:
+{'in': [], 'fu': ['CPC.read'], 'out': ['current_pc']}
+{'in': ['current_pc'], 'fu': ['na'], 'out': ['tmp_pc']}
+{'in': ['current_pc'], 'fu': ['Imem.ld_64'], 'out': ['inst0', 'iramaddr_err']}
+{'in': ['inst0'], 'fu': ['IReg.write'], 'out': []}
+{'in': [], 'fu': ['CPC.inc'], 'out': []}
+MTHI 2
+variables:
+('tmp_source0', 32)
+('tmp_ir', 64)
+statements:
+{'in': [], 'fu': ['IReg.read'], 'out': ['tmp_ir']}
+{'in': ['tmp_ir'], 'fu': ['28:24'], 'out': ['rs']}
+{'in': ['tmp_ir'], 'fu': ['20:16'], 'out': ['rt']}
+{'in': ['tmp_ir'], 'fu': ['12:8'], 'out': ['rd']}
+{'in': ['tmp_ir'], 'fu': ['7:0'], 'out': ['shamt']}
+{'in': ['rs'], 'fu': ['GPR.read0'], 'out': ['tmp_source0']}
+{'in': ['rs', 'tmp_source0'], 'fu': ['FWUL0.forward'], 'out': ['source0']}
+MTHI 3
+variables:
+statements:
+{'in': ['source0'], 'fu': ['HI.write'], 'out': []}
+MTHI 4
+variables:
+statements:
+MTHI 5
+variables:
+statements:
+MTHI 6
+variables:
+statements:
+SLT global
+variables:
+('rt', 5)
+('shamt', 8)
+('rs', 5)
+('rd', 5)
+('source0', 32)
+('source1', 32)
+('result', 32)
+('tmp_pc', 32)
+SLT 1
+variables:
+('current_pc', 32)
+('inst0', 64)
+('iramaddr_err', 1)
+statements:
+{'in': [], 'fu': ['CPC.read'], 'out': ['current_pc']}
+{'in': ['current_pc'], 'fu': ['na'], 'out': ['tmp_pc']}
+{'in': ['current_pc'], 'fu': ['Imem.ld_64'], 'out': ['inst0', 'iramaddr_err']}
+{'in': ['inst0'], 'fu': ['IReg.write'], 'out': []}
+{'in': [], 'fu': ['CPC.inc'], 'out': []}
+SLT 2
+variables:
+('tmp_source0', 32)
+('tmp_ir', 64)
+('tmp_source1', 32)
+statements:
+{'in': [], 'fu': ['IReg.read'], 'out': ['tmp_ir']}
+{'in': ['tmp_ir'], 'fu': ['28:24'], 'out': ['rs']}
+{'in': ['tmp_ir'], 'fu': ['20:16'], 'out': ['rt']}
+{'in': ['tmp_ir'], 'fu': ['12:8'], 'out': ['rd']}
+{'in': ['tmp_ir'], 'fu': ['7:0'], 'out': ['shamt']}
+{'in': ['rs'], 'fu': ['GPR.read0'], 'out': ['tmp_source0']}
+{'in': ['rt'], 'fu': ['GPR.read1'], 'out': ['tmp_source1']}
+{'in': ['rs', 'tmp_source0'], 'fu': ['FWUL0.forward'], 'out': ['source0']}
+{'in': ['rt', 'tmp_source1'], 'fu': ['FWUL1.forward'], 'out': ['source1']}
+SLT 3
+variables:
+('zero31', 31)
+('VnN', 1)
+('flag', 4)
+('cond', 1)
+('flag2', 2)
+('NnV', 1)
+statements:
+{'in': ['0000000000000000000000000000000'], 'fu': ['na'], 'out': ['zero31']}
+{'in': ['source0', 'source1'], 'fu': ['ALU1.cmp'], 'out': ['flag']}
+{'in': ['flag'], 'fu': ['1:0'], 'out': ['flag2']}
+{'in': ['flag2', '10'], 'fu': [' == "'], 'out': ['NnV']}
+{'in': ['flag', '1001'], 'fu': [' == "'], 'out': ['VnN']}
+{'in': ['NnV', 'VnN'], 'fu': [' | '], 'out': ['cond']}
+{'in': ['zero31', 'cond'], 'fu': ['na'], 'out': ['result']}
+{'in': ['rd', 'result'], 'fu': ['FWUL0.forward1'], 'out': []}
+{'in': ['rd', 'result'], 'fu': ['FWUL1.forward1'], 'out': []}
+{'in': ['rd', 'result'], 'fu': ['FWUL2.forward1'], 'out': []}
+{'in': ['rd', 'result'], 'fu': ['FWUL3.forward1'], 'out': []}
+SLT 4
+variables:
+statements:
+{'in': ['rd', 'result'], 'fu': ['FWUL0.forward3'], 'out': []}
+{'in': ['rd', 'result'], 'fu': ['FWUL1.forward3'], 'out': []}
+{'in': ['rd', 'result'], 'fu': ['FWUL2.forward3'], 'out': []}
+{'in': ['rd', 'result'], 'fu': ['FWUL3.forward3'], 'out': []}
+SLT 5
+variables:
+statements:
+{'in': ['rd', 'result'], 'fu': ['FWUL0.forward5'], 'out': []}
+{'in': ['rd', 'result'], 'fu': ['FWUL1.forward5'], 'out': []}
+{'in': ['rd', 'result'], 'fu': ['FWUL2.forward5'], 'out': []}
+{'in': ['rd', 'result'], 'fu': ['FWUL3.forward5'], 'out': []}
+SLT 6
+variables:
+statements:
+{'in': ['rd', 'result'], 'fu': ['GPR.write0'], 'out': []}
+{'in': ['rd', 'result'], 'fu': ['FWUL0.forward7'], 'out': []}
+{'in': ['rd', 'result'], 'fu': ['FWUL1.forward7'], 'out': []}
+{'in': ['rd', 'result'], 'fu': ['FWUL2.forward7'], 'out': []}
+{'in': ['rd', 'result'], 'fu': ['FWUL3.forward7'], 'out': []}
+DSW global
+variables:
+('rt', 5)
+('rs', 5)
+('imm', 16)
+('source2', 32)
+('source3', 32)
+('source0', 32)
+('source1', 32)
+('addr2', 32)
+('tmp_pc', 32)
+('addr1', 32)
+DSW 1
+variables:
+('current_pc', 32)
+('inst0', 64)
+('iramaddr_err', 1)
+statements:
+{'in': [], 'fu': ['CPC.read'], 'out': ['current_pc']}
+{'in': ['current_pc'], 'fu': ['na'], 'out': ['tmp_pc']}
+{'in': ['current_pc'], 'fu': ['Imem.ld_64'], 'out': ['inst0', 'iramaddr_err']}
+{'in': ['inst0'], 'fu': ['IReg.write'], 'out': []}
+{'in': [], 'fu': ['CPC.inc'], 'out': []}
+DSW 2
+variables:
+('oldrt', 4)
+('tmp_source1', 32)
+('tmp_source3', 32)
+('one', 1)
+('tmp_ir', 64)
+('rt2', 5)
+('tmp_source0', 32)
+statements:
+{'in': [], 'fu': ['IReg.read'], 'out': ['tmp_ir']}
+{'in': ['tmp_ir'], 'fu': ['28:24'], 'out': ['rs']}
+{'in': ['tmp_ir'], 'fu': ['20:16'], 'out': ['rt']}
+{'in': ['tmp_ir'], 'fu': ['15:0'], 'out': ['imm']}
+{'in': ['1'], 'fu': ['na'], 'out': ['one']}
+{'in': ['rt'], 'fu': ['4:1'], 'out': ['oldrt']}
+{'in': ['oldrt', 'one'], 'fu': ['na'], 'out': ['rt2']}
+{'in': ['rs'], 'fu': ['GPR.read0'], 'out': ['tmp_source0']}
+{'in': ['rt'], 'fu': ['GPR.read1'], 'out': ['tmp_source1']}
+{'in': ['rt2'], 'fu': ['GPR.read2'], 'out': ['tmp_source3']}
+{'in': ['rs', 'tmp_source0'], 'fu': ['FWUL0.forward'], 'out': ['source0']}
+{'in': ['rt', 'tmp_source1'], 'fu': ['FWUL1.forward'], 'out': ['source1']}
+{'in': ['imm'], 'fu': ['EXT1.sign'], 'out': ['source2']}
+{'in': ['rt2', 'tmp_source3'], 'fu': ['FWUL2.forward'], 'out': ['source3']}
+DSW 3
+variables:
+('four32bit', 32)
+('flag', 4)
+('cin', 1)
+('cout', 1)
+statements:
+{'in': ['source0', 'source2'], 'fu': ['ALU1.add'], 'out': ['addr1', 'flag']}
+{'in': ['1'], 'fu': ['na'], 'out': ['cin']}
+{'in': ['00000000000000000000000000000100'], 'fu': ['na'], 'out': ['four32bit']}
+{'in': ['addr1', 'four32bit', 'cin'], 'fu': ['ADDER2.adc'], 'out': ['addr2', 'cout']}
+DSW 4
+variables:
+statements:
+DSW 5
+variables:
+('LE_source1', 32)
+('byte3', 8)
+('byte2', 8)
+('byte1', 8)
+('byte0', 8)
+('addr_err', 1)
+statements:
+{'in': ['source1'], 'fu': ['31:24'], 'out': ['byte0']}
+{'in': ['source1'], 'fu': ['23:16'], 'out': ['byte1']}
+{'in': ['source1'], 'fu': ['15:8'], 'out': ['byte2']}
+{'in': ['source1'], 'fu': ['7:0'], 'out': ['byte3']}
+{'in': ['byte3', 'byte2', 'byte1', 'byte0'], 'fu': ['na'], 'out': ['LE_source1']}
+{'in': ['addr1', 'LE_source1'], 'fu': ['Dmem.s_32'], 'out': ['addr_err']}
+DSW 6
+variables:
+('LE_source3', 32)
+('byte3', 8)
+('byte2', 8)
+('byte1', 8)
+('byte0', 8)
+('addr_err', 1)
+statements:
+{'in': ['source3'], 'fu': ['31:24'], 'out': ['byte0']}
+{'in': ['source3'], 'fu': ['23:16'], 'out': ['byte1']}
+{'in': ['source3'], 'fu': ['15:8'], 'out': ['byte2']}
+{'in': ['source3'], 'fu': ['7:0'], 'out': ['byte3']}
+{'in': ['byte3', 'byte2', 'byte1', 'byte0'], 'fu': ['na'], 'out': ['LE_source3']}
+{'in': ['addr2', 'LE_source3'], 'fu': ['Dmem.s_32'], 'out': ['addr_err']}
+BGEZ global
+variables:
+('rt', 5)
+('target', 32)
+('rs', 5)
+('imm', 16)
+('source0', 32)
+('src0', 32)
+('source1', 32)
+('tmp_pc', 32)
+BGEZ 1
+variables:
+('current_pc', 32)
+('inst0', 64)
+('iramaddr_err', 1)
+statements:
+{'in': [], 'fu': ['CPC.read'], 'out': ['current_pc']}
+{'in': ['current_pc'], 'fu': ['na'], 'out': ['tmp_pc']}
+{'in': ['current_pc'], 'fu': ['Imem.ld_64'], 'out': ['inst0', 'iramaddr_err']}
+{'in': ['inst0'], 'fu': ['IReg.write'], 'out': []}
+{'in': [], 'fu': ['CPC.inc'], 'out': []}
+BGEZ 2
+variables:
+('tmp', 30)
+('tmp_source0', 32)
+('cout', 1)
+('cin', 1)
+('ext_imm', 32)
+('tmp_ir', 64)
+('offset', 32)
+('tmp_cpc', 32)
+('zero2', 2)
+statements:
+{'in': [], 'fu': ['IReg.read'], 'out': ['tmp_ir']}
+{'in': ['tmp_ir'], 'fu': ['28:24'], 'out': ['rs']}
+{'in': ['tmp_ir'], 'fu': ['20:16'], 'out': ['rt']}
+{'in': ['tmp_ir'], 'fu': ['15:0'], 'out': ['imm']}
+{'in': ['rs'], 'fu': ['GPR.read0'], 'out': ['tmp_source0']}
+{'in': ['rs', 'tmp_source0'], 'fu': ['FWU0.forward'], 'out': ['src0']}
+{'in': ['0'], 'fu': ['na'], 'out': ['cin']}
+{'in': ['00'], 'fu': ['na'], 'out': ['zero2']}
+{'in': ['imm'], 'fu': ['EXT1.sign'], 'out': ['ext_imm']}
+{'in': ['ext_imm'], 'fu': ['29:0'], 'out': ['tmp']}
+{'in': ['tmp', 'zero2'], 'fu': ['na'], 'out': ['offset']}
+{'in': [], 'fu': ['CPC.read'], 'out': ['tmp_cpc']}
+{'in': ['tmp_cpc', 'offset', 'cin'], 'fu': ['ADD1.adc'], 'out': ['target', 'cout']}
+BGEZ 3
+variables:
+('flag', 4)
+('cond', 1)
+('N', 1)
+statements:
+{'in': ['src0'], 'fu': ['ALU1.cmpz'], 'out': ['flag']}
+{'in': ['flag'], 'fu': ['1'], 'out': ['N']}
+{'in': ['N', '1'], 'fu': [" != '"], 'out': ['cond']}
+{'in': ['cond', 'target'], 'fu': ['sel', 'CPC.write'], 'out': []}
+BGEZ 4
+variables:
+statements:
+BGEZ 5
+variables:
+statements:
+BGEZ 6
+variables:
+statements:
+SLL global
+variables:
+('rt', 5)
+('shamt', 8)
+('rs', 5)
+('rd', 5)
+('source0', 32)
+('source1', 32)
+('result', 32)
+('tmp_pc', 32)
+SLL 1
+variables:
+('current_pc', 32)
+('inst0', 64)
+('iramaddr_err', 1)
+statements:
+{'in': [], 'fu': ['CPC.read'], 'out': ['current_pc']}
+{'in': ['current_pc'], 'fu': ['na'], 'out': ['tmp_pc']}
+{'in': ['current_pc'], 'fu': ['Imem.ld_64'], 'out': ['inst0', 'iramaddr_err']}
+{'in': ['inst0'], 'fu': ['IReg.write'], 'out': []}
+{'in': [], 'fu': ['CPC.inc'], 'out': []}
+SLL 2
+variables:
+('zero24', 24)
+('tmp_source0', 32)
+('tmp_ir', 64)
+statements:
+{'in': [], 'fu': ['IReg.read'], 'out': ['tmp_ir']}
+{'in': ['tmp_ir'], 'fu': ['28:24'], 'out': ['rs']}
+{'in': ['tmp_ir'], 'fu': ['20:16'], 'out': ['rt']}
+{'in': ['tmp_ir'], 'fu': ['12:8'], 'out': ['rd']}
+{'in': ['tmp_ir'], 'fu': ['7:0'], 'out': ['shamt']}
+{'in': ['000000000000000000000000'], 'fu': ['na'], 'out': ['zero24']}
+{'in': ['rt'], 'fu': ['GPR.read0'], 'out': ['tmp_source0']}
+{'in': ['rt', 'tmp_source0'], 'fu': ['FWUL0.forward'], 'out': ['source0']}
+{'in': ['zero24', 'shamt'], 'fu': ['na'], 'out': ['source1']}
+SLL 3
+variables:
+('shift', 5)
+statements:
+{'in': ['source1'], 'fu': ['4:0'], 'out': ['shift']}
+{'in': ['source0', 'shift'], 'fu': ['SFT1.sll'], 'out': ['result']}
+{'in': ['rd', 'result'], 'fu': ['FWUL0.forward1'], 'out': []}
+{'in': ['rd', 'result'], 'fu': ['FWUL1.forward1'], 'out': []}
+{'in': ['rd', 'result'], 'fu': ['FWUL2.forward1'], 'out': []}
+{'in': ['rd', 'result'], 'fu': ['FWUL3.forward1'], 'out': []}
+SLL 4
+variables:
+statements:
+{'in': ['rd', 'result'], 'fu': ['FWUL0.forward3'], 'out': []}
+{'in': ['rd', 'result'], 'fu': ['FWUL1.forward3'], 'out': []}
+{'in': ['rd', 'result'], 'fu': ['FWUL2.forward3'], 'out': []}
+{'in': ['rd', 'result'], 'fu': ['FWUL3.forward3'], 'out': []}
+SLL 5
+variables:
+statements:
+{'in': ['rd', 'result'], 'fu': ['FWUL0.forward5'], 'out': []}
+{'in': ['rd', 'result'], 'fu': ['FWUL1.forward5'], 'out': []}
+{'in': ['rd', 'result'], 'fu': ['FWUL2.forward5'], 'out': []}
+{'in': ['rd', 'result'], 'fu': ['FWUL3.forward5'], 'out': []}
+SLL 6
+variables:
+statements:
+{'in': ['rd', 'result'], 'fu': ['GPR.write0'], 'out': []}
+{'in': ['rd', 'result'], 'fu': ['FWUL0.forward7'], 'out': []}
+{'in': ['rd', 'result'], 'fu': ['FWUL1.forward7'], 'out': []}
+{'in': ['rd', 'result'], 'fu': ['FWUL2.forward7'], 'out': []}
+{'in': ['rd', 'result'], 'fu': ['FWUL3.forward7'], 'out': []}
+SRL global
+variables:
+('rt', 5)
+('shamt', 8)
+('rs', 5)
+('rd', 5)
+('source0', 32)
+('source1', 32)
+('result', 32)
+('tmp_pc', 32)
+SRL 1
+variables:
+('current_pc', 32)
+('inst0', 64)
+('iramaddr_err', 1)
+statements:
+{'in': [], 'fu': ['CPC.read'], 'out': ['current_pc']}
+{'in': ['current_pc'], 'fu': ['na'], 'out': ['tmp_pc']}
+{'in': ['current_pc'], 'fu': ['Imem.ld_64'], 'out': ['inst0', 'iramaddr_err']}
+{'in': ['inst0'], 'fu': ['IReg.write'], 'out': []}
+{'in': [], 'fu': ['CPC.inc'], 'out': []}
+SRL 2
+variables:
+('zero24', 24)
+('tmp_source0', 32)
+('tmp_ir', 64)
+statements:
+{'in': [], 'fu': ['IReg.read'], 'out': ['tmp_ir']}
+{'in': ['tmp_ir'], 'fu': ['28:24'], 'out': ['rs']}
+{'in': ['tmp_ir'], 'fu': ['20:16'], 'out': ['rt']}
+{'in': ['tmp_ir'], 'fu': ['12:8'], 'out': ['rd']}
+{'in': ['tmp_ir'], 'fu': ['7:0'], 'out': ['shamt']}
+{'in': ['000000000000000000000000'], 'fu': ['na'], 'out': ['zero24']}
+{'in': ['rt'], 'fu': ['GPR.read0'], 'out': ['tmp_source0']}
+{'in': ['rt', 'tmp_source0'], 'fu': ['FWUL0.forward'], 'out': ['source0']}
+{'in': ['zero24', 'shamt'], 'fu': ['na'], 'out': ['source1']}
+SRL 3
+variables:
+('shift', 5)
+statements:
+{'in': ['source1'], 'fu': ['4:0'], 'out': ['shift']}
+{'in': ['source0', 'shift'], 'fu': ['SFT1.srl'], 'out': ['result']}
+{'in': ['rd', 'result'], 'fu': ['FWUL0.forward1'], 'out': []}
+{'in': ['rd', 'result'], 'fu': ['FWUL1.forward1'], 'out': []}
+{'in': ['rd', 'result'], 'fu': ['FWUL2.forward1'], 'out': []}
+{'in': ['rd', 'result'], 'fu': ['FWUL3.forward1'], 'out': []}
+SRL 4
+variables:
+statements:
+{'in': ['rd', 'result'], 'fu': ['FWUL0.forward3'], 'out': []}
+{'in': ['rd', 'result'], 'fu': ['FWUL1.forward3'], 'out': []}
+{'in': ['rd', 'result'], 'fu': ['FWUL2.forward3'], 'out': []}
+{'in': ['rd', 'result'], 'fu': ['FWUL3.forward3'], 'out': []}
+SRL 5
+variables:
+statements:
+{'in': ['rd', 'result'], 'fu': ['FWUL0.forward5'], 'out': []}
+{'in': ['rd', 'result'], 'fu': ['FWUL1.forward5'], 'out': []}
+{'in': ['rd', 'result'], 'fu': ['FWUL2.forward5'], 'out': []}
+{'in': ['rd', 'result'], 'fu': ['FWUL3.forward5'], 'out': []}
+SRL 6
+variables:
+statements:
+{'in': ['rd', 'result'], 'fu': ['GPR.write0'], 'out': []}
+{'in': ['rd', 'result'], 'fu': ['FWUL0.forward7'], 'out': []}
+{'in': ['rd', 'result'], 'fu': ['FWUL1.forward7'], 'out': []}
+{'in': ['rd', 'result'], 'fu': ['FWUL2.forward7'], 'out': []}
+{'in': ['rd', 'result'], 'fu': ['FWUL3.forward7'], 'out': []}
+JUMP global
+variables:
+('tmp_pc', 32)
+('targ', 26)
+('result', 32)
+JUMP 1
+variables:
+('current_pc', 32)
+('inst0', 64)
+('iramaddr_err', 1)
+statements:
+{'in': [], 'fu': ['CPC.read'], 'out': ['current_pc']}
+{'in': ['current_pc'], 'fu': ['na'], 'out': ['tmp_pc']}
+{'in': ['current_pc'], 'fu': ['Imem.ld_64'], 'out': ['inst0', 'iramaddr_err']}
+{'in': ['inst0'], 'fu': ['IReg.write'], 'out': []}
+{'in': [], 'fu': ['CPC.inc'], 'out': []}
+JUMP 2
+variables:
+('one1b0', 1)
+('const', 2)
+('zero1b0', 1)
+('cpc_top', 4)
+('tmp_ir', 64)
+('tmp_cpc', 32)
+statements:
+{'in': [], 'fu': ['IReg.read'], 'out': ['tmp_ir']}
+{'in': ['tmp_ir'], 'fu': ['25:0'], 'out': ['targ']}
+{'in': ['1'], 'fu': ['na'], 'out': ['one1b0']}
+{'in': ['0'], 'fu': ['na'], 'out': ['zero1b0']}
+{'in': ['00'], 'fu': ['na'], 'out': ['const']}
+{'in': [], 'fu': ['CPC.read'], 'out': ['tmp_cpc']}
+{'in': ['tmp_cpc'], 'fu': ['31:28'], 'out': ['cpc_top']}
+{'in': ['cpc_top', 'targ', 'const'], 'fu': ['na'], 'out': ['result']}
+JUMP 3
+variables:
+statements:
+{'in': ['result'], 'fu': ['CPC.write'], 'out': []}
+JUMP 4
+variables:
+statements:
+JUMP 5
+variables:
+statements:
+JUMP 6
+variables:
+statements:
+NOR global
+variables:
+('rt', 5)
+('shamt', 8)
+('rs', 5)
+('rd', 5)
+('source0', 32)
+('source1', 32)
+('result', 32)
+('tmp_pc', 32)
+NOR 1
+variables:
+('current_pc', 32)
+('inst0', 64)
+('iramaddr_err', 1)
+statements:
+{'in': [], 'fu': ['CPC.read'], 'out': ['current_pc']}
+{'in': ['current_pc'], 'fu': ['na'], 'out': ['tmp_pc']}
+{'in': ['current_pc'], 'fu': ['Imem.ld_64'], 'out': ['inst0', 'iramaddr_err']}
+{'in': ['inst0'], 'fu': ['IReg.write'], 'out': []}
+{'in': [], 'fu': ['CPC.inc'], 'out': []}
+NOR 2
+variables:
+('tmp_source0', 32)
+('tmp_ir', 64)
+('tmp_source1', 32)
+statements:
+{'in': [], 'fu': ['IReg.read'], 'out': ['tmp_ir']}
+{'in': ['tmp_ir'], 'fu': ['28:24'], 'out': ['rs']}
+{'in': ['tmp_ir'], 'fu': ['20:16'], 'out': ['rt']}
+{'in': ['tmp_ir'], 'fu': ['12:8'], 'out': ['rd']}
+{'in': ['tmp_ir'], 'fu': ['7:0'], 'out': ['shamt']}
+{'in': ['rs'], 'fu': ['GPR.read0'], 'out': ['tmp_source0']}
+{'in': ['rt'], 'fu': ['GPR.read1'], 'out': ['tmp_source1']}
+{'in': ['rs', 'tmp_source0'], 'fu': ['FWUL0.forward'], 'out': ['source0']}
+{'in': ['rt', 'tmp_source1'], 'fu': ['FWUL1.forward'], 'out': ['source1']}
+NOR 3
+variables:
+('flag', 4)
+statements:
+{'in': ['source0', 'source1'], 'fu': ['ALU1.nor'], 'out': ['result', 'flag']}
+{'in': ['rd', 'result'], 'fu': ['FWUL0.forward1'], 'out': []}
+{'in': ['rd', 'result'], 'fu': ['FWUL1.forward1'], 'out': []}
+{'in': ['rd', 'result'], 'fu': ['FWUL2.forward1'], 'out': []}
+{'in': ['rd', 'result'], 'fu': ['FWUL3.forward1'], 'out': []}
+NOR 4
+variables:
+statements:
+{'in': ['rd', 'result'], 'fu': ['FWUL0.forward3'], 'out': []}
+{'in': ['rd', 'result'], 'fu': ['FWUL1.forward3'], 'out': []}
+{'in': ['rd', 'result'], 'fu': ['FWUL2.forward3'], 'out': []}
+{'in': ['rd', 'result'], 'fu': ['FWUL3.forward3'], 'out': []}
+NOR 5
+variables:
+statements:
+{'in': ['rd', 'result'], 'fu': ['FWUL0.forward5'], 'out': []}
+{'in': ['rd', 'result'], 'fu': ['FWUL1.forward5'], 'out': []}
+{'in': ['rd', 'result'], 'fu': ['FWUL2.forward5'], 'out': []}
+{'in': ['rd', 'result'], 'fu': ['FWUL3.forward5'], 'out': []}
+NOR 6
+variables:
+statements:
+{'in': ['rd', 'result'], 'fu': ['GPR.write0'], 'out': []}
+{'in': ['rd', 'result'], 'fu': ['FWUL0.forward7'], 'out': []}
+{'in': ['rd', 'result'], 'fu': ['FWUL1.forward7'], 'out': []}
+{'in': ['rd', 'result'], 'fu': ['FWUL2.forward7'], 'out': []}
+{'in': ['rd', 'result'], 'fu': ['FWUL3.forward7'], 'out': []}
+LHU global
+variables:
+('rt', 5)
+('bigE_word', 32)
+('addr', 32)
+('rs', 5)
+('imm', 16)
+('source0', 32)
+('source1', 32)
+('tmp_pc', 32)
+LHU 1
+variables:
+('current_pc', 32)
+('inst0', 64)
+('iramaddr_err', 1)
+statements:
+{'in': [], 'fu': ['CPC.read'], 'out': ['current_pc']}
+{'in': ['current_pc'], 'fu': ['na'], 'out': ['tmp_pc']}
+{'in': ['current_pc'], 'fu': ['Imem.ld_64'], 'out': ['inst0', 'iramaddr_err']}
+{'in': ['inst0'], 'fu': ['IReg.write'], 'out': []}
+{'in': [], 'fu': ['CPC.inc'], 'out': []}
+LHU 2
+variables:
+('tmp_source0', 32)
+('tmp_ir', 64)
+statements:
+{'in': [], 'fu': ['IReg.read'], 'out': ['tmp_ir']}
+{'in': ['tmp_ir'], 'fu': ['28:24'], 'out': ['rs']}
+{'in': ['tmp_ir'], 'fu': ['20:16'], 'out': ['rt']}
+{'in': ['tmp_ir'], 'fu': ['15:0'], 'out': ['imm']}
+{'in': ['rs'], 'fu': ['GPR.read0'], 'out': ['tmp_source0']}
+{'in': ['rs', 'tmp_source0'], 'fu': ['FWUL0.forward'], 'out': ['source0']}
+{'in': ['imm'], 'fu': ['EXT1.sign'], 'out': ['source1']}
+LHU 3
+variables:
+('flag', 4)
+statements:
+{'in': ['source0', 'source1'], 'fu': ['ALU1.add'], 'out': ['addr', 'flag']}
+{'in': ['rt'], 'fu': ['FWUL0.lock1'], 'out': []}
+{'in': ['rt'], 'fu': ['FWUL1.lock1'], 'out': []}
+{'in': ['rt'], 'fu': ['FWUL2.lock1'], 'out': []}
+{'in': ['rt'], 'fu': ['FWUL3.lock1'], 'out': []}
+LHU 4
+variables:
+('byte3', 8)
+('byte2', 8)
+('byte1', 8)
+('byte0', 8)
+('result', 32)
+('addr_err', 1)
+statements:
+{'in': ['addr'], 'fu': ['Dmem.ldu_16'], 'out': ['result', 'addr_err']}
+{'in': ['result'], 'fu': ['31:24'], 'out': ['byte0']}
+{'in': ['result'], 'fu': ['23:16'], 'out': ['byte1']}
+{'in': ['result'], 'fu': ['15:8'], 'out': ['byte2']}
+{'in': ['result'], 'fu': ['7:0'], 'out': ['byte3']}
+{'in': ['byte3', 'byte2', 'byte1', 'byte0'], 'fu': ['na'], 'out': ['bigE_word']}
+{'in': ['rt', 'bigE_word'], 'fu': ['FWUL0.forward3'], 'out': []}
+{'in': ['rt', 'bigE_word'], 'fu': ['FWUL1.forward3'], 'out': []}
+{'in': ['rt', 'bigE_word'], 'fu': ['FWUL2.forward3'], 'out': []}
+{'in': ['rt', 'bigE_word'], 'fu': ['FWUL3.forward3'], 'out': []}
+{'in': ['rt'], 'fu': ['FWUL0.lock3'], 'out': []}
+{'in': ['rt'], 'fu': ['FWUL1.lock3'], 'out': []}
+{'in': ['rt'], 'fu': ['FWUL2.lock3'], 'out': []}
+{'in': ['rt'], 'fu': ['FWUL3.lock3'], 'out': []}
+LHU 5
+variables:
+statements:
+{'in': ['rt', 'bigE_word'], 'fu': ['FWUL0.forward5'], 'out': []}
+{'in': ['rt', 'bigE_word'], 'fu': ['FWUL1.forward5'], 'out': []}
+{'in': ['rt', 'bigE_word'], 'fu': ['FWUL2.forward5'], 'out': []}
+{'in': ['rt', 'bigE_word'], 'fu': ['FWUL3.forward5'], 'out': []}
+LHU 6
+variables:
+statements:
+{'in': ['rt', 'bigE_word'], 'fu': ['GPR.write0'], 'out': []}
+{'in': ['rt', 'bigE_word'], 'fu': ['FWUL0.forward7'], 'out': []}
+{'in': ['rt', 'bigE_word'], 'fu': ['FWUL1.forward7'], 'out': []}
+{'in': ['rt', 'bigE_word'], 'fu': ['FWUL2.forward7'], 'out': []}
+{'in': ['rt', 'bigE_word'], 'fu': ['FWUL3.forward7'], 'out': []}
+DLW global
+variables:
+('rt', 5)
+('bigE_word0', 32)
+('bigE_word1', 32)
+('rs', 5)
+('nextRT', 5)
+('imm', 16)
+('source0', 32)
+('source1', 32)
+('addr2', 32)
+('tmp_pc', 32)
+('addr1', 32)
+DLW 1
+variables:
+('current_pc', 32)
+('inst0', 64)
+('iramaddr_err', 1)
+statements:
+{'in': [], 'fu': ['CPC.read'], 'out': ['current_pc']}
+{'in': ['current_pc'], 'fu': ['na'], 'out': ['tmp_pc']}
+{'in': ['current_pc'], 'fu': ['Imem.ld_64'], 'out': ['inst0', 'iramaddr_err']}
+{'in': ['inst0'], 'fu': ['IReg.write'], 'out': []}
+{'in': [], 'fu': ['CPC.inc'], 'out': []}
+DLW 2
+variables:
+('tmp_source0', 32)
+('tmp_ir', 64)
+statements:
+{'in': [], 'fu': ['IReg.read'], 'out': ['tmp_ir']}
+{'in': ['tmp_ir'], 'fu': ['28:24'], 'out': ['rs']}
+{'in': ['tmp_ir'], 'fu': ['20:16'], 'out': ['rt']}
+{'in': ['tmp_ir'], 'fu': ['15:0'], 'out': ['imm']}
+{'in': ['rs'], 'fu': ['GPR.read0'], 'out': ['tmp_source0']}
+{'in': ['rs', 'tmp_source0'], 'fu': ['FWUL0.forward'], 'out': ['source0']}
+{'in': ['imm'], 'fu': ['EXT1.sign'], 'out': ['source1']}
+DLW 3
+variables:
+('tmpRT', 4)
+('flag', 4)
+('one', 1)
+statements:
+{'in': ['source0', 'source1'], 'fu': ['ALU1.add'], 'out': ['addr1', 'flag']}
+{'in': ['1'], 'fu': ['na'], 'out': ['one']}
+{'in': ['rt'], 'fu': ['4:1'], 'out': ['tmpRT']}
+{'in': ['tmpRT', 'one'], 'fu': ['na'], 'out': ['nextRT']}
+{'in': ['rt'], 'fu': ['FWUL0.lock1'], 'out': []}
+{'in': ['rt'], 'fu': ['FWUL1.lock1'], 'out': []}
+{'in': ['rt'], 'fu': ['FWUL2.lock1'], 'out': []}
+{'in': ['rt'], 'fu': ['FWUL3.lock1'], 'out': []}
+{'in': ['nextRT'], 'fu': ['FWUL0.lock2'], 'out': []}
+{'in': ['nextRT'], 'fu': ['FWUL1.lock2'], 'out': []}
+{'in': ['nextRT'], 'fu': ['FWUL2.lock2'], 'out': []}
+{'in': ['nextRT'], 'fu': ['FWUL3.lock2'], 'out': []}
+DLW 4
+variables:
+('four32bit', 32)
+('cout', 1)
+('byte2', 8)
+('byte3', 8)
+('cin', 1)
+('byte1', 8)
+('result1', 32)
+('addr_err', 1)
+('byte0', 8)
+statements:
+{'in': ['0'], 'fu': ['na'], 'out': ['cin']}
+{'in': ['00000000000000000000000000000100'], 'fu': ['na'], 'out': ['four32bit']}
+{'in': ['addr1'], 'fu': ['Dmem.ld_32'], 'out': ['result1', 'addr_err']}
+{'in': ['result1'], 'fu': ['31:24'], 'out': ['byte0']}
+{'in': ['result1'], 'fu': ['23:16'], 'out': ['byte1']}
+{'in': ['result1'], 'fu': ['15:8'], 'out': ['byte2']}
+{'in': ['result1'], 'fu': ['7:0'], 'out': ['byte3']}
+{'in': ['byte3', 'byte2', 'byte1', 'byte0'], 'fu': ['na'], 'out': ['bigE_word0']}
+{'in': ['rt', 'bigE_word0'], 'fu': ['FWUL0.forward3'], 'out': []}
+{'in': ['rt', 'bigE_word0'], 'fu': ['FWUL1.forward3'], 'out': []}
+{'in': ['rt', 'bigE_word0'], 'fu': ['FWUL2.forward3'], 'out': []}
+{'in': ['rt', 'bigE_word0'], 'fu': ['FWUL3.forward3'], 'out': []}
+{'in': ['addr1', 'four32bit', 'cin'], 'fu': ['ADDER2.adc'], 'out': ['addr2', 'cout']}
+{'in': ['rt'], 'fu': ['FWUL0.lock3'], 'out': []}
+{'in': ['rt'], 'fu': ['FWUL1.lock3'], 'out': []}
+{'in': ['rt'], 'fu': ['FWUL2.lock3'], 'out': []}
+{'in': ['rt'], 'fu': ['FWUL3.lock3'], 'out': []}
+{'in': ['nextRT'], 'fu': ['FWUL0.lock4'], 'out': []}
+{'in': ['nextRT'], 'fu': ['FWUL1.lock4'], 'out': []}
+{'in': ['nextRT'], 'fu': ['FWUL2.lock4'], 'out': []}
+{'in': ['nextRT'], 'fu': ['FWUL3.lock4'], 'out': []}
+DLW 5
+variables:
+('result2', 32)
+('byte3', 8)
+('byte2', 8)
+('byte1', 8)
+('byte0', 8)
+('addr_err', 1)
+statements:
+{'in': ['addr2'], 'fu': ['Dmem.ld_32'], 'out': ['result2', 'addr_err']}
+{'in': ['result2'], 'fu': ['31:24'], 'out': ['byte0']}
+{'in': ['result2'], 'fu': ['23:16'], 'out': ['byte1']}
+{'in': ['result2'], 'fu': ['15:8'], 'out': ['byte2']}
+{'in': ['result2'], 'fu': ['7:0'], 'out': ['byte3']}
+{'in': ['byte3', 'byte2', 'byte1', 'byte0'], 'fu': ['na'], 'out': ['bigE_word1']}
+{'in': ['rt', 'bigE_word0'], 'fu': ['FWUL0.forward5'], 'out': []}
+{'in': ['rt', 'bigE_word0'], 'fu': ['FWUL1.forward5'], 'out': []}
+{'in': ['rt', 'bigE_word0'], 'fu': ['FWUL2.forward5'], 'out': []}
+{'in': ['rt', 'bigE_word0'], 'fu': ['FWUL3.forward5'], 'out': []}
+{'in': ['nextRT', 'bigE_word1'], 'fu': ['FWUL0.forward6'], 'out': []}
+{'in': ['nextRT', 'bigE_word1'], 'fu': ['FWUL1.forward6'], 'out': []}
+{'in': ['nextRT', 'bigE_word1'], 'fu': ['FWUL2.forward6'], 'out': []}
+{'in': ['nextRT', 'bigE_word1'], 'fu': ['FWUL3.forward6'], 'out': []}
+{'in': ['nextRT'], 'fu': ['FWUL0.lock5'], 'out': []}
+{'in': ['nextRT'], 'fu': ['FWUL1.lock5'], 'out': []}
+{'in': ['nextRT'], 'fu': ['FWUL2.lock5'], 'out': []}
+{'in': ['nextRT'], 'fu': ['FWUL3.lock5'], 'out': []}
+DLW 6
+variables:
+statements:
+{'in': ['rt', 'bigE_word0'], 'fu': ['FWUL0.forward7'], 'out': []}
+{'in': ['rt', 'bigE_word0'], 'fu': ['FWUL1.forward7'], 'out': []}
+{'in': ['rt', 'bigE_word0'], 'fu': ['FWUL2.forward7'], 'out': []}
+{'in': ['rt', 'bigE_word0'], 'fu': ['FWUL3.forward7'], 'out': []}
+{'in': ['nextRT', 'bigE_word1'], 'fu': ['FWUL0.forward8'], 'out': []}
+{'in': ['nextRT', 'bigE_word1'], 'fu': ['FWUL1.forward8'], 'out': []}
+{'in': ['nextRT', 'bigE_word1'], 'fu': ['FWUL2.forward8'], 'out': []}
+{'in': ['nextRT', 'bigE_word1'], 'fu': ['FWUL3.forward8'], 'out': []}
+{'in': ['rt', 'bigE_word0'], 'fu': ['GPR.write0'], 'out': []}
+{'in': ['nextRT', 'bigE_word1'], 'fu': ['GPR.write1'], 'out': []}
+SUB global
+variables:
+('rt', 5)
+('shamt', 8)
+('rs', 5)
+('rd', 5)
+('source0', 32)
+('source1', 32)
+('result', 32)
+('tmp_pc', 32)
+SUB 1
+variables:
+('current_pc', 32)
+('inst0', 64)
+('iramaddr_err', 1)
+statements:
+{'in': [], 'fu': ['CPC.read'], 'out': ['current_pc']}
+{'in': ['current_pc'], 'fu': ['na'], 'out': ['tmp_pc']}
+{'in': ['current_pc'], 'fu': ['Imem.ld_64'], 'out': ['inst0', 'iramaddr_err']}
+{'in': ['inst0'], 'fu': ['IReg.write'], 'out': []}
+{'in': [], 'fu': ['CPC.inc'], 'out': []}
+SUB 2
+variables:
+('tmp_source0', 32)
+('tmp_ir', 64)
+('tmp_source1', 32)
+statements:
+{'in': [], 'fu': ['IReg.read'], 'out': ['tmp_ir']}
+{'in': ['tmp_ir'], 'fu': ['28:24'], 'out': ['rs']}
+{'in': ['tmp_ir'], 'fu': ['20:16'], 'out': ['rt']}
+{'in': ['tmp_ir'], 'fu': ['12:8'], 'out': ['rd']}
+{'in': ['tmp_ir'], 'fu': ['7:0'], 'out': ['shamt']}
+{'in': ['rs'], 'fu': ['GPR.read0'], 'out': ['tmp_source0']}
+{'in': ['rt'], 'fu': ['GPR.read1'], 'out': ['tmp_source1']}
+{'in': ['rs', 'tmp_source0'], 'fu': ['FWUL0.forward'], 'out': ['source0']}
+{'in': ['rt', 'tmp_source1'], 'fu': ['FWUL1.forward'], 'out': ['source1']}
+SUB 3
+variables:
+('flag', 4)
+statements:
+{'in': ['source0', 'source1'], 'fu': ['ALU1.sub'], 'out': ['result', 'flag']}
+{'in': ['rd', 'result'], 'fu': ['FWUL0.forward1'], 'out': []}
+{'in': ['rd', 'result'], 'fu': ['FWUL1.forward1'], 'out': []}
+{'in': ['rd', 'result'], 'fu': ['FWUL2.forward1'], 'out': []}
+{'in': ['rd', 'result'], 'fu': ['FWUL3.forward1'], 'out': []}
+SUB 4
+variables:
+statements:
+{'in': ['rd', 'result'], 'fu': ['FWUL0.forward3'], 'out': []}
+{'in': ['rd', 'result'], 'fu': ['FWUL1.forward3'], 'out': []}
+{'in': ['rd', 'result'], 'fu': ['FWUL2.forward3'], 'out': []}
+{'in': ['rd', 'result'], 'fu': ['FWUL3.forward3'], 'out': []}
+SUB 5
+variables:
+statements:
+{'in': ['rd', 'result'], 'fu': ['FWUL0.forward5'], 'out': []}
+{'in': ['rd', 'result'], 'fu': ['FWUL1.forward5'], 'out': []}
+{'in': ['rd', 'result'], 'fu': ['FWUL2.forward5'], 'out': []}
+{'in': ['rd', 'result'], 'fu': ['FWUL3.forward5'], 'out': []}
+SUB 6
+variables:
+statements:
+{'in': ['rd', 'result'], 'fu': ['GPR.write0'], 'out': []}
+{'in': ['rd', 'result'], 'fu': ['FWUL0.forward7'], 'out': []}
+{'in': ['rd', 'result'], 'fu': ['FWUL1.forward7'], 'out': []}
+{'in': ['rd', 'result'], 'fu': ['FWUL2.forward7'], 'out': []}
+{'in': ['rd', 'result'], 'fu': ['FWUL3.forward7'], 'out': []}
+XORI global
+variables:
+('rt', 5)
+('rs', 5)
+('imm', 16)
+('source0', 32)
+('source1', 32)
+('result', 32)
+('tmp_pc', 32)
+XORI 1
+variables:
+('current_pc', 32)
+('inst0', 64)
+('iramaddr_err', 1)
+statements:
+{'in': [], 'fu': ['CPC.read'], 'out': ['current_pc']}
+{'in': ['current_pc'], 'fu': ['na'], 'out': ['tmp_pc']}
+{'in': ['current_pc'], 'fu': ['Imem.ld_64'], 'out': ['inst0', 'iramaddr_err']}
+{'in': ['inst0'], 'fu': ['IReg.write'], 'out': []}
+{'in': [], 'fu': ['CPC.inc'], 'out': []}
+XORI 2
+variables:
+('tmp_source0', 32)
+('tmp_ir', 64)
+statements:
+{'in': [], 'fu': ['IReg.read'], 'out': ['tmp_ir']}
+{'in': ['tmp_ir'], 'fu': ['28:24'], 'out': ['rs']}
+{'in': ['tmp_ir'], 'fu': ['20:16'], 'out': ['rt']}
+{'in': ['tmp_ir'], 'fu': ['15:0'], 'out': ['imm']}
+{'in': ['rs'], 'fu': ['GPR.read0'], 'out': ['tmp_source0']}
+{'in': ['rs', 'tmp_source0'], 'fu': ['FWUL0.forward'], 'out': ['source0']}
+{'in': ['imm'], 'fu': ['EXT1.zero'], 'out': ['source1']}
+XORI 3
+variables:
+('flag', 4)
+statements:
+{'in': ['source0', 'source1'], 'fu': ['ALU1.xor'], 'out': ['result', 'flag']}
+{'in': ['rt', 'result'], 'fu': ['FWUL0.forward1'], 'out': []}
+{'in': ['rt', 'result'], 'fu': ['FWUL1.forward1'], 'out': []}
+{'in': ['rt', 'result'], 'fu': ['FWUL2.forward1'], 'out': []}
+{'in': ['rt', 'result'], 'fu': ['FWUL3.forward1'], 'out': []}
+XORI 4
+variables:
+statements:
+{'in': ['rt', 'result'], 'fu': ['FWUL0.forward3'], 'out': []}
+{'in': ['rt', 'result'], 'fu': ['FWUL1.forward3'], 'out': []}
+{'in': ['rt', 'result'], 'fu': ['FWUL2.forward3'], 'out': []}
+{'in': ['rt', 'result'], 'fu': ['FWUL3.forward3'], 'out': []}
+XORI 5
+variables:
+statements:
+{'in': ['rt', 'result'], 'fu': ['FWUL0.forward5'], 'out': []}
+{'in': ['rt', 'result'], 'fu': ['FWUL1.forward5'], 'out': []}
+{'in': ['rt', 'result'], 'fu': ['FWUL2.forward5'], 'out': []}
+{'in': ['rt', 'result'], 'fu': ['FWUL3.forward5'], 'out': []}
+XORI 6
+variables:
+statements:
+{'in': ['rt', 'result'], 'fu': ['GPR.write0'], 'out': []}
+{'in': ['rt', 'result'], 'fu': ['FWUL0.forward7'], 'out': []}
+{'in': ['rt', 'result'], 'fu': ['FWUL1.forward7'], 'out': []}
+{'in': ['rt', 'result'], 'fu': ['FWUL2.forward7'], 'out': []}
+{'in': ['rt', 'result'], 'fu': ['FWUL3.forward7'], 'out': []}
+LB global
+variables:
+('rt', 5)
+('bigE_word', 32)
+('addr', 32)
+('rs', 5)
+('imm', 16)
+('source0', 32)
+('source1', 32)
+('tmp_pc', 32)
+LB 1
+variables:
+('current_pc', 32)
+('inst0', 64)
+('iramaddr_err', 1)
+statements:
+{'in': [], 'fu': ['CPC.read'], 'out': ['current_pc']}
+{'in': ['current_pc'], 'fu': ['na'], 'out': ['tmp_pc']}
+{'in': ['current_pc'], 'fu': ['Imem.ld_64'], 'out': ['inst0', 'iramaddr_err']}
+{'in': ['inst0'], 'fu': ['IReg.write'], 'out': []}
+{'in': [], 'fu': ['CPC.inc'], 'out': []}
+LB 2
+variables:
+('tmp_source0', 32)
+('tmp_ir', 64)
+statements:
+{'in': [], 'fu': ['IReg.read'], 'out': ['tmp_ir']}
+{'in': ['tmp_ir'], 'fu': ['28:24'], 'out': ['rs']}
+{'in': ['tmp_ir'], 'fu': ['20:16'], 'out': ['rt']}
+{'in': ['tmp_ir'], 'fu': ['15:0'], 'out': ['imm']}
+{'in': ['rs'], 'fu': ['GPR.read0'], 'out': ['tmp_source0']}
+{'in': ['rs', 'tmp_source0'], 'fu': ['FWUL0.forward'], 'out': ['source0']}
+{'in': ['imm'], 'fu': ['EXT1.sign'], 'out': ['source1']}
+LB 3
+variables:
+('flag', 4)
+statements:
+{'in': ['source0', 'source1'], 'fu': ['ALU1.add'], 'out': ['addr', 'flag']}
+{'in': ['rt'], 'fu': ['FWUL0.lock1'], 'out': []}
+{'in': ['rt'], 'fu': ['FWUL1.lock1'], 'out': []}
+{'in': ['rt'], 'fu': ['FWUL2.lock1'], 'out': []}
+{'in': ['rt'], 'fu': ['FWUL3.lock1'], 'out': []}
+LB 4
+variables:
+('byte3', 8)
+('byte2', 8)
+('byte1', 8)
+('byte0', 8)
+('result', 32)
+('addr_err', 1)
+statements:
+{'in': ['addr'], 'fu': ['Dmem.ld_8'], 'out': ['result', 'addr_err']}
+{'in': ['result'], 'fu': ['31:24'], 'out': ['byte0']}
+{'in': ['result'], 'fu': ['23:16'], 'out': ['byte1']}
+{'in': ['result'], 'fu': ['15:8'], 'out': ['byte2']}
+{'in': ['result'], 'fu': ['7:0'], 'out': ['byte3']}
+{'in': ['byte3', 'byte2', 'byte1', 'byte0'], 'fu': ['na'], 'out': ['bigE_word']}
+{'in': ['rt', 'bigE_word'], 'fu': ['FWUL0.forward3'], 'out': []}
+{'in': ['rt', 'bigE_word'], 'fu': ['FWUL1.forward3'], 'out': []}
+{'in': ['rt', 'bigE_word'], 'fu': ['FWUL2.forward3'], 'out': []}
+{'in': ['rt', 'bigE_word'], 'fu': ['FWUL3.forward3'], 'out': []}
+{'in': ['rt'], 'fu': ['FWUL0.lock3'], 'out': []}
+{'in': ['rt'], 'fu': ['FWUL1.lock3'], 'out': []}
+{'in': ['rt'], 'fu': ['FWUL2.lock3'], 'out': []}
+{'in': ['rt'], 'fu': ['FWUL3.lock3'], 'out': []}
+LB 5
+variables:
+statements:
+{'in': ['rt', 'bigE_word'], 'fu': ['FWUL0.forward5'], 'out': []}
+{'in': ['rt', 'bigE_word'], 'fu': ['FWUL1.forward5'], 'out': []}
+{'in': ['rt', 'bigE_word'], 'fu': ['FWUL2.forward5'], 'out': []}
+{'in': ['rt', 'bigE_word'], 'fu': ['FWUL3.forward5'], 'out': []}
+LB 6
+variables:
+statements:
+{'in': ['rt', 'bigE_word'], 'fu': ['GPR.write0'], 'out': []}
+{'in': ['rt', 'bigE_word'], 'fu': ['FWUL0.forward7'], 'out': []}
+{'in': ['rt', 'bigE_word'], 'fu': ['FWUL1.forward7'], 'out': []}
+{'in': ['rt', 'bigE_word'], 'fu': ['FWUL2.forward7'], 'out': []}
+{'in': ['rt', 'bigE_word'], 'fu': ['FWUL3.forward7'], 'out': []}
+DIVU global
+variables:
+('rt', 5)
+('shamt', 8)
+('rs', 5)
+('resulthi', 32)
+('rd', 5)
+('source0', 32)
+('source1', 32)
+('tmp_pc', 32)
+('resultlo', 32)
+DIVU 1
+variables:
+('current_pc', 32)
+('inst0', 64)
+('iramaddr_err', 1)
+statements:
+{'in': [], 'fu': ['CPC.read'], 'out': ['current_pc']}
+{'in': ['current_pc'], 'fu': ['na'], 'out': ['tmp_pc']}
+{'in': ['current_pc'], 'fu': ['Imem.ld_64'], 'out': ['inst0', 'iramaddr_err']}
+{'in': ['inst0'], 'fu': ['IReg.write'], 'out': []}
+{'in': [], 'fu': ['CPC.inc'], 'out': []}
+DIVU 2
+variables:
+('tmp_source0', 32)
+('tmp_ir', 64)
+('tmp_source1', 32)
+statements:
+{'in': [], 'fu': ['IReg.read'], 'out': ['tmp_ir']}
+{'in': ['tmp_ir'], 'fu': ['28:24'], 'out': ['rs']}
+{'in': ['tmp_ir'], 'fu': ['20:16'], 'out': ['rt']}
+{'in': ['tmp_ir'], 'fu': ['12:8'], 'out': ['rd']}
+{'in': ['tmp_ir'], 'fu': ['7:0'], 'out': ['shamt']}
+{'in': ['rs'], 'fu': ['GPR.read0'], 'out': ['tmp_source0']}
+{'in': ['rt'], 'fu': ['GPR.read1'], 'out': ['tmp_source1']}
+{'in': ['rs', 'tmp_source0'], 'fu': ['FWUL0.forward'], 'out': ['source0']}
+{'in': ['rt', 'tmp_source1'], 'fu': ['FWUL1.forward'], 'out': ['source1']}
+DIVU 3
+variables:
+('flag', 1)
+statements:
+{'in': ['source0', 'source1'], 'fu': ['DIV1.divu'], 'out': ['resultlo', 'resulthi', 'flag']}
+{'in': ['resultlo'], 'fu': ['LO.write'], 'out': []}
+{'in': ['resulthi'], 'fu': ['HI.write'], 'out': []}
+DIVU 4
+variables:
+statements:
+DIVU 5
+variables:
+statements:
+DIVU 6
+variables:
+statements:
+BGTZ global
+variables:
+('rt', 5)
+('target', 32)
+('rs', 5)
+('imm', 16)
+('source0', 32)
+('src0', 32)
+('source1', 32)
+('tmp_pc', 32)
+BGTZ 1
+variables:
+('current_pc', 32)
+('inst0', 64)
+('iramaddr_err', 1)
+statements:
+{'in': [], 'fu': ['CPC.read'], 'out': ['current_pc']}
+{'in': ['current_pc'], 'fu': ['na'], 'out': ['tmp_pc']}
+{'in': ['current_pc'], 'fu': ['Imem.ld_64'], 'out': ['inst0', 'iramaddr_err']}
+{'in': ['inst0'], 'fu': ['IReg.write'], 'out': []}
+{'in': [], 'fu': ['CPC.inc'], 'out': []}
+BGTZ 2
+variables:
+('tmp', 30)
+('tmp_source0', 32)
+('cout', 1)
+('cin', 1)
+('ext_imm', 32)
+('tmp_ir', 64)
+('offset', 32)
+('tmp_cpc', 32)
+('zero2', 2)
+statements:
+{'in': [], 'fu': ['IReg.read'], 'out': ['tmp_ir']}
+{'in': ['tmp_ir'], 'fu': ['28:24'], 'out': ['rs']}
+{'in': ['tmp_ir'], 'fu': ['20:16'], 'out': ['rt']}
+{'in': ['tmp_ir'], 'fu': ['15:0'], 'out': ['imm']}
+{'in': ['rs'], 'fu': ['GPR.read0'], 'out': ['tmp_source0']}
+{'in': ['rs', 'tmp_source0'], 'fu': ['FWU0.forward'], 'out': ['src0']}
+{'in': ['0'], 'fu': ['na'], 'out': ['cin']}
+{'in': ['00'], 'fu': ['na'], 'out': ['zero2']}
+{'in': ['imm'], 'fu': ['EXT1.sign'], 'out': ['ext_imm']}
+{'in': ['ext_imm'], 'fu': ['29:0'], 'out': ['tmp']}
+{'in': ['tmp', 'zero2'], 'fu': ['na'], 'out': ['offset']}
+{'in': [], 'fu': ['CPC.read'], 'out': ['tmp_cpc']}
+{'in': ['tmp_cpc', 'offset', 'cin'], 'fu': ['ADD1.adc'], 'out': ['target', 'cout']}
+BGTZ 3
+variables:
+('cond_tmp', 1)
+('Z', 1)
+('cond', 1)
+('flag', 4)
+('N', 1)
+statements:
+{'in': ['src0'], 'fu': ['ALU1.cmpz'], 'out': ['flag']}
+{'in': ['flag'], 'fu': ['1'], 'out': ['N']}
+{'in': ['flag'], 'fu': ['2'], 'out': ['Z']}
+{'in': ['N', 'Z'], 'fu': ['|'], 'out': ['cond_tmp']}
+{'in': ['cond_tmp', '1'], 'fu': [" != '"], 'out': ['cond']}
+{'in': ['cond', 'target'], 'fu': ['sel', 'CPC.write'], 'out': []}
+BGTZ 4
+variables:
+statements:
+BGTZ 5
+variables:
+statements:
+BGTZ 6
+variables:
+statements:
+ADD global
+variables:
+('rt', 5)
+('shamt', 8)
+('rs', 5)
+('rd', 5)
+('source0', 32)
+('source1', 32)
+('result', 32)
+('tmp_pc', 32)
+ADD 1
+variables:
+('current_pc', 32)
+('inst0', 64)
+('iramaddr_err', 1)
+statements:
+{'in': [], 'fu': ['CPC.read'], 'out': ['current_pc']}
+{'in': ['current_pc'], 'fu': ['na'], 'out': ['tmp_pc']}
+{'in': ['current_pc'], 'fu': ['Imem.ld_64'], 'out': ['inst0', 'iramaddr_err']}
+{'in': ['inst0'], 'fu': ['IReg.write'], 'out': []}
+{'in': [], 'fu': ['CPC.inc'], 'out': []}
+ADD 2
+variables:
+('tmp_source0', 32)
+('tmp_ir', 64)
+('tmp_source1', 32)
+statements:
+{'in': [], 'fu': ['IReg.read'], 'out': ['tmp_ir']}
+{'in': ['tmp_ir'], 'fu': ['28:24'], 'out': ['rs']}
+{'in': ['tmp_ir'], 'fu': ['20:16'], 'out': ['rt']}
+{'in': ['tmp_ir'], 'fu': ['12:8'], 'out': ['rd']}
+{'in': ['tmp_ir'], 'fu': ['7:0'], 'out': ['shamt']}
+{'in': ['rs'], 'fu': ['GPR.read0'], 'out': ['tmp_source0']}
+{'in': ['rt'], 'fu': ['GPR.read1'], 'out': ['tmp_source1']}
+{'in': ['rs', 'tmp_source0'], 'fu': ['FWUL0.forward'], 'out': ['source0']}
+{'in': ['rt', 'tmp_source1'], 'fu': ['FWUL1.forward'], 'out': ['source1']}
+ADD 3
+variables:
+('flag', 4)
+statements:
+{'in': ['source0', 'source1'], 'fu': ['ALU1.add'], 'out': ['result', 'flag']}
+{'in': ['rd', 'result'], 'fu': ['FWUL0.forward1'], 'out': []}
+{'in': ['rd', 'result'], 'fu': ['FWUL1.forward1'], 'out': []}
+{'in': ['rd', 'result'], 'fu': ['FWUL2.forward1'], 'out': []}
+{'in': ['rd', 'result'], 'fu': ['FWUL3.forward1'], 'out': []}
+ADD 4
+variables:
+statements:
+{'in': ['rd', 'result'], 'fu': ['FWUL0.forward3'], 'out': []}
+{'in': ['rd', 'result'], 'fu': ['FWUL1.forward3'], 'out': []}
+{'in': ['rd', 'result'], 'fu': ['FWUL2.forward3'], 'out': []}
+{'in': ['rd', 'result'], 'fu': ['FWUL3.forward3'], 'out': []}
+ADD 5
+variables:
+statements:
+{'in': ['rd', 'result'], 'fu': ['FWUL0.forward5'], 'out': []}
+{'in': ['rd', 'result'], 'fu': ['FWUL1.forward5'], 'out': []}
+{'in': ['rd', 'result'], 'fu': ['FWUL2.forward5'], 'out': []}
+{'in': ['rd', 'result'], 'fu': ['FWUL3.forward5'], 'out': []}
+ADD 6
+variables:
+statements:
+{'in': ['rd', 'result'], 'fu': ['GPR.write0'], 'out': []}
+{'in': ['rd', 'result'], 'fu': ['FWUL0.forward7'], 'out': []}
+{'in': ['rd', 'result'], 'fu': ['FWUL1.forward7'], 'out': []}
+{'in': ['rd', 'result'], 'fu': ['FWUL2.forward7'], 'out': []}
+{'in': ['rd', 'result'], 'fu': ['FWUL3.forward7'], 'out': []}
+BNE global
+variables:
+('rt', 5)
+('target', 32)
+('rs', 5)
+('imm', 16)
+('source0', 32)
+('source1', 32)
+('tmp_pc', 32)
+BNE 1
+variables:
+('current_pc', 32)
+('inst0', 64)
+('iramaddr_err', 1)
+statements:
+{'in': [], 'fu': ['CPC.read'], 'out': ['current_pc']}
+{'in': ['current_pc'], 'fu': ['na'], 'out': ['tmp_pc']}
+{'in': ['current_pc'], 'fu': ['Imem.ld_64'], 'out': ['inst0', 'iramaddr_err']}
+{'in': ['inst0'], 'fu': ['IReg.write'], 'out': []}
+{'in': [], 'fu': ['CPC.inc'], 'out': []}
+BNE 2
+variables:
+('tmp', 30)
+('tmp_source0', 32)
+('cout', 1)
+('cin', 1)
+('tmp_source1', 32)
+('ext_imm', 32)
+('zero2', 2)
+('offset', 32)
+('tmp_cpc', 32)
+('tmp_ir', 64)
+statements:
+{'in': [], 'fu': ['IReg.read'], 'out': ['tmp_ir']}
+{'in': ['tmp_ir'], 'fu': ['28:24'], 'out': ['rs']}
+{'in': ['tmp_ir'], 'fu': ['20:16'], 'out': ['rt']}
+{'in': ['tmp_ir'], 'fu': ['15:0'], 'out': ['imm']}
+{'in': ['rs'], 'fu': ['GPR.read0'], 'out': ['tmp_source0']}
+{'in': ['rt'], 'fu': ['GPR.read1'], 'out': ['tmp_source1']}
+{'in': ['rs', 'tmp_source0'], 'fu': ['FWUL0.forward'], 'out': ['source0']}
+{'in': ['rt', 'tmp_source1'], 'fu': ['FWUL1.forward'], 'out': ['source1']}
+{'in': ['0'], 'fu': ['na'], 'out': ['cin']}
+{'in': ['00'], 'fu': ['na'], 'out': ['zero2']}
+{'in': ['imm'], 'fu': ['EXT1.sign'], 'out': ['ext_imm']}
+{'in': ['ext_imm'], 'fu': ['29:0'], 'out': ['tmp']}
+{'in': ['tmp', 'zero2'], 'fu': ['na'], 'out': ['offset']}
+{'in': [], 'fu': ['CPC.read'], 'out': ['tmp_cpc']}
+{'in': ['tmp_cpc', 'offset', 'cin'], 'fu': ['ADD1.adc'], 'out': ['target', 'cout']}
+BNE 3
+variables:
+('zero', 1)
+('cond', 1)
+('flag', 4)
+statements:
+{'in': ['source0', 'source1'], 'fu': ['ALU1.cmp'], 'out': ['flag']}
+{'in': ['flag'], 'fu': ['2'], 'out': ['zero']}
+{'in': ['zero', '1'], 'fu': [" !='"], 'out': ['cond']}
+{'in': ['cond', 'target'], 'fu': ['sel', 'CPC.write'], 'out': []}
+BNE 4
+variables:
+statements:
+BNE 5
+variables:
+statements:
+BNE 6
+variables:
+statements:
+AND global
+variables:
+('rt', 5)
+('shamt', 8)
+('rs', 5)
+('rd', 5)
+('source0', 32)
+('source1', 32)
+('result', 32)
+('tmp_pc', 32)
+AND 1
+variables:
+('current_pc', 32)
+('inst0', 64)
+('iramaddr_err', 1)
+statements:
+{'in': [], 'fu': ['CPC.read'], 'out': ['current_pc']}
+{'in': ['current_pc'], 'fu': ['na'], 'out': ['tmp_pc']}
+{'in': ['current_pc'], 'fu': ['Imem.ld_64'], 'out': ['inst0', 'iramaddr_err']}
+{'in': ['inst0'], 'fu': ['IReg.write'], 'out': []}
+{'in': [], 'fu': ['CPC.inc'], 'out': []}
+AND 2
+variables:
+('tmp_source0', 32)
+('tmp_ir', 64)
+('tmp_source1', 32)
+statements:
+{'in': [], 'fu': ['IReg.read'], 'out': ['tmp_ir']}
+{'in': ['tmp_ir'], 'fu': ['28:24'], 'out': ['rs']}
+{'in': ['tmp_ir'], 'fu': ['20:16'], 'out': ['rt']}
+{'in': ['tmp_ir'], 'fu': ['12:8'], 'out': ['rd']}
+{'in': ['tmp_ir'], 'fu': ['7:0'], 'out': ['shamt']}
+{'in': ['rs'], 'fu': ['GPR.read0'], 'out': ['tmp_source0']}
+{'in': ['rt'], 'fu': ['GPR.read1'], 'out': ['tmp_source1']}
+{'in': ['rs', 'tmp_source0'], 'fu': ['FWUL0.forward'], 'out': ['source0']}
+{'in': ['rt', 'tmp_source1'], 'fu': ['FWUL1.forward'], 'out': ['source1']}
+AND 3
+variables:
+('flag', 4)
+statements:
+{'in': ['source0', 'source1'], 'fu': ['ALU1.and'], 'out': ['result', 'flag']}
+{'in': ['rd', 'result'], 'fu': ['FWUL0.forward1'], 'out': []}
+{'in': ['rd', 'result'], 'fu': ['FWUL1.forward1'], 'out': []}
+{'in': ['rd', 'result'], 'fu': ['FWUL2.forward1'], 'out': []}
+{'in': ['rd', 'result'], 'fu': ['FWUL3.forward1'], 'out': []}
+AND 4
+variables:
+statements:
+{'in': ['rd', 'result'], 'fu': ['FWUL0.forward3'], 'out': []}
+{'in': ['rd', 'result'], 'fu': ['FWUL1.forward3'], 'out': []}
+{'in': ['rd', 'result'], 'fu': ['FWUL2.forward3'], 'out': []}
+{'in': ['rd', 'result'], 'fu': ['FWUL3.forward3'], 'out': []}
+AND 5
+variables:
+statements:
+{'in': ['rd', 'result'], 'fu': ['FWUL0.forward5'], 'out': []}
+{'in': ['rd', 'result'], 'fu': ['FWUL1.forward5'], 'out': []}
+{'in': ['rd', 'result'], 'fu': ['FWUL2.forward5'], 'out': []}
+{'in': ['rd', 'result'], 'fu': ['FWUL3.forward5'], 'out': []}
+AND 6
+variables:
+statements:
+{'in': ['rd', 'result'], 'fu': ['GPR.write0'], 'out': []}
+{'in': ['rd', 'result'], 'fu': ['FWUL0.forward7'], 'out': []}
+{'in': ['rd', 'result'], 'fu': ['FWUL1.forward7'], 'out': []}
+{'in': ['rd', 'result'], 'fu': ['FWUL2.forward7'], 'out': []}
+{'in': ['rd', 'result'], 'fu': ['FWUL3.forward7'], 'out': []}
+SW_RR global
+variables:
+('rt', 5)
+('rd', 5)
+('addr', 32)
+('rs', 5)
+('shamt', 8)
+('source2', 32)
+('source0', 32)
+('source1', 32)
+('tmp_pc', 32)
+SW_RR 1
+variables:
+('current_pc', 32)
+('inst0', 64)
+('iramaddr_err', 1)
+statements:
+{'in': [], 'fu': ['CPC.read'], 'out': ['current_pc']}
+{'in': ['current_pc'], 'fu': ['na'], 'out': ['tmp_pc']}
+{'in': ['current_pc'], 'fu': ['Imem.ld_64'], 'out': ['inst0', 'iramaddr_err']}
+{'in': ['inst0'], 'fu': ['IReg.write'], 'out': []}
+{'in': [], 'fu': ['CPC.inc'], 'out': []}
+SW_RR 2
+variables:
+('tmp_source0', 32)
+('tmp_ir', 64)
+('tmp_source2', 32)
+('tmp_source1', 32)
+statements:
+{'in': [], 'fu': ['IReg.read'], 'out': ['tmp_ir']}
+{'in': ['tmp_ir'], 'fu': ['28:24'], 'out': ['rs']}
+{'in': ['tmp_ir'], 'fu': ['20:16'], 'out': ['rt']}
+{'in': ['tmp_ir'], 'fu': ['12:8'], 'out': ['rd']}
+{'in': ['tmp_ir'], 'fu': ['7:0'], 'out': ['shamt']}
+{'in': ['rs'], 'fu': ['GPR.read0'], 'out': ['tmp_source0']}
+{'in': ['rt'], 'fu': ['GPR.read1'], 'out': ['tmp_source1']}
+{'in': ['rd'], 'fu': ['GPR.read2'], 'out': ['tmp_source2']}
+{'in': ['rs', 'tmp_source0'], 'fu': ['FWUL0.forward'], 'out': ['source0']}
+{'in': ['rt', 'tmp_source1'], 'fu': ['FWUL1.forward'], 'out': ['source1']}
+{'in': ['rd', 'tmp_source2'], 'fu': ['FWUL2.forward'], 'out': ['source2']}
+SW_RR 3
+variables:
+('flag', 4)
+statements:
+{'in': ['source0', 'source2'], 'fu': ['ALU1.add'], 'out': ['addr', 'flag']}
+SW_RR 4
+variables:
+statements:
+SW_RR 5
+variables:
+('LE_source1', 32)
+('byte3', 8)
+('byte2', 8)
+('byte1', 8)
+('byte0', 8)
+('addr_err', 1)
+statements:
+{'in': ['source1'], 'fu': ['31:24'], 'out': ['byte0']}
+{'in': ['source1'], 'fu': ['23:16'], 'out': ['byte1']}
+{'in': ['source1'], 'fu': ['15:8'], 'out': ['byte2']}
+{'in': ['source1'], 'fu': ['7:0'], 'out': ['byte3']}
+{'in': ['byte3', 'byte2', 'byte1', 'byte0'], 'fu': ['na'], 'out': ['LE_source1']}
+{'in': ['addr', 'LE_source1'], 'fu': ['Dmem.s_32'], 'out': ['addr_err']}
+SW_RR 6
+variables:
+statements:
+ADDU global
+variables:
+('rt', 5)
+('shamt', 8)
+('rs', 5)
+('rd', 5)
+('source0', 32)
+('source1', 32)
+('result', 32)
+('tmp_pc', 32)
+ADDU 1
+variables:
+('current_pc', 32)
+('inst0', 64)
+('iramaddr_err', 1)
+statements:
+{'in': [], 'fu': ['CPC.read'], 'out': ['current_pc']}
+{'in': ['current_pc'], 'fu': ['na'], 'out': ['tmp_pc']}
+{'in': ['current_pc'], 'fu': ['Imem.ld_64'], 'out': ['inst0', 'iramaddr_err']}
+{'in': ['inst0'], 'fu': ['IReg.write'], 'out': []}
+{'in': [], 'fu': ['CPC.inc'], 'out': []}
+ADDU 2
+variables:
+('tmp_source0', 32)
+('tmp_ir', 64)
+('tmp_source1', 32)
+statements:
+{'in': [], 'fu': ['IReg.read'], 'out': ['tmp_ir']}
+{'in': ['tmp_ir'], 'fu': ['28:24'], 'out': ['rs']}
+{'in': ['tmp_ir'], 'fu': ['20:16'], 'out': ['rt']}
+{'in': ['tmp_ir'], 'fu': ['12:8'], 'out': ['rd']}
+{'in': ['tmp_ir'], 'fu': ['7:0'], 'out': ['shamt']}
+{'in': ['rs'], 'fu': ['GPR.read0'], 'out': ['tmp_source0']}
+{'in': ['rt'], 'fu': ['GPR.read1'], 'out': ['tmp_source1']}
+{'in': ['rs', 'tmp_source0'], 'fu': ['FWUL0.forward'], 'out': ['source0']}
+{'in': ['rt', 'tmp_source1'], 'fu': ['FWUL1.forward'], 'out': ['source1']}
+ADDU 3
+variables:
+('flag', 4)
+statements:
+{'in': ['source0', 'source1'], 'fu': ['ALU1.addu'], 'out': ['result', 'flag']}
+{'in': ['rd', 'result'], 'fu': ['FWUL0.forward1'], 'out': []}
+{'in': ['rd', 'result'], 'fu': ['FWUL1.forward1'], 'out': []}
+{'in': ['rd', 'result'], 'fu': ['FWUL2.forward1'], 'out': []}
+{'in': ['rd', 'result'], 'fu': ['FWUL3.forward1'], 'out': []}
+ADDU 4
+variables:
+statements:
+{'in': ['rd', 'result'], 'fu': ['FWUL0.forward3'], 'out': []}
+{'in': ['rd', 'result'], 'fu': ['FWUL1.forward3'], 'out': []}
+{'in': ['rd', 'result'], 'fu': ['FWUL2.forward3'], 'out': []}
+{'in': ['rd', 'result'], 'fu': ['FWUL3.forward3'], 'out': []}
+ADDU 5
+variables:
+statements:
+{'in': ['rd', 'result'], 'fu': ['FWUL0.forward5'], 'out': []}
+{'in': ['rd', 'result'], 'fu': ['FWUL1.forward5'], 'out': []}
+{'in': ['rd', 'result'], 'fu': ['FWUL2.forward5'], 'out': []}
+{'in': ['rd', 'result'], 'fu': ['FWUL3.forward5'], 'out': []}
+ADDU 6
+variables:
+statements:
+{'in': ['rd', 'result'], 'fu': ['GPR.write0'], 'out': []}
+{'in': ['rd', 'result'], 'fu': ['FWUL0.forward7'], 'out': []}
+{'in': ['rd', 'result'], 'fu': ['FWUL1.forward7'], 'out': []}
+{'in': ['rd', 'result'], 'fu': ['FWUL2.forward7'], 'out': []}
+{'in': ['rd', 'result'], 'fu': ['FWUL3.forward7'], 'out': []}
+JALR global
+variables:
+('rt', 5)
+('shamt', 8)
+('target', 32)
+('rs', 5)
+('linkReg', 5)
+('rd', 5)
+('tmp_pc', 32)
+('link', 32)
+JALR 1
+variables:
+('current_pc', 32)
+('inst0', 64)
+('iramaddr_err', 1)
+statements:
+{'in': [], 'fu': ['CPC.read'], 'out': ['current_pc']}
+{'in': ['current_pc'], 'fu': ['na'], 'out': ['tmp_pc']}
+{'in': ['current_pc'], 'fu': ['Imem.ld_64'], 'out': ['inst0', 'iramaddr_err']}
+{'in': ['inst0'], 'fu': ['IReg.write'], 'out': []}
+{'in': [], 'fu': ['CPC.inc'], 'out': []}
+JALR 2
+variables:
+('tmp_ir', 64)
+('tmp_source', 32)
+statements:
+{'in': [], 'fu': ['IReg.read'], 'out': ['tmp_ir']}
+{'in': ['tmp_ir'], 'fu': ['28:24'], 'out': ['rs']}
+{'in': ['tmp_ir'], 'fu': ['20:16'], 'out': ['rt']}
+{'in': ['tmp_ir'], 'fu': ['12:8'], 'out': ['rd']}
+{'in': ['tmp_ir'], 'fu': ['7:0'], 'out': ['shamt']}
+{'in': [], 'fu': ['CPC.read'], 'out': ['link']}
+{'in': ['rs'], 'fu': ['GPR.read0'], 'out': ['tmp_source']}
+{'in': ['rs', 'tmp_source'], 'fu': ['FWUL0.forward'], 'out': ['target']}
+JALR 3
+variables:
+statements:
+{'in': ['target'], 'fu': ['CPC.write'], 'out': []}
+{'in': ['11111'], 'fu': ['na'], 'out': ['linkReg']}
+{'in': ['linkReg', 'link'], 'fu': ['FWUL0.forward1'], 'out': []}
+{'in': ['linkReg', 'link'], 'fu': ['FWUL1.forward1'], 'out': []}
+{'in': ['linkReg', 'link'], 'fu': ['FWUL2.forward1'], 'out': []}
+{'in': ['linkReg', 'link'], 'fu': ['FWUL3.forward1'], 'out': []}
+JALR 4
+variables:
+statements:
+{'in': ['linkReg', 'link'], 'fu': ['FWUL0.forward3'], 'out': []}
+{'in': ['linkReg', 'link'], 'fu': ['FWUL1.forward3'], 'out': []}
+{'in': ['linkReg', 'link'], 'fu': ['FWUL2.forward3'], 'out': []}
+{'in': ['linkReg', 'link'], 'fu': ['FWUL3.forward3'], 'out': []}
+JALR 5
+variables:
+statements:
+{'in': ['linkReg', 'link'], 'fu': ['FWUL0.forward5'], 'out': []}
+{'in': ['linkReg', 'link'], 'fu': ['FWUL1.forward5'], 'out': []}
+{'in': ['linkReg', 'link'], 'fu': ['FWUL2.forward5'], 'out': []}
+{'in': ['linkReg', 'link'], 'fu': ['FWUL3.forward5'], 'out': []}
+JALR 6
+variables:
+statements:
+{'in': ['linkReg', 'link'], 'fu': ['GPR.write0'], 'out': []}
+{'in': ['linkReg', 'link'], 'fu': ['FWUL0.forward7'], 'out': []}
+{'in': ['linkReg', 'link'], 'fu': ['FWUL1.forward7'], 'out': []}
+{'in': ['linkReg', 'link'], 'fu': ['FWUL2.forward7'], 'out': []}
+{'in': ['linkReg', 'link'], 'fu': ['FWUL3.forward7'], 'out': []}
+SYSRET global
+variables:
+('tmp_pc', 32)
+('result', 32)
+SYSRET 1
+variables:
+('current_pc', 32)
+('inst0', 64)
+('iramaddr_err', 1)
+statements:
+{'in': [], 'fu': ['CPC.read'], 'out': ['current_pc']}
+{'in': ['current_pc'], 'fu': ['na'], 'out': ['tmp_pc']}
+{'in': ['current_pc'], 'fu': ['Imem.ld_64'], 'out': ['inst0', 'iramaddr_err']}
+{'in': ['inst0'], 'fu': ['IReg.write'], 'out': []}
+{'in': [], 'fu': ['CPC.inc'], 'out': []}
+SYSRET 2
+variables:
+('tmp_ir', 64)
+statements:
+{'in': [], 'fu': ['IReg.read'], 'out': ['tmp_ir']}
+{'in': [], 'fu': ['SYSREG.read'], 'out': ['result']}
+SYSRET 3
+variables:
+statements:
+{'in': ['result'], 'fu': ['CPC.write'], 'out': []}
+SYSRET 4
+variables:
+statements:
+SYSRET 5
+variables:
+statements:
+SYSRET 6
+variables:
+statements:
+SLTIU global
+variables:
+('rt', 5)
+('rs', 5)
+('imm', 16)
+('source0', 32)
+('source1', 32)
+('result', 32)
+('tmp_pc', 32)
+SLTIU 1
+variables:
+('current_pc', 32)
+('inst0', 64)
+('iramaddr_err', 1)
+statements:
+{'in': [], 'fu': ['CPC.read'], 'out': ['current_pc']}
+{'in': ['current_pc'], 'fu': ['na'], 'out': ['tmp_pc']}
+{'in': ['current_pc'], 'fu': ['Imem.ld_64'], 'out': ['inst0', 'iramaddr_err']}
+{'in': ['inst0'], 'fu': ['IReg.write'], 'out': []}
+{'in': [], 'fu': ['CPC.inc'], 'out': []}
+SLTIU 2
+variables:
+('tmp_source0', 32)
+('tmp_ir', 64)
+statements:
+{'in': [], 'fu': ['IReg.read'], 'out': ['tmp_ir']}
+{'in': ['tmp_ir'], 'fu': ['28:24'], 'out': ['rs']}
+{'in': ['tmp_ir'], 'fu': ['20:16'], 'out': ['rt']}
+{'in': ['tmp_ir'], 'fu': ['15:0'], 'out': ['imm']}
+{'in': ['rs'], 'fu': ['GPR.read0'], 'out': ['tmp_source0']}
+{'in': ['rs', 'tmp_source0'], 'fu': ['FWUL0.forward'], 'out': ['source0']}
+{'in': ['imm'], 'fu': ['EXT1.zero'], 'out': ['source1']}
+SLTIU 3
+variables:
+('zero31', 31)
+('flag', 4)
+('cond', 1)
+('flag2', 2)
+statements:
+{'in': ['0000000000000000000000000000000'], 'fu': ['na'], 'out': ['zero31']}
+{'in': ['source0', 'source1'], 'fu': ['ALU1.cmpu'], 'out': ['flag']}
+{'in': ['flag'], 'fu': ['3:2'], 'out': ['flag2']}
+{'in': ['flag2', '00'], 'fu': [' == "'], 'out': ['cond']}
+{'in': ['zero31', 'cond'], 'fu': ['na'], 'out': ['result']}
+{'in': ['rt', 'result'], 'fu': ['FWUL0.forward1'], 'out': []}
+{'in': ['rt', 'result'], 'fu': ['FWUL1.forward1'], 'out': []}
+{'in': ['rt', 'result'], 'fu': ['FWUL2.forward1'], 'out': []}
+{'in': ['rt', 'result'], 'fu': ['FWUL3.forward1'], 'out': []}
+SLTIU 4
+variables:
+statements:
+{'in': ['rt', 'result'], 'fu': ['FWUL0.forward3'], 'out': []}
+{'in': ['rt', 'result'], 'fu': ['FWUL1.forward3'], 'out': []}
+{'in': ['rt', 'result'], 'fu': ['FWUL2.forward3'], 'out': []}
+{'in': ['rt', 'result'], 'fu': ['FWUL3.forward3'], 'out': []}
+SLTIU 5
+variables:
+statements:
+{'in': ['rt', 'result'], 'fu': ['FWUL0.forward5'], 'out': []}
+{'in': ['rt', 'result'], 'fu': ['FWUL1.forward5'], 'out': []}
+{'in': ['rt', 'result'], 'fu': ['FWUL2.forward5'], 'out': []}
+{'in': ['rt', 'result'], 'fu': ['FWUL3.forward5'], 'out': []}
+SLTIU 6
+variables:
+statements:
+{'in': ['rt', 'result'], 'fu': ['GPR.write0'], 'out': []}
+{'in': ['rt', 'result'], 'fu': ['FWUL0.forward7'], 'out': []}
+{'in': ['rt', 'result'], 'fu': ['FWUL1.forward7'], 'out': []}
+{'in': ['rt', 'result'], 'fu': ['FWUL2.forward7'], 'out': []}
+{'in': ['rt', 'result'], 'fu': ['FWUL3.forward7'], 'out': []}
+SLLV global
+variables:
+('rt', 5)
+('shamt', 8)
+('rs', 5)
+('rd', 5)
+('source0', 32)
+('source1', 32)
+('result', 32)
+('tmp_pc', 32)
+SLLV 1
+variables:
+('current_pc', 32)
+('inst0', 64)
+('iramaddr_err', 1)
+statements:
+{'in': [], 'fu': ['CPC.read'], 'out': ['current_pc']}
+{'in': ['current_pc'], 'fu': ['na'], 'out': ['tmp_pc']}
+{'in': ['current_pc'], 'fu': ['Imem.ld_64'], 'out': ['inst0', 'iramaddr_err']}
+{'in': ['inst0'], 'fu': ['IReg.write'], 'out': []}
+{'in': [], 'fu': ['CPC.inc'], 'out': []}
+SLLV 2
+variables:
+('tmp_source0', 32)
+('tmp_ir', 64)
+('tmp_source1', 32)
+statements:
+{'in': [], 'fu': ['IReg.read'], 'out': ['tmp_ir']}
+{'in': ['tmp_ir'], 'fu': ['28:24'], 'out': ['rs']}
+{'in': ['tmp_ir'], 'fu': ['20:16'], 'out': ['rt']}
+{'in': ['tmp_ir'], 'fu': ['12:8'], 'out': ['rd']}
+{'in': ['tmp_ir'], 'fu': ['7:0'], 'out': ['shamt']}
+{'in': ['rs'], 'fu': ['GPR.read0'], 'out': ['tmp_source0']}
+{'in': ['rt'], 'fu': ['GPR.read1'], 'out': ['tmp_source1']}
+{'in': ['rs', 'tmp_source0'], 'fu': ['FWUL0.forward'], 'out': ['source0']}
+{'in': ['rt', 'tmp_source1'], 'fu': ['FWUL1.forward'], 'out': ['source1']}
+SLLV 3
+variables:
+('shift', 5)
+statements:
+{'in': ['source0'], 'fu': ['4:0'], 'out': ['shift']}
+{'in': ['source1', 'shift'], 'fu': ['SFT1.sll'], 'out': ['result']}
+{'in': ['rd', 'result'], 'fu': ['FWUL0.forward1'], 'out': []}
+{'in': ['rd', 'result'], 'fu': ['FWUL1.forward1'], 'out': []}
+{'in': ['rd', 'result'], 'fu': ['FWUL2.forward1'], 'out': []}
+{'in': ['rd', 'result'], 'fu': ['FWUL3.forward1'], 'out': []}
+SLLV 4
+variables:
+statements:
+{'in': ['rd', 'result'], 'fu': ['FWUL0.forward3'], 'out': []}
+{'in': ['rd', 'result'], 'fu': ['FWUL1.forward3'], 'out': []}
+{'in': ['rd', 'result'], 'fu': ['FWUL2.forward3'], 'out': []}
+{'in': ['rd', 'result'], 'fu': ['FWUL3.forward3'], 'out': []}
+SLLV 5
+variables:
+statements:
+{'in': ['rd', 'result'], 'fu': ['FWUL0.forward5'], 'out': []}
+{'in': ['rd', 'result'], 'fu': ['FWUL1.forward5'], 'out': []}
+{'in': ['rd', 'result'], 'fu': ['FWUL2.forward5'], 'out': []}
+{'in': ['rd', 'result'], 'fu': ['FWUL3.forward5'], 'out': []}
+SLLV 6
+variables:
+statements:
+{'in': ['rd', 'result'], 'fu': ['GPR.write0'], 'out': []}
+{'in': ['rd', 'result'], 'fu': ['FWUL0.forward7'], 'out': []}
+{'in': ['rd', 'result'], 'fu': ['FWUL1.forward7'], 'out': []}
+{'in': ['rd', 'result'], 'fu': ['FWUL2.forward7'], 'out': []}
+{'in': ['rd', 'result'], 'fu': ['FWUL3.forward7'], 'out': []}
+SW global
+variables:
+('rt', 5)
+('addr', 32)
+('rs', 5)
+('imm', 16)
+('source2', 32)
+('source0', 32)
+('source1', 32)
+('tmp_pc', 32)
+SW 1
+variables:
+('current_pc', 32)
+('inst0', 64)
+('iramaddr_err', 1)
+statements:
+{'in': [], 'fu': ['CPC.read'], 'out': ['current_pc']}
+{'in': ['current_pc'], 'fu': ['na'], 'out': ['tmp_pc']}
+{'in': ['current_pc'], 'fu': ['Imem.ld_64'], 'out': ['inst0', 'iramaddr_err']}
+{'in': ['inst0'], 'fu': ['IReg.write'], 'out': []}
+{'in': [], 'fu': ['CPC.inc'], 'out': []}
+SW 2
+variables:
+('tmp_source0', 32)
+('tmp_ir', 64)
+('tmp_source1', 32)
+statements:
+{'in': [], 'fu': ['IReg.read'], 'out': ['tmp_ir']}
+{'in': ['tmp_ir'], 'fu': ['28:24'], 'out': ['rs']}
+{'in': ['tmp_ir'], 'fu': ['20:16'], 'out': ['rt']}
+{'in': ['tmp_ir'], 'fu': ['15:0'], 'out': ['imm']}
+{'in': ['rs'], 'fu': ['GPR.read0'], 'out': ['tmp_source0']}
+{'in': ['rt'], 'fu': ['GPR.read1'], 'out': ['tmp_source1']}
+{'in': ['imm'], 'fu': ['EXT1.sign'], 'out': ['source2']}
+{'in': ['rs', 'tmp_source0'], 'fu': ['FWUL0.forward'], 'out': ['source0']}
+{'in': ['rt', 'tmp_source1'], 'fu': ['FWUL1.forward'], 'out': ['source1']}
+SW 3
+variables:
+('flag', 4)
+statements:
+{'in': ['source0', 'source2'], 'fu': ['ALU1.add'], 'out': ['addr', 'flag']}
+SW 4
+variables:
+statements:
+SW 5
+variables:
+('LE_source1', 32)
+('byte3', 8)
+('byte2', 8)
+('byte1', 8)
+('byte0', 8)
+('addr_err', 1)
+statements:
+{'in': ['source1'], 'fu': ['31:24'], 'out': ['byte0']}
+{'in': ['source1'], 'fu': ['23:16'], 'out': ['byte1']}
+{'in': ['source1'], 'fu': ['15:8'], 'out': ['byte2']}
+{'in': ['source1'], 'fu': ['7:0'], 'out': ['byte3']}
+{'in': ['byte3', 'byte2', 'byte1', 'byte0'], 'fu': ['na'], 'out': ['LE_source1']}
+{'in': ['addr', 'LE_source1'], 'fu': ['Dmem.s_32'], 'out': ['addr_err']}
+SW 6
+variables:
+statements:
+JAL global
+variables:
+('linkReg', 5)
+('targ', 26)
+('tmp_pc', 32)
+('link', 32)
+('result', 32)
+JAL 1
+variables:
+('current_pc', 32)
+('inst0', 64)
+('iramaddr_err', 1)
+statements:
+{'in': [], 'fu': ['CPC.read'], 'out': ['current_pc']}
+{'in': ['current_pc'], 'fu': ['na'], 'out': ['tmp_pc']}
+{'in': ['current_pc'], 'fu': ['Imem.ld_64'], 'out': ['inst0', 'iramaddr_err']}
+{'in': ['inst0'], 'fu': ['IReg.write'], 'out': []}
+{'in': [], 'fu': ['CPC.inc'], 'out': []}
+JAL 2
+variables:
+('cpc_top', 4)
+('const', 2)
+('tmp_ir', 64)
+('tmp_cpc', 32)
+statements:
+{'in': [], 'fu': ['IReg.read'], 'out': ['tmp_ir']}
+{'in': ['tmp_ir'], 'fu': ['25:0'], 'out': ['targ']}
+{'in': ['00'], 'fu': ['na'], 'out': ['const']}
+{'in': [], 'fu': ['CPC.read'], 'out': ['tmp_cpc']}
+{'in': ['tmp_cpc'], 'fu': ['na'], 'out': ['link']}
+{'in': ['tmp_cpc'], 'fu': ['31:28'], 'out': ['cpc_top']}
+{'in': ['cpc_top', 'targ', 'const'], 'fu': ['na'], 'out': ['result']}
+{'in': ['11111'], 'fu': ['na'], 'out': ['linkReg']}
+JAL 3
+variables:
+statements:
+{'in': ['result'], 'fu': ['CPC.write'], 'out': []}
+{'in': ['linkReg', 'link'], 'fu': ['FWUL0.forward1'], 'out': []}
+{'in': ['linkReg', 'link'], 'fu': ['FWUL1.forward1'], 'out': []}
+{'in': ['linkReg', 'link'], 'fu': ['FWUL2.forward1'], 'out': []}
+{'in': ['linkReg', 'link'], 'fu': ['FWUL3.forward1'], 'out': []}
+JAL 4
+variables:
+statements:
+{'in': ['linkReg', 'link'], 'fu': ['FWUL0.forward3'], 'out': []}
+{'in': ['linkReg', 'link'], 'fu': ['FWUL1.forward3'], 'out': []}
+{'in': ['linkReg', 'link'], 'fu': ['FWUL2.forward3'], 'out': []}
+{'in': ['linkReg', 'link'], 'fu': ['FWUL3.forward3'], 'out': []}
+JAL 5
+variables:
+statements:
+{'in': ['linkReg', 'link'], 'fu': ['FWUL0.forward5'], 'out': []}
+{'in': ['linkReg', 'link'], 'fu': ['FWUL1.forward5'], 'out': []}
+{'in': ['linkReg', 'link'], 'fu': ['FWUL2.forward5'], 'out': []}
+{'in': ['linkReg', 'link'], 'fu': ['FWUL3.forward5'], 'out': []}
+JAL 6
+variables:
+statements:
+{'in': ['linkReg', 'link'], 'fu': ['GPR.write0'], 'out': []}
+{'in': ['linkReg', 'link'], 'fu': ['FWUL0.forward7'], 'out': []}
+{'in': ['linkReg', 'link'], 'fu': ['FWUL1.forward7'], 'out': []}
+{'in': ['linkReg', 'link'], 'fu': ['FWUL2.forward7'], 'out': []}
+{'in': ['linkReg', 'link'], 'fu': ['FWUL3.forward7'], 'out': []}
+DSZ_RR global
+variables:
+('rt', 5)
+('rd', 5)
+('rs', 5)
+('shamt', 8)
+('source2', 32)
+('source0', 32)
+('source1', 32)
+('addr2', 32)
+('tmp_pc', 32)
+('addr1', 32)
+DSZ_RR 1
+variables:
+('current_pc', 32)
+('inst0', 64)
+('iramaddr_err', 1)
+statements:
+{'in': [], 'fu': ['CPC.read'], 'out': ['current_pc']}
+{'in': ['current_pc'], 'fu': ['na'], 'out': ['tmp_pc']}
+{'in': ['current_pc'], 'fu': ['Imem.ld_64'], 'out': ['inst0', 'iramaddr_err']}
+{'in': ['inst0'], 'fu': ['IReg.write'], 'out': []}
+{'in': [], 'fu': ['CPC.inc'], 'out': []}
+DSZ_RR 2
+variables:
+('zero5', 5)
+('tmp_source0', 32)
+('tmp_ir', 64)
+('tmp_source2', 32)
+('tmp_source1', 32)
+statements:
+{'in': [], 'fu': ['IReg.read'], 'out': ['tmp_ir']}
+{'in': ['tmp_ir'], 'fu': ['28:24'], 'out': ['rs']}
+{'in': ['tmp_ir'], 'fu': ['20:16'], 'out': ['rt']}
+{'in': ['tmp_ir'], 'fu': ['12:8'], 'out': ['rd']}
+{'in': ['tmp_ir'], 'fu': ['7:0'], 'out': ['shamt']}
+{'in': ['00000'], 'fu': ['na'], 'out': ['zero5']}
+{'in': ['rs'], 'fu': ['GPR.read0'], 'out': ['tmp_source0']}
+{'in': ['zero5'], 'fu': ['GPR.read1'], 'out': ['tmp_source1']}
+{'in': ['rd'], 'fu': ['GPR.read2'], 'out': ['tmp_source2']}
+{'in': ['rs', 'tmp_source0'], 'fu': ['FWUL0.forward'], 'out': ['source0']}
+{'in': ['zero5', 'tmp_source1'], 'fu': ['FWUL1.forward'], 'out': ['source1']}
+{'in': ['rd', 'tmp_source2'], 'fu': ['FWUL2.forward'], 'out': ['source2']}
+DSZ_RR 3
+variables:
+('flag', 4)
+statements:
+{'in': ['source0', 'source2'], 'fu': ['ALU1.add'], 'out': ['addr1', 'flag']}
+DSZ_RR 4
+variables:
+('four32bit', 32)
+('cin', 1)
+('cout', 1)
+statements:
+{'in': ['1'], 'fu': ['na'], 'out': ['cin']}
+{'in': ['00000000000000000000000000000100'], 'fu': ['na'], 'out': ['four32bit']}
+{'in': ['addr1', 'four32bit', 'cin'], 'fu': ['ADDER2.adc'], 'out': ['addr2', 'cout']}
+DSZ_RR 5
+variables:
+('addr_err', 1)
+statements:
+{'in': ['addr1', 'source1'], 'fu': ['Dmem.s_32'], 'out': ['addr_err']}
+DSZ_RR 6
+variables:
+('addr_err', 1)
+statements:
+{'in': ['addr2', 'source1'], 'fu': ['Dmem.s_32'], 'out': ['addr_err']}
+SYSCALL global
+variables:
+('tmp_pc', 32)
+('tmp_cpc', 32)
+SYSCALL 1
+variables:
+('current_pc', 32)
+('inst0', 64)
+('iramaddr_err', 1)
+statements:
+{'in': [], 'fu': ['CPC.read'], 'out': ['current_pc']}
+{'in': ['current_pc'], 'fu': ['na'], 'out': ['tmp_pc']}
+{'in': ['current_pc'], 'fu': ['Imem.ld_64'], 'out': ['inst0', 'iramaddr_err']}
+{'in': ['inst0'], 'fu': ['IReg.write'], 'out': []}
+{'in': [], 'fu': ['CPC.inc'], 'out': []}
+SYSCALL 2
+variables:
+('tmp_ir', 64)
+statements:
+{'in': [], 'fu': ['IReg.read'], 'out': ['tmp_ir']}
+{'in': [], 'fu': ['CPC.read'], 'out': ['tmp_cpc']}
+SYSCALL 3
+variables:
+('result', 32)
+statements:
+{'in': ['00000000000000000000000001100000'], 'fu': ['na'], 'out': ['result']}
+{'in': ['tmp_cpc'], 'fu': ['SYSREG.write'], 'out': []}
+{'in': ['result'], 'fu': ['CPC.write'], 'out': []}
+SYSCALL 4
+variables:
+statements:
+SYSCALL 5
+variables:
+statements:
+SYSCALL 6
+variables:
+statements:
+MULTU global
+variables:
+('rt', 5)
+('shamt', 8)
+('rs', 5)
+('resulthi', 32)
+('rd', 5)
+('source0', 32)
+('source1', 32)
+('result', 64)
+('tmp_pc', 32)
+('resultlo', 32)
+MULTU 1
+variables:
+('current_pc', 32)
+('inst0', 64)
+('iramaddr_err', 1)
+statements:
+{'in': [], 'fu': ['CPC.read'], 'out': ['current_pc']}
+{'in': ['current_pc'], 'fu': ['na'], 'out': ['tmp_pc']}
+{'in': ['current_pc'], 'fu': ['Imem.ld_64'], 'out': ['inst0', 'iramaddr_err']}
+{'in': ['inst0'], 'fu': ['IReg.write'], 'out': []}
+{'in': [], 'fu': ['CPC.inc'], 'out': []}
+MULTU 2
+variables:
+('tmp_source0', 32)
+('tmp_ir', 64)
+('tmp_source1', 32)
+statements:
+{'in': [], 'fu': ['IReg.read'], 'out': ['tmp_ir']}
+{'in': ['tmp_ir'], 'fu': ['28:24'], 'out': ['rs']}
+{'in': ['tmp_ir'], 'fu': ['20:16'], 'out': ['rt']}
+{'in': ['tmp_ir'], 'fu': ['12:8'], 'out': ['rd']}
+{'in': ['tmp_ir'], 'fu': ['7:0'], 'out': ['shamt']}
+{'in': ['rs'], 'fu': ['GPR.read0'], 'out': ['tmp_source0']}
+{'in': ['rt'], 'fu': ['GPR.read1'], 'out': ['tmp_source1']}
+{'in': ['rs', 'tmp_source0'], 'fu': ['FWUL0.forward'], 'out': ['source0']}
+{'in': ['rt', 'tmp_source1'], 'fu': ['FWUL1.forward'], 'out': ['source1']}
+MULTU 3
+variables:
+statements:
+{'in': ['source0', 'source1'], 'fu': ['MUL1.mulu'], 'out': ['result']}
+{'in': ['result'], 'fu': ['63:32'], 'out': ['resulthi']}
+{'in': ['result'], 'fu': ['31:0'], 'out': ['resultlo']}
+{'in': ['resultlo'], 'fu': ['LO.write'], 'out': []}
+{'in': ['resulthi'], 'fu': ['HI.write'], 'out': []}
+MULTU 4
+variables:
+statements:
+MULTU 5
+variables:
+statements:
+MULTU 6
+variables:
+statements:
+SH global
+variables:
+('rt', 5)
+('addr', 32)
+('rs', 5)
+('imm', 16)
+('source2', 32)
+('source0', 32)
+('source1', 32)
+('tmp_pc', 32)
+SH 1
+variables:
+('current_pc', 32)
+('inst0', 64)
+('iramaddr_err', 1)
+statements:
+{'in': [], 'fu': ['CPC.read'], 'out': ['current_pc']}
+{'in': ['current_pc'], 'fu': ['na'], 'out': ['tmp_pc']}
+{'in': ['current_pc'], 'fu': ['Imem.ld_64'], 'out': ['inst0', 'iramaddr_err']}
+{'in': ['inst0'], 'fu': ['IReg.write'], 'out': []}
+{'in': [], 'fu': ['CPC.inc'], 'out': []}
+SH 2
+variables:
+('tmp_source0', 32)
+('tmp_ir', 64)
+('tmp_source1', 32)
+statements:
+{'in': [], 'fu': ['IReg.read'], 'out': ['tmp_ir']}
+{'in': ['tmp_ir'], 'fu': ['28:24'], 'out': ['rs']}
+{'in': ['tmp_ir'], 'fu': ['20:16'], 'out': ['rt']}
+{'in': ['tmp_ir'], 'fu': ['15:0'], 'out': ['imm']}
+{'in': ['rs'], 'fu': ['GPR.read0'], 'out': ['tmp_source0']}
+{'in': ['rt'], 'fu': ['GPR.read1'], 'out': ['tmp_source1']}
+{'in': ['imm'], 'fu': ['EXT1.sign'], 'out': ['source2']}
+{'in': ['rs', 'tmp_source0'], 'fu': ['FWUL0.forward'], 'out': ['source0']}
+{'in': ['rt', 'tmp_source1'], 'fu': ['FWUL1.forward'], 'out': ['source1']}
+SH 3
+variables:
+('flag', 4)
+statements:
+{'in': ['source0', 'source2'], 'fu': ['ALU1.add'], 'out': ['addr', 'flag']}
+SH 4
+variables:
+statements:
+SH 5
+variables:
+('LE_source1', 32)
+('byte3', 8)
+('byte2', 8)
+('byte1', 8)
+('byte0', 8)
+('addr_err', 1)
+statements:
+{'in': ['source1'], 'fu': ['31:24'], 'out': ['byte0']}
+{'in': ['source1'], 'fu': ['23:16'], 'out': ['byte1']}
+{'in': ['source1'], 'fu': ['15:8'], 'out': ['byte2']}
+{'in': ['source1'], 'fu': ['7:0'], 'out': ['byte3']}
+{'in': ['byte3', 'byte2', 'byte1', 'byte0'], 'fu': ['na'], 'out': ['LE_source1']}
+{'in': ['addr', 'LE_source1'], 'fu': ['Dmem.s_16'], 'out': ['addr_err']}
+SH 6
+variables:
+statements:
+MTLO global
+variables:
+('rt', 5)
+('shamt', 8)
+('rs', 5)
+('rd', 5)
+('source0', 32)
+('tmp_pc', 32)
+MTLO 1
+variables:
+('current_pc', 32)
+('inst0', 64)
+('iramaddr_err', 1)
+statements:
+{'in': [], 'fu': ['CPC.read'], 'out': ['current_pc']}
+{'in': ['current_pc'], 'fu': ['na'], 'out': ['tmp_pc']}
+{'in': ['current_pc'], 'fu': ['Imem.ld_64'], 'out': ['inst0', 'iramaddr_err']}
+{'in': ['inst0'], 'fu': ['IReg.write'], 'out': []}
+{'in': [], 'fu': ['CPC.inc'], 'out': []}
+MTLO 2
+variables:
+('tmp_source0', 32)
+('tmp_ir', 64)
+statements:
+{'in': [], 'fu': ['IReg.read'], 'out': ['tmp_ir']}
+{'in': ['tmp_ir'], 'fu': ['28:24'], 'out': ['rs']}
+{'in': ['tmp_ir'], 'fu': ['20:16'], 'out': ['rt']}
+{'in': ['tmp_ir'], 'fu': ['12:8'], 'out': ['rd']}
+{'in': ['tmp_ir'], 'fu': ['7:0'], 'out': ['shamt']}
+{'in': ['rs'], 'fu': ['GPR.read0'], 'out': ['tmp_source0']}
+{'in': ['rs', 'tmp_source0'], 'fu': ['FWUL0.forward'], 'out': ['source0']}
+MTLO 3
+variables:
+statements:
+{'in': ['source0'], 'fu': ['LO.write'], 'out': []}
+MTLO 4
+variables:
+statements:
+MTLO 5
+variables:
+statements:
+MTLO 6
+variables:
+statements:
+SH_RR global
+variables:
+('rt', 5)
+('rd', 5)
+('addr', 32)
+('rs', 5)
+('shamt', 8)
+('source2', 32)
+('source0', 32)
+('source1', 32)
+('tmp_pc', 32)
+SH_RR 1
+variables:
+('current_pc', 32)
+('inst0', 64)
+('iramaddr_err', 1)
+statements:
+{'in': [], 'fu': ['CPC.read'], 'out': ['current_pc']}
+{'in': ['current_pc'], 'fu': ['na'], 'out': ['tmp_pc']}
+{'in': ['current_pc'], 'fu': ['Imem.ld_64'], 'out': ['inst0', 'iramaddr_err']}
+{'in': ['inst0'], 'fu': ['IReg.write'], 'out': []}
+{'in': [], 'fu': ['CPC.inc'], 'out': []}
+SH_RR 2
+variables:
+('tmp_source0', 32)
+('tmp_ir', 64)
+('tmp_source2', 32)
+('tmp_source1', 32)
+statements:
+{'in': [], 'fu': ['IReg.read'], 'out': ['tmp_ir']}
+{'in': ['tmp_ir'], 'fu': ['28:24'], 'out': ['rs']}
+{'in': ['tmp_ir'], 'fu': ['20:16'], 'out': ['rt']}
+{'in': ['tmp_ir'], 'fu': ['12:8'], 'out': ['rd']}
+{'in': ['tmp_ir'], 'fu': ['7:0'], 'out': ['shamt']}
+{'in': ['rs'], 'fu': ['GPR.read0'], 'out': ['tmp_source0']}
+{'in': ['rt'], 'fu': ['GPR.read1'], 'out': ['tmp_source1']}
+{'in': ['rd'], 'fu': ['GPR.read2'], 'out': ['tmp_source2']}
+{'in': ['rs', 'tmp_source0'], 'fu': ['FWUL0.forward'], 'out': ['source0']}
+{'in': ['rt', 'tmp_source1'], 'fu': ['FWUL1.forward'], 'out': ['source1']}
+{'in': ['rd', 'tmp_source2'], 'fu': ['FWUL2.forward'], 'out': ['source2']}
+SH_RR 3
+variables:
+('flag', 4)
+statements:
+{'in': ['source0', 'source2'], 'fu': ['ALU1.add'], 'out': ['addr', 'flag']}
+SH_RR 4
+variables:
+statements:
+SH_RR 5
+variables:
+('LE_source1', 32)
+('byte3', 8)
+('byte2', 8)
+('byte1', 8)
+('byte0', 8)
+('addr_err', 1)
+statements:
+{'in': ['source1'], 'fu': ['31:24'], 'out': ['byte0']}
+{'in': ['source1'], 'fu': ['23:16'], 'out': ['byte1']}
+{'in': ['source1'], 'fu': ['15:8'], 'out': ['byte2']}
+{'in': ['source1'], 'fu': ['7:0'], 'out': ['byte3']}
+{'in': ['byte3', 'byte2', 'byte1', 'byte0'], 'fu': ['na'], 'out': ['LE_source1']}
+{'in': ['addr', 'LE_source1'], 'fu': ['Dmem.s_16'], 'out': ['addr_err']}
+SH_RR 6
+variables:
+statements:
+ORI global
+variables:
+('rt', 5)
+('rs', 5)
+('imm', 16)
+('source0', 32)
+('source1', 32)
+('result', 32)
+('tmp_pc', 32)
+ORI 1
+variables:
+('current_pc', 32)
+('inst0', 64)
+('iramaddr_err', 1)
+statements:
+{'in': [], 'fu': ['CPC.read'], 'out': ['current_pc']}
+{'in': ['current_pc'], 'fu': ['na'], 'out': ['tmp_pc']}
+{'in': ['current_pc'], 'fu': ['Imem.ld_64'], 'out': ['inst0', 'iramaddr_err']}
+{'in': ['inst0'], 'fu': ['IReg.write'], 'out': []}
+{'in': [], 'fu': ['CPC.inc'], 'out': []}
+ORI 2
+variables:
+('tmp_source0', 32)
+('tmp_ir', 64)
+statements:
+{'in': [], 'fu': ['IReg.read'], 'out': ['tmp_ir']}
+{'in': ['tmp_ir'], 'fu': ['28:24'], 'out': ['rs']}
+{'in': ['tmp_ir'], 'fu': ['20:16'], 'out': ['rt']}
+{'in': ['tmp_ir'], 'fu': ['15:0'], 'out': ['imm']}
+{'in': ['rs'], 'fu': ['GPR.read0'], 'out': ['tmp_source0']}
+{'in': ['rs', 'tmp_source0'], 'fu': ['FWUL0.forward'], 'out': ['source0']}
+{'in': ['imm'], 'fu': ['EXT1.zero'], 'out': ['source1']}
+ORI 3
+variables:
+('flag', 4)
+statements:
+{'in': ['source0', 'source1'], 'fu': ['ALU1.or'], 'out': ['result', 'flag']}
+{'in': ['rt', 'result'], 'fu': ['FWUL0.forward1'], 'out': []}
+{'in': ['rt', 'result'], 'fu': ['FWUL1.forward1'], 'out': []}
+{'in': ['rt', 'result'], 'fu': ['FWUL2.forward1'], 'out': []}
+{'in': ['rt', 'result'], 'fu': ['FWUL3.forward1'], 'out': []}
+ORI 4
+variables:
+statements:
+{'in': ['rt', 'result'], 'fu': ['FWUL0.forward3'], 'out': []}
+{'in': ['rt', 'result'], 'fu': ['FWUL1.forward3'], 'out': []}
+{'in': ['rt', 'result'], 'fu': ['FWUL2.forward3'], 'out': []}
+{'in': ['rt', 'result'], 'fu': ['FWUL3.forward3'], 'out': []}
+ORI 5
+variables:
+statements:
+{'in': ['rt', 'result'], 'fu': ['FWUL0.forward5'], 'out': []}
+{'in': ['rt', 'result'], 'fu': ['FWUL1.forward5'], 'out': []}
+{'in': ['rt', 'result'], 'fu': ['FWUL2.forward5'], 'out': []}
+{'in': ['rt', 'result'], 'fu': ['FWUL3.forward5'], 'out': []}
+ORI 6
+variables:
+statements:
+{'in': ['rt', 'result'], 'fu': ['GPR.write0'], 'out': []}
+{'in': ['rt', 'result'], 'fu': ['FWUL0.forward7'], 'out': []}
+{'in': ['rt', 'result'], 'fu': ['FWUL1.forward7'], 'out': []}
+{'in': ['rt', 'result'], 'fu': ['FWUL2.forward7'], 'out': []}
+{'in': ['rt', 'result'], 'fu': ['FWUL3.forward7'], 'out': []}
+SB global
+variables:
+('rt', 5)
+('addr', 32)
+('rs', 5)
+('imm', 16)
+('source2', 32)
+('source0', 32)
+('source1', 32)
+('tmp_pc', 32)
+SB 1
+variables:
+('current_pc', 32)
+('inst0', 64)
+('iramaddr_err', 1)
+statements:
+{'in': [], 'fu': ['CPC.read'], 'out': ['current_pc']}
+{'in': ['current_pc'], 'fu': ['na'], 'out': ['tmp_pc']}
+{'in': ['current_pc'], 'fu': ['Imem.ld_64'], 'out': ['inst0', 'iramaddr_err']}
+{'in': ['inst0'], 'fu': ['IReg.write'], 'out': []}
+{'in': [], 'fu': ['CPC.inc'], 'out': []}
+SB 2
+variables:
+('tmp_source0', 32)
+('tmp_ir', 64)
+('tmp_source1', 32)
+statements:
+{'in': [], 'fu': ['IReg.read'], 'out': ['tmp_ir']}
+{'in': ['tmp_ir'], 'fu': ['28:24'], 'out': ['rs']}
+{'in': ['tmp_ir'], 'fu': ['20:16'], 'out': ['rt']}
+{'in': ['tmp_ir'], 'fu': ['15:0'], 'out': ['imm']}
+{'in': ['rs'], 'fu': ['GPR.read0'], 'out': ['tmp_source0']}
+{'in': ['rt'], 'fu': ['GPR.read1'], 'out': ['tmp_source1']}
+{'in': ['imm'], 'fu': ['EXT1.sign'], 'out': ['source2']}
+{'in': ['rs', 'tmp_source0'], 'fu': ['FWUL0.forward'], 'out': ['source0']}
+{'in': ['rt', 'tmp_source1'], 'fu': ['FWUL1.forward'], 'out': ['source1']}
+SB 3
+variables:
+('flag', 4)
+statements:
+{'in': ['source0', 'source2'], 'fu': ['ALU1.add'], 'out': ['addr', 'flag']}
+SB 4
+variables:
+statements:
+SB 5
+variables:
+('LE_source1', 32)
+('byte3', 8)
+('byte2', 8)
+('byte1', 8)
+('byte0', 8)
+('addr_err', 1)
+statements:
+{'in': ['source1'], 'fu': ['31:24'], 'out': ['byte0']}
+{'in': ['source1'], 'fu': ['23:16'], 'out': ['byte1']}
+{'in': ['source1'], 'fu': ['15:8'], 'out': ['byte2']}
+{'in': ['source1'], 'fu': ['7:0'], 'out': ['byte3']}
+{'in': ['byte3', 'byte2', 'byte1', 'byte0'], 'fu': ['na'], 'out': ['LE_source1']}
+{'in': ['addr', 'LE_source1'], 'fu': ['Dmem.s_8'], 'out': ['addr_err']}
+SB 6
+variables:
+statements:
+NOP global
+variables:
+('tmp_pc', 32)
+NOP 1
+variables:
+('current_pc', 32)
+('inst0', 64)
+('iramaddr_err', 1)
+statements:
+{'in': [], 'fu': ['CPC.read'], 'out': ['current_pc']}
+{'in': ['current_pc'], 'fu': ['na'], 'out': ['tmp_pc']}
+{'in': ['current_pc'], 'fu': ['Imem.ld_64'], 'out': ['inst0', 'iramaddr_err']}
+{'in': ['inst0'], 'fu': ['IReg.write'], 'out': []}
+{'in': [], 'fu': ['CPC.inc'], 'out': []}
+NOP 2
+variables:
+('tmp_ir', 64)
+statements:
+{'in': [], 'fu': ['IReg.read'], 'out': ['tmp_ir']}
+NOP 3
+variables:
+statements:
+NOP 4
+variables:
+statements:
+NOP 5
+variables:
+statements:
+NOP 6
+variables:
+statements:
+OR global
+variables:
+('rt', 5)
+('shamt', 8)
+('rs', 5)
+('rd', 5)
+('source0', 32)
+('source1', 32)
+('result', 32)
+('tmp_pc', 32)
+OR 1
+variables:
+('current_pc', 32)
+('inst0', 64)
+('iramaddr_err', 1)
+statements:
+{'in': [], 'fu': ['CPC.read'], 'out': ['current_pc']}
+{'in': ['current_pc'], 'fu': ['na'], 'out': ['tmp_pc']}
+{'in': ['current_pc'], 'fu': ['Imem.ld_64'], 'out': ['inst0', 'iramaddr_err']}
+{'in': ['inst0'], 'fu': ['IReg.write'], 'out': []}
+{'in': [], 'fu': ['CPC.inc'], 'out': []}
+OR 2
+variables:
+('tmp_source0', 32)
+('tmp_ir', 64)
+('tmp_source1', 32)
+statements:
+{'in': [], 'fu': ['IReg.read'], 'out': ['tmp_ir']}
+{'in': ['tmp_ir'], 'fu': ['28:24'], 'out': ['rs']}
+{'in': ['tmp_ir'], 'fu': ['20:16'], 'out': ['rt']}
+{'in': ['tmp_ir'], 'fu': ['12:8'], 'out': ['rd']}
+{'in': ['tmp_ir'], 'fu': ['7:0'], 'out': ['shamt']}
+{'in': ['rs'], 'fu': ['GPR.read0'], 'out': ['tmp_source0']}
+{'in': ['rt'], 'fu': ['GPR.read1'], 'out': ['tmp_source1']}
+{'in': ['rs', 'tmp_source0'], 'fu': ['FWUL0.forward'], 'out': ['source0']}
+{'in': ['rt', 'tmp_source1'], 'fu': ['FWUL1.forward'], 'out': ['source1']}
+OR 3
+variables:
+('flag', 4)
+statements:
+{'in': ['source0', 'source1'], 'fu': ['ALU1.or'], 'out': ['result', 'flag']}
+{'in': ['rd', 'result'], 'fu': ['FWUL0.forward1'], 'out': []}
+{'in': ['rd', 'result'], 'fu': ['FWUL1.forward1'], 'out': []}
+{'in': ['rd', 'result'], 'fu': ['FWUL2.forward1'], 'out': []}
+{'in': ['rd', 'result'], 'fu': ['FWUL3.forward1'], 'out': []}
+OR 4
+variables:
+statements:
+{'in': ['rd', 'result'], 'fu': ['FWUL0.forward3'], 'out': []}
+{'in': ['rd', 'result'], 'fu': ['FWUL1.forward3'], 'out': []}
+{'in': ['rd', 'result'], 'fu': ['FWUL2.forward3'], 'out': []}
+{'in': ['rd', 'result'], 'fu': ['FWUL3.forward3'], 'out': []}
+OR 5
+variables:
+statements:
+{'in': ['rd', 'result'], 'fu': ['FWUL0.forward5'], 'out': []}
+{'in': ['rd', 'result'], 'fu': ['FWUL1.forward5'], 'out': []}
+{'in': ['rd', 'result'], 'fu': ['FWUL2.forward5'], 'out': []}
+{'in': ['rd', 'result'], 'fu': ['FWUL3.forward5'], 'out': []}
+OR 6
+variables:
+statements:
+{'in': ['rd', 'result'], 'fu': ['GPR.write0'], 'out': []}
+{'in': ['rd', 'result'], 'fu': ['FWUL0.forward7'], 'out': []}
+{'in': ['rd', 'result'], 'fu': ['FWUL1.forward7'], 'out': []}
+{'in': ['rd', 'result'], 'fu': ['FWUL2.forward7'], 'out': []}
+{'in': ['rd', 'result'], 'fu': ['FWUL3.forward7'], 'out': []}
+ADDI global
+variables:
+('rt', 5)
+('rs', 5)
+('imm', 16)
+('source0', 32)
+('source1', 32)
+('result', 32)
+('tmp_pc', 32)
+ADDI 1
+variables:
+('current_pc', 32)
+('inst0', 64)
+('iramaddr_err', 1)
+statements:
+{'in': [], 'fu': ['CPC.read'], 'out': ['current_pc']}
+{'in': ['current_pc'], 'fu': ['na'], 'out': ['tmp_pc']}
+{'in': ['current_pc'], 'fu': ['Imem.ld_64'], 'out': ['inst0', 'iramaddr_err']}
+{'in': ['inst0'], 'fu': ['IReg.write'], 'out': []}
+{'in': [], 'fu': ['CPC.inc'], 'out': []}
+ADDI 2
+variables:
+('tmp_source0', 32)
+('tmp_ir', 64)
+statements:
+{'in': [], 'fu': ['IReg.read'], 'out': ['tmp_ir']}
+{'in': ['tmp_ir'], 'fu': ['28:24'], 'out': ['rs']}
+{'in': ['tmp_ir'], 'fu': ['20:16'], 'out': ['rt']}
+{'in': ['tmp_ir'], 'fu': ['15:0'], 'out': ['imm']}
+{'in': ['rs'], 'fu': ['GPR.read0'], 'out': ['tmp_source0']}
+{'in': ['rs', 'tmp_source0'], 'fu': ['FWUL0.forward'], 'out': ['source0']}
+{'in': ['imm'], 'fu': ['EXT1.sign'], 'out': ['source1']}
+ADDI 3
+variables:
+('flag', 4)
+statements:
+{'in': ['source0', 'source1'], 'fu': ['ALU1.add'], 'out': ['result', 'flag']}
+{'in': ['rt', 'result'], 'fu': ['FWUL0.forward1'], 'out': []}
+{'in': ['rt', 'result'], 'fu': ['FWUL1.forward1'], 'out': []}
+{'in': ['rt', 'result'], 'fu': ['FWUL2.forward1'], 'out': []}
+{'in': ['rt', 'result'], 'fu': ['FWUL3.forward1'], 'out': []}
+ADDI 4
+variables:
+statements:
+{'in': ['rt', 'result'], 'fu': ['FWUL0.forward3'], 'out': []}
+{'in': ['rt', 'result'], 'fu': ['FWUL1.forward3'], 'out': []}
+{'in': ['rt', 'result'], 'fu': ['FWUL2.forward3'], 'out': []}
+{'in': ['rt', 'result'], 'fu': ['FWUL3.forward3'], 'out': []}
+ADDI 5
+variables:
+statements:
+{'in': ['rt', 'result'], 'fu': ['FWUL0.forward5'], 'out': []}
+{'in': ['rt', 'result'], 'fu': ['FWUL1.forward5'], 'out': []}
+{'in': ['rt', 'result'], 'fu': ['FWUL2.forward5'], 'out': []}
+{'in': ['rt', 'result'], 'fu': ['FWUL3.forward5'], 'out': []}
+ADDI 6
+variables:
+statements:
+{'in': ['rt', 'result'], 'fu': ['GPR.write0'], 'out': []}
+{'in': ['rt', 'result'], 'fu': ['FWUL0.forward7'], 'out': []}
+{'in': ['rt', 'result'], 'fu': ['FWUL1.forward7'], 'out': []}
+{'in': ['rt', 'result'], 'fu': ['FWUL2.forward7'], 'out': []}
+{'in': ['rt', 'result'], 'fu': ['FWUL3.forward7'], 'out': []}

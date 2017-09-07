@@ -1,0 +1,5107 @@
+DLW_RR global
+variables:
+(u'rt', 5)
+(u'shamt', 8)
+(u'bigE_word0', 32)
+(u'bigE_word1', 32)
+(u'rs', 5)
+(u'nextRT', 5)
+(u'rd', 5)
+(u'source0', 32)
+(u'source1', 32)
+(u'addr2', 32)
+(u'tmp_pc', 32)
+(u'addr1', 32)
+DLW_RR 1
+variables:
+(u'current_pc', 32)
+(u'inst0', 64)
+(u'iramaddr_err', 1)
+statements:
+{u'out': [u'current_pc'], u'fu': [u'CPC.read'], u'in': []}
+{u'out': [u'tmp_pc'], u'fu': [u'na'], u'in': [u'current_pc']}
+{u'out': [u'inst0', u'iramaddr_err'], u'fu': [u'Imem.ld_64'], u'in': [u'current_pc']}
+{u'out': [], u'fu': [u'IReg.write'], u'in': [u'inst0']}
+{u'out': [], u'fu': [u'CPC.inc'], u'in': []}
+DLW_RR 2
+variables:
+(u'tmp_source0', 32)
+(u'tmp_ir', 64)
+(u'tmp_source1', 32)
+statements:
+{u'out': [u'tmp_ir'], u'fu': [u'IReg.read'], u'in': []}
+{u'out': [u'rs'], u'fu': [u'28:24'], u'in': [u'tmp_ir']}
+{u'out': [u'rt'], u'fu': [u'20:16'], u'in': [u'tmp_ir']}
+{u'out': [u'rd'], u'fu': [u'12:8'], u'in': [u'tmp_ir']}
+{u'out': [u'shamt'], u'fu': [u'7:0'], u'in': [u'tmp_ir']}
+{u'out': [u'tmp_source0'], u'fu': [u'GPR.read0'], u'in': [u'rs']}
+{u'out': [u'tmp_source1'], u'fu': [u'GPR.read1'], u'in': [u'rd']}
+{u'out': [u'source0'], u'fu': [u'FWUL0.forward'], u'in': [u'rs', u'tmp_source0']}
+{u'out': [u'source1'], u'fu': [u'FWUL1.forward'], u'in': [u'rd', u'tmp_source1']}
+DLW_RR 3
+variables:
+(u'tmpRT', 4)
+(u'flag', 4)
+(u'one', 1)
+statements:
+{u'out': [u'addr1', u'flag'], u'fu': [u'ALU1.add'], u'in': [u'source0', u'source1']}
+{u'out': [u'one'], u'fu': [u'na'], u'in': [u'1']}
+{u'out': [u'tmpRT'], u'fu': [u'4:1'], u'in': [u'rt']}
+{u'out': [u'nextRT'], u'fu': [u'na'], u'in': [u'tmpRT', u'one']}
+{u'out': [], u'fu': [u'FWUL0.lock1'], u'in': [u'rt']}
+{u'out': [], u'fu': [u'FWUL1.lock1'], u'in': [u'rt']}
+{u'out': [], u'fu': [u'FWUL2.lock1'], u'in': [u'rt']}
+{u'out': [], u'fu': [u'FWUL3.lock1'], u'in': [u'rt']}
+{u'out': [], u'fu': [u'FWUL0.lock2'], u'in': [u'nextRT']}
+{u'out': [], u'fu': [u'FWUL1.lock2'], u'in': [u'nextRT']}
+{u'out': [], u'fu': [u'FWUL2.lock2'], u'in': [u'nextRT']}
+{u'out': [], u'fu': [u'FWUL3.lock2'], u'in': [u'nextRT']}
+DLW_RR 4
+variables:
+(u'four32bit', 32)
+(u'cout', 1)
+(u'byte0', 8)
+(u'byte3', 8)
+(u'cin', 1)
+(u'byte1', 8)
+(u'byte2', 8)
+(u'addr_err', 1)
+(u'result1', 32)
+statements:
+{u'out': [u'cin'], u'fu': [u'na'], u'in': [u'0']}
+{u'out': [u'four32bit'], u'fu': [u'na'], u'in': [u'00000000000000000000000000000100']}
+{u'out': [u'result1', u'addr_err'], u'fu': [u'Dmem.ld_32'], u'in': [u'addr1']}
+{u'out': [u'byte0'], u'fu': [u'31:24'], u'in': [u'result1']}
+{u'out': [u'byte1'], u'fu': [u'23:16'], u'in': [u'result1']}
+{u'out': [u'byte2'], u'fu': [u'15:8'], u'in': [u'result1']}
+{u'out': [u'byte3'], u'fu': [u'7:0'], u'in': [u'result1']}
+{u'out': [u'bigE_word0'], u'fu': [u'na'], u'in': [u'byte3', u'byte2', u'byte1', u'byte0']}
+{u'out': [], u'fu': [u'FWUL0.forward3'], u'in': [u'rt', u'bigE_word0']}
+{u'out': [], u'fu': [u'FWUL1.forward3'], u'in': [u'rt', u'bigE_word0']}
+{u'out': [], u'fu': [u'FWUL2.forward3'], u'in': [u'rt', u'bigE_word0']}
+{u'out': [], u'fu': [u'FWUL3.forward3'], u'in': [u'rt', u'bigE_word0']}
+{u'out': [u'addr2', u'cout'], u'fu': [u'ADDER2.adc'], u'in': [u'addr1', u'four32bit', u'cin']}
+{u'out': [], u'fu': [u'FWUL0.lock3'], u'in': [u'rt']}
+{u'out': [], u'fu': [u'FWUL1.lock3'], u'in': [u'rt']}
+{u'out': [], u'fu': [u'FWUL2.lock3'], u'in': [u'rt']}
+{u'out': [], u'fu': [u'FWUL3.lock3'], u'in': [u'rt']}
+{u'out': [], u'fu': [u'FWUL0.lock4'], u'in': [u'nextRT']}
+{u'out': [], u'fu': [u'FWUL1.lock4'], u'in': [u'nextRT']}
+{u'out': [], u'fu': [u'FWUL2.lock4'], u'in': [u'nextRT']}
+{u'out': [], u'fu': [u'FWUL3.lock4'], u'in': [u'nextRT']}
+DLW_RR 5
+variables:
+(u'result2', 32)
+(u'byte3', 8)
+(u'byte2', 8)
+(u'byte1', 8)
+(u'byte0', 8)
+(u'addr_err', 1)
+statements:
+{u'out': [u'result2', u'addr_err'], u'fu': [u'Dmem.ld_32'], u'in': [u'addr2']}
+{u'out': [u'byte0'], u'fu': [u'31:24'], u'in': [u'result2']}
+{u'out': [u'byte1'], u'fu': [u'23:16'], u'in': [u'result2']}
+{u'out': [u'byte2'], u'fu': [u'15:8'], u'in': [u'result2']}
+{u'out': [u'byte3'], u'fu': [u'7:0'], u'in': [u'result2']}
+{u'out': [u'bigE_word1'], u'fu': [u'na'], u'in': [u'byte3', u'byte2', u'byte1', u'byte0']}
+{u'out': [], u'fu': [u'FWUL0.forward5'], u'in': [u'rt', u'bigE_word0']}
+{u'out': [], u'fu': [u'FWUL1.forward5'], u'in': [u'rt', u'bigE_word0']}
+{u'out': [], u'fu': [u'FWUL2.forward5'], u'in': [u'rt', u'bigE_word0']}
+{u'out': [], u'fu': [u'FWUL3.forward5'], u'in': [u'rt', u'bigE_word0']}
+{u'out': [], u'fu': [u'FWUL0.forward6'], u'in': [u'nextRT', u'bigE_word1']}
+{u'out': [], u'fu': [u'FWUL1.forward6'], u'in': [u'nextRT', u'bigE_word1']}
+{u'out': [], u'fu': [u'FWUL2.forward6'], u'in': [u'nextRT', u'bigE_word1']}
+{u'out': [], u'fu': [u'FWUL3.forward6'], u'in': [u'nextRT', u'bigE_word1']}
+{u'out': [], u'fu': [u'FWUL0.lock5'], u'in': [u'nextRT']}
+{u'out': [], u'fu': [u'FWUL1.lock5'], u'in': [u'nextRT']}
+{u'out': [], u'fu': [u'FWUL2.lock5'], u'in': [u'nextRT']}
+{u'out': [], u'fu': [u'FWUL3.lock5'], u'in': [u'nextRT']}
+DLW_RR 6
+variables:
+statements:
+{u'out': [], u'fu': [u'FWUL0.forward7'], u'in': [u'rt', u'bigE_word0']}
+{u'out': [], u'fu': [u'FWUL1.forward7'], u'in': [u'rt', u'bigE_word0']}
+{u'out': [], u'fu': [u'FWUL2.forward7'], u'in': [u'rt', u'bigE_word0']}
+{u'out': [], u'fu': [u'FWUL3.forward7'], u'in': [u'rt', u'bigE_word0']}
+{u'out': [], u'fu': [u'FWUL0.forward8'], u'in': [u'nextRT', u'bigE_word1']}
+{u'out': [], u'fu': [u'FWUL1.forward8'], u'in': [u'nextRT', u'bigE_word1']}
+{u'out': [], u'fu': [u'FWUL2.forward8'], u'in': [u'nextRT', u'bigE_word1']}
+{u'out': [], u'fu': [u'FWUL3.forward8'], u'in': [u'nextRT', u'bigE_word1']}
+{u'out': [], u'fu': [u'GPR.write0'], u'in': [u'rt', u'bigE_word0']}
+{u'out': [], u'fu': [u'GPR.write1'], u'in': [u'nextRT', u'bigE_word1']}
+BLTZ global
+variables:
+(u'rt', 5)
+(u'target', 32)
+(u'rs', 5)
+(u'imm', 16)
+(u'source0', 32)
+(u'src0', 32)
+(u'source1', 32)
+(u'tmp_pc', 32)
+BLTZ 1
+variables:
+(u'current_pc', 32)
+(u'inst0', 64)
+(u'iramaddr_err', 1)
+statements:
+{u'out': [u'current_pc'], u'fu': [u'CPC.read'], u'in': []}
+{u'out': [u'tmp_pc'], u'fu': [u'na'], u'in': [u'current_pc']}
+{u'out': [u'inst0', u'iramaddr_err'], u'fu': [u'Imem.ld_64'], u'in': [u'current_pc']}
+{u'out': [], u'fu': [u'IReg.write'], u'in': [u'inst0']}
+{u'out': [], u'fu': [u'CPC.inc'], u'in': []}
+BLTZ 2
+variables:
+(u'tmp', 30)
+(u'tmp_source0', 32)
+(u'cout', 1)
+(u'cin', 1)
+(u'ext_imm', 32)
+(u'tmp_ir', 64)
+(u'offset', 32)
+(u'tmp_cpc', 32)
+(u'zero2', 2)
+statements:
+{u'out': [u'tmp_ir'], u'fu': [u'IReg.read'], u'in': []}
+{u'out': [u'rs'], u'fu': [u'28:24'], u'in': [u'tmp_ir']}
+{u'out': [u'rt'], u'fu': [u'20:16'], u'in': [u'tmp_ir']}
+{u'out': [u'imm'], u'fu': [u'15:0'], u'in': [u'tmp_ir']}
+{u'out': [u'tmp_source0'], u'fu': [u'GPR.read0'], u'in': [u'rs']}
+{u'out': [u'src0'], u'fu': [u'FWU0.forward'], u'in': [u'rs', u'tmp_source0']}
+{u'out': [u'cin'], u'fu': [u'na'], u'in': [u'0']}
+{u'out': [u'zero2'], u'fu': [u'na'], u'in': [u'00']}
+{u'out': [u'ext_imm'], u'fu': [u'EXT1.sign'], u'in': [u'imm']}
+{u'out': [u'tmp'], u'fu': [u'29:0'], u'in': [u'ext_imm']}
+{u'out': [u'offset'], u'fu': [u'na'], u'in': [u'tmp', u'zero2']}
+{u'out': [u'tmp_cpc'], u'fu': [u'CPC.read'], u'in': []}
+{u'out': [u'target', u'cout'], u'fu': [u'ADD1.adc'], u'in': [u'tmp_cpc', u'offset', u'cin']}
+BLTZ 3
+variables:
+(u'flag', 4)
+(u'cond', 1)
+(u'N', 1)
+statements:
+{u'out': [u'flag'], u'fu': [u'ALU1.cmpz'], u'in': [u'src0']}
+{u'out': [u'N'], u'fu': [u'1'], u'in': [u'flag']}
+{u'out': [u'cond'], u'fu': [u" == '"], u'in': [u'N', u'1']}
+{u'out': [], u'fu': [u'sel', u'CPC.write'], u'in': [u'cond', u'target']}
+BLTZ 4
+variables:
+statements:
+BLTZ 5
+variables:
+statements:
+BLTZ 6
+variables:
+statements:
+SWL global
+variables:
+(u'rt', 5)
+(u'addr', 32)
+(u'rs', 5)
+(u'imm', 16)
+(u'source2', 32)
+(u'source0', 32)
+(u'source1', 32)
+(u'result', 32)
+(u'tmp_pc', 32)
+SWL 1
+variables:
+(u'current_pc', 32)
+(u'inst0', 64)
+(u'iramaddr_err', 1)
+statements:
+{u'out': [u'current_pc'], u'fu': [u'CPC.read'], u'in': []}
+{u'out': [u'tmp_pc'], u'fu': [u'na'], u'in': [u'current_pc']}
+{u'out': [u'inst0', u'iramaddr_err'], u'fu': [u'Imem.ld_64'], u'in': [u'current_pc']}
+{u'out': [], u'fu': [u'IReg.write'], u'in': [u'inst0']}
+{u'out': [], u'fu': [u'CPC.inc'], u'in': []}
+SWL 2
+variables:
+(u'tmp_source0', 32)
+(u'tmp_ir', 64)
+(u'tmp_source1', 32)
+statements:
+{u'out': [u'tmp_ir'], u'fu': [u'IReg.read'], u'in': []}
+{u'out': [u'rs'], u'fu': [u'28:24'], u'in': [u'tmp_ir']}
+{u'out': [u'rt'], u'fu': [u'20:16'], u'in': [u'tmp_ir']}
+{u'out': [u'imm'], u'fu': [u'15:0'], u'in': [u'tmp_ir']}
+{u'out': [u'tmp_source0'], u'fu': [u'GPR.read0'], u'in': [u'rs']}
+{u'out': [u'tmp_source1'], u'fu': [u'GPR.read1'], u'in': [u'rt']}
+{u'out': [u'source2'], u'fu': [u'EXT1.sign'], u'in': [u'imm']}
+{u'out': [u'source0'], u'fu': [u'FWUL0.forward'], u'in': [u'rs', u'tmp_source0']}
+{u'out': [u'source1'], u'fu': [u'FWUL1.forward'], u'in': [u'rt', u'tmp_source1']}
+SWL 3
+variables:
+(u'flag', 4)
+statements:
+{u'out': [u'addr', u'flag'], u'fu': [u'ALU1.add'], u'in': [u'source0', u'source2']}
+SWL 4
+variables:
+(u'data', 32)
+(u'reg1', 8)
+(u'target', 32)
+(u'addr_mask', 30)
+(u'reg3', 8)
+(u'result2', 32)
+(u'data2', 8)
+(u'result3', 32)
+(u'reg2', 8)
+(u'byte2', 8)
+(u'result0', 32)
+(u'result1', 32)
+(u'byte3', 8)
+(u'byte0', 8)
+(u'byte1', 8)
+(u'vAddr10', 2)
+(u'addr_err', 1)
+(u'nData', 32)
+(u'data1', 8)
+(u'data3', 8)
+(u'zero2', 2)
+statements:
+{u'out': [u'addr_mask'], u'fu': [u'31:2'], u'in': [u'addr']}
+{u'out': [u'vAddr10'], u'fu': [u'1:0'], u'in': [u'addr']}
+{u'out': [u'zero2'], u'fu': [u'na'], u'in': [u'00']}
+{u'out': [u'target'], u'fu': [u'na'], u'in': [u'addr_mask', u'zero2']}
+{u'out': [u'data', u'addr_err'], u'fu': [u'Dmem.ld_32'], u'in': [u'target']}
+{u'out': [u'byte0'], u'fu': [u'31:24'], u'in': [u'data']}
+{u'out': [u'byte1'], u'fu': [u'23:16'], u'in': [u'data']}
+{u'out': [u'byte2'], u'fu': [u'15:8'], u'in': [u'data']}
+{u'out': [u'byte3'], u'fu': [u'7:0'], u'in': [u'data']}
+{u'out': [u'nData'], u'fu': [u'na'], u'in': [u'byte3', u'byte2', u'byte1', u'byte0']}
+{u'out': [u'data3'], u'fu': [u'31:24'], u'in': [u'nData']}
+{u'out': [u'data2'], u'fu': [u'23:16'], u'in': [u'nData']}
+{u'out': [u'data1'], u'fu': [u'15:8'], u'in': [u'nData']}
+{u'out': [u'reg3'], u'fu': [u'31:24'], u'in': [u'source1']}
+{u'out': [u'reg2'], u'fu': [u'23:16'], u'in': [u'source1']}
+{u'out': [u'reg1'], u'fu': [u'15:8'], u'in': [u'source1']}
+{u'out': [u'result3'], u'fu': [u'na'], u'in': [u'source1']}
+{u'out': [u'result2'], u'fu': [u'na'], u'in': [u'data3', u'reg3', u'reg2', u'reg1']}
+{u'out': [u'result1'], u'fu': [u'na'], u'in': [u'data3', u'data2', u'reg3', u'reg2']}
+{u'out': [u'result0'], u'fu': [u'na'], u'in': [u'data3', u'data2', u'data1', u'reg3']}
+{u'out': [u'result'], u'fu': [u'MUXw32p4.sel'], u'in': [u'result0', u'result1', u'result2', u'result3', u'vAddr10']}
+SWL 5
+variables:
+(u'target', 32)
+(u'byte3', 8)
+(u'byte2', 8)
+(u'byte1', 8)
+(u'byte0', 8)
+(u'zero2', 2)
+(u'nResult', 32)
+(u'addr_err', 1)
+(u'addr_mask', 30)
+statements:
+{u'out': [u'addr_mask'], u'fu': [u'31:2'], u'in': [u'addr']}
+{u'out': [u'zero2'], u'fu': [u'na'], u'in': [u'00']}
+{u'out': [u'target'], u'fu': [u'na'], u'in': [u'addr_mask', u'zero2']}
+{u'out': [u'byte0'], u'fu': [u'31:24'], u'in': [u'result']}
+{u'out': [u'byte1'], u'fu': [u'23:16'], u'in': [u'result']}
+{u'out': [u'byte2'], u'fu': [u'15:8'], u'in': [u'result']}
+{u'out': [u'byte3'], u'fu': [u'7:0'], u'in': [u'result']}
+{u'out': [u'nResult'], u'fu': [u'na'], u'in': [u'byte3', u'byte2', u'byte1', u'byte0']}
+{u'out': [u'addr_err'], u'fu': [u'Dmem.s_32'], u'in': [u'target', u'nResult']}
+SWL 6
+variables:
+statements:
+MFLO global
+variables:
+(u'rt', 5)
+(u'shamt', 8)
+(u'rs', 5)
+(u'rd', 5)
+(u'tmp_pc', 32)
+(u'result', 32)
+MFLO 1
+variables:
+(u'current_pc', 32)
+(u'inst0', 64)
+(u'iramaddr_err', 1)
+statements:
+{u'out': [u'current_pc'], u'fu': [u'CPC.read'], u'in': []}
+{u'out': [u'tmp_pc'], u'fu': [u'na'], u'in': [u'current_pc']}
+{u'out': [u'inst0', u'iramaddr_err'], u'fu': [u'Imem.ld_64'], u'in': [u'current_pc']}
+{u'out': [], u'fu': [u'IReg.write'], u'in': [u'inst0']}
+{u'out': [], u'fu': [u'CPC.inc'], u'in': []}
+MFLO 2
+variables:
+(u'one1b0', 1)
+(u'tmp_ir', 64)
+(u'zero1b', 1)
+statements:
+{u'out': [u'tmp_ir'], u'fu': [u'IReg.read'], u'in': []}
+{u'out': [u'rs'], u'fu': [u'28:24'], u'in': [u'tmp_ir']}
+{u'out': [u'rt'], u'fu': [u'20:16'], u'in': [u'tmp_ir']}
+{u'out': [u'rd'], u'fu': [u'12:8'], u'in': [u'tmp_ir']}
+{u'out': [u'shamt'], u'fu': [u'7:0'], u'in': [u'tmp_ir']}
+{u'out': [u'one1b0'], u'fu': [u'na'], u'in': [u'1']}
+{u'out': [u'zero1b'], u'fu': [u'na'], u'in': [u'0']}
+{u'out': [u'result'], u'fu': [u'LO.read'], u'in': []}
+MFLO 3
+variables:
+statements:
+{u'out': [], u'fu': [u'FWUL0.forward1'], u'in': [u'rd', u'result']}
+{u'out': [], u'fu': [u'FWUL1.forward1'], u'in': [u'rd', u'result']}
+{u'out': [], u'fu': [u'FWUL2.forward1'], u'in': [u'rd', u'result']}
+{u'out': [], u'fu': [u'FWUL3.forward1'], u'in': [u'rd', u'result']}
+MFLO 4
+variables:
+statements:
+{u'out': [], u'fu': [u'FWUL0.forward3'], u'in': [u'rd', u'result']}
+{u'out': [], u'fu': [u'FWUL1.forward3'], u'in': [u'rd', u'result']}
+{u'out': [], u'fu': [u'FWUL2.forward3'], u'in': [u'rd', u'result']}
+{u'out': [], u'fu': [u'FWUL3.forward3'], u'in': [u'rd', u'result']}
+MFLO 5
+variables:
+statements:
+{u'out': [], u'fu': [u'FWUL0.forward5'], u'in': [u'rd', u'result']}
+{u'out': [], u'fu': [u'FWUL1.forward5'], u'in': [u'rd', u'result']}
+{u'out': [], u'fu': [u'FWUL2.forward5'], u'in': [u'rd', u'result']}
+{u'out': [], u'fu': [u'FWUL3.forward5'], u'in': [u'rd', u'result']}
+MFLO 6
+variables:
+statements:
+{u'out': [], u'fu': [u'GPR.write0'], u'in': [u'rd', u'result']}
+{u'out': [], u'fu': [u'FWUL0.forward7'], u'in': [u'rd', u'result']}
+{u'out': [], u'fu': [u'FWUL1.forward7'], u'in': [u'rd', u'result']}
+{u'out': [], u'fu': [u'FWUL2.forward7'], u'in': [u'rd', u'result']}
+{u'out': [], u'fu': [u'FWUL3.forward7'], u'in': [u'rd', u'result']}
+LWR global
+variables:
+(u'rt', 5)
+(u'addr', 32)
+(u'rs', 5)
+(u'imm', 16)
+(u'source2', 32)
+(u'source0', 32)
+(u'source1', 32)
+(u'result', 32)
+(u'tmp_pc', 32)
+LWR 1
+variables:
+(u'current_pc', 32)
+(u'inst0', 64)
+(u'iramaddr_err', 1)
+statements:
+{u'out': [u'current_pc'], u'fu': [u'CPC.read'], u'in': []}
+{u'out': [u'tmp_pc'], u'fu': [u'na'], u'in': [u'current_pc']}
+{u'out': [u'inst0', u'iramaddr_err'], u'fu': [u'Imem.ld_64'], u'in': [u'current_pc']}
+{u'out': [], u'fu': [u'IReg.write'], u'in': [u'inst0']}
+{u'out': [], u'fu': [u'CPC.inc'], u'in': []}
+LWR 2
+variables:
+(u'tmp_source0', 32)
+(u'tmp_ir', 64)
+(u'tmp_source1', 32)
+statements:
+{u'out': [u'tmp_ir'], u'fu': [u'IReg.read'], u'in': []}
+{u'out': [u'rs'], u'fu': [u'28:24'], u'in': [u'tmp_ir']}
+{u'out': [u'rt'], u'fu': [u'20:16'], u'in': [u'tmp_ir']}
+{u'out': [u'imm'], u'fu': [u'15:0'], u'in': [u'tmp_ir']}
+{u'out': [u'tmp_source0'], u'fu': [u'GPR.read0'], u'in': [u'rs']}
+{u'out': [u'tmp_source1'], u'fu': [u'GPR.read1'], u'in': [u'rt']}
+{u'out': [u'source2'], u'fu': [u'EXT1.sign'], u'in': [u'imm']}
+{u'out': [u'source0'], u'fu': [u'FWUL0.forward'], u'in': [u'rs', u'tmp_source0']}
+{u'out': [u'source1'], u'fu': [u'FWUL1.forward'], u'in': [u'rt', u'tmp_source1']}
+LWR 3
+variables:
+(u'flag', 4)
+statements:
+{u'out': [u'addr', u'flag'], u'fu': [u'ALU1.add'], u'in': [u'source0', u'source2']}
+{u'out': [], u'fu': [u'FWUL0.lock1'], u'in': [u'rt']}
+{u'out': [], u'fu': [u'FWUL1.lock1'], u'in': [u'rt']}
+{u'out': [], u'fu': [u'FWUL2.lock1'], u'in': [u'rt']}
+{u'out': [], u'fu': [u'FWUL3.lock1'], u'in': [u'rt']}
+LWR 4
+variables:
+(u'data', 32)
+(u'target', 32)
+(u'addr_mask', 30)
+(u'reg3', 8)
+(u'result2', 32)
+(u'result3', 32)
+(u'reg2', 8)
+(u'byte2', 8)
+(u'result0', 32)
+(u'result1', 32)
+(u'byte3', 8)
+(u'byte0', 8)
+(u'zero2', 2)
+(u'bigE_data', 32)
+(u'addr_err', 1)
+(u'vAddr10', 2)
+(u'reg1', 8)
+(u'data1', 8)
+(u'byte1', 8)
+(u'data3', 8)
+(u'data2', 8)
+statements:
+{u'out': [u'addr_mask'], u'fu': [u'31:2'], u'in': [u'addr']}
+{u'out': [u'vAddr10'], u'fu': [u'1:0'], u'in': [u'addr']}
+{u'out': [u'zero2'], u'fu': [u'na'], u'in': [u'00']}
+{u'out': [u'target'], u'fu': [u'na'], u'in': [u'addr_mask', u'zero2']}
+{u'out': [u'data', u'addr_err'], u'fu': [u'Dmem.ld_32'], u'in': [u'target']}
+{u'out': [u'byte0'], u'fu': [u'31:24'], u'in': [u'data']}
+{u'out': [u'byte1'], u'fu': [u'23:16'], u'in': [u'data']}
+{u'out': [u'byte2'], u'fu': [u'15:8'], u'in': [u'data']}
+{u'out': [u'byte3'], u'fu': [u'7:0'], u'in': [u'data']}
+{u'out': [u'bigE_data'], u'fu': [u'na'], u'in': [u'byte3', u'byte2', u'byte1', u'byte0']}
+{u'out': [u'data3'], u'fu': [u'31:24'], u'in': [u'bigE_data']}
+{u'out': [u'data2'], u'fu': [u'23:16'], u'in': [u'bigE_data']}
+{u'out': [u'data1'], u'fu': [u'15:8'], u'in': [u'bigE_data']}
+{u'out': [u'reg3'], u'fu': [u'31:24'], u'in': [u'source1']}
+{u'out': [u'reg2'], u'fu': [u'23:16'], u'in': [u'source1']}
+{u'out': [u'reg1'], u'fu': [u'15:8'], u'in': [u'source1']}
+{u'out': [u'result3'], u'fu': [u'na'], u'in': [u'reg3', u'reg2', u'reg1', u'data3']}
+{u'out': [u'result2'], u'fu': [u'na'], u'in': [u'reg3', u'reg2', u'data3', u'data2']}
+{u'out': [u'result1'], u'fu': [u'na'], u'in': [u'reg3', u'data3', u'data2', u'data1']}
+{u'out': [u'result0'], u'fu': [u'na'], u'in': [u'bigE_data']}
+{u'out': [u'result'], u'fu': [u'MUXw32p4.sel'], u'in': [u'result0', u'result1', u'result2', u'result3', u'vAddr10']}
+{u'out': [], u'fu': [u'FWUL0.forward3'], u'in': [u'rt', u'result']}
+{u'out': [], u'fu': [u'FWUL1.forward3'], u'in': [u'rt', u'result']}
+{u'out': [], u'fu': [u'FWUL2.forward3'], u'in': [u'rt', u'result']}
+{u'out': [], u'fu': [u'FWUL3.forward3'], u'in': [u'rt', u'result']}
+{u'out': [], u'fu': [u'FWUL0.lock3'], u'in': [u'rt']}
+{u'out': [], u'fu': [u'FWUL1.lock3'], u'in': [u'rt']}
+{u'out': [], u'fu': [u'FWUL2.lock3'], u'in': [u'rt']}
+{u'out': [], u'fu': [u'FWUL3.lock3'], u'in': [u'rt']}
+LWR 5
+variables:
+statements:
+{u'out': [], u'fu': [u'FWUL0.forward5'], u'in': [u'rt', u'result']}
+{u'out': [], u'fu': [u'FWUL1.forward5'], u'in': [u'rt', u'result']}
+{u'out': [], u'fu': [u'FWUL2.forward5'], u'in': [u'rt', u'result']}
+{u'out': [], u'fu': [u'FWUL3.forward5'], u'in': [u'rt', u'result']}
+LWR 6
+variables:
+statements:
+{u'out': [], u'fu': [u'GPR.write0'], u'in': [u'rt', u'result']}
+{u'out': [], u'fu': [u'FWUL0.forward7'], u'in': [u'rt', u'result']}
+{u'out': [], u'fu': [u'FWUL1.forward7'], u'in': [u'rt', u'result']}
+{u'out': [], u'fu': [u'FWUL2.forward7'], u'in': [u'rt', u'result']}
+{u'out': [], u'fu': [u'FWUL3.forward7'], u'in': [u'rt', u'result']}
+SW global
+variables:
+(u'rt', 5)
+(u'addr', 32)
+(u'rs', 5)
+(u'imm', 16)
+(u'source2', 32)
+(u'source0', 32)
+(u'source1', 32)
+(u'tmp_pc', 32)
+SW 1
+variables:
+(u'current_pc', 32)
+(u'inst0', 64)
+(u'iramaddr_err', 1)
+statements:
+{u'out': [u'current_pc'], u'fu': [u'CPC.read'], u'in': []}
+{u'out': [u'tmp_pc'], u'fu': [u'na'], u'in': [u'current_pc']}
+{u'out': [u'inst0', u'iramaddr_err'], u'fu': [u'Imem.ld_64'], u'in': [u'current_pc']}
+{u'out': [], u'fu': [u'IReg.write'], u'in': [u'inst0']}
+{u'out': [], u'fu': [u'CPC.inc'], u'in': []}
+SW 2
+variables:
+(u'tmp_source0', 32)
+(u'tmp_ir', 64)
+(u'tmp_source1', 32)
+statements:
+{u'out': [u'tmp_ir'], u'fu': [u'IReg.read'], u'in': []}
+{u'out': [u'rs'], u'fu': [u'28:24'], u'in': [u'tmp_ir']}
+{u'out': [u'rt'], u'fu': [u'20:16'], u'in': [u'tmp_ir']}
+{u'out': [u'imm'], u'fu': [u'15:0'], u'in': [u'tmp_ir']}
+{u'out': [u'tmp_source0'], u'fu': [u'GPR.read0'], u'in': [u'rs']}
+{u'out': [u'tmp_source1'], u'fu': [u'GPR.read1'], u'in': [u'rt']}
+{u'out': [u'source2'], u'fu': [u'EXT1.sign'], u'in': [u'imm']}
+{u'out': [u'source0'], u'fu': [u'FWUL0.forward'], u'in': [u'rs', u'tmp_source0']}
+{u'out': [u'source1'], u'fu': [u'FWUL1.forward'], u'in': [u'rt', u'tmp_source1']}
+SW 3
+variables:
+(u'flag', 4)
+statements:
+{u'out': [u'addr', u'flag'], u'fu': [u'ALU1.add'], u'in': [u'source0', u'source2']}
+SW 4
+variables:
+statements:
+SW 5
+variables:
+(u'LE_source1', 32)
+(u'byte3', 8)
+(u'byte2', 8)
+(u'byte1', 8)
+(u'byte0', 8)
+(u'addr_err', 1)
+statements:
+{u'out': [u'byte0'], u'fu': [u'31:24'], u'in': [u'source1']}
+{u'out': [u'byte1'], u'fu': [u'23:16'], u'in': [u'source1']}
+{u'out': [u'byte2'], u'fu': [u'15:8'], u'in': [u'source1']}
+{u'out': [u'byte3'], u'fu': [u'7:0'], u'in': [u'source1']}
+{u'out': [u'LE_source1'], u'fu': [u'na'], u'in': [u'byte3', u'byte2', u'byte1', u'byte0']}
+{u'out': [u'addr_err'], u'fu': [u'Dmem.s_32'], u'in': [u'addr', u'LE_source1']}
+SW 6
+variables:
+statements:
+MFHI global
+variables:
+(u'rt', 5)
+(u'shamt', 8)
+(u'rs', 5)
+(u'rd', 5)
+(u'tmp_pc', 32)
+(u'result', 32)
+MFHI 1
+variables:
+(u'current_pc', 32)
+(u'inst0', 64)
+(u'iramaddr_err', 1)
+statements:
+{u'out': [u'current_pc'], u'fu': [u'CPC.read'], u'in': []}
+{u'out': [u'tmp_pc'], u'fu': [u'na'], u'in': [u'current_pc']}
+{u'out': [u'inst0', u'iramaddr_err'], u'fu': [u'Imem.ld_64'], u'in': [u'current_pc']}
+{u'out': [], u'fu': [u'IReg.write'], u'in': [u'inst0']}
+{u'out': [], u'fu': [u'CPC.inc'], u'in': []}
+MFHI 2
+variables:
+(u'one1b0', 1)
+(u'tmp_ir', 64)
+(u'zero1b', 1)
+statements:
+{u'out': [u'tmp_ir'], u'fu': [u'IReg.read'], u'in': []}
+{u'out': [u'rs'], u'fu': [u'28:24'], u'in': [u'tmp_ir']}
+{u'out': [u'rt'], u'fu': [u'20:16'], u'in': [u'tmp_ir']}
+{u'out': [u'rd'], u'fu': [u'12:8'], u'in': [u'tmp_ir']}
+{u'out': [u'shamt'], u'fu': [u'7:0'], u'in': [u'tmp_ir']}
+{u'out': [u'one1b0'], u'fu': [u'na'], u'in': [u'1']}
+{u'out': [u'zero1b'], u'fu': [u'na'], u'in': [u'0']}
+{u'out': [u'result'], u'fu': [u'HI.read'], u'in': []}
+MFHI 3
+variables:
+statements:
+{u'out': [], u'fu': [u'FWUL0.forward1'], u'in': [u'rd', u'result']}
+{u'out': [], u'fu': [u'FWUL1.forward1'], u'in': [u'rd', u'result']}
+{u'out': [], u'fu': [u'FWUL2.forward1'], u'in': [u'rd', u'result']}
+{u'out': [], u'fu': [u'FWUL3.forward1'], u'in': [u'rd', u'result']}
+MFHI 4
+variables:
+statements:
+{u'out': [], u'fu': [u'FWUL0.forward3'], u'in': [u'rd', u'result']}
+{u'out': [], u'fu': [u'FWUL1.forward3'], u'in': [u'rd', u'result']}
+{u'out': [], u'fu': [u'FWUL2.forward3'], u'in': [u'rd', u'result']}
+{u'out': [], u'fu': [u'FWUL3.forward3'], u'in': [u'rd', u'result']}
+MFHI 5
+variables:
+statements:
+{u'out': [], u'fu': [u'FWUL0.forward5'], u'in': [u'rd', u'result']}
+{u'out': [], u'fu': [u'FWUL1.forward5'], u'in': [u'rd', u'result']}
+{u'out': [], u'fu': [u'FWUL2.forward5'], u'in': [u'rd', u'result']}
+{u'out': [], u'fu': [u'FWUL3.forward5'], u'in': [u'rd', u'result']}
+MFHI 6
+variables:
+statements:
+{u'out': [], u'fu': [u'GPR.write0'], u'in': [u'rd', u'result']}
+{u'out': [], u'fu': [u'FWUL0.forward7'], u'in': [u'rd', u'result']}
+{u'out': [], u'fu': [u'FWUL1.forward7'], u'in': [u'rd', u'result']}
+{u'out': [], u'fu': [u'FWUL2.forward7'], u'in': [u'rd', u'result']}
+{u'out': [], u'fu': [u'FWUL3.forward7'], u'in': [u'rd', u'result']}
+JR global
+variables:
+(u'rt', 5)
+(u'shamt', 8)
+(u'target', 32)
+(u'rs', 5)
+(u'rd', 5)
+(u'tmp_pc', 32)
+JR 1
+variables:
+(u'current_pc', 32)
+(u'inst0', 64)
+(u'iramaddr_err', 1)
+statements:
+{u'out': [u'current_pc'], u'fu': [u'CPC.read'], u'in': []}
+{u'out': [u'tmp_pc'], u'fu': [u'na'], u'in': [u'current_pc']}
+{u'out': [u'inst0', u'iramaddr_err'], u'fu': [u'Imem.ld_64'], u'in': [u'current_pc']}
+{u'out': [], u'fu': [u'IReg.write'], u'in': [u'inst0']}
+{u'out': [], u'fu': [u'CPC.inc'], u'in': []}
+JR 2
+variables:
+(u'tmp_ir', 64)
+(u'tmp_source', 32)
+statements:
+{u'out': [u'tmp_ir'], u'fu': [u'IReg.read'], u'in': []}
+{u'out': [u'rs'], u'fu': [u'28:24'], u'in': [u'tmp_ir']}
+{u'out': [u'rt'], u'fu': [u'20:16'], u'in': [u'tmp_ir']}
+{u'out': [u'rd'], u'fu': [u'12:8'], u'in': [u'tmp_ir']}
+{u'out': [u'shamt'], u'fu': [u'7:0'], u'in': [u'tmp_ir']}
+{u'out': [u'tmp_source'], u'fu': [u'GPR.read0'], u'in': [u'rs']}
+{u'out': [u'target'], u'fu': [u'FWUL0.forward'], u'in': [u'rs', u'tmp_source']}
+JR 3
+variables:
+statements:
+{u'out': [], u'fu': [u'CPC.write'], u'in': [u'target']}
+JR 4
+variables:
+statements:
+JR 5
+variables:
+statements:
+JR 6
+variables:
+statements:
+BLEZ global
+variables:
+(u'rt', 5)
+(u'target', 32)
+(u'rs', 5)
+(u'imm', 16)
+(u'source0', 32)
+(u'src0', 32)
+(u'source1', 32)
+(u'tmp_pc', 32)
+BLEZ 1
+variables:
+(u'current_pc', 32)
+(u'inst0', 64)
+(u'iramaddr_err', 1)
+statements:
+{u'out': [u'current_pc'], u'fu': [u'CPC.read'], u'in': []}
+{u'out': [u'tmp_pc'], u'fu': [u'na'], u'in': [u'current_pc']}
+{u'out': [u'inst0', u'iramaddr_err'], u'fu': [u'Imem.ld_64'], u'in': [u'current_pc']}
+{u'out': [], u'fu': [u'IReg.write'], u'in': [u'inst0']}
+{u'out': [], u'fu': [u'CPC.inc'], u'in': []}
+BLEZ 2
+variables:
+(u'tmp', 30)
+(u'tmp_source0', 32)
+(u'cout', 1)
+(u'cin', 1)
+(u'ext_imm', 32)
+(u'tmp_ir', 64)
+(u'offset', 32)
+(u'tmp_cpc', 32)
+(u'zero2', 2)
+statements:
+{u'out': [u'tmp_ir'], u'fu': [u'IReg.read'], u'in': []}
+{u'out': [u'rs'], u'fu': [u'28:24'], u'in': [u'tmp_ir']}
+{u'out': [u'rt'], u'fu': [u'20:16'], u'in': [u'tmp_ir']}
+{u'out': [u'imm'], u'fu': [u'15:0'], u'in': [u'tmp_ir']}
+{u'out': [u'tmp_source0'], u'fu': [u'GPR.read0'], u'in': [u'rs']}
+{u'out': [u'src0'], u'fu': [u'FWU0.forward'], u'in': [u'rs', u'tmp_source0']}
+{u'out': [u'cin'], u'fu': [u'na'], u'in': [u'0']}
+{u'out': [u'zero2'], u'fu': [u'na'], u'in': [u'00']}
+{u'out': [u'ext_imm'], u'fu': [u'EXT1.sign'], u'in': [u'imm']}
+{u'out': [u'tmp'], u'fu': [u'29:0'], u'in': [u'ext_imm']}
+{u'out': [u'offset'], u'fu': [u'na'], u'in': [u'tmp', u'zero2']}
+{u'out': [u'tmp_cpc'], u'fu': [u'CPC.read'], u'in': []}
+{u'out': [u'target', u'cout'], u'fu': [u'ADD1.adc'], u'in': [u'tmp_cpc', u'offset', u'cin']}
+BLEZ 3
+variables:
+(u'cond_tmp', 1)
+(u'Z', 1)
+(u'cond', 1)
+(u'flag', 4)
+(u'N', 1)
+statements:
+{u'out': [u'flag'], u'fu': [u'ALU1.cmpz'], u'in': [u'src0']}
+{u'out': [u'N'], u'fu': [u'1'], u'in': [u'flag']}
+{u'out': [u'Z'], u'fu': [u'2'], u'in': [u'flag']}
+{u'out': [u'cond_tmp'], u'fu': [u'|'], u'in': [u'N', u'Z']}
+{u'out': [u'cond'], u'fu': [u" == '"], u'in': [u'cond_tmp', u'1']}
+{u'out': [], u'fu': [u'sel', u'CPC.write'], u'in': [u'cond', u'target']}
+BLEZ 4
+variables:
+statements:
+BLEZ 5
+variables:
+statements:
+BLEZ 6
+variables:
+statements:
+LBU_RR global
+variables:
+(u'rt', 5)
+(u'shamt', 8)
+(u'bigE_word', 32)
+(u'addr', 32)
+(u'rs', 5)
+(u'rd', 5)
+(u'source0', 32)
+(u'source1', 32)
+(u'tmp_pc', 32)
+LBU_RR 1
+variables:
+(u'current_pc', 32)
+(u'inst0', 64)
+(u'iramaddr_err', 1)
+statements:
+{u'out': [u'current_pc'], u'fu': [u'CPC.read'], u'in': []}
+{u'out': [u'tmp_pc'], u'fu': [u'na'], u'in': [u'current_pc']}
+{u'out': [u'inst0', u'iramaddr_err'], u'fu': [u'Imem.ld_64'], u'in': [u'current_pc']}
+{u'out': [], u'fu': [u'IReg.write'], u'in': [u'inst0']}
+{u'out': [], u'fu': [u'CPC.inc'], u'in': []}
+LBU_RR 2
+variables:
+(u'tmp_source0', 32)
+(u'tmp_ir', 64)
+(u'tmp_source1', 32)
+statements:
+{u'out': [u'tmp_ir'], u'fu': [u'IReg.read'], u'in': []}
+{u'out': [u'rs'], u'fu': [u'28:24'], u'in': [u'tmp_ir']}
+{u'out': [u'rt'], u'fu': [u'20:16'], u'in': [u'tmp_ir']}
+{u'out': [u'rd'], u'fu': [u'12:8'], u'in': [u'tmp_ir']}
+{u'out': [u'shamt'], u'fu': [u'7:0'], u'in': [u'tmp_ir']}
+{u'out': [u'tmp_source0'], u'fu': [u'GPR.read0'], u'in': [u'rs']}
+{u'out': [u'tmp_source1'], u'fu': [u'GPR.read1'], u'in': [u'rd']}
+{u'out': [u'source0'], u'fu': [u'FWUL0.forward'], u'in': [u'rs', u'tmp_source0']}
+{u'out': [u'source1'], u'fu': [u'FWUL1.forward'], u'in': [u'rd', u'tmp_source1']}
+LBU_RR 3
+variables:
+(u'flag', 4)
+statements:
+{u'out': [u'addr', u'flag'], u'fu': [u'ALU1.add'], u'in': [u'source0', u'source1']}
+{u'out': [], u'fu': [u'FWUL0.lock1'], u'in': [u'rt']}
+{u'out': [], u'fu': [u'FWUL1.lock1'], u'in': [u'rt']}
+{u'out': [], u'fu': [u'FWUL2.lock1'], u'in': [u'rt']}
+{u'out': [], u'fu': [u'FWUL3.lock1'], u'in': [u'rt']}
+LBU_RR 4
+variables:
+(u'byte3', 8)
+(u'byte2', 8)
+(u'byte1', 8)
+(u'byte0', 8)
+(u'result', 32)
+(u'addr_err', 1)
+statements:
+{u'out': [u'result', u'addr_err'], u'fu': [u'Dmem.ldu_8'], u'in': [u'addr']}
+{u'out': [u'byte0'], u'fu': [u'31:24'], u'in': [u'result']}
+{u'out': [u'byte1'], u'fu': [u'23:16'], u'in': [u'result']}
+{u'out': [u'byte2'], u'fu': [u'15:8'], u'in': [u'result']}
+{u'out': [u'byte3'], u'fu': [u'7:0'], u'in': [u'result']}
+{u'out': [u'bigE_word'], u'fu': [u'na'], u'in': [u'byte3', u'byte2', u'byte1', u'byte0']}
+{u'out': [], u'fu': [u'FWUL0.forward3'], u'in': [u'rt', u'bigE_word']}
+{u'out': [], u'fu': [u'FWUL1.forward3'], u'in': [u'rt', u'bigE_word']}
+{u'out': [], u'fu': [u'FWUL2.forward3'], u'in': [u'rt', u'bigE_word']}
+{u'out': [], u'fu': [u'FWUL3.forward3'], u'in': [u'rt', u'bigE_word']}
+{u'out': [], u'fu': [u'FWUL0.lock3'], u'in': [u'rt']}
+{u'out': [], u'fu': [u'FWUL1.lock3'], u'in': [u'rt']}
+{u'out': [], u'fu': [u'FWUL2.lock3'], u'in': [u'rt']}
+{u'out': [], u'fu': [u'FWUL3.lock3'], u'in': [u'rt']}
+LBU_RR 5
+variables:
+statements:
+{u'out': [], u'fu': [u'FWUL0.forward5'], u'in': [u'rt', u'bigE_word']}
+{u'out': [], u'fu': [u'FWUL1.forward5'], u'in': [u'rt', u'bigE_word']}
+{u'out': [], u'fu': [u'FWUL2.forward5'], u'in': [u'rt', u'bigE_word']}
+{u'out': [], u'fu': [u'FWUL3.forward5'], u'in': [u'rt', u'bigE_word']}
+LBU_RR 6
+variables:
+statements:
+{u'out': [], u'fu': [u'GPR.write0'], u'in': [u'rt', u'bigE_word']}
+{u'out': [], u'fu': [u'FWUL0.forward7'], u'in': [u'rt', u'bigE_word']}
+{u'out': [], u'fu': [u'FWUL1.forward7'], u'in': [u'rt', u'bigE_word']}
+{u'out': [], u'fu': [u'FWUL2.forward7'], u'in': [u'rt', u'bigE_word']}
+{u'out': [], u'fu': [u'FWUL3.forward7'], u'in': [u'rt', u'bigE_word']}
+SRAV global
+variables:
+(u'rt', 5)
+(u'shamt', 8)
+(u'rs', 5)
+(u'rd', 5)
+(u'source0', 32)
+(u'source1', 32)
+(u'result', 32)
+(u'tmp_pc', 32)
+SRAV 1
+variables:
+(u'current_pc', 32)
+(u'inst0', 64)
+(u'iramaddr_err', 1)
+statements:
+{u'out': [u'current_pc'], u'fu': [u'CPC.read'], u'in': []}
+{u'out': [u'tmp_pc'], u'fu': [u'na'], u'in': [u'current_pc']}
+{u'out': [u'inst0', u'iramaddr_err'], u'fu': [u'Imem.ld_64'], u'in': [u'current_pc']}
+{u'out': [], u'fu': [u'IReg.write'], u'in': [u'inst0']}
+{u'out': [], u'fu': [u'CPC.inc'], u'in': []}
+SRAV 2
+variables:
+(u'tmp_source0', 32)
+(u'tmp_ir', 64)
+(u'tmp_source1', 32)
+statements:
+{u'out': [u'tmp_ir'], u'fu': [u'IReg.read'], u'in': []}
+{u'out': [u'rs'], u'fu': [u'28:24'], u'in': [u'tmp_ir']}
+{u'out': [u'rt'], u'fu': [u'20:16'], u'in': [u'tmp_ir']}
+{u'out': [u'rd'], u'fu': [u'12:8'], u'in': [u'tmp_ir']}
+{u'out': [u'shamt'], u'fu': [u'7:0'], u'in': [u'tmp_ir']}
+{u'out': [u'tmp_source0'], u'fu': [u'GPR.read0'], u'in': [u'rs']}
+{u'out': [u'tmp_source1'], u'fu': [u'GPR.read1'], u'in': [u'rt']}
+{u'out': [u'source0'], u'fu': [u'FWUL0.forward'], u'in': [u'rs', u'tmp_source0']}
+{u'out': [u'source1'], u'fu': [u'FWUL1.forward'], u'in': [u'rt', u'tmp_source1']}
+SRAV 3
+variables:
+(u'shift', 5)
+statements:
+{u'out': [u'shift'], u'fu': [u'4:0'], u'in': [u'source0']}
+{u'out': [u'result'], u'fu': [u'SFT1.sra'], u'in': [u'source1', u'shift']}
+{u'out': [], u'fu': [u'FWUL0.forward1'], u'in': [u'rd', u'result']}
+{u'out': [], u'fu': [u'FWUL1.forward1'], u'in': [u'rd', u'result']}
+{u'out': [], u'fu': [u'FWUL2.forward1'], u'in': [u'rd', u'result']}
+{u'out': [], u'fu': [u'FWUL3.forward1'], u'in': [u'rd', u'result']}
+SRAV 4
+variables:
+statements:
+{u'out': [], u'fu': [u'FWUL0.forward3'], u'in': [u'rd', u'result']}
+{u'out': [], u'fu': [u'FWUL1.forward3'], u'in': [u'rd', u'result']}
+{u'out': [], u'fu': [u'FWUL2.forward3'], u'in': [u'rd', u'result']}
+{u'out': [], u'fu': [u'FWUL3.forward3'], u'in': [u'rd', u'result']}
+SRAV 5
+variables:
+statements:
+{u'out': [], u'fu': [u'FWUL0.forward5'], u'in': [u'rd', u'result']}
+{u'out': [], u'fu': [u'FWUL1.forward5'], u'in': [u'rd', u'result']}
+{u'out': [], u'fu': [u'FWUL2.forward5'], u'in': [u'rd', u'result']}
+{u'out': [], u'fu': [u'FWUL3.forward5'], u'in': [u'rd', u'result']}
+SRAV 6
+variables:
+statements:
+{u'out': [], u'fu': [u'GPR.write0'], u'in': [u'rd', u'result']}
+{u'out': [], u'fu': [u'FWUL0.forward7'], u'in': [u'rd', u'result']}
+{u'out': [], u'fu': [u'FWUL1.forward7'], u'in': [u'rd', u'result']}
+{u'out': [], u'fu': [u'FWUL2.forward7'], u'in': [u'rd', u'result']}
+{u'out': [], u'fu': [u'FWUL3.forward7'], u'in': [u'rd', u'result']}
+SUBU global
+variables:
+(u'rt', 5)
+(u'shamt', 8)
+(u'rs', 5)
+(u'rd', 5)
+(u'source0', 32)
+(u'source1', 32)
+(u'result', 32)
+(u'tmp_pc', 32)
+SUBU 1
+variables:
+(u'current_pc', 32)
+(u'inst0', 64)
+(u'iramaddr_err', 1)
+statements:
+{u'out': [u'current_pc'], u'fu': [u'CPC.read'], u'in': []}
+{u'out': [u'tmp_pc'], u'fu': [u'na'], u'in': [u'current_pc']}
+{u'out': [u'inst0', u'iramaddr_err'], u'fu': [u'Imem.ld_64'], u'in': [u'current_pc']}
+{u'out': [], u'fu': [u'IReg.write'], u'in': [u'inst0']}
+{u'out': [], u'fu': [u'CPC.inc'], u'in': []}
+SUBU 2
+variables:
+(u'tmp_source0', 32)
+(u'tmp_ir', 64)
+(u'tmp_source1', 32)
+statements:
+{u'out': [u'tmp_ir'], u'fu': [u'IReg.read'], u'in': []}
+{u'out': [u'rs'], u'fu': [u'28:24'], u'in': [u'tmp_ir']}
+{u'out': [u'rt'], u'fu': [u'20:16'], u'in': [u'tmp_ir']}
+{u'out': [u'rd'], u'fu': [u'12:8'], u'in': [u'tmp_ir']}
+{u'out': [u'shamt'], u'fu': [u'7:0'], u'in': [u'tmp_ir']}
+{u'out': [u'tmp_source0'], u'fu': [u'GPR.read0'], u'in': [u'rs']}
+{u'out': [u'tmp_source1'], u'fu': [u'GPR.read1'], u'in': [u'rt']}
+{u'out': [u'source0'], u'fu': [u'FWUL0.forward'], u'in': [u'rs', u'tmp_source0']}
+{u'out': [u'source1'], u'fu': [u'FWUL1.forward'], u'in': [u'rt', u'tmp_source1']}
+SUBU 3
+variables:
+(u'flag', 4)
+statements:
+{u'out': [u'result', u'flag'], u'fu': [u'ALU1.subu'], u'in': [u'source0', u'source1']}
+{u'out': [], u'fu': [u'FWUL0.forward1'], u'in': [u'rd', u'result']}
+{u'out': [], u'fu': [u'FWUL1.forward1'], u'in': [u'rd', u'result']}
+{u'out': [], u'fu': [u'FWUL2.forward1'], u'in': [u'rd', u'result']}
+{u'out': [], u'fu': [u'FWUL3.forward1'], u'in': [u'rd', u'result']}
+SUBU 4
+variables:
+statements:
+{u'out': [], u'fu': [u'FWUL0.forward3'], u'in': [u'rd', u'result']}
+{u'out': [], u'fu': [u'FWUL1.forward3'], u'in': [u'rd', u'result']}
+{u'out': [], u'fu': [u'FWUL2.forward3'], u'in': [u'rd', u'result']}
+{u'out': [], u'fu': [u'FWUL3.forward3'], u'in': [u'rd', u'result']}
+SUBU 5
+variables:
+statements:
+{u'out': [], u'fu': [u'FWUL0.forward5'], u'in': [u'rd', u'result']}
+{u'out': [], u'fu': [u'FWUL1.forward5'], u'in': [u'rd', u'result']}
+{u'out': [], u'fu': [u'FWUL2.forward5'], u'in': [u'rd', u'result']}
+{u'out': [], u'fu': [u'FWUL3.forward5'], u'in': [u'rd', u'result']}
+SUBU 6
+variables:
+statements:
+{u'out': [], u'fu': [u'GPR.write0'], u'in': [u'rd', u'result']}
+{u'out': [], u'fu': [u'FWUL0.forward7'], u'in': [u'rd', u'result']}
+{u'out': [], u'fu': [u'FWUL1.forward7'], u'in': [u'rd', u'result']}
+{u'out': [], u'fu': [u'FWUL2.forward7'], u'in': [u'rd', u'result']}
+{u'out': [], u'fu': [u'FWUL3.forward7'], u'in': [u'rd', u'result']}
+LWL global
+variables:
+(u'rt', 5)
+(u'addr', 32)
+(u'rs', 5)
+(u'imm', 16)
+(u'source2', 32)
+(u'source0', 32)
+(u'source1', 32)
+(u'result', 32)
+(u'tmp_pc', 32)
+LWL 1
+variables:
+(u'current_pc', 32)
+(u'inst0', 64)
+(u'iramaddr_err', 1)
+statements:
+{u'out': [u'current_pc'], u'fu': [u'CPC.read'], u'in': []}
+{u'out': [u'tmp_pc'], u'fu': [u'na'], u'in': [u'current_pc']}
+{u'out': [u'inst0', u'iramaddr_err'], u'fu': [u'Imem.ld_64'], u'in': [u'current_pc']}
+{u'out': [], u'fu': [u'IReg.write'], u'in': [u'inst0']}
+{u'out': [], u'fu': [u'CPC.inc'], u'in': []}
+LWL 2
+variables:
+(u'tmp_source0', 32)
+(u'tmp_ir', 64)
+(u'tmp_source1', 32)
+statements:
+{u'out': [u'tmp_ir'], u'fu': [u'IReg.read'], u'in': []}
+{u'out': [u'rs'], u'fu': [u'28:24'], u'in': [u'tmp_ir']}
+{u'out': [u'rt'], u'fu': [u'20:16'], u'in': [u'tmp_ir']}
+{u'out': [u'imm'], u'fu': [u'15:0'], u'in': [u'tmp_ir']}
+{u'out': [u'tmp_source0'], u'fu': [u'GPR.read0'], u'in': [u'rs']}
+{u'out': [u'tmp_source1'], u'fu': [u'GPR.read1'], u'in': [u'rt']}
+{u'out': [u'source2'], u'fu': [u'EXT1.sign'], u'in': [u'imm']}
+{u'out': [u'source0'], u'fu': [u'FWUL0.forward'], u'in': [u'rs', u'tmp_source0']}
+{u'out': [u'source1'], u'fu': [u'FWUL1.forward'], u'in': [u'rt', u'tmp_source1']}
+LWL 3
+variables:
+(u'flag', 4)
+statements:
+{u'out': [u'addr', u'flag'], u'fu': [u'ALU1.add'], u'in': [u'source0', u'source2']}
+{u'out': [], u'fu': [u'FWUL0.lock1'], u'in': [u'rt']}
+{u'out': [], u'fu': [u'FWUL1.lock1'], u'in': [u'rt']}
+{u'out': [], u'fu': [u'FWUL2.lock1'], u'in': [u'rt']}
+{u'out': [], u'fu': [u'FWUL3.lock1'], u'in': [u'rt']}
+LWL 4
+variables:
+(u'data', 32)
+(u'target', 32)
+(u'addr_mask', 30)
+(u'result2', 32)
+(u'data2', 8)
+(u'result3', 32)
+(u'reg2', 8)
+(u'byte2', 8)
+(u'result0', 32)
+(u'result1', 32)
+(u'byte3', 8)
+(u'byte0', 8)
+(u'reg0', 8)
+(u'bigE_data', 32)
+(u'addr_err', 1)
+(u'vAddr10', 2)
+(u'reg1', 8)
+(u'data1', 8)
+(u'data0', 8)
+(u'byte1', 8)
+(u'zero2', 2)
+statements:
+{u'out': [u'addr_mask'], u'fu': [u'31:2'], u'in': [u'addr']}
+{u'out': [u'vAddr10'], u'fu': [u'1:0'], u'in': [u'addr']}
+{u'out': [u'zero2'], u'fu': [u'na'], u'in': [u'00']}
+{u'out': [u'target'], u'fu': [u'na'], u'in': [u'addr_mask', u'zero2']}
+{u'out': [u'data', u'addr_err'], u'fu': [u'Dmem.ld_32'], u'in': [u'target']}
+{u'out': [u'byte0'], u'fu': [u'31:24'], u'in': [u'data']}
+{u'out': [u'byte1'], u'fu': [u'23:16'], u'in': [u'data']}
+{u'out': [u'byte2'], u'fu': [u'15:8'], u'in': [u'data']}
+{u'out': [u'byte3'], u'fu': [u'7:0'], u'in': [u'data']}
+{u'out': [u'bigE_data'], u'fu': [u'na'], u'in': [u'byte3', u'byte2', u'byte1', u'byte0']}
+{u'out': [u'data2'], u'fu': [u'23:16'], u'in': [u'bigE_data']}
+{u'out': [u'data1'], u'fu': [u'15:8'], u'in': [u'bigE_data']}
+{u'out': [u'data0'], u'fu': [u'7:0'], u'in': [u'bigE_data']}
+{u'out': [u'reg2'], u'fu': [u'23:16'], u'in': [u'source1']}
+{u'out': [u'reg1'], u'fu': [u'15:8'], u'in': [u'source1']}
+{u'out': [u'reg0'], u'fu': [u'7:0'], u'in': [u'source1']}
+{u'out': [u'result0'], u'fu': [u'na'], u'in': [u'data0', u'reg2', u'reg1', u'reg0']}
+{u'out': [u'result1'], u'fu': [u'na'], u'in': [u'data1', u'data0', u'reg1', u'reg0']}
+{u'out': [u'result2'], u'fu': [u'na'], u'in': [u'data2', u'data1', u'data0', u'reg0']}
+{u'out': [u'result3'], u'fu': [u'na'], u'in': [u'bigE_data']}
+{u'out': [u'result'], u'fu': [u'MUXw32p4.sel'], u'in': [u'result0', u'result1', u'result2', u'result3', u'vAddr10']}
+{u'out': [], u'fu': [u'FWUL0.forward3'], u'in': [u'rt', u'result']}
+{u'out': [], u'fu': [u'FWUL1.forward3'], u'in': [u'rt', u'result']}
+{u'out': [], u'fu': [u'FWUL2.forward3'], u'in': [u'rt', u'result']}
+{u'out': [], u'fu': [u'FWUL3.forward3'], u'in': [u'rt', u'result']}
+{u'out': [], u'fu': [u'FWUL0.lock3'], u'in': [u'rt']}
+{u'out': [], u'fu': [u'FWUL1.lock3'], u'in': [u'rt']}
+{u'out': [], u'fu': [u'FWUL2.lock3'], u'in': [u'rt']}
+{u'out': [], u'fu': [u'FWUL3.lock3'], u'in': [u'rt']}
+LWL 5
+variables:
+statements:
+{u'out': [], u'fu': [u'FWUL0.forward5'], u'in': [u'rt', u'result']}
+{u'out': [], u'fu': [u'FWUL1.forward5'], u'in': [u'rt', u'result']}
+{u'out': [], u'fu': [u'FWUL2.forward5'], u'in': [u'rt', u'result']}
+{u'out': [], u'fu': [u'FWUL3.forward5'], u'in': [u'rt', u'result']}
+LWL 6
+variables:
+statements:
+{u'out': [], u'fu': [u'GPR.write0'], u'in': [u'rt', u'result']}
+{u'out': [], u'fu': [u'FWUL0.forward7'], u'in': [u'rt', u'result']}
+{u'out': [], u'fu': [u'FWUL1.forward7'], u'in': [u'rt', u'result']}
+{u'out': [], u'fu': [u'FWUL2.forward7'], u'in': [u'rt', u'result']}
+{u'out': [], u'fu': [u'FWUL3.forward7'], u'in': [u'rt', u'result']}
+LW_RR global
+variables:
+(u'rt', 5)
+(u'shamt', 8)
+(u'bigE_word', 32)
+(u'addr', 32)
+(u'rs', 5)
+(u'rd', 5)
+(u'source0', 32)
+(u'source1', 32)
+(u'tmp_pc', 32)
+LW_RR 1
+variables:
+(u'current_pc', 32)
+(u'inst0', 64)
+(u'iramaddr_err', 1)
+statements:
+{u'out': [u'current_pc'], u'fu': [u'CPC.read'], u'in': []}
+{u'out': [u'tmp_pc'], u'fu': [u'na'], u'in': [u'current_pc']}
+{u'out': [u'inst0', u'iramaddr_err'], u'fu': [u'Imem.ld_64'], u'in': [u'current_pc']}
+{u'out': [], u'fu': [u'IReg.write'], u'in': [u'inst0']}
+{u'out': [], u'fu': [u'CPC.inc'], u'in': []}
+LW_RR 2
+variables:
+(u'tmp_source0', 32)
+(u'tmp_ir', 64)
+(u'tmp_source1', 32)
+statements:
+{u'out': [u'tmp_ir'], u'fu': [u'IReg.read'], u'in': []}
+{u'out': [u'rs'], u'fu': [u'28:24'], u'in': [u'tmp_ir']}
+{u'out': [u'rt'], u'fu': [u'20:16'], u'in': [u'tmp_ir']}
+{u'out': [u'rd'], u'fu': [u'12:8'], u'in': [u'tmp_ir']}
+{u'out': [u'shamt'], u'fu': [u'7:0'], u'in': [u'tmp_ir']}
+{u'out': [u'tmp_source0'], u'fu': [u'GPR.read0'], u'in': [u'rs']}
+{u'out': [u'tmp_source1'], u'fu': [u'GPR.read1'], u'in': [u'rd']}
+{u'out': [u'source0'], u'fu': [u'FWUL0.forward'], u'in': [u'rs', u'tmp_source0']}
+{u'out': [u'source1'], u'fu': [u'FWUL1.forward'], u'in': [u'rd', u'tmp_source1']}
+LW_RR 3
+variables:
+(u'flag', 4)
+statements:
+{u'out': [u'addr', u'flag'], u'fu': [u'ALU1.add'], u'in': [u'source0', u'source1']}
+{u'out': [], u'fu': [u'FWUL0.lock1'], u'in': [u'rt']}
+{u'out': [], u'fu': [u'FWUL1.lock1'], u'in': [u'rt']}
+{u'out': [], u'fu': [u'FWUL2.lock1'], u'in': [u'rt']}
+{u'out': [], u'fu': [u'FWUL3.lock1'], u'in': [u'rt']}
+LW_RR 4
+variables:
+(u'byte3', 8)
+(u'byte2', 8)
+(u'byte1', 8)
+(u'byte0', 8)
+(u'result', 32)
+(u'addr_err', 1)
+statements:
+{u'out': [u'result', u'addr_err'], u'fu': [u'Dmem.ld_32'], u'in': [u'addr']}
+{u'out': [u'byte0'], u'fu': [u'31:24'], u'in': [u'result']}
+{u'out': [u'byte1'], u'fu': [u'23:16'], u'in': [u'result']}
+{u'out': [u'byte2'], u'fu': [u'15:8'], u'in': [u'result']}
+{u'out': [u'byte3'], u'fu': [u'7:0'], u'in': [u'result']}
+{u'out': [u'bigE_word'], u'fu': [u'na'], u'in': [u'byte3', u'byte2', u'byte1', u'byte0']}
+{u'out': [], u'fu': [u'FWUL0.forward3'], u'in': [u'rt', u'bigE_word']}
+{u'out': [], u'fu': [u'FWUL1.forward3'], u'in': [u'rt', u'bigE_word']}
+{u'out': [], u'fu': [u'FWUL2.forward3'], u'in': [u'rt', u'bigE_word']}
+{u'out': [], u'fu': [u'FWUL3.forward3'], u'in': [u'rt', u'bigE_word']}
+{u'out': [], u'fu': [u'FWUL0.lock3'], u'in': [u'rt']}
+{u'out': [], u'fu': [u'FWUL1.lock3'], u'in': [u'rt']}
+{u'out': [], u'fu': [u'FWUL2.lock3'], u'in': [u'rt']}
+{u'out': [], u'fu': [u'FWUL3.lock3'], u'in': [u'rt']}
+LW_RR 5
+variables:
+statements:
+{u'out': [], u'fu': [u'FWUL0.forward5'], u'in': [u'rt', u'bigE_word']}
+{u'out': [], u'fu': [u'FWUL1.forward5'], u'in': [u'rt', u'bigE_word']}
+{u'out': [], u'fu': [u'FWUL2.forward5'], u'in': [u'rt', u'bigE_word']}
+{u'out': [], u'fu': [u'FWUL3.forward5'], u'in': [u'rt', u'bigE_word']}
+LW_RR 6
+variables:
+statements:
+{u'out': [], u'fu': [u'GPR.write0'], u'in': [u'rt', u'bigE_word']}
+{u'out': [], u'fu': [u'FWUL0.forward7'], u'in': [u'rt', u'bigE_word']}
+{u'out': [], u'fu': [u'FWUL1.forward7'], u'in': [u'rt', u'bigE_word']}
+{u'out': [], u'fu': [u'FWUL2.forward7'], u'in': [u'rt', u'bigE_word']}
+{u'out': [], u'fu': [u'FWUL3.forward7'], u'in': [u'rt', u'bigE_word']}
+LUI global
+variables:
+(u'rt', 5)
+(u'tmp_pc', 32)
+(u'imm', 16)
+(u'result', 32)
+(u'rs', 5)
+LUI 1
+variables:
+(u'current_pc', 32)
+(u'inst0', 64)
+(u'iramaddr_err', 1)
+statements:
+{u'out': [u'current_pc'], u'fu': [u'CPC.read'], u'in': []}
+{u'out': [u'tmp_pc'], u'fu': [u'na'], u'in': [u'current_pc']}
+{u'out': [u'inst0', u'iramaddr_err'], u'fu': [u'Imem.ld_64'], u'in': [u'current_pc']}
+{u'out': [], u'fu': [u'IReg.write'], u'in': [u'inst0']}
+{u'out': [], u'fu': [u'CPC.inc'], u'in': []}
+LUI 2
+variables:
+(u'zero16', 16)
+(u'tmp_ir', 64)
+statements:
+{u'out': [u'tmp_ir'], u'fu': [u'IReg.read'], u'in': []}
+{u'out': [u'rs'], u'fu': [u'28:24'], u'in': [u'tmp_ir']}
+{u'out': [u'rt'], u'fu': [u'20:16'], u'in': [u'tmp_ir']}
+{u'out': [u'imm'], u'fu': [u'15:0'], u'in': [u'tmp_ir']}
+{u'out': [u'zero16'], u'fu': [u'na'], u'in': [u'0000000000000000']}
+{u'out': [u'result'], u'fu': [u'na'], u'in': [u'imm', u'zero16']}
+LUI 3
+variables:
+statements:
+{u'out': [], u'fu': [u'FWUL0.forward1'], u'in': [u'rt', u'result']}
+{u'out': [], u'fu': [u'FWUL1.forward1'], u'in': [u'rt', u'result']}
+{u'out': [], u'fu': [u'FWUL2.forward1'], u'in': [u'rt', u'result']}
+{u'out': [], u'fu': [u'FWUL3.forward1'], u'in': [u'rt', u'result']}
+LUI 4
+variables:
+statements:
+{u'out': [], u'fu': [u'FWUL0.forward3'], u'in': [u'rt', u'result']}
+{u'out': [], u'fu': [u'FWUL1.forward3'], u'in': [u'rt', u'result']}
+{u'out': [], u'fu': [u'FWUL2.forward3'], u'in': [u'rt', u'result']}
+{u'out': [], u'fu': [u'FWUL3.forward3'], u'in': [u'rt', u'result']}
+LUI 5
+variables:
+statements:
+{u'out': [], u'fu': [u'FWUL0.forward5'], u'in': [u'rt', u'result']}
+{u'out': [], u'fu': [u'FWUL1.forward5'], u'in': [u'rt', u'result']}
+{u'out': [], u'fu': [u'FWUL2.forward5'], u'in': [u'rt', u'result']}
+{u'out': [], u'fu': [u'FWUL3.forward5'], u'in': [u'rt', u'result']}
+LUI 6
+variables:
+statements:
+{u'out': [], u'fu': [u'GPR.write0'], u'in': [u'rt', u'result']}
+{u'out': [], u'fu': [u'FWUL0.forward7'], u'in': [u'rt', u'result']}
+{u'out': [], u'fu': [u'FWUL1.forward7'], u'in': [u'rt', u'result']}
+{u'out': [], u'fu': [u'FWUL2.forward7'], u'in': [u'rt', u'result']}
+{u'out': [], u'fu': [u'FWUL3.forward7'], u'in': [u'rt', u'result']}
+DIV global
+variables:
+(u'rt', 5)
+(u'shamt', 8)
+(u'rs', 5)
+(u'source0', 32)
+(u'rd', 5)
+(u'resulthi', 32)
+(u'source1', 32)
+(u'tmp_pc', 32)
+(u'resultlo', 32)
+DIV 1
+variables:
+(u'current_pc', 32)
+(u'inst0', 64)
+(u'iramaddr_err', 1)
+statements:
+{u'out': [u'current_pc'], u'fu': [u'CPC.read'], u'in': []}
+{u'out': [u'tmp_pc'], u'fu': [u'na'], u'in': [u'current_pc']}
+{u'out': [u'inst0', u'iramaddr_err'], u'fu': [u'Imem.ld_64'], u'in': [u'current_pc']}
+{u'out': [], u'fu': [u'IReg.write'], u'in': [u'inst0']}
+{u'out': [], u'fu': [u'CPC.inc'], u'in': []}
+DIV 2
+variables:
+(u'tmp_source0', 32)
+(u'tmp_ir', 64)
+(u'tmp_source1', 32)
+statements:
+{u'out': [u'tmp_ir'], u'fu': [u'IReg.read'], u'in': []}
+{u'out': [u'rs'], u'fu': [u'28:24'], u'in': [u'tmp_ir']}
+{u'out': [u'rt'], u'fu': [u'20:16'], u'in': [u'tmp_ir']}
+{u'out': [u'rd'], u'fu': [u'12:8'], u'in': [u'tmp_ir']}
+{u'out': [u'shamt'], u'fu': [u'7:0'], u'in': [u'tmp_ir']}
+{u'out': [u'tmp_source0'], u'fu': [u'GPR.read0'], u'in': [u'rs']}
+{u'out': [u'tmp_source1'], u'fu': [u'GPR.read1'], u'in': [u'rt']}
+{u'out': [u'source0'], u'fu': [u'FWUL0.forward'], u'in': [u'rs', u'tmp_source0']}
+{u'out': [u'source1'], u'fu': [u'FWUL1.forward'], u'in': [u'rt', u'tmp_source1']}
+DIV 3
+variables:
+(u'flag', 1)
+statements:
+{u'out': [u'resultlo', u'resulthi', u'flag'], u'fu': [u'DIV1.div'], u'in': [u'source0', u'source1']}
+{u'out': [], u'fu': [u'LO.write'], u'in': [u'resultlo']}
+{u'out': [], u'fu': [u'HI.write'], u'in': [u'resulthi']}
+DIV 4
+variables:
+statements:
+DIV 5
+variables:
+statements:
+DIV 6
+variables:
+statements:
+SWR global
+variables:
+(u'rt', 5)
+(u'addr', 32)
+(u'rs', 5)
+(u'imm', 16)
+(u'source2', 32)
+(u'source0', 32)
+(u'source1', 32)
+(u'result', 32)
+(u'tmp_pc', 32)
+SWR 1
+variables:
+(u'current_pc', 32)
+(u'inst0', 64)
+(u'iramaddr_err', 1)
+statements:
+{u'out': [u'current_pc'], u'fu': [u'CPC.read'], u'in': []}
+{u'out': [u'tmp_pc'], u'fu': [u'na'], u'in': [u'current_pc']}
+{u'out': [u'inst0', u'iramaddr_err'], u'fu': [u'Imem.ld_64'], u'in': [u'current_pc']}
+{u'out': [], u'fu': [u'IReg.write'], u'in': [u'inst0']}
+{u'out': [], u'fu': [u'CPC.inc'], u'in': []}
+SWR 2
+variables:
+(u'tmp_source0', 32)
+(u'tmp_ir', 64)
+(u'tmp_source1', 32)
+statements:
+{u'out': [u'tmp_ir'], u'fu': [u'IReg.read'], u'in': []}
+{u'out': [u'rs'], u'fu': [u'28:24'], u'in': [u'tmp_ir']}
+{u'out': [u'rt'], u'fu': [u'20:16'], u'in': [u'tmp_ir']}
+{u'out': [u'imm'], u'fu': [u'15:0'], u'in': [u'tmp_ir']}
+{u'out': [u'tmp_source0'], u'fu': [u'GPR.read0'], u'in': [u'rs']}
+{u'out': [u'tmp_source1'], u'fu': [u'GPR.read1'], u'in': [u'rt']}
+{u'out': [u'source2'], u'fu': [u'EXT1.sign'], u'in': [u'imm']}
+{u'out': [u'source0'], u'fu': [u'FWUL0.forward'], u'in': [u'rs', u'tmp_source0']}
+{u'out': [u'source1'], u'fu': [u'FWUL1.forward'], u'in': [u'rt', u'tmp_source1']}
+SWR 3
+variables:
+(u'flag', 4)
+statements:
+{u'out': [u'addr', u'flag'], u'fu': [u'ALU1.add'], u'in': [u'source0', u'source2']}
+SWR 4
+variables:
+(u'data', 32)
+(u'reg1', 8)
+(u'target', 32)
+(u'reg0', 8)
+(u'result2', 32)
+(u'data2', 8)
+(u'result3', 32)
+(u'reg2', 8)
+(u'byte2', 8)
+(u'result0', 32)
+(u'result1', 32)
+(u'byte3', 8)
+(u'byte0', 8)
+(u'byte1', 8)
+(u'vAddr10', 2)
+(u'addr_mask', 30)
+(u'addr_err', 1)
+(u'nData', 32)
+(u'data1', 8)
+(u'data0', 8)
+(u'zero2', 2)
+statements:
+{u'out': [u'addr_mask'], u'fu': [u'31:2'], u'in': [u'addr']}
+{u'out': [u'vAddr10'], u'fu': [u'1:0'], u'in': [u'addr']}
+{u'out': [u'zero2'], u'fu': [u'na'], u'in': [u'00']}
+{u'out': [u'target'], u'fu': [u'na'], u'in': [u'addr_mask', u'zero2']}
+{u'out': [u'data', u'addr_err'], u'fu': [u'Dmem.ld_32'], u'in': [u'target']}
+{u'out': [u'byte0'], u'fu': [u'31:24'], u'in': [u'data']}
+{u'out': [u'byte1'], u'fu': [u'23:16'], u'in': [u'data']}
+{u'out': [u'byte2'], u'fu': [u'15:8'], u'in': [u'data']}
+{u'out': [u'byte3'], u'fu': [u'7:0'], u'in': [u'data']}
+{u'out': [u'nData'], u'fu': [u'na'], u'in': [u'byte3', u'byte2', u'byte1', u'byte0']}
+{u'out': [u'data2'], u'fu': [u'23:16'], u'in': [u'nData']}
+{u'out': [u'data1'], u'fu': [u'15:8'], u'in': [u'nData']}
+{u'out': [u'data0'], u'fu': [u'7:0'], u'in': [u'nData']}
+{u'out': [u'reg2'], u'fu': [u'23:16'], u'in': [u'source1']}
+{u'out': [u'reg1'], u'fu': [u'15:8'], u'in': [u'source1']}
+{u'out': [u'reg0'], u'fu': [u'7:0'], u'in': [u'source1']}
+{u'out': [u'result0'], u'fu': [u'na'], u'in': [u'source1']}
+{u'out': [u'result1'], u'fu': [u'na'], u'in': [u'reg2', u'reg1', u'reg0', u'data0']}
+{u'out': [u'result2'], u'fu': [u'na'], u'in': [u'reg1', u'reg0', u'data1', u'data0']}
+{u'out': [u'result3'], u'fu': [u'na'], u'in': [u'reg0', u'data2', u'data1', u'data0']}
+{u'out': [u'result'], u'fu': [u'MUXw32p4.sel'], u'in': [u'result0', u'result1', u'result2', u'result3', u'vAddr10']}
+SWR 5
+variables:
+(u'target', 32)
+(u'byte3', 8)
+(u'byte2', 8)
+(u'byte1', 8)
+(u'byte0', 8)
+(u'zero2', 2)
+(u'nResult', 32)
+(u'addr_err', 1)
+(u'addr_mask', 30)
+statements:
+{u'out': [u'addr_mask'], u'fu': [u'31:2'], u'in': [u'addr']}
+{u'out': [u'zero2'], u'fu': [u'na'], u'in': [u'00']}
+{u'out': [u'byte0'], u'fu': [u'31:24'], u'in': [u'result']}
+{u'out': [u'byte1'], u'fu': [u'23:16'], u'in': [u'result']}
+{u'out': [u'byte2'], u'fu': [u'15:8'], u'in': [u'result']}
+{u'out': [u'byte3'], u'fu': [u'7:0'], u'in': [u'result']}
+{u'out': [u'nResult'], u'fu': [u'na'], u'in': [u'byte3', u'byte2', u'byte1', u'byte0']}
+{u'out': [u'target'], u'fu': [u'na'], u'in': [u'addr_mask', u'zero2']}
+{u'out': [u'addr_err'], u'fu': [u'Dmem.s_32'], u'in': [u'target', u'nResult']}
+SWR 6
+variables:
+statements:
+LBm global
+variables:
+(u'rt', 5)
+(u'bigE_word', 32)
+(u'addr', 32)
+(u'rs', 5)
+(u'imm', 16)
+(u'source0', 32)
+(u'source1', 32)
+(u'tmp_pc', 32)
+LBm 1
+variables:
+(u'current_pc', 32)
+(u'inst0', 64)
+(u'iramaddr_err', 1)
+statements:
+{u'out': [u'current_pc'], u'fu': [u'CPC.read'], u'in': []}
+{u'out': [u'tmp_pc'], u'fu': [u'na'], u'in': [u'current_pc']}
+{u'out': [u'inst0', u'iramaddr_err'], u'fu': [u'Imem.ld_64'], u'in': [u'current_pc']}
+{u'out': [], u'fu': [u'IReg.write'], u'in': [u'inst0']}
+{u'out': [], u'fu': [u'CPC.inc'], u'in': []}
+LBm 2
+variables:
+(u'tmp_source0', 32)
+(u'tmp_ir', 64)
+statements:
+{u'out': [u'tmp_ir'], u'fu': [u'IReg.read'], u'in': []}
+{u'out': [u'rs'], u'fu': [u'28:24'], u'in': [u'tmp_ir']}
+{u'out': [u'rt'], u'fu': [u'20:16'], u'in': [u'tmp_ir']}
+{u'out': [u'imm'], u'fu': [u'15:0'], u'in': [u'tmp_ir']}
+{u'out': [u'tmp_source0'], u'fu': [u'GPR.read0'], u'in': [u'rs']}
+{u'out': [u'source0'], u'fu': [u'FWUL0.forward'], u'in': [u'rs', u'tmp_source0']}
+{u'out': [u'source1'], u'fu': [u'EXT1.sign'], u'in': [u'imm']}
+LBm 3
+variables:
+(u'flag', 4)
+statements:
+{u'out': [u'addr', u'flag'], u'fu': [u'ALU1.add'], u'in': [u'source0', u'source1']}
+{u'out': [], u'fu': [u'FWUL0.lock1'], u'in': [u'rt']}
+{u'out': [], u'fu': [u'FWUL1.lock1'], u'in': [u'rt']}
+{u'out': [], u'fu': [u'FWUL2.lock1'], u'in': [u'rt']}
+{u'out': [], u'fu': [u'FWUL3.lock1'], u'in': [u'rt']}
+LBm 4
+variables:
+(u'byte3', 8)
+(u'byte2', 8)
+(u'byte1', 8)
+(u'byte0', 8)
+(u'result', 32)
+(u'addr_err', 1)
+statements:
+{u'out': [u'result', u'addr_err'], u'fu': [u'Dmem.ld_8'], u'in': [u'addr']}
+{u'out': [u'byte0'], u'fu': [u'31:24'], u'in': [u'result']}
+{u'out': [u'byte1'], u'fu': [u'23:16'], u'in': [u'result']}
+{u'out': [u'byte2'], u'fu': [u'15:8'], u'in': [u'result']}
+{u'out': [u'byte3'], u'fu': [u'7:0'], u'in': [u'result']}
+{u'out': [u'bigE_word'], u'fu': [u'na'], u'in': [u'byte3', u'byte2', u'byte1', u'byte0']}
+{u'out': [], u'fu': [u'FWUL0.forward3'], u'in': [u'rt', u'bigE_word']}
+{u'out': [], u'fu': [u'FWUL1.forward3'], u'in': [u'rt', u'bigE_word']}
+{u'out': [], u'fu': [u'FWUL2.forward3'], u'in': [u'rt', u'bigE_word']}
+{u'out': [], u'fu': [u'FWUL3.forward3'], u'in': [u'rt', u'bigE_word']}
+{u'out': [], u'fu': [u'FWUL0.lock3'], u'in': [u'rt']}
+{u'out': [], u'fu': [u'FWUL1.lock3'], u'in': [u'rt']}
+{u'out': [], u'fu': [u'FWUL2.lock3'], u'in': [u'rt']}
+{u'out': [], u'fu': [u'FWUL3.lock3'], u'in': [u'rt']}
+LBm 5
+variables:
+statements:
+{u'out': [], u'fu': [u'FWUL0.forward5'], u'in': [u'rt', u'bigE_word']}
+{u'out': [], u'fu': [u'FWUL1.forward5'], u'in': [u'rt', u'bigE_word']}
+{u'out': [], u'fu': [u'FWUL2.forward5'], u'in': [u'rt', u'bigE_word']}
+{u'out': [], u'fu': [u'FWUL3.forward5'], u'in': [u'rt', u'bigE_word']}
+LBm 6
+variables:
+statements:
+{u'out': [], u'fu': [u'GPR.write0'], u'in': [u'rt', u'bigE_word']}
+{u'out': [], u'fu': [u'FWUL0.forward7'], u'in': [u'rt', u'bigE_word']}
+{u'out': [], u'fu': [u'FWUL1.forward7'], u'in': [u'rt', u'bigE_word']}
+{u'out': [], u'fu': [u'FWUL2.forward7'], u'in': [u'rt', u'bigE_word']}
+LH_RR global
+variables:
+(u'rt', 5)
+(u'shamt', 8)
+(u'bigE_word', 32)
+(u'addr', 32)
+(u'rs', 5)
+(u'rd', 5)
+(u'source0', 32)
+(u'source1', 32)
+(u'tmp_pc', 32)
+LH_RR 1
+variables:
+(u'current_pc', 32)
+(u'inst0', 64)
+(u'iramaddr_err', 1)
+statements:
+{u'out': [u'current_pc'], u'fu': [u'CPC.read'], u'in': []}
+{u'out': [u'tmp_pc'], u'fu': [u'na'], u'in': [u'current_pc']}
+{u'out': [u'inst0', u'iramaddr_err'], u'fu': [u'Imem.ld_64'], u'in': [u'current_pc']}
+{u'out': [], u'fu': [u'IReg.write'], u'in': [u'inst0']}
+{u'out': [], u'fu': [u'CPC.inc'], u'in': []}
+LH_RR 2
+variables:
+(u'tmp_source0', 32)
+(u'tmp_ir', 64)
+(u'tmp_source1', 32)
+statements:
+{u'out': [u'tmp_ir'], u'fu': [u'IReg.read'], u'in': []}
+{u'out': [u'rs'], u'fu': [u'28:24'], u'in': [u'tmp_ir']}
+{u'out': [u'rt'], u'fu': [u'20:16'], u'in': [u'tmp_ir']}
+{u'out': [u'rd'], u'fu': [u'12:8'], u'in': [u'tmp_ir']}
+{u'out': [u'shamt'], u'fu': [u'7:0'], u'in': [u'tmp_ir']}
+{u'out': [u'tmp_source0'], u'fu': [u'GPR.read0'], u'in': [u'rs']}
+{u'out': [u'tmp_source1'], u'fu': [u'GPR.read1'], u'in': [u'rd']}
+{u'out': [u'source0'], u'fu': [u'FWUL0.forward'], u'in': [u'rs', u'tmp_source0']}
+{u'out': [u'source1'], u'fu': [u'FWUL1.forward'], u'in': [u'rd', u'tmp_source1']}
+LH_RR 3
+variables:
+(u'flag', 4)
+statements:
+{u'out': [u'addr', u'flag'], u'fu': [u'ALU1.add'], u'in': [u'source0', u'source1']}
+{u'out': [], u'fu': [u'FWUL0.lock1'], u'in': [u'rt']}
+{u'out': [], u'fu': [u'FWUL1.lock1'], u'in': [u'rt']}
+{u'out': [], u'fu': [u'FWUL2.lock1'], u'in': [u'rt']}
+{u'out': [], u'fu': [u'FWUL3.lock1'], u'in': [u'rt']}
+LH_RR 4
+variables:
+(u'byte3', 8)
+(u'byte2', 8)
+(u'byte1', 8)
+(u'byte0', 8)
+(u'result', 32)
+(u'addr_err', 1)
+statements:
+{u'out': [u'result', u'addr_err'], u'fu': [u'Dmem.ld_16'], u'in': [u'addr']}
+{u'out': [u'byte0'], u'fu': [u'31:24'], u'in': [u'result']}
+{u'out': [u'byte1'], u'fu': [u'23:16'], u'in': [u'result']}
+{u'out': [u'byte2'], u'fu': [u'15:8'], u'in': [u'result']}
+{u'out': [u'byte3'], u'fu': [u'7:0'], u'in': [u'result']}
+{u'out': [u'bigE_word'], u'fu': [u'na'], u'in': [u'byte3', u'byte2', u'byte1', u'byte0']}
+{u'out': [], u'fu': [u'FWUL0.forward3'], u'in': [u'rt', u'bigE_word']}
+{u'out': [], u'fu': [u'FWUL1.forward3'], u'in': [u'rt', u'bigE_word']}
+{u'out': [], u'fu': [u'FWUL2.forward3'], u'in': [u'rt', u'bigE_word']}
+{u'out': [], u'fu': [u'FWUL3.forward3'], u'in': [u'rt', u'bigE_word']}
+{u'out': [], u'fu': [u'FWUL0.lock3'], u'in': [u'rt']}
+{u'out': [], u'fu': [u'FWUL1.lock3'], u'in': [u'rt']}
+{u'out': [], u'fu': [u'FWUL2.lock3'], u'in': [u'rt']}
+{u'out': [], u'fu': [u'FWUL3.lock3'], u'in': [u'rt']}
+LH_RR 5
+variables:
+statements:
+{u'out': [], u'fu': [u'FWUL0.forward5'], u'in': [u'rt', u'bigE_word']}
+{u'out': [], u'fu': [u'FWUL1.forward5'], u'in': [u'rt', u'bigE_word']}
+{u'out': [], u'fu': [u'FWUL2.forward5'], u'in': [u'rt', u'bigE_word']}
+{u'out': [], u'fu': [u'FWUL3.forward5'], u'in': [u'rt', u'bigE_word']}
+LH_RR 6
+variables:
+statements:
+{u'out': [], u'fu': [u'GPR.write0'], u'in': [u'rt', u'bigE_word']}
+{u'out': [], u'fu': [u'FWUL0.forward7'], u'in': [u'rt', u'bigE_word']}
+{u'out': [], u'fu': [u'FWUL1.forward7'], u'in': [u'rt', u'bigE_word']}
+{u'out': [], u'fu': [u'FWUL2.forward7'], u'in': [u'rt', u'bigE_word']}
+{u'out': [], u'fu': [u'FWUL3.forward7'], u'in': [u'rt', u'bigE_word']}
+SB_RR global
+variables:
+(u'rt', 5)
+(u'shamt', 8)
+(u'addr', 32)
+(u'rs', 5)
+(u'rd', 5)
+(u'source0', 32)
+(u'source1', 32)
+(u'tmp_pc', 32)
+(u'source2', 32)
+SB_RR 1
+variables:
+(u'current_pc', 32)
+(u'inst0', 64)
+(u'iramaddr_err', 1)
+statements:
+{u'out': [u'current_pc'], u'fu': [u'CPC.read'], u'in': []}
+{u'out': [u'tmp_pc'], u'fu': [u'na'], u'in': [u'current_pc']}
+{u'out': [u'inst0', u'iramaddr_err'], u'fu': [u'Imem.ld_64'], u'in': [u'current_pc']}
+{u'out': [], u'fu': [u'IReg.write'], u'in': [u'inst0']}
+{u'out': [], u'fu': [u'CPC.inc'], u'in': []}
+SB_RR 2
+variables:
+(u'tmp_source0', 32)
+(u'tmp_ir', 64)
+(u'tmp_source2', 32)
+(u'tmp_source1', 32)
+statements:
+{u'out': [u'tmp_ir'], u'fu': [u'IReg.read'], u'in': []}
+{u'out': [u'rs'], u'fu': [u'28:24'], u'in': [u'tmp_ir']}
+{u'out': [u'rt'], u'fu': [u'20:16'], u'in': [u'tmp_ir']}
+{u'out': [u'rd'], u'fu': [u'12:8'], u'in': [u'tmp_ir']}
+{u'out': [u'shamt'], u'fu': [u'7:0'], u'in': [u'tmp_ir']}
+{u'out': [u'tmp_source0'], u'fu': [u'GPR.read0'], u'in': [u'rs']}
+{u'out': [u'tmp_source1'], u'fu': [u'GPR.read1'], u'in': [u'rt']}
+{u'out': [u'tmp_source2'], u'fu': [u'GPR.read2'], u'in': [u'rd']}
+{u'out': [u'source0'], u'fu': [u'FWUL0.forward'], u'in': [u'rs', u'tmp_source0']}
+{u'out': [u'source1'], u'fu': [u'FWUL1.forward'], u'in': [u'rt', u'tmp_source1']}
+{u'out': [u'source2'], u'fu': [u'FWUL2.forward'], u'in': [u'rd', u'tmp_source2']}
+SB_RR 3
+variables:
+(u'flag', 4)
+statements:
+{u'out': [u'addr', u'flag'], u'fu': [u'ALU1.add'], u'in': [u'source0', u'source2']}
+SB_RR 4
+variables:
+statements:
+SB_RR 5
+variables:
+(u'LE_source1', 32)
+(u'byte3', 8)
+(u'byte2', 8)
+(u'byte1', 8)
+(u'byte0', 8)
+(u'addr_err', 1)
+statements:
+{u'out': [u'byte0'], u'fu': [u'31:24'], u'in': [u'source1']}
+{u'out': [u'byte1'], u'fu': [u'23:16'], u'in': [u'source1']}
+{u'out': [u'byte2'], u'fu': [u'15:8'], u'in': [u'source1']}
+{u'out': [u'byte3'], u'fu': [u'7:0'], u'in': [u'source1']}
+{u'out': [u'LE_source1'], u'fu': [u'na'], u'in': [u'byte3', u'byte2', u'byte1', u'byte0']}
+{u'out': [u'addr_err'], u'fu': [u'Dmem.s_8'], u'in': [u'addr', u'LE_source1']}
+SB_RR 6
+variables:
+statements:
+BREAK global
+variables:
+(u'tmp_pc', 32)
+(u'tmp_cpc', 32)
+BREAK 1
+variables:
+(u'current_pc', 32)
+(u'inst0', 64)
+(u'iramaddr_err', 1)
+statements:
+{u'out': [u'current_pc'], u'fu': [u'CPC.read'], u'in': []}
+{u'out': [u'tmp_pc'], u'fu': [u'na'], u'in': [u'current_pc']}
+{u'out': [u'inst0', u'iramaddr_err'], u'fu': [u'Imem.ld_64'], u'in': [u'current_pc']}
+{u'out': [], u'fu': [u'IReg.write'], u'in': [u'inst0']}
+{u'out': [], u'fu': [u'CPC.inc'], u'in': []}
+BREAK 2
+variables:
+(u'tmp_ir', 64)
+statements:
+{u'out': [u'tmp_ir'], u'fu': [u'IReg.read'], u'in': []}
+{u'out': [u'tmp_cpc'], u'fu': [u'CPC.read'], u'in': []}
+BREAK 3
+variables:
+(u'result', 32)
+statements:
+{u'out': [], u'fu': [u'SYSREG.write'], u'in': [u'tmp_cpc']}
+{u'out': [u'result'], u'fu': [u'na'], u'in': [u'00000000000000000000000000110000']}
+{u'out': [], u'fu': [u'CPC.write'], u'in': [u'result']}
+BREAK 4
+variables:
+statements:
+BREAK 5
+variables:
+statements:
+BREAK 6
+variables:
+statements:
+BEQ global
+variables:
+(u'rt', 5)
+(u'target', 32)
+(u'rs', 5)
+(u'imm', 16)
+(u'source0', 32)
+(u'source1', 32)
+(u'tmp_pc', 32)
+BEQ 1
+variables:
+(u'current_pc', 32)
+(u'inst0', 64)
+(u'iramaddr_err', 1)
+statements:
+{u'out': [u'current_pc'], u'fu': [u'CPC.read'], u'in': []}
+{u'out': [u'tmp_pc'], u'fu': [u'na'], u'in': [u'current_pc']}
+{u'out': [u'inst0', u'iramaddr_err'], u'fu': [u'Imem.ld_64'], u'in': [u'current_pc']}
+{u'out': [], u'fu': [u'IReg.write'], u'in': [u'inst0']}
+{u'out': [], u'fu': [u'CPC.inc'], u'in': []}
+BEQ 2
+variables:
+(u'tmp', 30)
+(u'tmp_source0', 32)
+(u'cout', 1)
+(u'cin', 1)
+(u'tmp_ir', 64)
+(u'ext_imm', 32)
+(u'zero2', 2)
+(u'offset', 32)
+(u'tmp_cpc', 32)
+(u'tmp_source1', 32)
+statements:
+{u'out': [u'tmp_ir'], u'fu': [u'IReg.read'], u'in': []}
+{u'out': [u'rs'], u'fu': [u'28:24'], u'in': [u'tmp_ir']}
+{u'out': [u'rt'], u'fu': [u'20:16'], u'in': [u'tmp_ir']}
+{u'out': [u'imm'], u'fu': [u'15:0'], u'in': [u'tmp_ir']}
+{u'out': [u'tmp_source0'], u'fu': [u'GPR.read0'], u'in': [u'rs']}
+{u'out': [u'tmp_source1'], u'fu': [u'GPR.read1'], u'in': [u'rt']}
+{u'out': [u'source0'], u'fu': [u'FWUL0.forward'], u'in': [u'rs', u'tmp_source0']}
+{u'out': [u'source1'], u'fu': [u'FWUL1.forward'], u'in': [u'rt', u'tmp_source1']}
+{u'out': [u'cin'], u'fu': [u'na'], u'in': [u'0']}
+{u'out': [u'zero2'], u'fu': [u'na'], u'in': [u'00']}
+{u'out': [u'ext_imm'], u'fu': [u'EXT1.sign'], u'in': [u'imm']}
+{u'out': [u'tmp'], u'fu': [u'29:0'], u'in': [u'ext_imm']}
+{u'out': [u'offset'], u'fu': [u'na'], u'in': [u'tmp', u'zero2']}
+{u'out': [u'tmp_cpc'], u'fu': [u'CPC.read'], u'in': []}
+{u'out': [u'target', u'cout'], u'fu': [u'ADD1.adc'], u'in': [u'tmp_cpc', u'offset', u'cin']}
+BEQ 3
+variables:
+(u'zero', 1)
+(u'cond', 1)
+(u'flag', 4)
+statements:
+{u'out': [u'flag'], u'fu': [u'ALU1.cmp'], u'in': [u'source0', u'source1']}
+{u'out': [u'zero'], u'fu': [u'2'], u'in': [u'flag']}
+{u'out': [u'cond'], u'fu': [u" =='"], u'in': [u'zero', u'1']}
+{u'out': [], u'fu': [u'sel', u'CPC.write'], u'in': [u'cond', u'target']}
+BEQ 4
+variables:
+statements:
+BEQ 5
+variables:
+statements:
+BEQ 6
+variables:
+statements:
+LBU global
+variables:
+(u'rt', 5)
+(u'bigE_word', 32)
+(u'addr', 32)
+(u'rs', 5)
+(u'imm', 16)
+(u'source0', 32)
+(u'source1', 32)
+(u'tmp_pc', 32)
+LBU 1
+variables:
+(u'current_pc', 32)
+(u'inst0', 64)
+(u'iramaddr_err', 1)
+statements:
+{u'out': [u'current_pc'], u'fu': [u'CPC.read'], u'in': []}
+{u'out': [u'tmp_pc'], u'fu': [u'na'], u'in': [u'current_pc']}
+{u'out': [u'inst0', u'iramaddr_err'], u'fu': [u'Imem.ld_64'], u'in': [u'current_pc']}
+{u'out': [], u'fu': [u'IReg.write'], u'in': [u'inst0']}
+{u'out': [], u'fu': [u'CPC.inc'], u'in': []}
+LBU 2
+variables:
+(u'tmp_source0', 32)
+(u'tmp_ir', 64)
+statements:
+{u'out': [u'tmp_ir'], u'fu': [u'IReg.read'], u'in': []}
+{u'out': [u'rs'], u'fu': [u'28:24'], u'in': [u'tmp_ir']}
+{u'out': [u'rt'], u'fu': [u'20:16'], u'in': [u'tmp_ir']}
+{u'out': [u'imm'], u'fu': [u'15:0'], u'in': [u'tmp_ir']}
+{u'out': [u'tmp_source0'], u'fu': [u'GPR.read0'], u'in': [u'rs']}
+{u'out': [u'source0'], u'fu': [u'FWUL0.forward'], u'in': [u'rs', u'tmp_source0']}
+{u'out': [u'source1'], u'fu': [u'EXT1.sign'], u'in': [u'imm']}
+LBU 3
+variables:
+(u'flag', 4)
+statements:
+{u'out': [u'addr', u'flag'], u'fu': [u'ALU1.add'], u'in': [u'source0', u'source1']}
+{u'out': [], u'fu': [u'FWUL0.lock1'], u'in': [u'rt']}
+{u'out': [], u'fu': [u'FWUL1.lock1'], u'in': [u'rt']}
+{u'out': [], u'fu': [u'FWUL2.lock1'], u'in': [u'rt']}
+{u'out': [], u'fu': [u'FWUL3.lock1'], u'in': [u'rt']}
+LBU 4
+variables:
+(u'byte3', 8)
+(u'byte2', 8)
+(u'byte1', 8)
+(u'byte0', 8)
+(u'result', 32)
+(u'addr_err', 1)
+statements:
+{u'out': [u'result', u'addr_err'], u'fu': [u'Dmem.ldu_8'], u'in': [u'addr']}
+{u'out': [u'byte0'], u'fu': [u'31:24'], u'in': [u'result']}
+{u'out': [u'byte1'], u'fu': [u'23:16'], u'in': [u'result']}
+{u'out': [u'byte2'], u'fu': [u'15:8'], u'in': [u'result']}
+{u'out': [u'byte3'], u'fu': [u'7:0'], u'in': [u'result']}
+{u'out': [u'bigE_word'], u'fu': [u'na'], u'in': [u'byte3', u'byte2', u'byte1', u'byte0']}
+{u'out': [], u'fu': [u'FWUL0.forward3'], u'in': [u'rt', u'bigE_word']}
+{u'out': [], u'fu': [u'FWUL1.forward3'], u'in': [u'rt', u'bigE_word']}
+{u'out': [], u'fu': [u'FWUL2.forward3'], u'in': [u'rt', u'bigE_word']}
+{u'out': [], u'fu': [u'FWUL3.forward3'], u'in': [u'rt', u'bigE_word']}
+{u'out': [], u'fu': [u'FWUL0.lock3'], u'in': [u'rt']}
+{u'out': [], u'fu': [u'FWUL1.lock3'], u'in': [u'rt']}
+{u'out': [], u'fu': [u'FWUL2.lock3'], u'in': [u'rt']}
+{u'out': [], u'fu': [u'FWUL3.lock3'], u'in': [u'rt']}
+LBU 5
+variables:
+statements:
+{u'out': [], u'fu': [u'FWUL0.forward5'], u'in': [u'rt', u'bigE_word']}
+{u'out': [], u'fu': [u'FWUL1.forward5'], u'in': [u'rt', u'bigE_word']}
+{u'out': [], u'fu': [u'FWUL2.forward5'], u'in': [u'rt', u'bigE_word']}
+{u'out': [], u'fu': [u'FWUL3.forward5'], u'in': [u'rt', u'bigE_word']}
+LBU 6
+variables:
+statements:
+{u'out': [], u'fu': [u'GPR.write0'], u'in': [u'rt', u'bigE_word']}
+{u'out': [], u'fu': [u'FWUL0.forward7'], u'in': [u'rt', u'bigE_word']}
+{u'out': [], u'fu': [u'FWUL1.forward7'], u'in': [u'rt', u'bigE_word']}
+{u'out': [], u'fu': [u'FWUL2.forward7'], u'in': [u'rt', u'bigE_word']}
+{u'out': [], u'fu': [u'FWUL3.forward7'], u'in': [u'rt', u'bigE_word']}
+DSW_RR global
+variables:
+(u'rt', 5)
+(u'shamt', 8)
+(u'rs', 5)
+(u'rd', 5)
+(u'source3', 32)
+(u'source0', 32)
+(u'source1', 32)
+(u'addr2', 32)
+(u'tmp_pc', 32)
+(u'addr1', 32)
+(u'source2', 32)
+DSW_RR 1
+variables:
+(u'current_pc', 32)
+(u'inst0', 64)
+(u'iramaddr_err', 1)
+statements:
+{u'out': [u'current_pc'], u'fu': [u'CPC.read'], u'in': []}
+{u'out': [u'tmp_pc'], u'fu': [u'na'], u'in': [u'current_pc']}
+{u'out': [u'inst0', u'iramaddr_err'], u'fu': [u'Imem.ld_64'], u'in': [u'current_pc']}
+{u'out': [], u'fu': [u'IReg.write'], u'in': [u'inst0']}
+{u'out': [], u'fu': [u'CPC.inc'], u'in': []}
+DSW_RR 2
+variables:
+(u'tmp_source0', 32)
+(u'tmp_source1', 32)
+(u'tmp_source2', 32)
+(u'tmp_source3', 32)
+(u'one', 1)
+(u'tmp_ir', 64)
+(u'rt2', 5)
+(u'oldrt', 4)
+statements:
+{u'out': [u'tmp_ir'], u'fu': [u'IReg.read'], u'in': []}
+{u'out': [u'rs'], u'fu': [u'28:24'], u'in': [u'tmp_ir']}
+{u'out': [u'rt'], u'fu': [u'20:16'], u'in': [u'tmp_ir']}
+{u'out': [u'rd'], u'fu': [u'12:8'], u'in': [u'tmp_ir']}
+{u'out': [u'shamt'], u'fu': [u'7:0'], u'in': [u'tmp_ir']}
+{u'out': [u'one'], u'fu': [u'na'], u'in': [u'1']}
+{u'out': [u'oldrt'], u'fu': [u'4:1'], u'in': [u'rt']}
+{u'out': [u'rt2'], u'fu': [u'na'], u'in': [u'oldrt', u'one']}
+{u'out': [u'tmp_source0'], u'fu': [u'GPR.read0'], u'in': [u'rs']}
+{u'out': [u'tmp_source1'], u'fu': [u'GPR.read1'], u'in': [u'rt']}
+{u'out': [u'tmp_source2'], u'fu': [u'GPR.read2'], u'in': [u'rd']}
+{u'out': [u'tmp_source3'], u'fu': [u'GPR.read3'], u'in': [u'rt2']}
+{u'out': [u'source0'], u'fu': [u'FWUL0.forward'], u'in': [u'rs', u'tmp_source0']}
+{u'out': [u'source1'], u'fu': [u'FWUL1.forward'], u'in': [u'rt', u'tmp_source1']}
+{u'out': [u'source2'], u'fu': [u'FWUL2.forward'], u'in': [u'rd', u'tmp_source2']}
+{u'out': [u'source3'], u'fu': [u'FWUL3.forward'], u'in': [u'rt2', u'tmp_source3']}
+DSW_RR 3
+variables:
+(u'four32bit', 32)
+(u'flag', 4)
+(u'cin', 1)
+(u'cout', 1)
+statements:
+{u'out': [u'addr1', u'flag'], u'fu': [u'ALU1.add'], u'in': [u'source0', u'source2']}
+{u'out': [u'cin'], u'fu': [u'na'], u'in': [u'1']}
+{u'out': [u'four32bit'], u'fu': [u'na'], u'in': [u'00000000000000000000000000000100']}
+{u'out': [u'addr2', u'cout'], u'fu': [u'ADDER2.adc'], u'in': [u'addr1', u'four32bit', u'cin']}
+DSW_RR 4
+variables:
+statements:
+DSW_RR 5
+variables:
+(u'LE_source1', 32)
+(u'byte3', 8)
+(u'byte2', 8)
+(u'byte1', 8)
+(u'byte0', 8)
+(u'addr_err', 1)
+statements:
+{u'out': [u'byte0'], u'fu': [u'31:24'], u'in': [u'source1']}
+{u'out': [u'byte1'], u'fu': [u'23:16'], u'in': [u'source1']}
+{u'out': [u'byte2'], u'fu': [u'15:8'], u'in': [u'source1']}
+{u'out': [u'byte3'], u'fu': [u'7:0'], u'in': [u'source1']}
+{u'out': [u'LE_source1'], u'fu': [u'na'], u'in': [u'byte3', u'byte2', u'byte1', u'byte0']}
+{u'out': [u'addr_err'], u'fu': [u'Dmem.s_32'], u'in': [u'addr1', u'LE_source1']}
+DSW_RR 6
+variables:
+(u'LE_source3', 32)
+(u'byte3', 8)
+(u'byte2', 8)
+(u'byte1', 8)
+(u'byte0', 8)
+(u'addr_err', 1)
+statements:
+{u'out': [u'byte0'], u'fu': [u'31:24'], u'in': [u'source3']}
+{u'out': [u'byte1'], u'fu': [u'23:16'], u'in': [u'source3']}
+{u'out': [u'byte2'], u'fu': [u'15:8'], u'in': [u'source3']}
+{u'out': [u'byte3'], u'fu': [u'7:0'], u'in': [u'source3']}
+{u'out': [u'LE_source3'], u'fu': [u'na'], u'in': [u'byte3', u'byte2', u'byte1', u'byte0']}
+{u'out': [u'addr_err'], u'fu': [u'Dmem.s_32'], u'in': [u'addr2', u'LE_source3']}
+LB_RR global
+variables:
+(u'rt', 5)
+(u'shamt', 8)
+(u'bigE_word', 32)
+(u'addr', 32)
+(u'rs', 5)
+(u'rd', 5)
+(u'source0', 32)
+(u'source1', 32)
+(u'tmp_pc', 32)
+LB_RR 1
+variables:
+(u'current_pc', 32)
+(u'inst0', 64)
+(u'iramaddr_err', 1)
+statements:
+{u'out': [u'current_pc'], u'fu': [u'CPC.read'], u'in': []}
+{u'out': [u'tmp_pc'], u'fu': [u'na'], u'in': [u'current_pc']}
+{u'out': [u'inst0', u'iramaddr_err'], u'fu': [u'Imem.ld_64'], u'in': [u'current_pc']}
+{u'out': [], u'fu': [u'IReg.write'], u'in': [u'inst0']}
+{u'out': [], u'fu': [u'CPC.inc'], u'in': []}
+LB_RR 2
+variables:
+(u'tmp_source0', 32)
+(u'tmp_ir', 64)
+(u'tmp_source1', 32)
+statements:
+{u'out': [u'tmp_ir'], u'fu': [u'IReg.read'], u'in': []}
+{u'out': [u'rs'], u'fu': [u'28:24'], u'in': [u'tmp_ir']}
+{u'out': [u'rt'], u'fu': [u'20:16'], u'in': [u'tmp_ir']}
+{u'out': [u'rd'], u'fu': [u'12:8'], u'in': [u'tmp_ir']}
+{u'out': [u'shamt'], u'fu': [u'7:0'], u'in': [u'tmp_ir']}
+{u'out': [u'tmp_source0'], u'fu': [u'GPR.read0'], u'in': [u'rs']}
+{u'out': [u'tmp_source1'], u'fu': [u'GPR.read1'], u'in': [u'rd']}
+{u'out': [u'source0'], u'fu': [u'FWUL0.forward'], u'in': [u'rs', u'tmp_source0']}
+{u'out': [u'source1'], u'fu': [u'FWUL1.forward'], u'in': [u'rd', u'tmp_source1']}
+LB_RR 3
+variables:
+(u'flag', 4)
+statements:
+{u'out': [u'addr', u'flag'], u'fu': [u'ALU1.add'], u'in': [u'source0', u'source1']}
+{u'out': [], u'fu': [u'FWUL0.lock1'], u'in': [u'rt']}
+{u'out': [], u'fu': [u'FWUL1.lock1'], u'in': [u'rt']}
+{u'out': [], u'fu': [u'FWUL2.lock1'], u'in': [u'rt']}
+{u'out': [], u'fu': [u'FWUL3.lock1'], u'in': [u'rt']}
+LB_RR 4
+variables:
+(u'byte3', 8)
+(u'byte2', 8)
+(u'byte1', 8)
+(u'byte0', 8)
+(u'result', 32)
+(u'addr_err', 1)
+statements:
+{u'out': [u'result', u'addr_err'], u'fu': [u'Dmem.ld_8'], u'in': [u'addr']}
+{u'out': [u'byte0'], u'fu': [u'31:24'], u'in': [u'result']}
+{u'out': [u'byte1'], u'fu': [u'23:16'], u'in': [u'result']}
+{u'out': [u'byte2'], u'fu': [u'15:8'], u'in': [u'result']}
+{u'out': [u'byte3'], u'fu': [u'7:0'], u'in': [u'result']}
+{u'out': [u'bigE_word'], u'fu': [u'na'], u'in': [u'byte3', u'byte2', u'byte1', u'byte0']}
+{u'out': [], u'fu': [u'FWUL0.forward3'], u'in': [u'rt', u'bigE_word']}
+{u'out': [], u'fu': [u'FWUL1.forward3'], u'in': [u'rt', u'bigE_word']}
+{u'out': [], u'fu': [u'FWUL2.forward3'], u'in': [u'rt', u'bigE_word']}
+{u'out': [], u'fu': [u'FWUL3.forward3'], u'in': [u'rt', u'bigE_word']}
+{u'out': [], u'fu': [u'FWUL0.lock3'], u'in': [u'rt']}
+{u'out': [], u'fu': [u'FWUL1.lock3'], u'in': [u'rt']}
+{u'out': [], u'fu': [u'FWUL2.lock3'], u'in': [u'rt']}
+{u'out': [], u'fu': [u'FWUL3.lock3'], u'in': [u'rt']}
+LB_RR 5
+variables:
+statements:
+{u'out': [], u'fu': [u'FWUL0.forward5'], u'in': [u'rt', u'bigE_word']}
+{u'out': [], u'fu': [u'FWUL1.forward5'], u'in': [u'rt', u'bigE_word']}
+{u'out': [], u'fu': [u'FWUL2.forward5'], u'in': [u'rt', u'bigE_word']}
+{u'out': [], u'fu': [u'FWUL3.forward5'], u'in': [u'rt', u'bigE_word']}
+LB_RR 6
+variables:
+statements:
+{u'out': [], u'fu': [u'GPR.write0'], u'in': [u'rt', u'bigE_word']}
+{u'out': [], u'fu': [u'FWUL0.forward7'], u'in': [u'rt', u'bigE_word']}
+{u'out': [], u'fu': [u'FWUL1.forward7'], u'in': [u'rt', u'bigE_word']}
+{u'out': [], u'fu': [u'FWUL2.forward7'], u'in': [u'rt', u'bigE_word']}
+{u'out': [], u'fu': [u'FWUL3.forward7'], u'in': [u'rt', u'bigE_word']}
+LHU_RR global
+variables:
+(u'rt', 5)
+(u'shamt', 8)
+(u'bigE_word', 32)
+(u'addr', 32)
+(u'rs', 5)
+(u'rd', 5)
+(u'source0', 32)
+(u'source1', 32)
+(u'tmp_pc', 32)
+LHU_RR 1
+variables:
+(u'current_pc', 32)
+(u'inst0', 64)
+(u'iramaddr_err', 1)
+statements:
+{u'out': [u'current_pc'], u'fu': [u'CPC.read'], u'in': []}
+{u'out': [u'tmp_pc'], u'fu': [u'na'], u'in': [u'current_pc']}
+{u'out': [u'inst0', u'iramaddr_err'], u'fu': [u'Imem.ld_64'], u'in': [u'current_pc']}
+{u'out': [], u'fu': [u'IReg.write'], u'in': [u'inst0']}
+{u'out': [], u'fu': [u'CPC.inc'], u'in': []}
+LHU_RR 2
+variables:
+(u'tmp_source0', 32)
+(u'tmp_ir', 64)
+(u'tmp_source1', 32)
+statements:
+{u'out': [u'tmp_ir'], u'fu': [u'IReg.read'], u'in': []}
+{u'out': [u'rs'], u'fu': [u'28:24'], u'in': [u'tmp_ir']}
+{u'out': [u'rt'], u'fu': [u'20:16'], u'in': [u'tmp_ir']}
+{u'out': [u'rd'], u'fu': [u'12:8'], u'in': [u'tmp_ir']}
+{u'out': [u'shamt'], u'fu': [u'7:0'], u'in': [u'tmp_ir']}
+{u'out': [u'tmp_source0'], u'fu': [u'GPR.read0'], u'in': [u'rs']}
+{u'out': [u'tmp_source1'], u'fu': [u'GPR.read1'], u'in': [u'rd']}
+{u'out': [u'source0'], u'fu': [u'FWUL0.forward'], u'in': [u'rs', u'tmp_source0']}
+{u'out': [u'source1'], u'fu': [u'FWUL1.forward'], u'in': [u'rd', u'tmp_source1']}
+LHU_RR 3
+variables:
+(u'flag', 4)
+statements:
+{u'out': [u'addr', u'flag'], u'fu': [u'ALU1.add'], u'in': [u'source0', u'source1']}
+{u'out': [], u'fu': [u'FWUL0.lock1'], u'in': [u'rt']}
+{u'out': [], u'fu': [u'FWUL1.lock1'], u'in': [u'rt']}
+{u'out': [], u'fu': [u'FWUL2.lock1'], u'in': [u'rt']}
+{u'out': [], u'fu': [u'FWUL3.lock1'], u'in': [u'rt']}
+LHU_RR 4
+variables:
+(u'byte3', 8)
+(u'byte2', 8)
+(u'byte1', 8)
+(u'byte0', 8)
+(u'result', 32)
+(u'addr_err', 1)
+statements:
+{u'out': [u'result', u'addr_err'], u'fu': [u'Dmem.ldu_16'], u'in': [u'addr']}
+{u'out': [u'byte0'], u'fu': [u'31:24'], u'in': [u'result']}
+{u'out': [u'byte1'], u'fu': [u'23:16'], u'in': [u'result']}
+{u'out': [u'byte2'], u'fu': [u'15:8'], u'in': [u'result']}
+{u'out': [u'byte3'], u'fu': [u'7:0'], u'in': [u'result']}
+{u'out': [u'bigE_word'], u'fu': [u'na'], u'in': [u'byte3', u'byte2', u'byte1', u'byte0']}
+{u'out': [], u'fu': [u'FWUL0.forward3'], u'in': [u'rt', u'bigE_word']}
+{u'out': [], u'fu': [u'FWUL1.forward3'], u'in': [u'rt', u'bigE_word']}
+{u'out': [], u'fu': [u'FWUL2.forward3'], u'in': [u'rt', u'bigE_word']}
+{u'out': [], u'fu': [u'FWUL3.forward3'], u'in': [u'rt', u'bigE_word']}
+{u'out': [], u'fu': [u'FWUL0.lock3'], u'in': [u'rt']}
+{u'out': [], u'fu': [u'FWUL1.lock3'], u'in': [u'rt']}
+{u'out': [], u'fu': [u'FWUL2.lock3'], u'in': [u'rt']}
+{u'out': [], u'fu': [u'FWUL3.lock3'], u'in': [u'rt']}
+LHU_RR 5
+variables:
+statements:
+{u'out': [], u'fu': [u'FWUL0.forward5'], u'in': [u'rt', u'bigE_word']}
+{u'out': [], u'fu': [u'FWUL1.forward5'], u'in': [u'rt', u'bigE_word']}
+{u'out': [], u'fu': [u'FWUL2.forward5'], u'in': [u'rt', u'bigE_word']}
+{u'out': [], u'fu': [u'FWUL3.forward5'], u'in': [u'rt', u'bigE_word']}
+LHU_RR 6
+variables:
+statements:
+{u'out': [], u'fu': [u'GPR.write0'], u'in': [u'rt', u'bigE_word']}
+{u'out': [], u'fu': [u'FWUL0.forward7'], u'in': [u'rt', u'bigE_word']}
+{u'out': [], u'fu': [u'FWUL1.forward7'], u'in': [u'rt', u'bigE_word']}
+{u'out': [], u'fu': [u'FWUL2.forward7'], u'in': [u'rt', u'bigE_word']}
+{u'out': [], u'fu': [u'FWUL3.forward7'], u'in': [u'rt', u'bigE_word']}
+ADDI global
+variables:
+(u'rt', 5)
+(u'rs', 5)
+(u'imm', 16)
+(u'source0', 32)
+(u'source1', 32)
+(u'result', 32)
+(u'tmp_pc', 32)
+ADDI 1
+variables:
+(u'current_pc', 32)
+(u'inst0', 64)
+(u'iramaddr_err', 1)
+statements:
+{u'out': [u'current_pc'], u'fu': [u'CPC.read'], u'in': []}
+{u'out': [u'tmp_pc'], u'fu': [u'na'], u'in': [u'current_pc']}
+{u'out': [u'inst0', u'iramaddr_err'], u'fu': [u'Imem.ld_64'], u'in': [u'current_pc']}
+{u'out': [], u'fu': [u'IReg.write'], u'in': [u'inst0']}
+{u'out': [], u'fu': [u'CPC.inc'], u'in': []}
+ADDI 2
+variables:
+(u'tmp_source0', 32)
+(u'tmp_ir', 64)
+statements:
+{u'out': [u'tmp_ir'], u'fu': [u'IReg.read'], u'in': []}
+{u'out': [u'rs'], u'fu': [u'28:24'], u'in': [u'tmp_ir']}
+{u'out': [u'rt'], u'fu': [u'20:16'], u'in': [u'tmp_ir']}
+{u'out': [u'imm'], u'fu': [u'15:0'], u'in': [u'tmp_ir']}
+{u'out': [u'tmp_source0'], u'fu': [u'GPR.read0'], u'in': [u'rs']}
+{u'out': [u'source0'], u'fu': [u'FWUL0.forward'], u'in': [u'rs', u'tmp_source0']}
+{u'out': [u'source1'], u'fu': [u'EXT1.sign'], u'in': [u'imm']}
+ADDI 3
+variables:
+(u'flag', 4)
+statements:
+{u'out': [u'result', u'flag'], u'fu': [u'ALU1.add'], u'in': [u'source0', u'source1']}
+{u'out': [], u'fu': [u'FWUL0.forward1'], u'in': [u'rt', u'result']}
+{u'out': [], u'fu': [u'FWUL1.forward1'], u'in': [u'rt', u'result']}
+{u'out': [], u'fu': [u'FWUL2.forward1'], u'in': [u'rt', u'result']}
+{u'out': [], u'fu': [u'FWUL3.forward1'], u'in': [u'rt', u'result']}
+ADDI 4
+variables:
+statements:
+{u'out': [], u'fu': [u'FWUL0.forward3'], u'in': [u'rt', u'result']}
+{u'out': [], u'fu': [u'FWUL1.forward3'], u'in': [u'rt', u'result']}
+{u'out': [], u'fu': [u'FWUL2.forward3'], u'in': [u'rt', u'result']}
+{u'out': [], u'fu': [u'FWUL3.forward3'], u'in': [u'rt', u'result']}
+ADDI 5
+variables:
+statements:
+{u'out': [], u'fu': [u'FWUL0.forward5'], u'in': [u'rt', u'result']}
+{u'out': [], u'fu': [u'FWUL1.forward5'], u'in': [u'rt', u'result']}
+{u'out': [], u'fu': [u'FWUL2.forward5'], u'in': [u'rt', u'result']}
+{u'out': [], u'fu': [u'FWUL3.forward5'], u'in': [u'rt', u'result']}
+ADDI 6
+variables:
+statements:
+{u'out': [], u'fu': [u'GPR.write0'], u'in': [u'rt', u'result']}
+{u'out': [], u'fu': [u'FWUL0.forward7'], u'in': [u'rt', u'result']}
+{u'out': [], u'fu': [u'FWUL1.forward7'], u'in': [u'rt', u'result']}
+{u'out': [], u'fu': [u'FWUL2.forward7'], u'in': [u'rt', u'result']}
+{u'out': [], u'fu': [u'FWUL3.forward7'], u'in': [u'rt', u'result']}
+LH global
+variables:
+(u'rt', 5)
+(u'bigE_word', 32)
+(u'addr', 32)
+(u'rs', 5)
+(u'imm', 16)
+(u'source0', 32)
+(u'source1', 32)
+(u'tmp_pc', 32)
+LH 1
+variables:
+(u'current_pc', 32)
+(u'inst0', 64)
+(u'iramaddr_err', 1)
+statements:
+{u'out': [u'current_pc'], u'fu': [u'CPC.read'], u'in': []}
+{u'out': [u'tmp_pc'], u'fu': [u'na'], u'in': [u'current_pc']}
+{u'out': [u'inst0', u'iramaddr_err'], u'fu': [u'Imem.ld_64'], u'in': [u'current_pc']}
+{u'out': [], u'fu': [u'IReg.write'], u'in': [u'inst0']}
+{u'out': [], u'fu': [u'CPC.inc'], u'in': []}
+LH 2
+variables:
+(u'tmp_source0', 32)
+(u'tmp_ir', 64)
+statements:
+{u'out': [u'tmp_ir'], u'fu': [u'IReg.read'], u'in': []}
+{u'out': [u'rs'], u'fu': [u'28:24'], u'in': [u'tmp_ir']}
+{u'out': [u'rt'], u'fu': [u'20:16'], u'in': [u'tmp_ir']}
+{u'out': [u'imm'], u'fu': [u'15:0'], u'in': [u'tmp_ir']}
+{u'out': [u'tmp_source0'], u'fu': [u'GPR.read0'], u'in': [u'rs']}
+{u'out': [u'source0'], u'fu': [u'FWUL0.forward'], u'in': [u'rs', u'tmp_source0']}
+{u'out': [u'source1'], u'fu': [u'EXT1.sign'], u'in': [u'imm']}
+LH 3
+variables:
+(u'flag', 4)
+statements:
+{u'out': [u'addr', u'flag'], u'fu': [u'ALU1.add'], u'in': [u'source0', u'source1']}
+{u'out': [], u'fu': [u'FWUL0.lock1'], u'in': [u'rt']}
+{u'out': [], u'fu': [u'FWUL1.lock1'], u'in': [u'rt']}
+{u'out': [], u'fu': [u'FWUL2.lock1'], u'in': [u'rt']}
+{u'out': [], u'fu': [u'FWUL3.lock1'], u'in': [u'rt']}
+LH 4
+variables:
+(u'byte3', 8)
+(u'byte2', 8)
+(u'byte1', 8)
+(u'byte0', 8)
+(u'result', 32)
+(u'addr_err', 1)
+statements:
+{u'out': [u'result', u'addr_err'], u'fu': [u'Dmem.ld_16'], u'in': [u'addr']}
+{u'out': [u'byte0'], u'fu': [u'31:24'], u'in': [u'result']}
+{u'out': [u'byte1'], u'fu': [u'23:16'], u'in': [u'result']}
+{u'out': [u'byte2'], u'fu': [u'15:8'], u'in': [u'result']}
+{u'out': [u'byte3'], u'fu': [u'7:0'], u'in': [u'result']}
+{u'out': [u'bigE_word'], u'fu': [u'na'], u'in': [u'byte3', u'byte2', u'byte1', u'byte0']}
+{u'out': [], u'fu': [u'FWUL0.forward3'], u'in': [u'rt', u'bigE_word']}
+{u'out': [], u'fu': [u'FWUL1.forward3'], u'in': [u'rt', u'bigE_word']}
+{u'out': [], u'fu': [u'FWUL2.forward3'], u'in': [u'rt', u'bigE_word']}
+{u'out': [], u'fu': [u'FWUL3.forward3'], u'in': [u'rt', u'bigE_word']}
+{u'out': [], u'fu': [u'FWUL0.lock3'], u'in': [u'rt']}
+{u'out': [], u'fu': [u'FWUL1.lock3'], u'in': [u'rt']}
+{u'out': [], u'fu': [u'FWUL2.lock3'], u'in': [u'rt']}
+{u'out': [], u'fu': [u'FWUL3.lock3'], u'in': [u'rt']}
+LH 5
+variables:
+statements:
+{u'out': [], u'fu': [u'FWUL0.forward5'], u'in': [u'rt', u'bigE_word']}
+{u'out': [], u'fu': [u'FWUL1.forward5'], u'in': [u'rt', u'bigE_word']}
+{u'out': [], u'fu': [u'FWUL2.forward5'], u'in': [u'rt', u'bigE_word']}
+{u'out': [], u'fu': [u'FWUL3.forward5'], u'in': [u'rt', u'bigE_word']}
+LH 6
+variables:
+statements:
+{u'out': [], u'fu': [u'GPR.write0'], u'in': [u'rt', u'bigE_word']}
+{u'out': [], u'fu': [u'FWUL0.forward7'], u'in': [u'rt', u'bigE_word']}
+{u'out': [], u'fu': [u'FWUL1.forward7'], u'in': [u'rt', u'bigE_word']}
+{u'out': [], u'fu': [u'FWUL2.forward7'], u'in': [u'rt', u'bigE_word']}
+{u'out': [], u'fu': [u'FWUL3.forward7'], u'in': [u'rt', u'bigE_word']}
+LW global
+variables:
+(u'rt', 5)
+(u'bigE_word', 32)
+(u'addr', 32)
+(u'rs', 5)
+(u'imm', 16)
+(u'source0', 32)
+(u'source1', 32)
+(u'tmp_pc', 32)
+LW 1
+variables:
+(u'current_pc', 32)
+(u'inst0', 64)
+(u'iramaddr_err', 1)
+statements:
+{u'out': [u'current_pc'], u'fu': [u'CPC.read'], u'in': []}
+{u'out': [u'tmp_pc'], u'fu': [u'na'], u'in': [u'current_pc']}
+{u'out': [u'inst0', u'iramaddr_err'], u'fu': [u'Imem.ld_64'], u'in': [u'current_pc']}
+{u'out': [], u'fu': [u'IReg.write'], u'in': [u'inst0']}
+{u'out': [], u'fu': [u'CPC.inc'], u'in': []}
+LW 2
+variables:
+(u'tmp_source0', 32)
+(u'tmp_ir', 64)
+statements:
+{u'out': [u'tmp_ir'], u'fu': [u'IReg.read'], u'in': []}
+{u'out': [u'rs'], u'fu': [u'28:24'], u'in': [u'tmp_ir']}
+{u'out': [u'rt'], u'fu': [u'20:16'], u'in': [u'tmp_ir']}
+{u'out': [u'imm'], u'fu': [u'15:0'], u'in': [u'tmp_ir']}
+{u'out': [u'tmp_source0'], u'fu': [u'GPR.read0'], u'in': [u'rs']}
+{u'out': [u'source0'], u'fu': [u'FWUL0.forward'], u'in': [u'rs', u'tmp_source0']}
+{u'out': [u'source1'], u'fu': [u'EXT1.sign'], u'in': [u'imm']}
+LW 3
+variables:
+(u'flag', 4)
+statements:
+{u'out': [u'addr', u'flag'], u'fu': [u'ALU1.add'], u'in': [u'source0', u'source1']}
+{u'out': [], u'fu': [u'FWUL0.lock1'], u'in': [u'rt']}
+{u'out': [], u'fu': [u'FWUL1.lock1'], u'in': [u'rt']}
+{u'out': [], u'fu': [u'FWUL2.lock1'], u'in': [u'rt']}
+{u'out': [], u'fu': [u'FWUL3.lock1'], u'in': [u'rt']}
+LW 4
+variables:
+(u'byte3', 8)
+(u'byte2', 8)
+(u'byte1', 8)
+(u'byte0', 8)
+(u'result', 32)
+(u'addr_err', 1)
+statements:
+{u'out': [u'result', u'addr_err'], u'fu': [u'Dmem.ld_32'], u'in': [u'addr']}
+{u'out': [u'byte0'], u'fu': [u'31:24'], u'in': [u'result']}
+{u'out': [u'byte1'], u'fu': [u'23:16'], u'in': [u'result']}
+{u'out': [u'byte2'], u'fu': [u'15:8'], u'in': [u'result']}
+{u'out': [u'byte3'], u'fu': [u'7:0'], u'in': [u'result']}
+{u'out': [u'bigE_word'], u'fu': [u'na'], u'in': [u'byte3', u'byte2', u'byte1', u'byte0']}
+{u'out': [], u'fu': [u'FWUL0.forward3'], u'in': [u'rt', u'bigE_word']}
+{u'out': [], u'fu': [u'FWUL1.forward3'], u'in': [u'rt', u'bigE_word']}
+{u'out': [], u'fu': [u'FWUL2.forward3'], u'in': [u'rt', u'bigE_word']}
+{u'out': [], u'fu': [u'FWUL3.forward3'], u'in': [u'rt', u'bigE_word']}
+{u'out': [], u'fu': [u'FWUL0.lock3'], u'in': [u'rt']}
+{u'out': [], u'fu': [u'FWUL1.lock3'], u'in': [u'rt']}
+{u'out': [], u'fu': [u'FWUL2.lock3'], u'in': [u'rt']}
+{u'out': [], u'fu': [u'FWUL3.lock3'], u'in': [u'rt']}
+LW 5
+variables:
+statements:
+{u'out': [], u'fu': [u'FWUL0.forward5'], u'in': [u'rt', u'bigE_word']}
+{u'out': [], u'fu': [u'FWUL1.forward5'], u'in': [u'rt', u'bigE_word']}
+{u'out': [], u'fu': [u'FWUL2.forward5'], u'in': [u'rt', u'bigE_word']}
+{u'out': [], u'fu': [u'FWUL3.forward5'], u'in': [u'rt', u'bigE_word']}
+LW 6
+variables:
+statements:
+{u'out': [], u'fu': [u'GPR.write0'], u'in': [u'rt', u'bigE_word']}
+{u'out': [], u'fu': [u'FWUL0.forward7'], u'in': [u'rt', u'bigE_word']}
+{u'out': [], u'fu': [u'FWUL1.forward7'], u'in': [u'rt', u'bigE_word']}
+{u'out': [], u'fu': [u'FWUL2.forward7'], u'in': [u'rt', u'bigE_word']}
+{u'out': [], u'fu': [u'FWUL3.forward7'], u'in': [u'rt', u'bigE_word']}
+JAL global
+variables:
+(u'link', 32)
+(u'linkReg', 5)
+(u'tmp_pc', 32)
+(u'targ', 26)
+(u'result', 32)
+JAL 1
+variables:
+(u'current_pc', 32)
+(u'inst0', 64)
+(u'iramaddr_err', 1)
+statements:
+{u'out': [u'current_pc'], u'fu': [u'CPC.read'], u'in': []}
+{u'out': [u'tmp_pc'], u'fu': [u'na'], u'in': [u'current_pc']}
+{u'out': [u'inst0', u'iramaddr_err'], u'fu': [u'Imem.ld_64'], u'in': [u'current_pc']}
+{u'out': [], u'fu': [u'IReg.write'], u'in': [u'inst0']}
+{u'out': [], u'fu': [u'CPC.inc'], u'in': []}
+JAL 2
+variables:
+(u'cpc_top', 4)
+(u'const', 2)
+(u'tmp_ir', 64)
+(u'tmp_cpc', 32)
+statements:
+{u'out': [u'tmp_ir'], u'fu': [u'IReg.read'], u'in': []}
+{u'out': [u'targ'], u'fu': [u'25:0'], u'in': [u'tmp_ir']}
+{u'out': [u'const'], u'fu': [u'na'], u'in': [u'00']}
+{u'out': [u'tmp_cpc'], u'fu': [u'CPC.read'], u'in': []}
+{u'out': [u'link'], u'fu': [u'na'], u'in': [u'tmp_cpc']}
+{u'out': [u'cpc_top'], u'fu': [u'31:28'], u'in': [u'tmp_cpc']}
+{u'out': [u'result'], u'fu': [u'na'], u'in': [u'cpc_top', u'targ', u'const']}
+{u'out': [u'linkReg'], u'fu': [u'na'], u'in': [u'11111']}
+JAL 3
+variables:
+statements:
+{u'out': [], u'fu': [u'CPC.write'], u'in': [u'result']}
+{u'out': [], u'fu': [u'FWUL0.forward1'], u'in': [u'linkReg', u'link']}
+{u'out': [], u'fu': [u'FWUL1.forward1'], u'in': [u'linkReg', u'link']}
+{u'out': [], u'fu': [u'FWUL2.forward1'], u'in': [u'linkReg', u'link']}
+{u'out': [], u'fu': [u'FWUL3.forward1'], u'in': [u'linkReg', u'link']}
+JAL 4
+variables:
+statements:
+{u'out': [], u'fu': [u'FWUL0.forward3'], u'in': [u'linkReg', u'link']}
+{u'out': [], u'fu': [u'FWUL1.forward3'], u'in': [u'linkReg', u'link']}
+{u'out': [], u'fu': [u'FWUL2.forward3'], u'in': [u'linkReg', u'link']}
+{u'out': [], u'fu': [u'FWUL3.forward3'], u'in': [u'linkReg', u'link']}
+JAL 5
+variables:
+statements:
+{u'out': [], u'fu': [u'FWUL0.forward5'], u'in': [u'linkReg', u'link']}
+{u'out': [], u'fu': [u'FWUL1.forward5'], u'in': [u'linkReg', u'link']}
+{u'out': [], u'fu': [u'FWUL2.forward5'], u'in': [u'linkReg', u'link']}
+{u'out': [], u'fu': [u'FWUL3.forward5'], u'in': [u'linkReg', u'link']}
+JAL 6
+variables:
+statements:
+{u'out': [], u'fu': [u'GPR.write0'], u'in': [u'linkReg', u'link']}
+{u'out': [], u'fu': [u'FWUL0.forward7'], u'in': [u'linkReg', u'link']}
+{u'out': [], u'fu': [u'FWUL1.forward7'], u'in': [u'linkReg', u'link']}
+{u'out': [], u'fu': [u'FWUL2.forward7'], u'in': [u'linkReg', u'link']}
+{u'out': [], u'fu': [u'FWUL3.forward7'], u'in': [u'linkReg', u'link']}
+MULT global
+variables:
+(u'rt', 5)
+(u'shamt', 8)
+(u'rs', 5)
+(u'source0', 32)
+(u'rd', 5)
+(u'resulthi', 32)
+(u'source1', 32)
+(u'result', 64)
+(u'tmp_pc', 32)
+(u'resultlo', 32)
+MULT 1
+variables:
+(u'current_pc', 32)
+(u'inst0', 64)
+(u'iramaddr_err', 1)
+statements:
+{u'out': [u'current_pc'], u'fu': [u'CPC.read'], u'in': []}
+{u'out': [u'tmp_pc'], u'fu': [u'na'], u'in': [u'current_pc']}
+{u'out': [u'inst0', u'iramaddr_err'], u'fu': [u'Imem.ld_64'], u'in': [u'current_pc']}
+{u'out': [], u'fu': [u'IReg.write'], u'in': [u'inst0']}
+{u'out': [], u'fu': [u'CPC.inc'], u'in': []}
+MULT 2
+variables:
+(u'tmp_source0', 32)
+(u'tmp_ir', 64)
+(u'tmp_source1', 32)
+statements:
+{u'out': [u'tmp_ir'], u'fu': [u'IReg.read'], u'in': []}
+{u'out': [u'rs'], u'fu': [u'28:24'], u'in': [u'tmp_ir']}
+{u'out': [u'rt'], u'fu': [u'20:16'], u'in': [u'tmp_ir']}
+{u'out': [u'rd'], u'fu': [u'12:8'], u'in': [u'tmp_ir']}
+{u'out': [u'shamt'], u'fu': [u'7:0'], u'in': [u'tmp_ir']}
+{u'out': [u'tmp_source0'], u'fu': [u'GPR.read0'], u'in': [u'rs']}
+{u'out': [u'tmp_source1'], u'fu': [u'GPR.read1'], u'in': [u'rt']}
+{u'out': [u'source0'], u'fu': [u'FWUL0.forward'], u'in': [u'rs', u'tmp_source0']}
+{u'out': [u'source1'], u'fu': [u'FWUL1.forward'], u'in': [u'rt', u'tmp_source1']}
+MULT 3
+variables:
+statements:
+{u'out': [u'result'], u'fu': [u'MUL1.mul'], u'in': [u'source0', u'source1']}
+{u'out': [u'resulthi'], u'fu': [u'63:32'], u'in': [u'result']}
+{u'out': [u'resultlo'], u'fu': [u'31:0'], u'in': [u'result']}
+{u'out': [], u'fu': [u'LO.write'], u'in': [u'resultlo']}
+{u'out': [], u'fu': [u'HI.write'], u'in': [u'resulthi']}
+MULT 4
+variables:
+statements:
+MULT 5
+variables:
+statements:
+MULT 6
+variables:
+statements:
+SW_RR global
+variables:
+(u'rt', 5)
+(u'shamt', 8)
+(u'addr', 32)
+(u'rs', 5)
+(u'rd', 5)
+(u'source0', 32)
+(u'source1', 32)
+(u'tmp_pc', 32)
+(u'source2', 32)
+SW_RR 1
+variables:
+(u'current_pc', 32)
+(u'inst0', 64)
+(u'iramaddr_err', 1)
+statements:
+{u'out': [u'current_pc'], u'fu': [u'CPC.read'], u'in': []}
+{u'out': [u'tmp_pc'], u'fu': [u'na'], u'in': [u'current_pc']}
+{u'out': [u'inst0', u'iramaddr_err'], u'fu': [u'Imem.ld_64'], u'in': [u'current_pc']}
+{u'out': [], u'fu': [u'IReg.write'], u'in': [u'inst0']}
+{u'out': [], u'fu': [u'CPC.inc'], u'in': []}
+SW_RR 2
+variables:
+(u'tmp_source0', 32)
+(u'tmp_ir', 64)
+(u'tmp_source2', 32)
+(u'tmp_source1', 32)
+statements:
+{u'out': [u'tmp_ir'], u'fu': [u'IReg.read'], u'in': []}
+{u'out': [u'rs'], u'fu': [u'28:24'], u'in': [u'tmp_ir']}
+{u'out': [u'rt'], u'fu': [u'20:16'], u'in': [u'tmp_ir']}
+{u'out': [u'rd'], u'fu': [u'12:8'], u'in': [u'tmp_ir']}
+{u'out': [u'shamt'], u'fu': [u'7:0'], u'in': [u'tmp_ir']}
+{u'out': [u'tmp_source0'], u'fu': [u'GPR.read0'], u'in': [u'rs']}
+{u'out': [u'tmp_source1'], u'fu': [u'GPR.read1'], u'in': [u'rt']}
+{u'out': [u'tmp_source2'], u'fu': [u'GPR.read2'], u'in': [u'rd']}
+{u'out': [u'source0'], u'fu': [u'FWUL0.forward'], u'in': [u'rs', u'tmp_source0']}
+{u'out': [u'source1'], u'fu': [u'FWUL1.forward'], u'in': [u'rt', u'tmp_source1']}
+{u'out': [u'source2'], u'fu': [u'FWUL2.forward'], u'in': [u'rd', u'tmp_source2']}
+SW_RR 3
+variables:
+(u'flag', 4)
+statements:
+{u'out': [u'addr', u'flag'], u'fu': [u'ALU1.add'], u'in': [u'source0', u'source2']}
+SW_RR 4
+variables:
+statements:
+SW_RR 5
+variables:
+(u'LE_source1', 32)
+(u'byte3', 8)
+(u'byte2', 8)
+(u'byte1', 8)
+(u'byte0', 8)
+(u'addr_err', 1)
+statements:
+{u'out': [u'byte0'], u'fu': [u'31:24'], u'in': [u'source1']}
+{u'out': [u'byte1'], u'fu': [u'23:16'], u'in': [u'source1']}
+{u'out': [u'byte2'], u'fu': [u'15:8'], u'in': [u'source1']}
+{u'out': [u'byte3'], u'fu': [u'7:0'], u'in': [u'source1']}
+{u'out': [u'LE_source1'], u'fu': [u'na'], u'in': [u'byte3', u'byte2', u'byte1', u'byte0']}
+{u'out': [u'addr_err'], u'fu': [u'Dmem.s_32'], u'in': [u'addr', u'LE_source1']}
+SW_RR 6
+variables:
+statements:
+ADDIU global
+variables:
+(u'rt', 5)
+(u'rs', 5)
+(u'imm', 16)
+(u'source0', 32)
+(u'source1', 32)
+(u'result', 32)
+(u'tmp_pc', 32)
+ADDIU 1
+variables:
+(u'current_pc', 32)
+(u'inst0', 64)
+(u'iramaddr_err', 1)
+statements:
+{u'out': [u'current_pc'], u'fu': [u'CPC.read'], u'in': []}
+{u'out': [u'tmp_pc'], u'fu': [u'na'], u'in': [u'current_pc']}
+{u'out': [u'inst0', u'iramaddr_err'], u'fu': [u'Imem.ld_64'], u'in': [u'current_pc']}
+{u'out': [], u'fu': [u'IReg.write'], u'in': [u'inst0']}
+{u'out': [], u'fu': [u'CPC.inc'], u'in': []}
+ADDIU 2
+variables:
+(u'tmp_source0', 32)
+(u'tmp_ir', 64)
+statements:
+{u'out': [u'tmp_ir'], u'fu': [u'IReg.read'], u'in': []}
+{u'out': [u'rs'], u'fu': [u'28:24'], u'in': [u'tmp_ir']}
+{u'out': [u'rt'], u'fu': [u'20:16'], u'in': [u'tmp_ir']}
+{u'out': [u'imm'], u'fu': [u'15:0'], u'in': [u'tmp_ir']}
+{u'out': [u'tmp_source0'], u'fu': [u'GPR.read0'], u'in': [u'rs']}
+{u'out': [u'source0'], u'fu': [u'FWUL0.forward'], u'in': [u'rs', u'tmp_source0']}
+{u'out': [u'source1'], u'fu': [u'EXT1.sign'], u'in': [u'imm']}
+ADDIU 3
+variables:
+(u'flag', 4)
+statements:
+{u'out': [u'result', u'flag'], u'fu': [u'ALU1.addu'], u'in': [u'source0', u'source1']}
+{u'out': [], u'fu': [u'FWUL0.forward1'], u'in': [u'rt', u'result']}
+{u'out': [], u'fu': [u'FWUL1.forward1'], u'in': [u'rt', u'result']}
+{u'out': [], u'fu': [u'FWUL2.forward1'], u'in': [u'rt', u'result']}
+{u'out': [], u'fu': [u'FWUL3.forward1'], u'in': [u'rt', u'result']}
+ADDIU 4
+variables:
+statements:
+{u'out': [], u'fu': [u'FWUL0.forward3'], u'in': [u'rt', u'result']}
+{u'out': [], u'fu': [u'FWUL1.forward3'], u'in': [u'rt', u'result']}
+{u'out': [], u'fu': [u'FWUL2.forward3'], u'in': [u'rt', u'result']}
+{u'out': [], u'fu': [u'FWUL3.forward3'], u'in': [u'rt', u'result']}
+ADDIU 5
+variables:
+statements:
+{u'out': [], u'fu': [u'FWUL0.forward5'], u'in': [u'rt', u'result']}
+{u'out': [], u'fu': [u'FWUL1.forward5'], u'in': [u'rt', u'result']}
+{u'out': [], u'fu': [u'FWUL2.forward5'], u'in': [u'rt', u'result']}
+{u'out': [], u'fu': [u'FWUL3.forward5'], u'in': [u'rt', u'result']}
+ADDIU 6
+variables:
+statements:
+{u'out': [], u'fu': [u'GPR.write0'], u'in': [u'rt', u'result']}
+{u'out': [], u'fu': [u'FWUL0.forward7'], u'in': [u'rt', u'result']}
+{u'out': [], u'fu': [u'FWUL1.forward7'], u'in': [u'rt', u'result']}
+{u'out': [], u'fu': [u'FWUL2.forward7'], u'in': [u'rt', u'result']}
+{u'out': [], u'fu': [u'FWUL3.forward7'], u'in': [u'rt', u'result']}
+SH_RR global
+variables:
+(u'rt', 5)
+(u'shamt', 8)
+(u'addr', 32)
+(u'rs', 5)
+(u'rd', 5)
+(u'source0', 32)
+(u'source1', 32)
+(u'tmp_pc', 32)
+(u'source2', 32)
+SH_RR 1
+variables:
+(u'current_pc', 32)
+(u'inst0', 64)
+(u'iramaddr_err', 1)
+statements:
+{u'out': [u'current_pc'], u'fu': [u'CPC.read'], u'in': []}
+{u'out': [u'tmp_pc'], u'fu': [u'na'], u'in': [u'current_pc']}
+{u'out': [u'inst0', u'iramaddr_err'], u'fu': [u'Imem.ld_64'], u'in': [u'current_pc']}
+{u'out': [], u'fu': [u'IReg.write'], u'in': [u'inst0']}
+{u'out': [], u'fu': [u'CPC.inc'], u'in': []}
+SH_RR 2
+variables:
+(u'tmp_source0', 32)
+(u'tmp_ir', 64)
+(u'tmp_source2', 32)
+(u'tmp_source1', 32)
+statements:
+{u'out': [u'tmp_ir'], u'fu': [u'IReg.read'], u'in': []}
+{u'out': [u'rs'], u'fu': [u'28:24'], u'in': [u'tmp_ir']}
+{u'out': [u'rt'], u'fu': [u'20:16'], u'in': [u'tmp_ir']}
+{u'out': [u'rd'], u'fu': [u'12:8'], u'in': [u'tmp_ir']}
+{u'out': [u'shamt'], u'fu': [u'7:0'], u'in': [u'tmp_ir']}
+{u'out': [u'tmp_source0'], u'fu': [u'GPR.read0'], u'in': [u'rs']}
+{u'out': [u'tmp_source1'], u'fu': [u'GPR.read1'], u'in': [u'rt']}
+{u'out': [u'tmp_source2'], u'fu': [u'GPR.read2'], u'in': [u'rd']}
+{u'out': [u'source0'], u'fu': [u'FWUL0.forward'], u'in': [u'rs', u'tmp_source0']}
+{u'out': [u'source1'], u'fu': [u'FWUL1.forward'], u'in': [u'rt', u'tmp_source1']}
+{u'out': [u'source2'], u'fu': [u'FWUL2.forward'], u'in': [u'rd', u'tmp_source2']}
+SH_RR 3
+variables:
+(u'flag', 4)
+statements:
+{u'out': [u'addr', u'flag'], u'fu': [u'ALU1.add'], u'in': [u'source0', u'source2']}
+SH_RR 4
+variables:
+statements:
+SH_RR 5
+variables:
+(u'LE_source1', 32)
+(u'byte3', 8)
+(u'byte2', 8)
+(u'byte1', 8)
+(u'byte0', 8)
+(u'addr_err', 1)
+statements:
+{u'out': [u'byte0'], u'fu': [u'31:24'], u'in': [u'source1']}
+{u'out': [u'byte1'], u'fu': [u'23:16'], u'in': [u'source1']}
+{u'out': [u'byte2'], u'fu': [u'15:8'], u'in': [u'source1']}
+{u'out': [u'byte3'], u'fu': [u'7:0'], u'in': [u'source1']}
+{u'out': [u'LE_source1'], u'fu': [u'na'], u'in': [u'byte3', u'byte2', u'byte1', u'byte0']}
+{u'out': [u'addr_err'], u'fu': [u'Dmem.s_16'], u'in': [u'addr', u'LE_source1']}
+SH_RR 6
+variables:
+statements:
+SRA global
+variables:
+(u'rt', 5)
+(u'shamt', 8)
+(u'rs', 5)
+(u'rd', 5)
+(u'source0', 32)
+(u'source1', 32)
+(u'result', 32)
+(u'tmp_pc', 32)
+SRA 1
+variables:
+(u'current_pc', 32)
+(u'inst0', 64)
+(u'iramaddr_err', 1)
+statements:
+{u'out': [u'current_pc'], u'fu': [u'CPC.read'], u'in': []}
+{u'out': [u'tmp_pc'], u'fu': [u'na'], u'in': [u'current_pc']}
+{u'out': [u'inst0', u'iramaddr_err'], u'fu': [u'Imem.ld_64'], u'in': [u'current_pc']}
+{u'out': [], u'fu': [u'IReg.write'], u'in': [u'inst0']}
+{u'out': [], u'fu': [u'CPC.inc'], u'in': []}
+SRA 2
+variables:
+(u'zero24', 24)
+(u'tmp_source0', 32)
+(u'tmp_ir', 64)
+statements:
+{u'out': [u'tmp_ir'], u'fu': [u'IReg.read'], u'in': []}
+{u'out': [u'rs'], u'fu': [u'28:24'], u'in': [u'tmp_ir']}
+{u'out': [u'rt'], u'fu': [u'20:16'], u'in': [u'tmp_ir']}
+{u'out': [u'rd'], u'fu': [u'12:8'], u'in': [u'tmp_ir']}
+{u'out': [u'shamt'], u'fu': [u'7:0'], u'in': [u'tmp_ir']}
+{u'out': [u'zero24'], u'fu': [u'na'], u'in': [u'000000000000000000000000']}
+{u'out': [u'tmp_source0'], u'fu': [u'GPR.read0'], u'in': [u'rt']}
+{u'out': [u'source0'], u'fu': [u'FWUL0.forward'], u'in': [u'rt', u'tmp_source0']}
+{u'out': [u'source1'], u'fu': [u'na'], u'in': [u'zero24', u'shamt']}
+SRA 3
+variables:
+(u'shift', 5)
+statements:
+{u'out': [u'shift'], u'fu': [u'4:0'], u'in': [u'source1']}
+{u'out': [u'result'], u'fu': [u'SFT1.sra'], u'in': [u'source0', u'shift']}
+{u'out': [], u'fu': [u'FWUL0.forward1'], u'in': [u'rd', u'result']}
+{u'out': [], u'fu': [u'FWUL1.forward1'], u'in': [u'rd', u'result']}
+{u'out': [], u'fu': [u'FWUL2.forward1'], u'in': [u'rd', u'result']}
+{u'out': [], u'fu': [u'FWUL3.forward1'], u'in': [u'rd', u'result']}
+SRA 4
+variables:
+statements:
+{u'out': [], u'fu': [u'FWUL0.forward3'], u'in': [u'rd', u'result']}
+{u'out': [], u'fu': [u'FWUL1.forward3'], u'in': [u'rd', u'result']}
+{u'out': [], u'fu': [u'FWUL2.forward3'], u'in': [u'rd', u'result']}
+{u'out': [], u'fu': [u'FWUL3.forward3'], u'in': [u'rd', u'result']}
+SRA 5
+variables:
+statements:
+{u'out': [], u'fu': [u'FWUL0.forward5'], u'in': [u'rd', u'result']}
+{u'out': [], u'fu': [u'FWUL1.forward5'], u'in': [u'rd', u'result']}
+{u'out': [], u'fu': [u'FWUL2.forward5'], u'in': [u'rd', u'result']}
+{u'out': [], u'fu': [u'FWUL3.forward5'], u'in': [u'rd', u'result']}
+SRA 6
+variables:
+statements:
+{u'out': [], u'fu': [u'GPR.write0'], u'in': [u'rd', u'result']}
+{u'out': [], u'fu': [u'FWUL0.forward7'], u'in': [u'rd', u'result']}
+{u'out': [], u'fu': [u'FWUL1.forward7'], u'in': [u'rd', u'result']}
+{u'out': [], u'fu': [u'FWUL2.forward7'], u'in': [u'rd', u'result']}
+{u'out': [], u'fu': [u'FWUL3.forward7'], u'in': [u'rd', u'result']}
+XOR global
+variables:
+(u'rt', 5)
+(u'shamt', 8)
+(u'rs', 5)
+(u'rd', 5)
+(u'source0', 32)
+(u'source1', 32)
+(u'result', 32)
+(u'tmp_pc', 32)
+XOR 1
+variables:
+(u'current_pc', 32)
+(u'inst0', 64)
+(u'iramaddr_err', 1)
+statements:
+{u'out': [u'current_pc'], u'fu': [u'CPC.read'], u'in': []}
+{u'out': [u'tmp_pc'], u'fu': [u'na'], u'in': [u'current_pc']}
+{u'out': [u'inst0', u'iramaddr_err'], u'fu': [u'Imem.ld_64'], u'in': [u'current_pc']}
+{u'out': [], u'fu': [u'IReg.write'], u'in': [u'inst0']}
+{u'out': [], u'fu': [u'CPC.inc'], u'in': []}
+XOR 2
+variables:
+(u'tmp_source0', 32)
+(u'tmp_ir', 64)
+(u'tmp_source1', 32)
+statements:
+{u'out': [u'tmp_ir'], u'fu': [u'IReg.read'], u'in': []}
+{u'out': [u'rs'], u'fu': [u'28:24'], u'in': [u'tmp_ir']}
+{u'out': [u'rt'], u'fu': [u'20:16'], u'in': [u'tmp_ir']}
+{u'out': [u'rd'], u'fu': [u'12:8'], u'in': [u'tmp_ir']}
+{u'out': [u'shamt'], u'fu': [u'7:0'], u'in': [u'tmp_ir']}
+{u'out': [u'tmp_source0'], u'fu': [u'GPR.read0'], u'in': [u'rs']}
+{u'out': [u'tmp_source1'], u'fu': [u'GPR.read1'], u'in': [u'rt']}
+{u'out': [u'source0'], u'fu': [u'FWUL0.forward'], u'in': [u'rs', u'tmp_source0']}
+{u'out': [u'source1'], u'fu': [u'FWUL1.forward'], u'in': [u'rt', u'tmp_source1']}
+XOR 3
+variables:
+(u'flag', 4)
+statements:
+{u'out': [u'result', u'flag'], u'fu': [u'ALU1.xor'], u'in': [u'source0', u'source1']}
+{u'out': [], u'fu': [u'FWUL0.forward1'], u'in': [u'rd', u'result']}
+{u'out': [], u'fu': [u'FWUL1.forward1'], u'in': [u'rd', u'result']}
+{u'out': [], u'fu': [u'FWUL2.forward1'], u'in': [u'rd', u'result']}
+{u'out': [], u'fu': [u'FWUL3.forward1'], u'in': [u'rd', u'result']}
+XOR 4
+variables:
+statements:
+{u'out': [], u'fu': [u'FWUL0.forward3'], u'in': [u'rd', u'result']}
+{u'out': [], u'fu': [u'FWUL1.forward3'], u'in': [u'rd', u'result']}
+{u'out': [], u'fu': [u'FWUL2.forward3'], u'in': [u'rd', u'result']}
+{u'out': [], u'fu': [u'FWUL3.forward3'], u'in': [u'rd', u'result']}
+XOR 5
+variables:
+statements:
+{u'out': [], u'fu': [u'FWUL0.forward5'], u'in': [u'rd', u'result']}
+{u'out': [], u'fu': [u'FWUL1.forward5'], u'in': [u'rd', u'result']}
+{u'out': [], u'fu': [u'FWUL2.forward5'], u'in': [u'rd', u'result']}
+{u'out': [], u'fu': [u'FWUL3.forward5'], u'in': [u'rd', u'result']}
+XOR 6
+variables:
+statements:
+{u'out': [], u'fu': [u'GPR.write0'], u'in': [u'rd', u'result']}
+{u'out': [], u'fu': [u'FWUL0.forward7'], u'in': [u'rd', u'result']}
+{u'out': [], u'fu': [u'FWUL1.forward7'], u'in': [u'rd', u'result']}
+{u'out': [], u'fu': [u'FWUL2.forward7'], u'in': [u'rd', u'result']}
+{u'out': [], u'fu': [u'FWUL3.forward7'], u'in': [u'rd', u'result']}
+SLT global
+variables:
+(u'rt', 5)
+(u'shamt', 8)
+(u'rs', 5)
+(u'rd', 5)
+(u'source0', 32)
+(u'source1', 32)
+(u'result', 32)
+(u'tmp_pc', 32)
+SLT 1
+variables:
+(u'current_pc', 32)
+(u'inst0', 64)
+(u'iramaddr_err', 1)
+statements:
+{u'out': [u'current_pc'], u'fu': [u'CPC.read'], u'in': []}
+{u'out': [u'tmp_pc'], u'fu': [u'na'], u'in': [u'current_pc']}
+{u'out': [u'inst0', u'iramaddr_err'], u'fu': [u'Imem.ld_64'], u'in': [u'current_pc']}
+{u'out': [], u'fu': [u'IReg.write'], u'in': [u'inst0']}
+{u'out': [], u'fu': [u'CPC.inc'], u'in': []}
+SLT 2
+variables:
+(u'tmp_source0', 32)
+(u'tmp_ir', 64)
+(u'tmp_source1', 32)
+statements:
+{u'out': [u'tmp_ir'], u'fu': [u'IReg.read'], u'in': []}
+{u'out': [u'rs'], u'fu': [u'28:24'], u'in': [u'tmp_ir']}
+{u'out': [u'rt'], u'fu': [u'20:16'], u'in': [u'tmp_ir']}
+{u'out': [u'rd'], u'fu': [u'12:8'], u'in': [u'tmp_ir']}
+{u'out': [u'shamt'], u'fu': [u'7:0'], u'in': [u'tmp_ir']}
+{u'out': [u'tmp_source0'], u'fu': [u'GPR.read0'], u'in': [u'rs']}
+{u'out': [u'tmp_source1'], u'fu': [u'GPR.read1'], u'in': [u'rt']}
+{u'out': [u'source0'], u'fu': [u'FWUL0.forward'], u'in': [u'rs', u'tmp_source0']}
+{u'out': [u'source1'], u'fu': [u'FWUL1.forward'], u'in': [u'rt', u'tmp_source1']}
+SLT 3
+variables:
+(u'zero31', 31)
+(u'VnN', 1)
+(u'flag', 4)
+(u'cond', 1)
+(u'flag2', 2)
+(u'NnV', 1)
+statements:
+{u'out': [u'zero31'], u'fu': [u'na'], u'in': [u'0000000000000000000000000000000']}
+{u'out': [u'flag'], u'fu': [u'ALU1.cmp'], u'in': [u'source0', u'source1']}
+{u'out': [u'flag2'], u'fu': [u'1:0'], u'in': [u'flag']}
+{u'out': [u'NnV'], u'fu': [u' == "'], u'in': [u'flag2', u'10']}
+{u'out': [u'VnN'], u'fu': [u' == "'], u'in': [u'flag', u'1001']}
+{u'out': [u'cond'], u'fu': [u' | '], u'in': [u'NnV', u'VnN']}
+{u'out': [u'result'], u'fu': [u'na'], u'in': [u'zero31', u'cond']}
+{u'out': [], u'fu': [u'FWUL0.forward1'], u'in': [u'rd', u'result']}
+{u'out': [], u'fu': [u'FWUL1.forward1'], u'in': [u'rd', u'result']}
+{u'out': [], u'fu': [u'FWUL2.forward1'], u'in': [u'rd', u'result']}
+{u'out': [], u'fu': [u'FWUL3.forward1'], u'in': [u'rd', u'result']}
+SLT 4
+variables:
+statements:
+{u'out': [], u'fu': [u'FWUL0.forward3'], u'in': [u'rd', u'result']}
+{u'out': [], u'fu': [u'FWUL1.forward3'], u'in': [u'rd', u'result']}
+{u'out': [], u'fu': [u'FWUL2.forward3'], u'in': [u'rd', u'result']}
+{u'out': [], u'fu': [u'FWUL3.forward3'], u'in': [u'rd', u'result']}
+SLT 5
+variables:
+statements:
+{u'out': [], u'fu': [u'FWUL0.forward5'], u'in': [u'rd', u'result']}
+{u'out': [], u'fu': [u'FWUL1.forward5'], u'in': [u'rd', u'result']}
+{u'out': [], u'fu': [u'FWUL2.forward5'], u'in': [u'rd', u'result']}
+{u'out': [], u'fu': [u'FWUL3.forward5'], u'in': [u'rd', u'result']}
+SLT 6
+variables:
+statements:
+{u'out': [], u'fu': [u'GPR.write0'], u'in': [u'rd', u'result']}
+{u'out': [], u'fu': [u'FWUL0.forward7'], u'in': [u'rd', u'result']}
+{u'out': [], u'fu': [u'FWUL1.forward7'], u'in': [u'rd', u'result']}
+{u'out': [], u'fu': [u'FWUL2.forward7'], u'in': [u'rd', u'result']}
+{u'out': [], u'fu': [u'FWUL3.forward7'], u'in': [u'rd', u'result']}
+DSW global
+variables:
+(u'rt', 5)
+(u'rs', 5)
+(u'imm', 16)
+(u'source2', 32)
+(u'source3', 32)
+(u'source0', 32)
+(u'source1', 32)
+(u'addr2', 32)
+(u'tmp_pc', 32)
+(u'addr1', 32)
+DSW 1
+variables:
+(u'current_pc', 32)
+(u'inst0', 64)
+(u'iramaddr_err', 1)
+statements:
+{u'out': [u'current_pc'], u'fu': [u'CPC.read'], u'in': []}
+{u'out': [u'tmp_pc'], u'fu': [u'na'], u'in': [u'current_pc']}
+{u'out': [u'inst0', u'iramaddr_err'], u'fu': [u'Imem.ld_64'], u'in': [u'current_pc']}
+{u'out': [], u'fu': [u'IReg.write'], u'in': [u'inst0']}
+{u'out': [], u'fu': [u'CPC.inc'], u'in': []}
+DSW 2
+variables:
+(u'oldrt', 4)
+(u'tmp_source1', 32)
+(u'tmp_source3', 32)
+(u'one', 1)
+(u'tmp_ir', 64)
+(u'rt2', 5)
+(u'tmp_source0', 32)
+statements:
+{u'out': [u'tmp_ir'], u'fu': [u'IReg.read'], u'in': []}
+{u'out': [u'rs'], u'fu': [u'28:24'], u'in': [u'tmp_ir']}
+{u'out': [u'rt'], u'fu': [u'20:16'], u'in': [u'tmp_ir']}
+{u'out': [u'imm'], u'fu': [u'15:0'], u'in': [u'tmp_ir']}
+{u'out': [u'one'], u'fu': [u'na'], u'in': [u'1']}
+{u'out': [u'oldrt'], u'fu': [u'4:1'], u'in': [u'rt']}
+{u'out': [u'rt2'], u'fu': [u'na'], u'in': [u'oldrt', u'one']}
+{u'out': [u'tmp_source0'], u'fu': [u'GPR.read0'], u'in': [u'rs']}
+{u'out': [u'tmp_source1'], u'fu': [u'GPR.read1'], u'in': [u'rt']}
+{u'out': [u'tmp_source3'], u'fu': [u'GPR.read2'], u'in': [u'rt2']}
+{u'out': [u'source0'], u'fu': [u'FWUL0.forward'], u'in': [u'rs', u'tmp_source0']}
+{u'out': [u'source1'], u'fu': [u'FWUL1.forward'], u'in': [u'rt', u'tmp_source1']}
+{u'out': [u'source2'], u'fu': [u'EXT1.sign'], u'in': [u'imm']}
+{u'out': [u'source3'], u'fu': [u'FWUL2.forward'], u'in': [u'rt2', u'tmp_source3']}
+DSW 3
+variables:
+(u'four32bit', 32)
+(u'flag', 4)
+(u'cin', 1)
+(u'cout', 1)
+statements:
+{u'out': [u'addr1', u'flag'], u'fu': [u'ALU1.add'], u'in': [u'source0', u'source2']}
+{u'out': [u'cin'], u'fu': [u'na'], u'in': [u'1']}
+{u'out': [u'four32bit'], u'fu': [u'na'], u'in': [u'00000000000000000000000000000100']}
+{u'out': [u'addr2', u'cout'], u'fu': [u'ADDER2.adc'], u'in': [u'addr1', u'four32bit', u'cin']}
+DSW 4
+variables:
+statements:
+DSW 5
+variables:
+(u'LE_source1', 32)
+(u'byte3', 8)
+(u'byte2', 8)
+(u'byte1', 8)
+(u'byte0', 8)
+(u'addr_err', 1)
+statements:
+{u'out': [u'byte0'], u'fu': [u'31:24'], u'in': [u'source1']}
+{u'out': [u'byte1'], u'fu': [u'23:16'], u'in': [u'source1']}
+{u'out': [u'byte2'], u'fu': [u'15:8'], u'in': [u'source1']}
+{u'out': [u'byte3'], u'fu': [u'7:0'], u'in': [u'source1']}
+{u'out': [u'LE_source1'], u'fu': [u'na'], u'in': [u'byte3', u'byte2', u'byte1', u'byte0']}
+{u'out': [u'addr_err'], u'fu': [u'Dmem.s_32'], u'in': [u'addr1', u'LE_source1']}
+DSW 6
+variables:
+(u'LE_source3', 32)
+(u'byte3', 8)
+(u'byte2', 8)
+(u'byte1', 8)
+(u'byte0', 8)
+(u'addr_err', 1)
+statements:
+{u'out': [u'byte0'], u'fu': [u'31:24'], u'in': [u'source3']}
+{u'out': [u'byte1'], u'fu': [u'23:16'], u'in': [u'source3']}
+{u'out': [u'byte2'], u'fu': [u'15:8'], u'in': [u'source3']}
+{u'out': [u'byte3'], u'fu': [u'7:0'], u'in': [u'source3']}
+{u'out': [u'LE_source3'], u'fu': [u'na'], u'in': [u'byte3', u'byte2', u'byte1', u'byte0']}
+{u'out': [u'addr_err'], u'fu': [u'Dmem.s_32'], u'in': [u'addr2', u'LE_source3']}
+LB global
+variables:
+(u'rt', 5)
+(u'bigE_word', 32)
+(u'addr', 32)
+(u'rs', 5)
+(u'imm', 16)
+(u'source0', 32)
+(u'source1', 32)
+(u'tmp_pc', 32)
+LB 1
+variables:
+(u'current_pc', 32)
+(u'inst0', 64)
+(u'iramaddr_err', 1)
+statements:
+{u'out': [u'current_pc'], u'fu': [u'CPC.read'], u'in': []}
+{u'out': [u'tmp_pc'], u'fu': [u'na'], u'in': [u'current_pc']}
+{u'out': [u'inst0', u'iramaddr_err'], u'fu': [u'Imem.ld_64'], u'in': [u'current_pc']}
+{u'out': [], u'fu': [u'IReg.write'], u'in': [u'inst0']}
+{u'out': [], u'fu': [u'CPC.inc'], u'in': []}
+LB 2
+variables:
+(u'tmp_source0', 32)
+(u'tmp_ir', 64)
+statements:
+{u'out': [u'tmp_ir'], u'fu': [u'IReg.read'], u'in': []}
+{u'out': [u'rs'], u'fu': [u'28:24'], u'in': [u'tmp_ir']}
+{u'out': [u'rt'], u'fu': [u'20:16'], u'in': [u'tmp_ir']}
+{u'out': [u'imm'], u'fu': [u'15:0'], u'in': [u'tmp_ir']}
+{u'out': [u'tmp_source0'], u'fu': [u'GPR.read0'], u'in': [u'rs']}
+{u'out': [u'source0'], u'fu': [u'FWUL0.forward'], u'in': [u'rs', u'tmp_source0']}
+{u'out': [u'source1'], u'fu': [u'EXT1.sign'], u'in': [u'imm']}
+LB 3
+variables:
+(u'flag', 4)
+statements:
+{u'out': [u'addr', u'flag'], u'fu': [u'ALU1.add'], u'in': [u'source0', u'source1']}
+{u'out': [], u'fu': [u'FWUL0.lock1'], u'in': [u'rt']}
+{u'out': [], u'fu': [u'FWUL1.lock1'], u'in': [u'rt']}
+{u'out': [], u'fu': [u'FWUL2.lock1'], u'in': [u'rt']}
+{u'out': [], u'fu': [u'FWUL3.lock1'], u'in': [u'rt']}
+LB 4
+variables:
+(u'byte3', 8)
+(u'byte2', 8)
+(u'byte1', 8)
+(u'byte0', 8)
+(u'result', 32)
+(u'addr_err', 1)
+statements:
+{u'out': [u'result', u'addr_err'], u'fu': [u'Dmem.ld_8'], u'in': [u'addr']}
+{u'out': [u'byte0'], u'fu': [u'31:24'], u'in': [u'result']}
+{u'out': [u'byte1'], u'fu': [u'23:16'], u'in': [u'result']}
+{u'out': [u'byte2'], u'fu': [u'15:8'], u'in': [u'result']}
+{u'out': [u'byte3'], u'fu': [u'7:0'], u'in': [u'result']}
+{u'out': [u'bigE_word'], u'fu': [u'na'], u'in': [u'byte3', u'byte2', u'byte1', u'byte0']}
+{u'out': [], u'fu': [u'FWUL0.forward3'], u'in': [u'rt', u'bigE_word']}
+{u'out': [], u'fu': [u'FWUL1.forward3'], u'in': [u'rt', u'bigE_word']}
+{u'out': [], u'fu': [u'FWUL2.forward3'], u'in': [u'rt', u'bigE_word']}
+{u'out': [], u'fu': [u'FWUL3.forward3'], u'in': [u'rt', u'bigE_word']}
+{u'out': [], u'fu': [u'FWUL0.lock3'], u'in': [u'rt']}
+{u'out': [], u'fu': [u'FWUL1.lock3'], u'in': [u'rt']}
+{u'out': [], u'fu': [u'FWUL2.lock3'], u'in': [u'rt']}
+{u'out': [], u'fu': [u'FWUL3.lock3'], u'in': [u'rt']}
+LB 5
+variables:
+statements:
+{u'out': [], u'fu': [u'FWUL0.forward5'], u'in': [u'rt', u'bigE_word']}
+{u'out': [], u'fu': [u'FWUL1.forward5'], u'in': [u'rt', u'bigE_word']}
+{u'out': [], u'fu': [u'FWUL2.forward5'], u'in': [u'rt', u'bigE_word']}
+{u'out': [], u'fu': [u'FWUL3.forward5'], u'in': [u'rt', u'bigE_word']}
+LB 6
+variables:
+statements:
+{u'out': [], u'fu': [u'GPR.write0'], u'in': [u'rt', u'bigE_word']}
+{u'out': [], u'fu': [u'FWUL0.forward7'], u'in': [u'rt', u'bigE_word']}
+{u'out': [], u'fu': [u'FWUL1.forward7'], u'in': [u'rt', u'bigE_word']}
+{u'out': [], u'fu': [u'FWUL2.forward7'], u'in': [u'rt', u'bigE_word']}
+{u'out': [], u'fu': [u'FWUL3.forward7'], u'in': [u'rt', u'bigE_word']}
+BGEZ global
+variables:
+(u'rt', 5)
+(u'target', 32)
+(u'rs', 5)
+(u'imm', 16)
+(u'source0', 32)
+(u'src0', 32)
+(u'source1', 32)
+(u'tmp_pc', 32)
+BGEZ 1
+variables:
+(u'current_pc', 32)
+(u'inst0', 64)
+(u'iramaddr_err', 1)
+statements:
+{u'out': [u'current_pc'], u'fu': [u'CPC.read'], u'in': []}
+{u'out': [u'tmp_pc'], u'fu': [u'na'], u'in': [u'current_pc']}
+{u'out': [u'inst0', u'iramaddr_err'], u'fu': [u'Imem.ld_64'], u'in': [u'current_pc']}
+{u'out': [], u'fu': [u'IReg.write'], u'in': [u'inst0']}
+{u'out': [], u'fu': [u'CPC.inc'], u'in': []}
+BGEZ 2
+variables:
+(u'tmp', 30)
+(u'tmp_source0', 32)
+(u'cout', 1)
+(u'cin', 1)
+(u'ext_imm', 32)
+(u'tmp_ir', 64)
+(u'offset', 32)
+(u'tmp_cpc', 32)
+(u'zero2', 2)
+statements:
+{u'out': [u'tmp_ir'], u'fu': [u'IReg.read'], u'in': []}
+{u'out': [u'rs'], u'fu': [u'28:24'], u'in': [u'tmp_ir']}
+{u'out': [u'rt'], u'fu': [u'20:16'], u'in': [u'tmp_ir']}
+{u'out': [u'imm'], u'fu': [u'15:0'], u'in': [u'tmp_ir']}
+{u'out': [u'tmp_source0'], u'fu': [u'GPR.read0'], u'in': [u'rs']}
+{u'out': [u'src0'], u'fu': [u'FWU0.forward'], u'in': [u'rs', u'tmp_source0']}
+{u'out': [u'cin'], u'fu': [u'na'], u'in': [u'0']}
+{u'out': [u'zero2'], u'fu': [u'na'], u'in': [u'00']}
+{u'out': [u'ext_imm'], u'fu': [u'EXT1.sign'], u'in': [u'imm']}
+{u'out': [u'tmp'], u'fu': [u'29:0'], u'in': [u'ext_imm']}
+{u'out': [u'offset'], u'fu': [u'na'], u'in': [u'tmp', u'zero2']}
+{u'out': [u'tmp_cpc'], u'fu': [u'CPC.read'], u'in': []}
+{u'out': [u'target', u'cout'], u'fu': [u'ADD1.adc'], u'in': [u'tmp_cpc', u'offset', u'cin']}
+BGEZ 3
+variables:
+(u'flag', 4)
+(u'cond', 1)
+(u'N', 1)
+statements:
+{u'out': [u'flag'], u'fu': [u'ALU1.cmpz'], u'in': [u'src0']}
+{u'out': [u'N'], u'fu': [u'1'], u'in': [u'flag']}
+{u'out': [u'cond'], u'fu': [u" != '"], u'in': [u'N', u'1']}
+{u'out': [], u'fu': [u'sel', u'CPC.write'], u'in': [u'cond', u'target']}
+BGEZ 4
+variables:
+statements:
+BGEZ 5
+variables:
+statements:
+BGEZ 6
+variables:
+statements:
+SRL global
+variables:
+(u'rt', 5)
+(u'shamt', 8)
+(u'rs', 5)
+(u'rd', 5)
+(u'source0', 32)
+(u'source1', 32)
+(u'result', 32)
+(u'tmp_pc', 32)
+SRL 1
+variables:
+(u'current_pc', 32)
+(u'inst0', 64)
+(u'iramaddr_err', 1)
+statements:
+{u'out': [u'current_pc'], u'fu': [u'CPC.read'], u'in': []}
+{u'out': [u'tmp_pc'], u'fu': [u'na'], u'in': [u'current_pc']}
+{u'out': [u'inst0', u'iramaddr_err'], u'fu': [u'Imem.ld_64'], u'in': [u'current_pc']}
+{u'out': [], u'fu': [u'IReg.write'], u'in': [u'inst0']}
+{u'out': [], u'fu': [u'CPC.inc'], u'in': []}
+SRL 2
+variables:
+(u'zero24', 24)
+(u'tmp_source0', 32)
+(u'tmp_ir', 64)
+statements:
+{u'out': [u'tmp_ir'], u'fu': [u'IReg.read'], u'in': []}
+{u'out': [u'rs'], u'fu': [u'28:24'], u'in': [u'tmp_ir']}
+{u'out': [u'rt'], u'fu': [u'20:16'], u'in': [u'tmp_ir']}
+{u'out': [u'rd'], u'fu': [u'12:8'], u'in': [u'tmp_ir']}
+{u'out': [u'shamt'], u'fu': [u'7:0'], u'in': [u'tmp_ir']}
+{u'out': [u'zero24'], u'fu': [u'na'], u'in': [u'000000000000000000000000']}
+{u'out': [u'tmp_source0'], u'fu': [u'GPR.read0'], u'in': [u'rt']}
+{u'out': [u'source0'], u'fu': [u'FWUL0.forward'], u'in': [u'rt', u'tmp_source0']}
+{u'out': [u'source1'], u'fu': [u'na'], u'in': [u'zero24', u'shamt']}
+SRL 3
+variables:
+(u'shift', 5)
+statements:
+{u'out': [u'shift'], u'fu': [u'4:0'], u'in': [u'source1']}
+{u'out': [u'result'], u'fu': [u'SFT1.srl'], u'in': [u'source0', u'shift']}
+{u'out': [], u'fu': [u'FWUL0.forward1'], u'in': [u'rd', u'result']}
+{u'out': [], u'fu': [u'FWUL1.forward1'], u'in': [u'rd', u'result']}
+{u'out': [], u'fu': [u'FWUL2.forward1'], u'in': [u'rd', u'result']}
+{u'out': [], u'fu': [u'FWUL3.forward1'], u'in': [u'rd', u'result']}
+SRL 4
+variables:
+statements:
+{u'out': [], u'fu': [u'FWUL0.forward3'], u'in': [u'rd', u'result']}
+{u'out': [], u'fu': [u'FWUL1.forward3'], u'in': [u'rd', u'result']}
+{u'out': [], u'fu': [u'FWUL2.forward3'], u'in': [u'rd', u'result']}
+{u'out': [], u'fu': [u'FWUL3.forward3'], u'in': [u'rd', u'result']}
+SRL 5
+variables:
+statements:
+{u'out': [], u'fu': [u'FWUL0.forward5'], u'in': [u'rd', u'result']}
+{u'out': [], u'fu': [u'FWUL1.forward5'], u'in': [u'rd', u'result']}
+{u'out': [], u'fu': [u'FWUL2.forward5'], u'in': [u'rd', u'result']}
+{u'out': [], u'fu': [u'FWUL3.forward5'], u'in': [u'rd', u'result']}
+SRL 6
+variables:
+statements:
+{u'out': [], u'fu': [u'GPR.write0'], u'in': [u'rd', u'result']}
+{u'out': [], u'fu': [u'FWUL0.forward7'], u'in': [u'rd', u'result']}
+{u'out': [], u'fu': [u'FWUL1.forward7'], u'in': [u'rd', u'result']}
+{u'out': [], u'fu': [u'FWUL2.forward7'], u'in': [u'rd', u'result']}
+{u'out': [], u'fu': [u'FWUL3.forward7'], u'in': [u'rd', u'result']}
+SLL global
+variables:
+(u'rt', 5)
+(u'shamt', 8)
+(u'rs', 5)
+(u'rd', 5)
+(u'source0', 32)
+(u'source1', 32)
+(u'result', 32)
+(u'tmp_pc', 32)
+SLL 1
+variables:
+(u'current_pc', 32)
+(u'inst0', 64)
+(u'iramaddr_err', 1)
+statements:
+{u'out': [u'current_pc'], u'fu': [u'CPC.read'], u'in': []}
+{u'out': [u'tmp_pc'], u'fu': [u'na'], u'in': [u'current_pc']}
+{u'out': [u'inst0', u'iramaddr_err'], u'fu': [u'Imem.ld_64'], u'in': [u'current_pc']}
+{u'out': [], u'fu': [u'IReg.write'], u'in': [u'inst0']}
+{u'out': [], u'fu': [u'CPC.inc'], u'in': []}
+SLL 2
+variables:
+(u'zero24', 24)
+(u'tmp_source0', 32)
+(u'tmp_ir', 64)
+statements:
+{u'out': [u'tmp_ir'], u'fu': [u'IReg.read'], u'in': []}
+{u'out': [u'rs'], u'fu': [u'28:24'], u'in': [u'tmp_ir']}
+{u'out': [u'rt'], u'fu': [u'20:16'], u'in': [u'tmp_ir']}
+{u'out': [u'rd'], u'fu': [u'12:8'], u'in': [u'tmp_ir']}
+{u'out': [u'shamt'], u'fu': [u'7:0'], u'in': [u'tmp_ir']}
+{u'out': [u'zero24'], u'fu': [u'na'], u'in': [u'000000000000000000000000']}
+{u'out': [u'tmp_source0'], u'fu': [u'GPR.read0'], u'in': [u'rt']}
+{u'out': [u'source0'], u'fu': [u'FWUL0.forward'], u'in': [u'rt', u'tmp_source0']}
+{u'out': [u'source1'], u'fu': [u'na'], u'in': [u'zero24', u'shamt']}
+SLL 3
+variables:
+(u'shift', 5)
+statements:
+{u'out': [u'shift'], u'fu': [u'4:0'], u'in': [u'source1']}
+{u'out': [u'result'], u'fu': [u'SFT1.sll'], u'in': [u'source0', u'shift']}
+{u'out': [], u'fu': [u'FWUL0.forward1'], u'in': [u'rd', u'result']}
+{u'out': [], u'fu': [u'FWUL1.forward1'], u'in': [u'rd', u'result']}
+{u'out': [], u'fu': [u'FWUL2.forward1'], u'in': [u'rd', u'result']}
+{u'out': [], u'fu': [u'FWUL3.forward1'], u'in': [u'rd', u'result']}
+SLL 4
+variables:
+statements:
+{u'out': [], u'fu': [u'FWUL0.forward3'], u'in': [u'rd', u'result']}
+{u'out': [], u'fu': [u'FWUL1.forward3'], u'in': [u'rd', u'result']}
+{u'out': [], u'fu': [u'FWUL2.forward3'], u'in': [u'rd', u'result']}
+{u'out': [], u'fu': [u'FWUL3.forward3'], u'in': [u'rd', u'result']}
+SLL 5
+variables:
+statements:
+{u'out': [], u'fu': [u'FWUL0.forward5'], u'in': [u'rd', u'result']}
+{u'out': [], u'fu': [u'FWUL1.forward5'], u'in': [u'rd', u'result']}
+{u'out': [], u'fu': [u'FWUL2.forward5'], u'in': [u'rd', u'result']}
+{u'out': [], u'fu': [u'FWUL3.forward5'], u'in': [u'rd', u'result']}
+SLL 6
+variables:
+statements:
+{u'out': [], u'fu': [u'GPR.write0'], u'in': [u'rd', u'result']}
+{u'out': [], u'fu': [u'FWUL0.forward7'], u'in': [u'rd', u'result']}
+{u'out': [], u'fu': [u'FWUL1.forward7'], u'in': [u'rd', u'result']}
+{u'out': [], u'fu': [u'FWUL2.forward7'], u'in': [u'rd', u'result']}
+{u'out': [], u'fu': [u'FWUL3.forward7'], u'in': [u'rd', u'result']}
+NOR global
+variables:
+(u'rt', 5)
+(u'shamt', 8)
+(u'rs', 5)
+(u'rd', 5)
+(u'source0', 32)
+(u'source1', 32)
+(u'result', 32)
+(u'tmp_pc', 32)
+NOR 1
+variables:
+(u'current_pc', 32)
+(u'inst0', 64)
+(u'iramaddr_err', 1)
+statements:
+{u'out': [u'current_pc'], u'fu': [u'CPC.read'], u'in': []}
+{u'out': [u'tmp_pc'], u'fu': [u'na'], u'in': [u'current_pc']}
+{u'out': [u'inst0', u'iramaddr_err'], u'fu': [u'Imem.ld_64'], u'in': [u'current_pc']}
+{u'out': [], u'fu': [u'IReg.write'], u'in': [u'inst0']}
+{u'out': [], u'fu': [u'CPC.inc'], u'in': []}
+NOR 2
+variables:
+(u'tmp_source0', 32)
+(u'tmp_ir', 64)
+(u'tmp_source1', 32)
+statements:
+{u'out': [u'tmp_ir'], u'fu': [u'IReg.read'], u'in': []}
+{u'out': [u'rs'], u'fu': [u'28:24'], u'in': [u'tmp_ir']}
+{u'out': [u'rt'], u'fu': [u'20:16'], u'in': [u'tmp_ir']}
+{u'out': [u'rd'], u'fu': [u'12:8'], u'in': [u'tmp_ir']}
+{u'out': [u'shamt'], u'fu': [u'7:0'], u'in': [u'tmp_ir']}
+{u'out': [u'tmp_source0'], u'fu': [u'GPR.read0'], u'in': [u'rs']}
+{u'out': [u'tmp_source1'], u'fu': [u'GPR.read1'], u'in': [u'rt']}
+{u'out': [u'source0'], u'fu': [u'FWUL0.forward'], u'in': [u'rs', u'tmp_source0']}
+{u'out': [u'source1'], u'fu': [u'FWUL1.forward'], u'in': [u'rt', u'tmp_source1']}
+NOR 3
+variables:
+(u'flag', 4)
+statements:
+{u'out': [u'result', u'flag'], u'fu': [u'ALU1.nor'], u'in': [u'source0', u'source1']}
+{u'out': [], u'fu': [u'FWUL0.forward1'], u'in': [u'rd', u'result']}
+{u'out': [], u'fu': [u'FWUL1.forward1'], u'in': [u'rd', u'result']}
+{u'out': [], u'fu': [u'FWUL2.forward1'], u'in': [u'rd', u'result']}
+{u'out': [], u'fu': [u'FWUL3.forward1'], u'in': [u'rd', u'result']}
+NOR 4
+variables:
+statements:
+{u'out': [], u'fu': [u'FWUL0.forward3'], u'in': [u'rd', u'result']}
+{u'out': [], u'fu': [u'FWUL1.forward3'], u'in': [u'rd', u'result']}
+{u'out': [], u'fu': [u'FWUL2.forward3'], u'in': [u'rd', u'result']}
+{u'out': [], u'fu': [u'FWUL3.forward3'], u'in': [u'rd', u'result']}
+NOR 5
+variables:
+statements:
+{u'out': [], u'fu': [u'FWUL0.forward5'], u'in': [u'rd', u'result']}
+{u'out': [], u'fu': [u'FWUL1.forward5'], u'in': [u'rd', u'result']}
+{u'out': [], u'fu': [u'FWUL2.forward5'], u'in': [u'rd', u'result']}
+{u'out': [], u'fu': [u'FWUL3.forward5'], u'in': [u'rd', u'result']}
+NOR 6
+variables:
+statements:
+{u'out': [], u'fu': [u'GPR.write0'], u'in': [u'rd', u'result']}
+{u'out': [], u'fu': [u'FWUL0.forward7'], u'in': [u'rd', u'result']}
+{u'out': [], u'fu': [u'FWUL1.forward7'], u'in': [u'rd', u'result']}
+{u'out': [], u'fu': [u'FWUL2.forward7'], u'in': [u'rd', u'result']}
+{u'out': [], u'fu': [u'FWUL3.forward7'], u'in': [u'rd', u'result']}
+LHU global
+variables:
+(u'rt', 5)
+(u'bigE_word', 32)
+(u'addr', 32)
+(u'rs', 5)
+(u'imm', 16)
+(u'source0', 32)
+(u'source1', 32)
+(u'tmp_pc', 32)
+LHU 1
+variables:
+(u'current_pc', 32)
+(u'inst0', 64)
+(u'iramaddr_err', 1)
+statements:
+{u'out': [u'current_pc'], u'fu': [u'CPC.read'], u'in': []}
+{u'out': [u'tmp_pc'], u'fu': [u'na'], u'in': [u'current_pc']}
+{u'out': [u'inst0', u'iramaddr_err'], u'fu': [u'Imem.ld_64'], u'in': [u'current_pc']}
+{u'out': [], u'fu': [u'IReg.write'], u'in': [u'inst0']}
+{u'out': [], u'fu': [u'CPC.inc'], u'in': []}
+LHU 2
+variables:
+(u'tmp_source0', 32)
+(u'tmp_ir', 64)
+statements:
+{u'out': [u'tmp_ir'], u'fu': [u'IReg.read'], u'in': []}
+{u'out': [u'rs'], u'fu': [u'28:24'], u'in': [u'tmp_ir']}
+{u'out': [u'rt'], u'fu': [u'20:16'], u'in': [u'tmp_ir']}
+{u'out': [u'imm'], u'fu': [u'15:0'], u'in': [u'tmp_ir']}
+{u'out': [u'tmp_source0'], u'fu': [u'GPR.read0'], u'in': [u'rs']}
+{u'out': [u'source0'], u'fu': [u'FWUL0.forward'], u'in': [u'rs', u'tmp_source0']}
+{u'out': [u'source1'], u'fu': [u'EXT1.sign'], u'in': [u'imm']}
+LHU 3
+variables:
+(u'flag', 4)
+statements:
+{u'out': [u'addr', u'flag'], u'fu': [u'ALU1.add'], u'in': [u'source0', u'source1']}
+{u'out': [], u'fu': [u'FWUL0.lock1'], u'in': [u'rt']}
+{u'out': [], u'fu': [u'FWUL1.lock1'], u'in': [u'rt']}
+{u'out': [], u'fu': [u'FWUL2.lock1'], u'in': [u'rt']}
+{u'out': [], u'fu': [u'FWUL3.lock1'], u'in': [u'rt']}
+LHU 4
+variables:
+(u'byte3', 8)
+(u'byte2', 8)
+(u'byte1', 8)
+(u'byte0', 8)
+(u'result', 32)
+(u'addr_err', 1)
+statements:
+{u'out': [u'result', u'addr_err'], u'fu': [u'Dmem.ldu_16'], u'in': [u'addr']}
+{u'out': [u'byte0'], u'fu': [u'31:24'], u'in': [u'result']}
+{u'out': [u'byte1'], u'fu': [u'23:16'], u'in': [u'result']}
+{u'out': [u'byte2'], u'fu': [u'15:8'], u'in': [u'result']}
+{u'out': [u'byte3'], u'fu': [u'7:0'], u'in': [u'result']}
+{u'out': [u'bigE_word'], u'fu': [u'na'], u'in': [u'byte3', u'byte2', u'byte1', u'byte0']}
+{u'out': [], u'fu': [u'FWUL0.forward3'], u'in': [u'rt', u'bigE_word']}
+{u'out': [], u'fu': [u'FWUL1.forward3'], u'in': [u'rt', u'bigE_word']}
+{u'out': [], u'fu': [u'FWUL2.forward3'], u'in': [u'rt', u'bigE_word']}
+{u'out': [], u'fu': [u'FWUL3.forward3'], u'in': [u'rt', u'bigE_word']}
+{u'out': [], u'fu': [u'FWUL0.lock3'], u'in': [u'rt']}
+{u'out': [], u'fu': [u'FWUL1.lock3'], u'in': [u'rt']}
+{u'out': [], u'fu': [u'FWUL2.lock3'], u'in': [u'rt']}
+{u'out': [], u'fu': [u'FWUL3.lock3'], u'in': [u'rt']}
+LHU 5
+variables:
+statements:
+{u'out': [], u'fu': [u'FWUL0.forward5'], u'in': [u'rt', u'bigE_word']}
+{u'out': [], u'fu': [u'FWUL1.forward5'], u'in': [u'rt', u'bigE_word']}
+{u'out': [], u'fu': [u'FWUL2.forward5'], u'in': [u'rt', u'bigE_word']}
+{u'out': [], u'fu': [u'FWUL3.forward5'], u'in': [u'rt', u'bigE_word']}
+LHU 6
+variables:
+statements:
+{u'out': [], u'fu': [u'GPR.write0'], u'in': [u'rt', u'bigE_word']}
+{u'out': [], u'fu': [u'FWUL0.forward7'], u'in': [u'rt', u'bigE_word']}
+{u'out': [], u'fu': [u'FWUL1.forward7'], u'in': [u'rt', u'bigE_word']}
+{u'out': [], u'fu': [u'FWUL2.forward7'], u'in': [u'rt', u'bigE_word']}
+{u'out': [], u'fu': [u'FWUL3.forward7'], u'in': [u'rt', u'bigE_word']}
+DLW global
+variables:
+(u'rt', 5)
+(u'bigE_word0', 32)
+(u'bigE_word1', 32)
+(u'rs', 5)
+(u'nextRT', 5)
+(u'imm', 16)
+(u'source0', 32)
+(u'source1', 32)
+(u'addr2', 32)
+(u'tmp_pc', 32)
+(u'addr1', 32)
+DLW 1
+variables:
+(u'current_pc', 32)
+(u'inst0', 64)
+(u'iramaddr_err', 1)
+statements:
+{u'out': [u'current_pc'], u'fu': [u'CPC.read'], u'in': []}
+{u'out': [u'tmp_pc'], u'fu': [u'na'], u'in': [u'current_pc']}
+{u'out': [u'inst0', u'iramaddr_err'], u'fu': [u'Imem.ld_64'], u'in': [u'current_pc']}
+{u'out': [], u'fu': [u'IReg.write'], u'in': [u'inst0']}
+{u'out': [], u'fu': [u'CPC.inc'], u'in': []}
+DLW 2
+variables:
+(u'tmp_source0', 32)
+(u'tmp_ir', 64)
+statements:
+{u'out': [u'tmp_ir'], u'fu': [u'IReg.read'], u'in': []}
+{u'out': [u'rs'], u'fu': [u'28:24'], u'in': [u'tmp_ir']}
+{u'out': [u'rt'], u'fu': [u'20:16'], u'in': [u'tmp_ir']}
+{u'out': [u'imm'], u'fu': [u'15:0'], u'in': [u'tmp_ir']}
+{u'out': [u'tmp_source0'], u'fu': [u'GPR.read0'], u'in': [u'rs']}
+{u'out': [u'source0'], u'fu': [u'FWUL0.forward'], u'in': [u'rs', u'tmp_source0']}
+{u'out': [u'source1'], u'fu': [u'EXT1.sign'], u'in': [u'imm']}
+DLW 3
+variables:
+(u'tmpRT', 4)
+(u'flag', 4)
+(u'one', 1)
+statements:
+{u'out': [u'addr1', u'flag'], u'fu': [u'ALU1.add'], u'in': [u'source0', u'source1']}
+{u'out': [u'one'], u'fu': [u'na'], u'in': [u'1']}
+{u'out': [u'tmpRT'], u'fu': [u'4:1'], u'in': [u'rt']}
+{u'out': [u'nextRT'], u'fu': [u'na'], u'in': [u'tmpRT', u'one']}
+{u'out': [], u'fu': [u'FWUL0.lock1'], u'in': [u'rt']}
+{u'out': [], u'fu': [u'FWUL1.lock1'], u'in': [u'rt']}
+{u'out': [], u'fu': [u'FWUL2.lock1'], u'in': [u'rt']}
+{u'out': [], u'fu': [u'FWUL3.lock1'], u'in': [u'rt']}
+{u'out': [], u'fu': [u'FWUL0.lock2'], u'in': [u'nextRT']}
+{u'out': [], u'fu': [u'FWUL1.lock2'], u'in': [u'nextRT']}
+{u'out': [], u'fu': [u'FWUL2.lock2'], u'in': [u'nextRT']}
+{u'out': [], u'fu': [u'FWUL3.lock2'], u'in': [u'nextRT']}
+DLW 4
+variables:
+(u'four32bit', 32)
+(u'cout', 1)
+(u'byte0', 8)
+(u'byte3', 8)
+(u'cin', 1)
+(u'byte1', 8)
+(u'byte2', 8)
+(u'addr_err', 1)
+(u'result1', 32)
+statements:
+{u'out': [u'cin'], u'fu': [u'na'], u'in': [u'0']}
+{u'out': [u'four32bit'], u'fu': [u'na'], u'in': [u'00000000000000000000000000000100']}
+{u'out': [u'result1', u'addr_err'], u'fu': [u'Dmem.ld_32'], u'in': [u'addr1']}
+{u'out': [u'byte0'], u'fu': [u'31:24'], u'in': [u'result1']}
+{u'out': [u'byte1'], u'fu': [u'23:16'], u'in': [u'result1']}
+{u'out': [u'byte2'], u'fu': [u'15:8'], u'in': [u'result1']}
+{u'out': [u'byte3'], u'fu': [u'7:0'], u'in': [u'result1']}
+{u'out': [u'bigE_word0'], u'fu': [u'na'], u'in': [u'byte3', u'byte2', u'byte1', u'byte0']}
+{u'out': [], u'fu': [u'FWUL0.forward3'], u'in': [u'rt', u'bigE_word0']}
+{u'out': [], u'fu': [u'FWUL1.forward3'], u'in': [u'rt', u'bigE_word0']}
+{u'out': [], u'fu': [u'FWUL2.forward3'], u'in': [u'rt', u'bigE_word0']}
+{u'out': [], u'fu': [u'FWUL3.forward3'], u'in': [u'rt', u'bigE_word0']}
+{u'out': [u'addr2', u'cout'], u'fu': [u'ADDER2.adc'], u'in': [u'addr1', u'four32bit', u'cin']}
+{u'out': [], u'fu': [u'FWUL0.lock3'], u'in': [u'rt']}
+{u'out': [], u'fu': [u'FWUL1.lock3'], u'in': [u'rt']}
+{u'out': [], u'fu': [u'FWUL2.lock3'], u'in': [u'rt']}
+{u'out': [], u'fu': [u'FWUL3.lock3'], u'in': [u'rt']}
+{u'out': [], u'fu': [u'FWUL0.lock4'], u'in': [u'nextRT']}
+{u'out': [], u'fu': [u'FWUL1.lock4'], u'in': [u'nextRT']}
+{u'out': [], u'fu': [u'FWUL2.lock4'], u'in': [u'nextRT']}
+{u'out': [], u'fu': [u'FWUL3.lock4'], u'in': [u'nextRT']}
+DLW 5
+variables:
+(u'result2', 32)
+(u'byte3', 8)
+(u'byte2', 8)
+(u'byte1', 8)
+(u'byte0', 8)
+(u'addr_err', 1)
+statements:
+{u'out': [u'result2', u'addr_err'], u'fu': [u'Dmem.ld_32'], u'in': [u'addr2']}
+{u'out': [u'byte0'], u'fu': [u'31:24'], u'in': [u'result2']}
+{u'out': [u'byte1'], u'fu': [u'23:16'], u'in': [u'result2']}
+{u'out': [u'byte2'], u'fu': [u'15:8'], u'in': [u'result2']}
+{u'out': [u'byte3'], u'fu': [u'7:0'], u'in': [u'result2']}
+{u'out': [u'bigE_word1'], u'fu': [u'na'], u'in': [u'byte3', u'byte2', u'byte1', u'byte0']}
+{u'out': [], u'fu': [u'FWUL0.forward5'], u'in': [u'rt', u'bigE_word0']}
+{u'out': [], u'fu': [u'FWUL1.forward5'], u'in': [u'rt', u'bigE_word0']}
+{u'out': [], u'fu': [u'FWUL2.forward5'], u'in': [u'rt', u'bigE_word0']}
+{u'out': [], u'fu': [u'FWUL3.forward5'], u'in': [u'rt', u'bigE_word0']}
+{u'out': [], u'fu': [u'FWUL0.forward6'], u'in': [u'nextRT', u'bigE_word1']}
+{u'out': [], u'fu': [u'FWUL1.forward6'], u'in': [u'nextRT', u'bigE_word1']}
+{u'out': [], u'fu': [u'FWUL2.forward6'], u'in': [u'nextRT', u'bigE_word1']}
+{u'out': [], u'fu': [u'FWUL3.forward6'], u'in': [u'nextRT', u'bigE_word1']}
+{u'out': [], u'fu': [u'FWUL0.lock5'], u'in': [u'nextRT']}
+{u'out': [], u'fu': [u'FWUL1.lock5'], u'in': [u'nextRT']}
+{u'out': [], u'fu': [u'FWUL2.lock5'], u'in': [u'nextRT']}
+{u'out': [], u'fu': [u'FWUL3.lock5'], u'in': [u'nextRT']}
+DLW 6
+variables:
+statements:
+{u'out': [], u'fu': [u'FWUL0.forward7'], u'in': [u'rt', u'bigE_word0']}
+{u'out': [], u'fu': [u'FWUL1.forward7'], u'in': [u'rt', u'bigE_word0']}
+{u'out': [], u'fu': [u'FWUL2.forward7'], u'in': [u'rt', u'bigE_word0']}
+{u'out': [], u'fu': [u'FWUL3.forward7'], u'in': [u'rt', u'bigE_word0']}
+{u'out': [], u'fu': [u'FWUL0.forward8'], u'in': [u'nextRT', u'bigE_word1']}
+{u'out': [], u'fu': [u'FWUL1.forward8'], u'in': [u'nextRT', u'bigE_word1']}
+{u'out': [], u'fu': [u'FWUL2.forward8'], u'in': [u'nextRT', u'bigE_word1']}
+{u'out': [], u'fu': [u'FWUL3.forward8'], u'in': [u'nextRT', u'bigE_word1']}
+{u'out': [], u'fu': [u'GPR.write0'], u'in': [u'rt', u'bigE_word0']}
+{u'out': [], u'fu': [u'GPR.write1'], u'in': [u'nextRT', u'bigE_word1']}
+SUB global
+variables:
+(u'rt', 5)
+(u'shamt', 8)
+(u'rs', 5)
+(u'rd', 5)
+(u'source0', 32)
+(u'source1', 32)
+(u'result', 32)
+(u'tmp_pc', 32)
+SUB 1
+variables:
+(u'current_pc', 32)
+(u'inst0', 64)
+(u'iramaddr_err', 1)
+statements:
+{u'out': [u'current_pc'], u'fu': [u'CPC.read'], u'in': []}
+{u'out': [u'tmp_pc'], u'fu': [u'na'], u'in': [u'current_pc']}
+{u'out': [u'inst0', u'iramaddr_err'], u'fu': [u'Imem.ld_64'], u'in': [u'current_pc']}
+{u'out': [], u'fu': [u'IReg.write'], u'in': [u'inst0']}
+{u'out': [], u'fu': [u'CPC.inc'], u'in': []}
+SUB 2
+variables:
+(u'tmp_source0', 32)
+(u'tmp_ir', 64)
+(u'tmp_source1', 32)
+statements:
+{u'out': [u'tmp_ir'], u'fu': [u'IReg.read'], u'in': []}
+{u'out': [u'rs'], u'fu': [u'28:24'], u'in': [u'tmp_ir']}
+{u'out': [u'rt'], u'fu': [u'20:16'], u'in': [u'tmp_ir']}
+{u'out': [u'rd'], u'fu': [u'12:8'], u'in': [u'tmp_ir']}
+{u'out': [u'shamt'], u'fu': [u'7:0'], u'in': [u'tmp_ir']}
+{u'out': [u'tmp_source0'], u'fu': [u'GPR.read0'], u'in': [u'rs']}
+{u'out': [u'tmp_source1'], u'fu': [u'GPR.read1'], u'in': [u'rt']}
+{u'out': [u'source0'], u'fu': [u'FWUL0.forward'], u'in': [u'rs', u'tmp_source0']}
+{u'out': [u'source1'], u'fu': [u'FWUL1.forward'], u'in': [u'rt', u'tmp_source1']}
+SUB 3
+variables:
+(u'flag', 4)
+statements:
+{u'out': [u'result', u'flag'], u'fu': [u'ALU1.sub'], u'in': [u'source0', u'source1']}
+{u'out': [], u'fu': [u'FWUL0.forward1'], u'in': [u'rd', u'result']}
+{u'out': [], u'fu': [u'FWUL1.forward1'], u'in': [u'rd', u'result']}
+{u'out': [], u'fu': [u'FWUL2.forward1'], u'in': [u'rd', u'result']}
+{u'out': [], u'fu': [u'FWUL3.forward1'], u'in': [u'rd', u'result']}
+SUB 4
+variables:
+statements:
+{u'out': [], u'fu': [u'FWUL0.forward3'], u'in': [u'rd', u'result']}
+{u'out': [], u'fu': [u'FWUL1.forward3'], u'in': [u'rd', u'result']}
+{u'out': [], u'fu': [u'FWUL2.forward3'], u'in': [u'rd', u'result']}
+{u'out': [], u'fu': [u'FWUL3.forward3'], u'in': [u'rd', u'result']}
+SUB 5
+variables:
+statements:
+{u'out': [], u'fu': [u'FWUL0.forward5'], u'in': [u'rd', u'result']}
+{u'out': [], u'fu': [u'FWUL1.forward5'], u'in': [u'rd', u'result']}
+{u'out': [], u'fu': [u'FWUL2.forward5'], u'in': [u'rd', u'result']}
+{u'out': [], u'fu': [u'FWUL3.forward5'], u'in': [u'rd', u'result']}
+SUB 6
+variables:
+statements:
+{u'out': [], u'fu': [u'GPR.write0'], u'in': [u'rd', u'result']}
+{u'out': [], u'fu': [u'FWUL0.forward7'], u'in': [u'rd', u'result']}
+{u'out': [], u'fu': [u'FWUL1.forward7'], u'in': [u'rd', u'result']}
+{u'out': [], u'fu': [u'FWUL2.forward7'], u'in': [u'rd', u'result']}
+{u'out': [], u'fu': [u'FWUL3.forward7'], u'in': [u'rd', u'result']}
+SB global
+variables:
+(u'rt', 5)
+(u'addr', 32)
+(u'rs', 5)
+(u'imm', 16)
+(u'source2', 32)
+(u'source0', 32)
+(u'source1', 32)
+(u'tmp_pc', 32)
+SB 1
+variables:
+(u'current_pc', 32)
+(u'inst0', 64)
+(u'iramaddr_err', 1)
+statements:
+{u'out': [u'current_pc'], u'fu': [u'CPC.read'], u'in': []}
+{u'out': [u'tmp_pc'], u'fu': [u'na'], u'in': [u'current_pc']}
+{u'out': [u'inst0', u'iramaddr_err'], u'fu': [u'Imem.ld_64'], u'in': [u'current_pc']}
+{u'out': [], u'fu': [u'IReg.write'], u'in': [u'inst0']}
+{u'out': [], u'fu': [u'CPC.inc'], u'in': []}
+SB 2
+variables:
+(u'tmp_source0', 32)
+(u'tmp_ir', 64)
+(u'tmp_source1', 32)
+statements:
+{u'out': [u'tmp_ir'], u'fu': [u'IReg.read'], u'in': []}
+{u'out': [u'rs'], u'fu': [u'28:24'], u'in': [u'tmp_ir']}
+{u'out': [u'rt'], u'fu': [u'20:16'], u'in': [u'tmp_ir']}
+{u'out': [u'imm'], u'fu': [u'15:0'], u'in': [u'tmp_ir']}
+{u'out': [u'tmp_source0'], u'fu': [u'GPR.read0'], u'in': [u'rs']}
+{u'out': [u'tmp_source1'], u'fu': [u'GPR.read1'], u'in': [u'rt']}
+{u'out': [u'source2'], u'fu': [u'EXT1.sign'], u'in': [u'imm']}
+{u'out': [u'source0'], u'fu': [u'FWUL0.forward'], u'in': [u'rs', u'tmp_source0']}
+{u'out': [u'source1'], u'fu': [u'FWUL1.forward'], u'in': [u'rt', u'tmp_source1']}
+SB 3
+variables:
+(u'flag', 4)
+statements:
+{u'out': [u'addr', u'flag'], u'fu': [u'ALU1.add'], u'in': [u'source0', u'source2']}
+SB 4
+variables:
+statements:
+SB 5
+variables:
+(u'LE_source1', 32)
+(u'byte3', 8)
+(u'byte2', 8)
+(u'byte1', 8)
+(u'byte0', 8)
+(u'addr_err', 1)
+statements:
+{u'out': [u'byte0'], u'fu': [u'31:24'], u'in': [u'source1']}
+{u'out': [u'byte1'], u'fu': [u'23:16'], u'in': [u'source1']}
+{u'out': [u'byte2'], u'fu': [u'15:8'], u'in': [u'source1']}
+{u'out': [u'byte3'], u'fu': [u'7:0'], u'in': [u'source1']}
+{u'out': [u'LE_source1'], u'fu': [u'na'], u'in': [u'byte3', u'byte2', u'byte1', u'byte0']}
+{u'out': [u'addr_err'], u'fu': [u'Dmem.s_8'], u'in': [u'addr', u'LE_source1']}
+SB 6
+variables:
+statements:
+XORI global
+variables:
+(u'rt', 5)
+(u'rs', 5)
+(u'imm', 16)
+(u'source0', 32)
+(u'source1', 32)
+(u'result', 32)
+(u'tmp_pc', 32)
+XORI 1
+variables:
+(u'current_pc', 32)
+(u'inst0', 64)
+(u'iramaddr_err', 1)
+statements:
+{u'out': [u'current_pc'], u'fu': [u'CPC.read'], u'in': []}
+{u'out': [u'tmp_pc'], u'fu': [u'na'], u'in': [u'current_pc']}
+{u'out': [u'inst0', u'iramaddr_err'], u'fu': [u'Imem.ld_64'], u'in': [u'current_pc']}
+{u'out': [], u'fu': [u'IReg.write'], u'in': [u'inst0']}
+{u'out': [], u'fu': [u'CPC.inc'], u'in': []}
+XORI 2
+variables:
+(u'tmp_source0', 32)
+(u'tmp_ir', 64)
+statements:
+{u'out': [u'tmp_ir'], u'fu': [u'IReg.read'], u'in': []}
+{u'out': [u'rs'], u'fu': [u'28:24'], u'in': [u'tmp_ir']}
+{u'out': [u'rt'], u'fu': [u'20:16'], u'in': [u'tmp_ir']}
+{u'out': [u'imm'], u'fu': [u'15:0'], u'in': [u'tmp_ir']}
+{u'out': [u'tmp_source0'], u'fu': [u'GPR.read0'], u'in': [u'rs']}
+{u'out': [u'source0'], u'fu': [u'FWUL0.forward'], u'in': [u'rs', u'tmp_source0']}
+{u'out': [u'source1'], u'fu': [u'EXT1.zero'], u'in': [u'imm']}
+XORI 3
+variables:
+(u'flag', 4)
+statements:
+{u'out': [u'result', u'flag'], u'fu': [u'ALU1.xor'], u'in': [u'source0', u'source1']}
+{u'out': [], u'fu': [u'FWUL0.forward1'], u'in': [u'rt', u'result']}
+{u'out': [], u'fu': [u'FWUL1.forward1'], u'in': [u'rt', u'result']}
+{u'out': [], u'fu': [u'FWUL2.forward1'], u'in': [u'rt', u'result']}
+{u'out': [], u'fu': [u'FWUL3.forward1'], u'in': [u'rt', u'result']}
+XORI 4
+variables:
+statements:
+{u'out': [], u'fu': [u'FWUL0.forward3'], u'in': [u'rt', u'result']}
+{u'out': [], u'fu': [u'FWUL1.forward3'], u'in': [u'rt', u'result']}
+{u'out': [], u'fu': [u'FWUL2.forward3'], u'in': [u'rt', u'result']}
+{u'out': [], u'fu': [u'FWUL3.forward3'], u'in': [u'rt', u'result']}
+XORI 5
+variables:
+statements:
+{u'out': [], u'fu': [u'FWUL0.forward5'], u'in': [u'rt', u'result']}
+{u'out': [], u'fu': [u'FWUL1.forward5'], u'in': [u'rt', u'result']}
+{u'out': [], u'fu': [u'FWUL2.forward5'], u'in': [u'rt', u'result']}
+{u'out': [], u'fu': [u'FWUL3.forward5'], u'in': [u'rt', u'result']}
+XORI 6
+variables:
+statements:
+{u'out': [], u'fu': [u'GPR.write0'], u'in': [u'rt', u'result']}
+{u'out': [], u'fu': [u'FWUL0.forward7'], u'in': [u'rt', u'result']}
+{u'out': [], u'fu': [u'FWUL1.forward7'], u'in': [u'rt', u'result']}
+{u'out': [], u'fu': [u'FWUL2.forward7'], u'in': [u'rt', u'result']}
+{u'out': [], u'fu': [u'FWUL3.forward7'], u'in': [u'rt', u'result']}
+ANDI global
+variables:
+(u'rt', 5)
+(u'rs', 5)
+(u'imm', 16)
+(u'source0', 32)
+(u'source1', 32)
+(u'result', 32)
+(u'tmp_pc', 32)
+ANDI 1
+variables:
+(u'current_pc', 32)
+(u'inst0', 64)
+(u'iramaddr_err', 1)
+statements:
+{u'out': [u'current_pc'], u'fu': [u'CPC.read'], u'in': []}
+{u'out': [u'tmp_pc'], u'fu': [u'na'], u'in': [u'current_pc']}
+{u'out': [u'inst0', u'iramaddr_err'], u'fu': [u'Imem.ld_64'], u'in': [u'current_pc']}
+{u'out': [], u'fu': [u'IReg.write'], u'in': [u'inst0']}
+{u'out': [], u'fu': [u'CPC.inc'], u'in': []}
+ANDI 2
+variables:
+(u'tmp_source0', 32)
+(u'tmp_ir', 64)
+statements:
+{u'out': [u'tmp_ir'], u'fu': [u'IReg.read'], u'in': []}
+{u'out': [u'rs'], u'fu': [u'28:24'], u'in': [u'tmp_ir']}
+{u'out': [u'rt'], u'fu': [u'20:16'], u'in': [u'tmp_ir']}
+{u'out': [u'imm'], u'fu': [u'15:0'], u'in': [u'tmp_ir']}
+{u'out': [u'tmp_source0'], u'fu': [u'GPR.read0'], u'in': [u'rs']}
+{u'out': [u'source0'], u'fu': [u'FWUL0.forward'], u'in': [u'rs', u'tmp_source0']}
+{u'out': [u'source1'], u'fu': [u'EXT1.zero'], u'in': [u'imm']}
+ANDI 3
+variables:
+(u'flag', 4)
+statements:
+{u'out': [u'result', u'flag'], u'fu': [u'ALU1.and'], u'in': [u'source0', u'source1']}
+{u'out': [], u'fu': [u'FWUL0.forward1'], u'in': [u'rt', u'result']}
+{u'out': [], u'fu': [u'FWUL1.forward1'], u'in': [u'rt', u'result']}
+{u'out': [], u'fu': [u'FWUL2.forward1'], u'in': [u'rt', u'result']}
+{u'out': [], u'fu': [u'FWUL3.forward1'], u'in': [u'rt', u'result']}
+ANDI 4
+variables:
+statements:
+{u'out': [], u'fu': [u'FWUL0.forward3'], u'in': [u'rt', u'result']}
+{u'out': [], u'fu': [u'FWUL1.forward3'], u'in': [u'rt', u'result']}
+{u'out': [], u'fu': [u'FWUL2.forward3'], u'in': [u'rt', u'result']}
+{u'out': [], u'fu': [u'FWUL3.forward3'], u'in': [u'rt', u'result']}
+ANDI 5
+variables:
+statements:
+{u'out': [], u'fu': [u'FWUL0.forward5'], u'in': [u'rt', u'result']}
+{u'out': [], u'fu': [u'FWUL1.forward5'], u'in': [u'rt', u'result']}
+{u'out': [], u'fu': [u'FWUL2.forward5'], u'in': [u'rt', u'result']}
+{u'out': [], u'fu': [u'FWUL3.forward5'], u'in': [u'rt', u'result']}
+ANDI 6
+variables:
+statements:
+{u'out': [], u'fu': [u'GPR.write0'], u'in': [u'rt', u'result']}
+{u'out': [], u'fu': [u'FWUL0.forward7'], u'in': [u'rt', u'result']}
+{u'out': [], u'fu': [u'FWUL1.forward7'], u'in': [u'rt', u'result']}
+{u'out': [], u'fu': [u'FWUL2.forward7'], u'in': [u'rt', u'result']}
+{u'out': [], u'fu': [u'FWUL3.forward7'], u'in': [u'rt', u'result']}
+DIVU global
+variables:
+(u'rt', 5)
+(u'shamt', 8)
+(u'rs', 5)
+(u'source0', 32)
+(u'rd', 5)
+(u'resulthi', 32)
+(u'source1', 32)
+(u'tmp_pc', 32)
+(u'resultlo', 32)
+DIVU 1
+variables:
+(u'current_pc', 32)
+(u'inst0', 64)
+(u'iramaddr_err', 1)
+statements:
+{u'out': [u'current_pc'], u'fu': [u'CPC.read'], u'in': []}
+{u'out': [u'tmp_pc'], u'fu': [u'na'], u'in': [u'current_pc']}
+{u'out': [u'inst0', u'iramaddr_err'], u'fu': [u'Imem.ld_64'], u'in': [u'current_pc']}
+{u'out': [], u'fu': [u'IReg.write'], u'in': [u'inst0']}
+{u'out': [], u'fu': [u'CPC.inc'], u'in': []}
+DIVU 2
+variables:
+(u'tmp_source0', 32)
+(u'tmp_ir', 64)
+(u'tmp_source1', 32)
+statements:
+{u'out': [u'tmp_ir'], u'fu': [u'IReg.read'], u'in': []}
+{u'out': [u'rs'], u'fu': [u'28:24'], u'in': [u'tmp_ir']}
+{u'out': [u'rt'], u'fu': [u'20:16'], u'in': [u'tmp_ir']}
+{u'out': [u'rd'], u'fu': [u'12:8'], u'in': [u'tmp_ir']}
+{u'out': [u'shamt'], u'fu': [u'7:0'], u'in': [u'tmp_ir']}
+{u'out': [u'tmp_source0'], u'fu': [u'GPR.read0'], u'in': [u'rs']}
+{u'out': [u'tmp_source1'], u'fu': [u'GPR.read1'], u'in': [u'rt']}
+{u'out': [u'source0'], u'fu': [u'FWUL0.forward'], u'in': [u'rs', u'tmp_source0']}
+{u'out': [u'source1'], u'fu': [u'FWUL1.forward'], u'in': [u'rt', u'tmp_source1']}
+DIVU 3
+variables:
+(u'flag', 1)
+statements:
+{u'out': [u'resultlo', u'resulthi', u'flag'], u'fu': [u'DIV1.divu'], u'in': [u'source0', u'source1']}
+{u'out': [], u'fu': [u'LO.write'], u'in': [u'resultlo']}
+{u'out': [], u'fu': [u'HI.write'], u'in': [u'resulthi']}
+DIVU 4
+variables:
+statements:
+DIVU 5
+variables:
+statements:
+DIVU 6
+variables:
+statements:
+BGTZ global
+variables:
+(u'rt', 5)
+(u'target', 32)
+(u'rs', 5)
+(u'imm', 16)
+(u'source0', 32)
+(u'src0', 32)
+(u'source1', 32)
+(u'tmp_pc', 32)
+BGTZ 1
+variables:
+(u'current_pc', 32)
+(u'inst0', 64)
+(u'iramaddr_err', 1)
+statements:
+{u'out': [u'current_pc'], u'fu': [u'CPC.read'], u'in': []}
+{u'out': [u'tmp_pc'], u'fu': [u'na'], u'in': [u'current_pc']}
+{u'out': [u'inst0', u'iramaddr_err'], u'fu': [u'Imem.ld_64'], u'in': [u'current_pc']}
+{u'out': [], u'fu': [u'IReg.write'], u'in': [u'inst0']}
+{u'out': [], u'fu': [u'CPC.inc'], u'in': []}
+BGTZ 2
+variables:
+(u'tmp', 30)
+(u'tmp_source0', 32)
+(u'cout', 1)
+(u'cin', 1)
+(u'ext_imm', 32)
+(u'tmp_ir', 64)
+(u'offset', 32)
+(u'tmp_cpc', 32)
+(u'zero2', 2)
+statements:
+{u'out': [u'tmp_ir'], u'fu': [u'IReg.read'], u'in': []}
+{u'out': [u'rs'], u'fu': [u'28:24'], u'in': [u'tmp_ir']}
+{u'out': [u'rt'], u'fu': [u'20:16'], u'in': [u'tmp_ir']}
+{u'out': [u'imm'], u'fu': [u'15:0'], u'in': [u'tmp_ir']}
+{u'out': [u'tmp_source0'], u'fu': [u'GPR.read0'], u'in': [u'rs']}
+{u'out': [u'src0'], u'fu': [u'FWU0.forward'], u'in': [u'rs', u'tmp_source0']}
+{u'out': [u'cin'], u'fu': [u'na'], u'in': [u'0']}
+{u'out': [u'zero2'], u'fu': [u'na'], u'in': [u'00']}
+{u'out': [u'ext_imm'], u'fu': [u'EXT1.sign'], u'in': [u'imm']}
+{u'out': [u'tmp'], u'fu': [u'29:0'], u'in': [u'ext_imm']}
+{u'out': [u'offset'], u'fu': [u'na'], u'in': [u'tmp', u'zero2']}
+{u'out': [u'tmp_cpc'], u'fu': [u'CPC.read'], u'in': []}
+{u'out': [u'target', u'cout'], u'fu': [u'ADD1.adc'], u'in': [u'tmp_cpc', u'offset', u'cin']}
+BGTZ 3
+variables:
+(u'cond_tmp', 1)
+(u'Z', 1)
+(u'cond', 1)
+(u'flag', 4)
+(u'N', 1)
+statements:
+{u'out': [u'flag'], u'fu': [u'ALU1.cmpz'], u'in': [u'src0']}
+{u'out': [u'N'], u'fu': [u'1'], u'in': [u'flag']}
+{u'out': [u'Z'], u'fu': [u'2'], u'in': [u'flag']}
+{u'out': [u'cond_tmp'], u'fu': [u'|'], u'in': [u'N', u'Z']}
+{u'out': [u'cond'], u'fu': [u" != '"], u'in': [u'cond_tmp', u'1']}
+{u'out': [], u'fu': [u'sel', u'CPC.write'], u'in': [u'cond', u'target']}
+BGTZ 4
+variables:
+statements:
+BGTZ 5
+variables:
+statements:
+BGTZ 6
+variables:
+statements:
+BNE global
+variables:
+(u'rt', 5)
+(u'target', 32)
+(u'rs', 5)
+(u'imm', 16)
+(u'source0', 32)
+(u'source1', 32)
+(u'tmp_pc', 32)
+BNE 1
+variables:
+(u'current_pc', 32)
+(u'inst0', 64)
+(u'iramaddr_err', 1)
+statements:
+{u'out': [u'current_pc'], u'fu': [u'CPC.read'], u'in': []}
+{u'out': [u'tmp_pc'], u'fu': [u'na'], u'in': [u'current_pc']}
+{u'out': [u'inst0', u'iramaddr_err'], u'fu': [u'Imem.ld_64'], u'in': [u'current_pc']}
+{u'out': [], u'fu': [u'IReg.write'], u'in': [u'inst0']}
+{u'out': [], u'fu': [u'CPC.inc'], u'in': []}
+BNE 2
+variables:
+(u'tmp', 30)
+(u'tmp_source0', 32)
+(u'cout', 1)
+(u'cin', 1)
+(u'tmp_ir', 64)
+(u'ext_imm', 32)
+(u'zero2', 2)
+(u'offset', 32)
+(u'tmp_cpc', 32)
+(u'tmp_source1', 32)
+statements:
+{u'out': [u'tmp_ir'], u'fu': [u'IReg.read'], u'in': []}
+{u'out': [u'rs'], u'fu': [u'28:24'], u'in': [u'tmp_ir']}
+{u'out': [u'rt'], u'fu': [u'20:16'], u'in': [u'tmp_ir']}
+{u'out': [u'imm'], u'fu': [u'15:0'], u'in': [u'tmp_ir']}
+{u'out': [u'tmp_source0'], u'fu': [u'GPR.read0'], u'in': [u'rs']}
+{u'out': [u'tmp_source1'], u'fu': [u'GPR.read1'], u'in': [u'rt']}
+{u'out': [u'source0'], u'fu': [u'FWUL0.forward'], u'in': [u'rs', u'tmp_source0']}
+{u'out': [u'source1'], u'fu': [u'FWUL1.forward'], u'in': [u'rt', u'tmp_source1']}
+{u'out': [u'cin'], u'fu': [u'na'], u'in': [u'0']}
+{u'out': [u'zero2'], u'fu': [u'na'], u'in': [u'00']}
+{u'out': [u'ext_imm'], u'fu': [u'EXT1.sign'], u'in': [u'imm']}
+{u'out': [u'tmp'], u'fu': [u'29:0'], u'in': [u'ext_imm']}
+{u'out': [u'offset'], u'fu': [u'na'], u'in': [u'tmp', u'zero2']}
+{u'out': [u'tmp_cpc'], u'fu': [u'CPC.read'], u'in': []}
+{u'out': [u'target', u'cout'], u'fu': [u'ADD1.adc'], u'in': [u'tmp_cpc', u'offset', u'cin']}
+BNE 3
+variables:
+(u'zero', 1)
+(u'cond', 1)
+(u'flag', 4)
+statements:
+{u'out': [u'flag'], u'fu': [u'ALU1.cmp'], u'in': [u'source0', u'source1']}
+{u'out': [u'zero'], u'fu': [u'2'], u'in': [u'flag']}
+{u'out': [u'cond'], u'fu': [u" !='"], u'in': [u'zero', u'1']}
+{u'out': [], u'fu': [u'sel', u'CPC.write'], u'in': [u'cond', u'target']}
+BNE 4
+variables:
+statements:
+BNE 5
+variables:
+statements:
+BNE 6
+variables:
+statements:
+AND global
+variables:
+(u'rt', 5)
+(u'shamt', 8)
+(u'rs', 5)
+(u'rd', 5)
+(u'source0', 32)
+(u'source1', 32)
+(u'result', 32)
+(u'tmp_pc', 32)
+AND 1
+variables:
+(u'current_pc', 32)
+(u'inst0', 64)
+(u'iramaddr_err', 1)
+statements:
+{u'out': [u'current_pc'], u'fu': [u'CPC.read'], u'in': []}
+{u'out': [u'tmp_pc'], u'fu': [u'na'], u'in': [u'current_pc']}
+{u'out': [u'inst0', u'iramaddr_err'], u'fu': [u'Imem.ld_64'], u'in': [u'current_pc']}
+{u'out': [], u'fu': [u'IReg.write'], u'in': [u'inst0']}
+{u'out': [], u'fu': [u'CPC.inc'], u'in': []}
+AND 2
+variables:
+(u'tmp_source0', 32)
+(u'tmp_ir', 64)
+(u'tmp_source1', 32)
+statements:
+{u'out': [u'tmp_ir'], u'fu': [u'IReg.read'], u'in': []}
+{u'out': [u'rs'], u'fu': [u'28:24'], u'in': [u'tmp_ir']}
+{u'out': [u'rt'], u'fu': [u'20:16'], u'in': [u'tmp_ir']}
+{u'out': [u'rd'], u'fu': [u'12:8'], u'in': [u'tmp_ir']}
+{u'out': [u'shamt'], u'fu': [u'7:0'], u'in': [u'tmp_ir']}
+{u'out': [u'tmp_source0'], u'fu': [u'GPR.read0'], u'in': [u'rs']}
+{u'out': [u'tmp_source1'], u'fu': [u'GPR.read1'], u'in': [u'rt']}
+{u'out': [u'source0'], u'fu': [u'FWUL0.forward'], u'in': [u'rs', u'tmp_source0']}
+{u'out': [u'source1'], u'fu': [u'FWUL1.forward'], u'in': [u'rt', u'tmp_source1']}
+AND 3
+variables:
+(u'flag', 4)
+statements:
+{u'out': [u'result', u'flag'], u'fu': [u'ALU1.and'], u'in': [u'source0', u'source1']}
+{u'out': [], u'fu': [u'FWUL0.forward1'], u'in': [u'rd', u'result']}
+{u'out': [], u'fu': [u'FWUL1.forward1'], u'in': [u'rd', u'result']}
+{u'out': [], u'fu': [u'FWUL2.forward1'], u'in': [u'rd', u'result']}
+{u'out': [], u'fu': [u'FWUL3.forward1'], u'in': [u'rd', u'result']}
+AND 4
+variables:
+statements:
+{u'out': [], u'fu': [u'FWUL0.forward3'], u'in': [u'rd', u'result']}
+{u'out': [], u'fu': [u'FWUL1.forward3'], u'in': [u'rd', u'result']}
+{u'out': [], u'fu': [u'FWUL2.forward3'], u'in': [u'rd', u'result']}
+{u'out': [], u'fu': [u'FWUL3.forward3'], u'in': [u'rd', u'result']}
+AND 5
+variables:
+statements:
+{u'out': [], u'fu': [u'FWUL0.forward5'], u'in': [u'rd', u'result']}
+{u'out': [], u'fu': [u'FWUL1.forward5'], u'in': [u'rd', u'result']}
+{u'out': [], u'fu': [u'FWUL2.forward5'], u'in': [u'rd', u'result']}
+{u'out': [], u'fu': [u'FWUL3.forward5'], u'in': [u'rd', u'result']}
+AND 6
+variables:
+statements:
+{u'out': [], u'fu': [u'GPR.write0'], u'in': [u'rd', u'result']}
+{u'out': [], u'fu': [u'FWUL0.forward7'], u'in': [u'rd', u'result']}
+{u'out': [], u'fu': [u'FWUL1.forward7'], u'in': [u'rd', u'result']}
+{u'out': [], u'fu': [u'FWUL2.forward7'], u'in': [u'rd', u'result']}
+{u'out': [], u'fu': [u'FWUL3.forward7'], u'in': [u'rd', u'result']}
+JUMP global
+variables:
+(u'tmp_pc', 32)
+(u'targ', 26)
+(u'result', 32)
+JUMP 1
+variables:
+(u'current_pc', 32)
+(u'inst0', 64)
+(u'iramaddr_err', 1)
+statements:
+{u'out': [u'current_pc'], u'fu': [u'CPC.read'], u'in': []}
+{u'out': [u'tmp_pc'], u'fu': [u'na'], u'in': [u'current_pc']}
+{u'out': [u'inst0', u'iramaddr_err'], u'fu': [u'Imem.ld_64'], u'in': [u'current_pc']}
+{u'out': [], u'fu': [u'IReg.write'], u'in': [u'inst0']}
+{u'out': [], u'fu': [u'CPC.inc'], u'in': []}
+JUMP 2
+variables:
+(u'one1b0', 1)
+(u'const', 2)
+(u'zero1b0', 1)
+(u'cpc_top', 4)
+(u'tmp_ir', 64)
+(u'tmp_cpc', 32)
+statements:
+{u'out': [u'tmp_ir'], u'fu': [u'IReg.read'], u'in': []}
+{u'out': [u'targ'], u'fu': [u'25:0'], u'in': [u'tmp_ir']}
+{u'out': [u'one1b0'], u'fu': [u'na'], u'in': [u'1']}
+{u'out': [u'zero1b0'], u'fu': [u'na'], u'in': [u'0']}
+{u'out': [u'const'], u'fu': [u'na'], u'in': [u'00']}
+{u'out': [u'tmp_cpc'], u'fu': [u'CPC.read'], u'in': []}
+{u'out': [u'cpc_top'], u'fu': [u'31:28'], u'in': [u'tmp_cpc']}
+{u'out': [u'result'], u'fu': [u'na'], u'in': [u'cpc_top', u'targ', u'const']}
+JUMP 3
+variables:
+statements:
+{u'out': [], u'fu': [u'CPC.write'], u'in': [u'result']}
+JUMP 4
+variables:
+statements:
+JUMP 5
+variables:
+statements:
+JUMP 6
+variables:
+statements:
+ADDU global
+variables:
+(u'rt', 5)
+(u'shamt', 8)
+(u'rs', 5)
+(u'rd', 5)
+(u'source0', 32)
+(u'source1', 32)
+(u'result', 32)
+(u'tmp_pc', 32)
+ADDU 1
+variables:
+(u'current_pc', 32)
+(u'inst0', 64)
+(u'iramaddr_err', 1)
+statements:
+{u'out': [u'current_pc'], u'fu': [u'CPC.read'], u'in': []}
+{u'out': [u'tmp_pc'], u'fu': [u'na'], u'in': [u'current_pc']}
+{u'out': [u'inst0', u'iramaddr_err'], u'fu': [u'Imem.ld_64'], u'in': [u'current_pc']}
+{u'out': [], u'fu': [u'IReg.write'], u'in': [u'inst0']}
+{u'out': [], u'fu': [u'CPC.inc'], u'in': []}
+ADDU 2
+variables:
+(u'tmp_source0', 32)
+(u'tmp_ir', 64)
+(u'tmp_source1', 32)
+statements:
+{u'out': [u'tmp_ir'], u'fu': [u'IReg.read'], u'in': []}
+{u'out': [u'rs'], u'fu': [u'28:24'], u'in': [u'tmp_ir']}
+{u'out': [u'rt'], u'fu': [u'20:16'], u'in': [u'tmp_ir']}
+{u'out': [u'rd'], u'fu': [u'12:8'], u'in': [u'tmp_ir']}
+{u'out': [u'shamt'], u'fu': [u'7:0'], u'in': [u'tmp_ir']}
+{u'out': [u'tmp_source0'], u'fu': [u'GPR.read0'], u'in': [u'rs']}
+{u'out': [u'tmp_source1'], u'fu': [u'GPR.read1'], u'in': [u'rt']}
+{u'out': [u'source0'], u'fu': [u'FWUL0.forward'], u'in': [u'rs', u'tmp_source0']}
+{u'out': [u'source1'], u'fu': [u'FWUL1.forward'], u'in': [u'rt', u'tmp_source1']}
+ADDU 3
+variables:
+(u'flag', 4)
+statements:
+{u'out': [u'result', u'flag'], u'fu': [u'ALU1.addu'], u'in': [u'source0', u'source1']}
+{u'out': [], u'fu': [u'FWUL0.forward1'], u'in': [u'rd', u'result']}
+{u'out': [], u'fu': [u'FWUL1.forward1'], u'in': [u'rd', u'result']}
+{u'out': [], u'fu': [u'FWUL2.forward1'], u'in': [u'rd', u'result']}
+{u'out': [], u'fu': [u'FWUL3.forward1'], u'in': [u'rd', u'result']}
+ADDU 4
+variables:
+statements:
+{u'out': [], u'fu': [u'FWUL0.forward3'], u'in': [u'rd', u'result']}
+{u'out': [], u'fu': [u'FWUL1.forward3'], u'in': [u'rd', u'result']}
+{u'out': [], u'fu': [u'FWUL2.forward3'], u'in': [u'rd', u'result']}
+{u'out': [], u'fu': [u'FWUL3.forward3'], u'in': [u'rd', u'result']}
+ADDU 5
+variables:
+statements:
+{u'out': [], u'fu': [u'FWUL0.forward5'], u'in': [u'rd', u'result']}
+{u'out': [], u'fu': [u'FWUL1.forward5'], u'in': [u'rd', u'result']}
+{u'out': [], u'fu': [u'FWUL2.forward5'], u'in': [u'rd', u'result']}
+{u'out': [], u'fu': [u'FWUL3.forward5'], u'in': [u'rd', u'result']}
+ADDU 6
+variables:
+statements:
+{u'out': [], u'fu': [u'GPR.write0'], u'in': [u'rd', u'result']}
+{u'out': [], u'fu': [u'FWUL0.forward7'], u'in': [u'rd', u'result']}
+{u'out': [], u'fu': [u'FWUL1.forward7'], u'in': [u'rd', u'result']}
+{u'out': [], u'fu': [u'FWUL2.forward7'], u'in': [u'rd', u'result']}
+{u'out': [], u'fu': [u'FWUL3.forward7'], u'in': [u'rd', u'result']}
+SYSRET global
+variables:
+(u'tmp_pc', 32)
+(u'result', 32)
+SYSRET 1
+variables:
+(u'current_pc', 32)
+(u'inst0', 64)
+(u'iramaddr_err', 1)
+statements:
+{u'out': [u'current_pc'], u'fu': [u'CPC.read'], u'in': []}
+{u'out': [u'tmp_pc'], u'fu': [u'na'], u'in': [u'current_pc']}
+{u'out': [u'inst0', u'iramaddr_err'], u'fu': [u'Imem.ld_64'], u'in': [u'current_pc']}
+{u'out': [], u'fu': [u'IReg.write'], u'in': [u'inst0']}
+{u'out': [], u'fu': [u'CPC.inc'], u'in': []}
+SYSRET 2
+variables:
+(u'tmp_ir', 64)
+statements:
+{u'out': [u'tmp_ir'], u'fu': [u'IReg.read'], u'in': []}
+{u'out': [u'result'], u'fu': [u'SYSREG.read'], u'in': []}
+SYSRET 3
+variables:
+statements:
+{u'out': [], u'fu': [u'CPC.write'], u'in': [u'result']}
+SYSRET 4
+variables:
+statements:
+SYSRET 5
+variables:
+statements:
+SYSRET 6
+variables:
+statements:
+JALR global
+variables:
+(u'rt', 5)
+(u'shamt', 8)
+(u'target', 32)
+(u'rs', 5)
+(u'linkReg', 5)
+(u'rd', 5)
+(u'tmp_pc', 32)
+(u'link', 32)
+JALR 1
+variables:
+(u'current_pc', 32)
+(u'inst0', 64)
+(u'iramaddr_err', 1)
+statements:
+{u'out': [u'current_pc'], u'fu': [u'CPC.read'], u'in': []}
+{u'out': [u'tmp_pc'], u'fu': [u'na'], u'in': [u'current_pc']}
+{u'out': [u'inst0', u'iramaddr_err'], u'fu': [u'Imem.ld_64'], u'in': [u'current_pc']}
+{u'out': [], u'fu': [u'IReg.write'], u'in': [u'inst0']}
+{u'out': [], u'fu': [u'CPC.inc'], u'in': []}
+JALR 2
+variables:
+(u'tmp_ir', 64)
+(u'tmp_source', 32)
+statements:
+{u'out': [u'tmp_ir'], u'fu': [u'IReg.read'], u'in': []}
+{u'out': [u'rs'], u'fu': [u'28:24'], u'in': [u'tmp_ir']}
+{u'out': [u'rt'], u'fu': [u'20:16'], u'in': [u'tmp_ir']}
+{u'out': [u'rd'], u'fu': [u'12:8'], u'in': [u'tmp_ir']}
+{u'out': [u'shamt'], u'fu': [u'7:0'], u'in': [u'tmp_ir']}
+{u'out': [u'link'], u'fu': [u'CPC.read'], u'in': []}
+{u'out': [u'tmp_source'], u'fu': [u'GPR.read0'], u'in': [u'rs']}
+{u'out': [u'target'], u'fu': [u'FWUL0.forward'], u'in': [u'rs', u'tmp_source']}
+JALR 3
+variables:
+statements:
+{u'out': [], u'fu': [u'CPC.write'], u'in': [u'target']}
+{u'out': [u'linkReg'], u'fu': [u'na'], u'in': [u'11111']}
+{u'out': [], u'fu': [u'FWUL0.forward1'], u'in': [u'linkReg', u'link']}
+{u'out': [], u'fu': [u'FWUL1.forward1'], u'in': [u'linkReg', u'link']}
+{u'out': [], u'fu': [u'FWUL2.forward1'], u'in': [u'linkReg', u'link']}
+{u'out': [], u'fu': [u'FWUL3.forward1'], u'in': [u'linkReg', u'link']}
+JALR 4
+variables:
+statements:
+{u'out': [], u'fu': [u'FWUL0.forward3'], u'in': [u'linkReg', u'link']}
+{u'out': [], u'fu': [u'FWUL1.forward3'], u'in': [u'linkReg', u'link']}
+{u'out': [], u'fu': [u'FWUL2.forward3'], u'in': [u'linkReg', u'link']}
+{u'out': [], u'fu': [u'FWUL3.forward3'], u'in': [u'linkReg', u'link']}
+JALR 5
+variables:
+statements:
+{u'out': [], u'fu': [u'FWUL0.forward5'], u'in': [u'linkReg', u'link']}
+{u'out': [], u'fu': [u'FWUL1.forward5'], u'in': [u'linkReg', u'link']}
+{u'out': [], u'fu': [u'FWUL2.forward5'], u'in': [u'linkReg', u'link']}
+{u'out': [], u'fu': [u'FWUL3.forward5'], u'in': [u'linkReg', u'link']}
+JALR 6
+variables:
+statements:
+{u'out': [], u'fu': [u'GPR.write0'], u'in': [u'linkReg', u'link']}
+{u'out': [], u'fu': [u'FWUL0.forward7'], u'in': [u'linkReg', u'link']}
+{u'out': [], u'fu': [u'FWUL1.forward7'], u'in': [u'linkReg', u'link']}
+{u'out': [], u'fu': [u'FWUL2.forward7'], u'in': [u'linkReg', u'link']}
+{u'out': [], u'fu': [u'FWUL3.forward7'], u'in': [u'linkReg', u'link']}
+DSZ global
+variables:
+(u'rt', 5)
+(u'rs', 5)
+(u'imm', 16)
+(u'source2', 32)
+(u'source0', 32)
+(u'source1', 32)
+(u'addr2', 32)
+(u'tmp_pc', 32)
+(u'addr1', 32)
+DSZ 1
+variables:
+(u'current_pc', 32)
+(u'inst0', 64)
+(u'iramaddr_err', 1)
+statements:
+{u'out': [u'current_pc'], u'fu': [u'CPC.read'], u'in': []}
+{u'out': [u'tmp_pc'], u'fu': [u'na'], u'in': [u'current_pc']}
+{u'out': [u'inst0', u'iramaddr_err'], u'fu': [u'Imem.ld_64'], u'in': [u'current_pc']}
+{u'out': [], u'fu': [u'IReg.write'], u'in': [u'inst0']}
+{u'out': [], u'fu': [u'CPC.inc'], u'in': []}
+DSZ 2
+variables:
+(u'zero5', 5)
+(u'tmp_source0', 32)
+(u'tmp_ir', 64)
+(u'tmp_source1', 32)
+statements:
+{u'out': [u'tmp_ir'], u'fu': [u'IReg.read'], u'in': []}
+{u'out': [u'rs'], u'fu': [u'28:24'], u'in': [u'tmp_ir']}
+{u'out': [u'rt'], u'fu': [u'20:16'], u'in': [u'tmp_ir']}
+{u'out': [u'imm'], u'fu': [u'15:0'], u'in': [u'tmp_ir']}
+{u'out': [u'zero5'], u'fu': [u'na'], u'in': [u'00000']}
+{u'out': [u'tmp_source0'], u'fu': [u'GPR.read0'], u'in': [u'rs']}
+{u'out': [u'tmp_source1'], u'fu': [u'GPR.read1'], u'in': [u'zero5']}
+{u'out': [u'source0'], u'fu': [u'FWUL0.forward'], u'in': [u'rs', u'tmp_source0']}
+{u'out': [u'source1'], u'fu': [u'FWUL1.forward'], u'in': [u'zero5', u'tmp_source1']}
+{u'out': [u'source2'], u'fu': [u'EXT1.sign'], u'in': [u'imm']}
+DSZ 3
+variables:
+(u'flag', 4)
+statements:
+{u'out': [u'addr1', u'flag'], u'fu': [u'ALU1.add'], u'in': [u'source0', u'source2']}
+DSZ 4
+variables:
+(u'four32bit', 32)
+(u'cin', 1)
+(u'cout', 1)
+statements:
+{u'out': [u'cin'], u'fu': [u'na'], u'in': [u'1']}
+{u'out': [u'four32bit'], u'fu': [u'na'], u'in': [u'00000000000000000000000000000100']}
+{u'out': [u'addr2', u'cout'], u'fu': [u'ADDER2.adc'], u'in': [u'addr1', u'four32bit', u'cin']}
+DSZ 5
+variables:
+(u'addr_err', 1)
+statements:
+{u'out': [u'addr_err'], u'fu': [u'Dmem.s_32'], u'in': [u'addr1', u'source1']}
+DSZ 6
+variables:
+(u'addr_err', 1)
+statements:
+{u'out': [u'addr_err'], u'fu': [u'Dmem.s_32'], u'in': [u'addr2', u'source1']}
+SLTIU global
+variables:
+(u'rt', 5)
+(u'rs', 5)
+(u'imm', 16)
+(u'source0', 32)
+(u'source1', 32)
+(u'result', 32)
+(u'tmp_pc', 32)
+SLTIU 1
+variables:
+(u'current_pc', 32)
+(u'inst0', 64)
+(u'iramaddr_err', 1)
+statements:
+{u'out': [u'current_pc'], u'fu': [u'CPC.read'], u'in': []}
+{u'out': [u'tmp_pc'], u'fu': [u'na'], u'in': [u'current_pc']}
+{u'out': [u'inst0', u'iramaddr_err'], u'fu': [u'Imem.ld_64'], u'in': [u'current_pc']}
+{u'out': [], u'fu': [u'IReg.write'], u'in': [u'inst0']}
+{u'out': [], u'fu': [u'CPC.inc'], u'in': []}
+SLTIU 2
+variables:
+(u'tmp_source0', 32)
+(u'tmp_ir', 64)
+statements:
+{u'out': [u'tmp_ir'], u'fu': [u'IReg.read'], u'in': []}
+{u'out': [u'rs'], u'fu': [u'28:24'], u'in': [u'tmp_ir']}
+{u'out': [u'rt'], u'fu': [u'20:16'], u'in': [u'tmp_ir']}
+{u'out': [u'imm'], u'fu': [u'15:0'], u'in': [u'tmp_ir']}
+{u'out': [u'tmp_source0'], u'fu': [u'GPR.read0'], u'in': [u'rs']}
+{u'out': [u'source0'], u'fu': [u'FWUL0.forward'], u'in': [u'rs', u'tmp_source0']}
+{u'out': [u'source1'], u'fu': [u'EXT1.zero'], u'in': [u'imm']}
+SLTIU 3
+variables:
+(u'cond', 1)
+(u'flag', 4)
+(u'zero31', 31)
+(u'flag2', 2)
+statements:
+{u'out': [u'zero31'], u'fu': [u'na'], u'in': [u'0000000000000000000000000000000']}
+{u'out': [u'flag'], u'fu': [u'ALU1.cmpu'], u'in': [u'source0', u'source1']}
+{u'out': [u'flag2'], u'fu': [u'3:2'], u'in': [u'flag']}
+{u'out': [u'cond'], u'fu': [u' == "'], u'in': [u'flag2', u'00']}
+{u'out': [u'result'], u'fu': [u'na'], u'in': [u'zero31', u'cond']}
+{u'out': [], u'fu': [u'FWUL0.forward1'], u'in': [u'rt', u'result']}
+{u'out': [], u'fu': [u'FWUL1.forward1'], u'in': [u'rt', u'result']}
+{u'out': [], u'fu': [u'FWUL2.forward1'], u'in': [u'rt', u'result']}
+{u'out': [], u'fu': [u'FWUL3.forward1'], u'in': [u'rt', u'result']}
+SLTIU 4
+variables:
+statements:
+{u'out': [], u'fu': [u'FWUL0.forward3'], u'in': [u'rt', u'result']}
+{u'out': [], u'fu': [u'FWUL1.forward3'], u'in': [u'rt', u'result']}
+{u'out': [], u'fu': [u'FWUL2.forward3'], u'in': [u'rt', u'result']}
+{u'out': [], u'fu': [u'FWUL3.forward3'], u'in': [u'rt', u'result']}
+SLTIU 5
+variables:
+statements:
+{u'out': [], u'fu': [u'FWUL0.forward5'], u'in': [u'rt', u'result']}
+{u'out': [], u'fu': [u'FWUL1.forward5'], u'in': [u'rt', u'result']}
+{u'out': [], u'fu': [u'FWUL2.forward5'], u'in': [u'rt', u'result']}
+{u'out': [], u'fu': [u'FWUL3.forward5'], u'in': [u'rt', u'result']}
+SLTIU 6
+variables:
+statements:
+{u'out': [], u'fu': [u'GPR.write0'], u'in': [u'rt', u'result']}
+{u'out': [], u'fu': [u'FWUL0.forward7'], u'in': [u'rt', u'result']}
+{u'out': [], u'fu': [u'FWUL1.forward7'], u'in': [u'rt', u'result']}
+{u'out': [], u'fu': [u'FWUL2.forward7'], u'in': [u'rt', u'result']}
+{u'out': [], u'fu': [u'FWUL3.forward7'], u'in': [u'rt', u'result']}
+SLLV global
+variables:
+(u'rt', 5)
+(u'shamt', 8)
+(u'rs', 5)
+(u'rd', 5)
+(u'source0', 32)
+(u'source1', 32)
+(u'result', 32)
+(u'tmp_pc', 32)
+SLLV 1
+variables:
+(u'current_pc', 32)
+(u'inst0', 64)
+(u'iramaddr_err', 1)
+statements:
+{u'out': [u'current_pc'], u'fu': [u'CPC.read'], u'in': []}
+{u'out': [u'tmp_pc'], u'fu': [u'na'], u'in': [u'current_pc']}
+{u'out': [u'inst0', u'iramaddr_err'], u'fu': [u'Imem.ld_64'], u'in': [u'current_pc']}
+{u'out': [], u'fu': [u'IReg.write'], u'in': [u'inst0']}
+{u'out': [], u'fu': [u'CPC.inc'], u'in': []}
+SLLV 2
+variables:
+(u'tmp_source0', 32)
+(u'tmp_ir', 64)
+(u'tmp_source1', 32)
+statements:
+{u'out': [u'tmp_ir'], u'fu': [u'IReg.read'], u'in': []}
+{u'out': [u'rs'], u'fu': [u'28:24'], u'in': [u'tmp_ir']}
+{u'out': [u'rt'], u'fu': [u'20:16'], u'in': [u'tmp_ir']}
+{u'out': [u'rd'], u'fu': [u'12:8'], u'in': [u'tmp_ir']}
+{u'out': [u'shamt'], u'fu': [u'7:0'], u'in': [u'tmp_ir']}
+{u'out': [u'tmp_source0'], u'fu': [u'GPR.read0'], u'in': [u'rs']}
+{u'out': [u'tmp_source1'], u'fu': [u'GPR.read1'], u'in': [u'rt']}
+{u'out': [u'source0'], u'fu': [u'FWUL0.forward'], u'in': [u'rs', u'tmp_source0']}
+{u'out': [u'source1'], u'fu': [u'FWUL1.forward'], u'in': [u'rt', u'tmp_source1']}
+SLLV 3
+variables:
+(u'shift', 5)
+statements:
+{u'out': [u'shift'], u'fu': [u'4:0'], u'in': [u'source0']}
+{u'out': [u'result'], u'fu': [u'SFT1.sll'], u'in': [u'source1', u'shift']}
+{u'out': [], u'fu': [u'FWUL0.forward1'], u'in': [u'rd', u'result']}
+{u'out': [], u'fu': [u'FWUL1.forward1'], u'in': [u'rd', u'result']}
+{u'out': [], u'fu': [u'FWUL2.forward1'], u'in': [u'rd', u'result']}
+{u'out': [], u'fu': [u'FWUL3.forward1'], u'in': [u'rd', u'result']}
+SLLV 4
+variables:
+statements:
+{u'out': [], u'fu': [u'FWUL0.forward3'], u'in': [u'rd', u'result']}
+{u'out': [], u'fu': [u'FWUL1.forward3'], u'in': [u'rd', u'result']}
+{u'out': [], u'fu': [u'FWUL2.forward3'], u'in': [u'rd', u'result']}
+{u'out': [], u'fu': [u'FWUL3.forward3'], u'in': [u'rd', u'result']}
+SLLV 5
+variables:
+statements:
+{u'out': [], u'fu': [u'FWUL0.forward5'], u'in': [u'rd', u'result']}
+{u'out': [], u'fu': [u'FWUL1.forward5'], u'in': [u'rd', u'result']}
+{u'out': [], u'fu': [u'FWUL2.forward5'], u'in': [u'rd', u'result']}
+{u'out': [], u'fu': [u'FWUL3.forward5'], u'in': [u'rd', u'result']}
+SLLV 6
+variables:
+statements:
+{u'out': [], u'fu': [u'GPR.write0'], u'in': [u'rd', u'result']}
+{u'out': [], u'fu': [u'FWUL0.forward7'], u'in': [u'rd', u'result']}
+{u'out': [], u'fu': [u'FWUL1.forward7'], u'in': [u'rd', u'result']}
+{u'out': [], u'fu': [u'FWUL2.forward7'], u'in': [u'rd', u'result']}
+{u'out': [], u'fu': [u'FWUL3.forward7'], u'in': [u'rd', u'result']}
+SLTI global
+variables:
+(u'rt', 5)
+(u'rs', 5)
+(u'imm', 16)
+(u'source0', 32)
+(u'source1', 32)
+(u'result', 32)
+(u'tmp_pc', 32)
+SLTI 1
+variables:
+(u'current_pc', 32)
+(u'inst0', 64)
+(u'iramaddr_err', 1)
+statements:
+{u'out': [u'current_pc'], u'fu': [u'CPC.read'], u'in': []}
+{u'out': [u'tmp_pc'], u'fu': [u'na'], u'in': [u'current_pc']}
+{u'out': [u'inst0', u'iramaddr_err'], u'fu': [u'Imem.ld_64'], u'in': [u'current_pc']}
+{u'out': [], u'fu': [u'IReg.write'], u'in': [u'inst0']}
+{u'out': [], u'fu': [u'CPC.inc'], u'in': []}
+SLTI 2
+variables:
+(u'tmp_source0', 32)
+(u'tmp_ir', 64)
+statements:
+{u'out': [u'tmp_ir'], u'fu': [u'IReg.read'], u'in': []}
+{u'out': [u'rs'], u'fu': [u'28:24'], u'in': [u'tmp_ir']}
+{u'out': [u'rt'], u'fu': [u'20:16'], u'in': [u'tmp_ir']}
+{u'out': [u'imm'], u'fu': [u'15:0'], u'in': [u'tmp_ir']}
+{u'out': [u'tmp_source0'], u'fu': [u'GPR.read0'], u'in': [u'rs']}
+{u'out': [u'source0'], u'fu': [u'FWUL0.forward'], u'in': [u'rs', u'tmp_source0']}
+{u'out': [u'source1'], u'fu': [u'EXT1.sign'], u'in': [u'imm']}
+SLTI 3
+variables:
+(u'zero31', 31)
+(u'VnN', 1)
+(u'flag', 4)
+(u'cond', 1)
+(u'flag2', 2)
+(u'NnV', 1)
+statements:
+{u'out': [u'zero31'], u'fu': [u'na'], u'in': [u'0000000000000000000000000000000']}
+{u'out': [u'flag'], u'fu': [u'ALU1.cmp'], u'in': [u'source0', u'source1']}
+{u'out': [u'flag2'], u'fu': [u'1:0'], u'in': [u'flag']}
+{u'out': [u'NnV'], u'fu': [u' == "'], u'in': [u'flag2', u'10']}
+{u'out': [u'VnN'], u'fu': [u' == "'], u'in': [u'flag', u'1001']}
+{u'out': [u'cond'], u'fu': [u' | '], u'in': [u'NnV', u'VnN']}
+{u'out': [u'result'], u'fu': [u'na'], u'in': [u'zero31', u'cond']}
+{u'out': [], u'fu': [u'FWUL0.forward1'], u'in': [u'rt', u'result']}
+{u'out': [], u'fu': [u'FWUL1.forward1'], u'in': [u'rt', u'result']}
+{u'out': [], u'fu': [u'FWUL2.forward1'], u'in': [u'rt', u'result']}
+{u'out': [], u'fu': [u'FWUL3.forward1'], u'in': [u'rt', u'result']}
+SLTI 4
+variables:
+statements:
+{u'out': [], u'fu': [u'FWUL0.forward3'], u'in': [u'rt', u'result']}
+{u'out': [], u'fu': [u'FWUL1.forward3'], u'in': [u'rt', u'result']}
+{u'out': [], u'fu': [u'FWUL2.forward3'], u'in': [u'rt', u'result']}
+{u'out': [], u'fu': [u'FWUL3.forward3'], u'in': [u'rt', u'result']}
+SLTI 5
+variables:
+statements:
+{u'out': [], u'fu': [u'FWUL0.forward5'], u'in': [u'rt', u'result']}
+{u'out': [], u'fu': [u'FWUL1.forward5'], u'in': [u'rt', u'result']}
+{u'out': [], u'fu': [u'FWUL2.forward5'], u'in': [u'rt', u'result']}
+{u'out': [], u'fu': [u'FWUL3.forward5'], u'in': [u'rt', u'result']}
+SLTI 6
+variables:
+statements:
+{u'out': [], u'fu': [u'GPR.write0'], u'in': [u'rt', u'result']}
+{u'out': [], u'fu': [u'FWUL0.forward7'], u'in': [u'rt', u'result']}
+{u'out': [], u'fu': [u'FWUL1.forward7'], u'in': [u'rt', u'result']}
+{u'out': [], u'fu': [u'FWUL2.forward7'], u'in': [u'rt', u'result']}
+{u'out': [], u'fu': [u'FWUL3.forward7'], u'in': [u'rt', u'result']}
+ADD global
+variables:
+(u'rt', 5)
+(u'shamt', 8)
+(u'rs', 5)
+(u'rd', 5)
+(u'source0', 32)
+(u'source1', 32)
+(u'result', 32)
+(u'tmp_pc', 32)
+ADD 1
+variables:
+(u'current_pc', 32)
+(u'inst0', 64)
+(u'iramaddr_err', 1)
+statements:
+{u'out': [u'current_pc'], u'fu': [u'CPC.read'], u'in': []}
+{u'out': [u'tmp_pc'], u'fu': [u'na'], u'in': [u'current_pc']}
+{u'out': [u'inst0', u'iramaddr_err'], u'fu': [u'Imem.ld_64'], u'in': [u'current_pc']}
+{u'out': [], u'fu': [u'IReg.write'], u'in': [u'inst0']}
+{u'out': [], u'fu': [u'CPC.inc'], u'in': []}
+ADD 2
+variables:
+(u'tmp_source0', 32)
+(u'tmp_ir', 64)
+(u'tmp_source1', 32)
+statements:
+{u'out': [u'tmp_ir'], u'fu': [u'IReg.read'], u'in': []}
+{u'out': [u'rs'], u'fu': [u'28:24'], u'in': [u'tmp_ir']}
+{u'out': [u'rt'], u'fu': [u'20:16'], u'in': [u'tmp_ir']}
+{u'out': [u'rd'], u'fu': [u'12:8'], u'in': [u'tmp_ir']}
+{u'out': [u'shamt'], u'fu': [u'7:0'], u'in': [u'tmp_ir']}
+{u'out': [u'tmp_source0'], u'fu': [u'GPR.read0'], u'in': [u'rs']}
+{u'out': [u'tmp_source1'], u'fu': [u'GPR.read1'], u'in': [u'rt']}
+{u'out': [u'source0'], u'fu': [u'FWUL0.forward'], u'in': [u'rs', u'tmp_source0']}
+{u'out': [u'source1'], u'fu': [u'FWUL1.forward'], u'in': [u'rt', u'tmp_source1']}
+ADD 3
+variables:
+(u'flag', 4)
+statements:
+{u'out': [u'result', u'flag'], u'fu': [u'ALU1.add'], u'in': [u'source0', u'source1']}
+{u'out': [], u'fu': [u'FWUL0.forward1'], u'in': [u'rd', u'result']}
+{u'out': [], u'fu': [u'FWUL1.forward1'], u'in': [u'rd', u'result']}
+{u'out': [], u'fu': [u'FWUL2.forward1'], u'in': [u'rd', u'result']}
+{u'out': [], u'fu': [u'FWUL3.forward1'], u'in': [u'rd', u'result']}
+ADD 4
+variables:
+statements:
+{u'out': [], u'fu': [u'FWUL0.forward3'], u'in': [u'rd', u'result']}
+{u'out': [], u'fu': [u'FWUL1.forward3'], u'in': [u'rd', u'result']}
+{u'out': [], u'fu': [u'FWUL2.forward3'], u'in': [u'rd', u'result']}
+{u'out': [], u'fu': [u'FWUL3.forward3'], u'in': [u'rd', u'result']}
+ADD 5
+variables:
+statements:
+{u'out': [], u'fu': [u'FWUL0.forward5'], u'in': [u'rd', u'result']}
+{u'out': [], u'fu': [u'FWUL1.forward5'], u'in': [u'rd', u'result']}
+{u'out': [], u'fu': [u'FWUL2.forward5'], u'in': [u'rd', u'result']}
+{u'out': [], u'fu': [u'FWUL3.forward5'], u'in': [u'rd', u'result']}
+ADD 6
+variables:
+statements:
+{u'out': [], u'fu': [u'GPR.write0'], u'in': [u'rd', u'result']}
+{u'out': [], u'fu': [u'FWUL0.forward7'], u'in': [u'rd', u'result']}
+{u'out': [], u'fu': [u'FWUL1.forward7'], u'in': [u'rd', u'result']}
+{u'out': [], u'fu': [u'FWUL2.forward7'], u'in': [u'rd', u'result']}
+{u'out': [], u'fu': [u'FWUL3.forward7'], u'in': [u'rd', u'result']}
+SLTU global
+variables:
+(u'rt', 5)
+(u'shamt', 8)
+(u'rs', 5)
+(u'rd', 5)
+(u'source0', 32)
+(u'source1', 32)
+(u'result', 32)
+(u'tmp_pc', 32)
+SLTU 1
+variables:
+(u'current_pc', 32)
+(u'inst0', 64)
+(u'iramaddr_err', 1)
+statements:
+{u'out': [u'current_pc'], u'fu': [u'CPC.read'], u'in': []}
+{u'out': [u'tmp_pc'], u'fu': [u'na'], u'in': [u'current_pc']}
+{u'out': [u'inst0', u'iramaddr_err'], u'fu': [u'Imem.ld_64'], u'in': [u'current_pc']}
+{u'out': [], u'fu': [u'IReg.write'], u'in': [u'inst0']}
+{u'out': [], u'fu': [u'CPC.inc'], u'in': []}
+SLTU 2
+variables:
+(u'tmp_source0', 32)
+(u'tmp_ir', 64)
+(u'tmp_source1', 32)
+statements:
+{u'out': [u'tmp_ir'], u'fu': [u'IReg.read'], u'in': []}
+{u'out': [u'rs'], u'fu': [u'28:24'], u'in': [u'tmp_ir']}
+{u'out': [u'rt'], u'fu': [u'20:16'], u'in': [u'tmp_ir']}
+{u'out': [u'rd'], u'fu': [u'12:8'], u'in': [u'tmp_ir']}
+{u'out': [u'shamt'], u'fu': [u'7:0'], u'in': [u'tmp_ir']}
+{u'out': [u'tmp_source0'], u'fu': [u'GPR.read0'], u'in': [u'rs']}
+{u'out': [u'tmp_source1'], u'fu': [u'GPR.read1'], u'in': [u'rt']}
+{u'out': [u'source0'], u'fu': [u'FWUL0.forward'], u'in': [u'rs', u'tmp_source0']}
+{u'out': [u'source1'], u'fu': [u'FWUL1.forward'], u'in': [u'rt', u'tmp_source1']}
+SLTU 3
+variables:
+(u'cond', 1)
+(u'flag', 4)
+(u'zero31', 31)
+(u'flag2', 2)
+statements:
+{u'out': [u'zero31'], u'fu': [u'na'], u'in': [u'0000000000000000000000000000000']}
+{u'out': [u'flag'], u'fu': [u'ALU1.cmpu'], u'in': [u'source0', u'source1']}
+{u'out': [u'flag2'], u'fu': [u'3:2'], u'in': [u'flag']}
+{u'out': [u'cond'], u'fu': [u' == "'], u'in': [u'flag2', u'00']}
+{u'out': [u'result'], u'fu': [u'na'], u'in': [u'zero31', u'cond']}
+{u'out': [], u'fu': [u'FWUL0.forward1'], u'in': [u'rd', u'result']}
+{u'out': [], u'fu': [u'FWUL1.forward1'], u'in': [u'rd', u'result']}
+{u'out': [], u'fu': [u'FWUL2.forward1'], u'in': [u'rd', u'result']}
+{u'out': [], u'fu': [u'FWUL3.forward1'], u'in': [u'rd', u'result']}
+SLTU 4
+variables:
+statements:
+{u'out': [], u'fu': [u'FWUL0.forward3'], u'in': [u'rd', u'result']}
+{u'out': [], u'fu': [u'FWUL1.forward3'], u'in': [u'rd', u'result']}
+{u'out': [], u'fu': [u'FWUL2.forward3'], u'in': [u'rd', u'result']}
+{u'out': [], u'fu': [u'FWUL3.forward3'], u'in': [u'rd', u'result']}
+SLTU 5
+variables:
+statements:
+{u'out': [], u'fu': [u'FWUL0.forward5'], u'in': [u'rd', u'result']}
+{u'out': [], u'fu': [u'FWUL1.forward5'], u'in': [u'rd', u'result']}
+{u'out': [], u'fu': [u'FWUL2.forward5'], u'in': [u'rd', u'result']}
+{u'out': [], u'fu': [u'FWUL3.forward5'], u'in': [u'rd', u'result']}
+SLTU 6
+variables:
+statements:
+{u'out': [], u'fu': [u'GPR.write0'], u'in': [u'rd', u'result']}
+{u'out': [], u'fu': [u'FWUL0.forward7'], u'in': [u'rd', u'result']}
+{u'out': [], u'fu': [u'FWUL1.forward7'], u'in': [u'rd', u'result']}
+{u'out': [], u'fu': [u'FWUL2.forward7'], u'in': [u'rd', u'result']}
+{u'out': [], u'fu': [u'FWUL3.forward7'], u'in': [u'rd', u'result']}
+SYSCALL global
+variables:
+(u'tmp_pc', 32)
+(u'tmp_cpc', 32)
+SYSCALL 1
+variables:
+(u'current_pc', 32)
+(u'inst0', 64)
+(u'iramaddr_err', 1)
+statements:
+{u'out': [u'current_pc'], u'fu': [u'CPC.read'], u'in': []}
+{u'out': [u'tmp_pc'], u'fu': [u'na'], u'in': [u'current_pc']}
+{u'out': [u'inst0', u'iramaddr_err'], u'fu': [u'Imem.ld_64'], u'in': [u'current_pc']}
+{u'out': [], u'fu': [u'IReg.write'], u'in': [u'inst0']}
+{u'out': [], u'fu': [u'CPC.inc'], u'in': []}
+SYSCALL 2
+variables:
+(u'tmp_ir', 64)
+statements:
+{u'out': [u'tmp_ir'], u'fu': [u'IReg.read'], u'in': []}
+{u'out': [u'tmp_cpc'], u'fu': [u'CPC.read'], u'in': []}
+SYSCALL 3
+variables:
+(u'result', 32)
+statements:
+{u'out': [u'result'], u'fu': [u'na'], u'in': [u'00000000000000000000000001100000']}
+{u'out': [], u'fu': [u'SYSREG.write'], u'in': [u'tmp_cpc']}
+{u'out': [], u'fu': [u'CPC.write'], u'in': [u'result']}
+SYSCALL 4
+variables:
+statements:
+SYSCALL 5
+variables:
+statements:
+SYSCALL 6
+variables:
+statements:
+MULTU global
+variables:
+(u'rt', 5)
+(u'shamt', 8)
+(u'rs', 5)
+(u'source0', 32)
+(u'rd', 5)
+(u'resulthi', 32)
+(u'source1', 32)
+(u'result', 64)
+(u'tmp_pc', 32)
+(u'resultlo', 32)
+MULTU 1
+variables:
+(u'current_pc', 32)
+(u'inst0', 64)
+(u'iramaddr_err', 1)
+statements:
+{u'out': [u'current_pc'], u'fu': [u'CPC.read'], u'in': []}
+{u'out': [u'tmp_pc'], u'fu': [u'na'], u'in': [u'current_pc']}
+{u'out': [u'inst0', u'iramaddr_err'], u'fu': [u'Imem.ld_64'], u'in': [u'current_pc']}
+{u'out': [], u'fu': [u'IReg.write'], u'in': [u'inst0']}
+{u'out': [], u'fu': [u'CPC.inc'], u'in': []}
+MULTU 2
+variables:
+(u'tmp_source0', 32)
+(u'tmp_ir', 64)
+(u'tmp_source1', 32)
+statements:
+{u'out': [u'tmp_ir'], u'fu': [u'IReg.read'], u'in': []}
+{u'out': [u'rs'], u'fu': [u'28:24'], u'in': [u'tmp_ir']}
+{u'out': [u'rt'], u'fu': [u'20:16'], u'in': [u'tmp_ir']}
+{u'out': [u'rd'], u'fu': [u'12:8'], u'in': [u'tmp_ir']}
+{u'out': [u'shamt'], u'fu': [u'7:0'], u'in': [u'tmp_ir']}
+{u'out': [u'tmp_source0'], u'fu': [u'GPR.read0'], u'in': [u'rs']}
+{u'out': [u'tmp_source1'], u'fu': [u'GPR.read1'], u'in': [u'rt']}
+{u'out': [u'source0'], u'fu': [u'FWUL0.forward'], u'in': [u'rs', u'tmp_source0']}
+{u'out': [u'source1'], u'fu': [u'FWUL1.forward'], u'in': [u'rt', u'tmp_source1']}
+MULTU 3
+variables:
+statements:
+{u'out': [u'result'], u'fu': [u'MUL1.mulu'], u'in': [u'source0', u'source1']}
+{u'out': [u'resulthi'], u'fu': [u'63:32'], u'in': [u'result']}
+{u'out': [u'resultlo'], u'fu': [u'31:0'], u'in': [u'result']}
+{u'out': [], u'fu': [u'LO.write'], u'in': [u'resultlo']}
+{u'out': [], u'fu': [u'HI.write'], u'in': [u'resulthi']}
+MULTU 4
+variables:
+statements:
+MULTU 5
+variables:
+statements:
+MULTU 6
+variables:
+statements:
+SH global
+variables:
+(u'rt', 5)
+(u'addr', 32)
+(u'rs', 5)
+(u'imm', 16)
+(u'source2', 32)
+(u'source0', 32)
+(u'source1', 32)
+(u'tmp_pc', 32)
+SH 1
+variables:
+(u'current_pc', 32)
+(u'inst0', 64)
+(u'iramaddr_err', 1)
+statements:
+{u'out': [u'current_pc'], u'fu': [u'CPC.read'], u'in': []}
+{u'out': [u'tmp_pc'], u'fu': [u'na'], u'in': [u'current_pc']}
+{u'out': [u'inst0', u'iramaddr_err'], u'fu': [u'Imem.ld_64'], u'in': [u'current_pc']}
+{u'out': [], u'fu': [u'IReg.write'], u'in': [u'inst0']}
+{u'out': [], u'fu': [u'CPC.inc'], u'in': []}
+SH 2
+variables:
+(u'tmp_source0', 32)
+(u'tmp_ir', 64)
+(u'tmp_source1', 32)
+statements:
+{u'out': [u'tmp_ir'], u'fu': [u'IReg.read'], u'in': []}
+{u'out': [u'rs'], u'fu': [u'28:24'], u'in': [u'tmp_ir']}
+{u'out': [u'rt'], u'fu': [u'20:16'], u'in': [u'tmp_ir']}
+{u'out': [u'imm'], u'fu': [u'15:0'], u'in': [u'tmp_ir']}
+{u'out': [u'tmp_source0'], u'fu': [u'GPR.read0'], u'in': [u'rs']}
+{u'out': [u'tmp_source1'], u'fu': [u'GPR.read1'], u'in': [u'rt']}
+{u'out': [u'source2'], u'fu': [u'EXT1.sign'], u'in': [u'imm']}
+{u'out': [u'source0'], u'fu': [u'FWUL0.forward'], u'in': [u'rs', u'tmp_source0']}
+{u'out': [u'source1'], u'fu': [u'FWUL1.forward'], u'in': [u'rt', u'tmp_source1']}
+SH 3
+variables:
+(u'flag', 4)
+statements:
+{u'out': [u'addr', u'flag'], u'fu': [u'ALU1.add'], u'in': [u'source0', u'source2']}
+SH 4
+variables:
+statements:
+SH 5
+variables:
+(u'LE_source1', 32)
+(u'byte3', 8)
+(u'byte2', 8)
+(u'byte1', 8)
+(u'byte0', 8)
+(u'addr_err', 1)
+statements:
+{u'out': [u'byte0'], u'fu': [u'31:24'], u'in': [u'source1']}
+{u'out': [u'byte1'], u'fu': [u'23:16'], u'in': [u'source1']}
+{u'out': [u'byte2'], u'fu': [u'15:8'], u'in': [u'source1']}
+{u'out': [u'byte3'], u'fu': [u'7:0'], u'in': [u'source1']}
+{u'out': [u'LE_source1'], u'fu': [u'na'], u'in': [u'byte3', u'byte2', u'byte1', u'byte0']}
+{u'out': [u'addr_err'], u'fu': [u'Dmem.s_16'], u'in': [u'addr', u'LE_source1']}
+SH 6
+variables:
+statements:
+MTLO global
+variables:
+(u'rt', 5)
+(u'shamt', 8)
+(u'rs', 5)
+(u'rd', 5)
+(u'source0', 32)
+(u'tmp_pc', 32)
+MTLO 1
+variables:
+(u'current_pc', 32)
+(u'inst0', 64)
+(u'iramaddr_err', 1)
+statements:
+{u'out': [u'current_pc'], u'fu': [u'CPC.read'], u'in': []}
+{u'out': [u'tmp_pc'], u'fu': [u'na'], u'in': [u'current_pc']}
+{u'out': [u'inst0', u'iramaddr_err'], u'fu': [u'Imem.ld_64'], u'in': [u'current_pc']}
+{u'out': [], u'fu': [u'IReg.write'], u'in': [u'inst0']}
+{u'out': [], u'fu': [u'CPC.inc'], u'in': []}
+MTLO 2
+variables:
+(u'tmp_source0', 32)
+(u'tmp_ir', 64)
+statements:
+{u'out': [u'tmp_ir'], u'fu': [u'IReg.read'], u'in': []}
+{u'out': [u'rs'], u'fu': [u'28:24'], u'in': [u'tmp_ir']}
+{u'out': [u'rt'], u'fu': [u'20:16'], u'in': [u'tmp_ir']}
+{u'out': [u'rd'], u'fu': [u'12:8'], u'in': [u'tmp_ir']}
+{u'out': [u'shamt'], u'fu': [u'7:0'], u'in': [u'tmp_ir']}
+{u'out': [u'tmp_source0'], u'fu': [u'GPR.read0'], u'in': [u'rs']}
+{u'out': [u'source0'], u'fu': [u'FWUL0.forward'], u'in': [u'rs', u'tmp_source0']}
+MTLO 3
+variables:
+statements:
+{u'out': [], u'fu': [u'LO.write'], u'in': [u'source0']}
+MTLO 4
+variables:
+statements:
+MTLO 5
+variables:
+statements:
+MTLO 6
+variables:
+statements:
+SRLV global
+variables:
+(u'rt', 5)
+(u'shamt', 8)
+(u'rs', 5)
+(u'rd', 5)
+(u'source0', 32)
+(u'source1', 32)
+(u'result', 32)
+(u'tmp_pc', 32)
+SRLV 1
+variables:
+(u'current_pc', 32)
+(u'inst0', 64)
+(u'iramaddr_err', 1)
+statements:
+{u'out': [u'current_pc'], u'fu': [u'CPC.read'], u'in': []}
+{u'out': [u'tmp_pc'], u'fu': [u'na'], u'in': [u'current_pc']}
+{u'out': [u'inst0', u'iramaddr_err'], u'fu': [u'Imem.ld_64'], u'in': [u'current_pc']}
+{u'out': [], u'fu': [u'IReg.write'], u'in': [u'inst0']}
+{u'out': [], u'fu': [u'CPC.inc'], u'in': []}
+SRLV 2
+variables:
+(u'tmp_source0', 32)
+(u'tmp_ir', 64)
+(u'tmp_source1', 32)
+statements:
+{u'out': [u'tmp_ir'], u'fu': [u'IReg.read'], u'in': []}
+{u'out': [u'rs'], u'fu': [u'28:24'], u'in': [u'tmp_ir']}
+{u'out': [u'rt'], u'fu': [u'20:16'], u'in': [u'tmp_ir']}
+{u'out': [u'rd'], u'fu': [u'12:8'], u'in': [u'tmp_ir']}
+{u'out': [u'shamt'], u'fu': [u'7:0'], u'in': [u'tmp_ir']}
+{u'out': [u'tmp_source0'], u'fu': [u'GPR.read0'], u'in': [u'rs']}
+{u'out': [u'tmp_source1'], u'fu': [u'GPR.read1'], u'in': [u'rt']}
+{u'out': [u'source0'], u'fu': [u'FWUL0.forward'], u'in': [u'rs', u'tmp_source0']}
+{u'out': [u'source1'], u'fu': [u'FWUL1.forward'], u'in': [u'rt', u'tmp_source1']}
+SRLV 3
+variables:
+(u'shift', 5)
+statements:
+{u'out': [u'shift'], u'fu': [u'4:0'], u'in': [u'source0']}
+{u'out': [u'result'], u'fu': [u'SFT1.srl'], u'in': [u'source1', u'shift']}
+{u'out': [], u'fu': [u'FWUL0.forward1'], u'in': [u'rd', u'result']}
+{u'out': [], u'fu': [u'FWUL1.forward1'], u'in': [u'rd', u'result']}
+{u'out': [], u'fu': [u'FWUL2.forward1'], u'in': [u'rd', u'result']}
+{u'out': [], u'fu': [u'FWUL3.forward1'], u'in': [u'rd', u'result']}
+SRLV 4
+variables:
+statements:
+{u'out': [], u'fu': [u'FWUL0.forward3'], u'in': [u'rd', u'result']}
+{u'out': [], u'fu': [u'FWUL1.forward3'], u'in': [u'rd', u'result']}
+{u'out': [], u'fu': [u'FWUL2.forward3'], u'in': [u'rd', u'result']}
+{u'out': [], u'fu': [u'FWUL3.forward3'], u'in': [u'rd', u'result']}
+SRLV 5
+variables:
+statements:
+{u'out': [], u'fu': [u'FWUL0.forward5'], u'in': [u'rd', u'result']}
+{u'out': [], u'fu': [u'FWUL1.forward5'], u'in': [u'rd', u'result']}
+{u'out': [], u'fu': [u'FWUL2.forward5'], u'in': [u'rd', u'result']}
+{u'out': [], u'fu': [u'FWUL3.forward5'], u'in': [u'rd', u'result']}
+SRLV 6
+variables:
+statements:
+{u'out': [], u'fu': [u'GPR.write0'], u'in': [u'rd', u'result']}
+{u'out': [], u'fu': [u'FWUL0.forward7'], u'in': [u'rd', u'result']}
+{u'out': [], u'fu': [u'FWUL1.forward7'], u'in': [u'rd', u'result']}
+{u'out': [], u'fu': [u'FWUL2.forward7'], u'in': [u'rd', u'result']}
+{u'out': [], u'fu': [u'FWUL3.forward7'], u'in': [u'rd', u'result']}
+ORI global
+variables:
+(u'rt', 5)
+(u'rs', 5)
+(u'imm', 16)
+(u'source0', 32)
+(u'source1', 32)
+(u'result', 32)
+(u'tmp_pc', 32)
+ORI 1
+variables:
+(u'current_pc', 32)
+(u'inst0', 64)
+(u'iramaddr_err', 1)
+statements:
+{u'out': [u'current_pc'], u'fu': [u'CPC.read'], u'in': []}
+{u'out': [u'tmp_pc'], u'fu': [u'na'], u'in': [u'current_pc']}
+{u'out': [u'inst0', u'iramaddr_err'], u'fu': [u'Imem.ld_64'], u'in': [u'current_pc']}
+{u'out': [], u'fu': [u'IReg.write'], u'in': [u'inst0']}
+{u'out': [], u'fu': [u'CPC.inc'], u'in': []}
+ORI 2
+variables:
+(u'tmp_source0', 32)
+(u'tmp_ir', 64)
+statements:
+{u'out': [u'tmp_ir'], u'fu': [u'IReg.read'], u'in': []}
+{u'out': [u'rs'], u'fu': [u'28:24'], u'in': [u'tmp_ir']}
+{u'out': [u'rt'], u'fu': [u'20:16'], u'in': [u'tmp_ir']}
+{u'out': [u'imm'], u'fu': [u'15:0'], u'in': [u'tmp_ir']}
+{u'out': [u'tmp_source0'], u'fu': [u'GPR.read0'], u'in': [u'rs']}
+{u'out': [u'source0'], u'fu': [u'FWUL0.forward'], u'in': [u'rs', u'tmp_source0']}
+{u'out': [u'source1'], u'fu': [u'EXT1.zero'], u'in': [u'imm']}
+ORI 3
+variables:
+(u'flag', 4)
+statements:
+{u'out': [u'result', u'flag'], u'fu': [u'ALU1.or'], u'in': [u'source0', u'source1']}
+{u'out': [], u'fu': [u'FWUL0.forward1'], u'in': [u'rt', u'result']}
+{u'out': [], u'fu': [u'FWUL1.forward1'], u'in': [u'rt', u'result']}
+{u'out': [], u'fu': [u'FWUL2.forward1'], u'in': [u'rt', u'result']}
+{u'out': [], u'fu': [u'FWUL3.forward1'], u'in': [u'rt', u'result']}
+ORI 4
+variables:
+statements:
+{u'out': [], u'fu': [u'FWUL0.forward3'], u'in': [u'rt', u'result']}
+{u'out': [], u'fu': [u'FWUL1.forward3'], u'in': [u'rt', u'result']}
+{u'out': [], u'fu': [u'FWUL2.forward3'], u'in': [u'rt', u'result']}
+{u'out': [], u'fu': [u'FWUL3.forward3'], u'in': [u'rt', u'result']}
+ORI 5
+variables:
+statements:
+{u'out': [], u'fu': [u'FWUL0.forward5'], u'in': [u'rt', u'result']}
+{u'out': [], u'fu': [u'FWUL1.forward5'], u'in': [u'rt', u'result']}
+{u'out': [], u'fu': [u'FWUL2.forward5'], u'in': [u'rt', u'result']}
+{u'out': [], u'fu': [u'FWUL3.forward5'], u'in': [u'rt', u'result']}
+ORI 6
+variables:
+statements:
+{u'out': [], u'fu': [u'GPR.write0'], u'in': [u'rt', u'result']}
+{u'out': [], u'fu': [u'FWUL0.forward7'], u'in': [u'rt', u'result']}
+{u'out': [], u'fu': [u'FWUL1.forward7'], u'in': [u'rt', u'result']}
+{u'out': [], u'fu': [u'FWUL2.forward7'], u'in': [u'rt', u'result']}
+{u'out': [], u'fu': [u'FWUL3.forward7'], u'in': [u'rt', u'result']}
+DSZ_RR global
+variables:
+(u'rt', 5)
+(u'shamt', 8)
+(u'rs', 5)
+(u'rd', 5)
+(u'source0', 32)
+(u'source1', 32)
+(u'addr2', 32)
+(u'tmp_pc', 32)
+(u'addr1', 32)
+(u'source2', 32)
+DSZ_RR 1
+variables:
+(u'current_pc', 32)
+(u'inst0', 64)
+(u'iramaddr_err', 1)
+statements:
+{u'out': [u'current_pc'], u'fu': [u'CPC.read'], u'in': []}
+{u'out': [u'tmp_pc'], u'fu': [u'na'], u'in': [u'current_pc']}
+{u'out': [u'inst0', u'iramaddr_err'], u'fu': [u'Imem.ld_64'], u'in': [u'current_pc']}
+{u'out': [], u'fu': [u'IReg.write'], u'in': [u'inst0']}
+{u'out': [], u'fu': [u'CPC.inc'], u'in': []}
+DSZ_RR 2
+variables:
+(u'zero5', 5)
+(u'tmp_source0', 32)
+(u'tmp_ir', 64)
+(u'tmp_source2', 32)
+(u'tmp_source1', 32)
+statements:
+{u'out': [u'tmp_ir'], u'fu': [u'IReg.read'], u'in': []}
+{u'out': [u'rs'], u'fu': [u'28:24'], u'in': [u'tmp_ir']}
+{u'out': [u'rt'], u'fu': [u'20:16'], u'in': [u'tmp_ir']}
+{u'out': [u'rd'], u'fu': [u'12:8'], u'in': [u'tmp_ir']}
+{u'out': [u'shamt'], u'fu': [u'7:0'], u'in': [u'tmp_ir']}
+{u'out': [u'zero5'], u'fu': [u'na'], u'in': [u'00000']}
+{u'out': [u'tmp_source0'], u'fu': [u'GPR.read0'], u'in': [u'rs']}
+{u'out': [u'tmp_source1'], u'fu': [u'GPR.read1'], u'in': [u'zero5']}
+{u'out': [u'tmp_source2'], u'fu': [u'GPR.read2'], u'in': [u'rd']}
+{u'out': [u'source0'], u'fu': [u'FWUL0.forward'], u'in': [u'rs', u'tmp_source0']}
+{u'out': [u'source1'], u'fu': [u'FWUL1.forward'], u'in': [u'zero5', u'tmp_source1']}
+{u'out': [u'source2'], u'fu': [u'FWUL2.forward'], u'in': [u'rd', u'tmp_source2']}
+DSZ_RR 3
+variables:
+(u'flag', 4)
+statements:
+{u'out': [u'addr1', u'flag'], u'fu': [u'ALU1.add'], u'in': [u'source0', u'source2']}
+DSZ_RR 4
+variables:
+(u'four32bit', 32)
+(u'cin', 1)
+(u'cout', 1)
+statements:
+{u'out': [u'cin'], u'fu': [u'na'], u'in': [u'1']}
+{u'out': [u'four32bit'], u'fu': [u'na'], u'in': [u'00000000000000000000000000000100']}
+{u'out': [u'addr2', u'cout'], u'fu': [u'ADDER2.adc'], u'in': [u'addr1', u'four32bit', u'cin']}
+DSZ_RR 5
+variables:
+(u'addr_err', 1)
+statements:
+{u'out': [u'addr_err'], u'fu': [u'Dmem.s_32'], u'in': [u'addr1', u'source1']}
+DSZ_RR 6
+variables:
+(u'addr_err', 1)
+statements:
+{u'out': [u'addr_err'], u'fu': [u'Dmem.s_32'], u'in': [u'addr2', u'source1']}
+NOP global
+variables:
+(u'tmp_pc', 32)
+NOP 1
+variables:
+(u'current_pc', 32)
+(u'inst0', 64)
+(u'iramaddr_err', 1)
+statements:
+{u'out': [u'current_pc'], u'fu': [u'CPC.read'], u'in': []}
+{u'out': [u'tmp_pc'], u'fu': [u'na'], u'in': [u'current_pc']}
+{u'out': [u'inst0', u'iramaddr_err'], u'fu': [u'Imem.ld_64'], u'in': [u'current_pc']}
+{u'out': [], u'fu': [u'IReg.write'], u'in': [u'inst0']}
+{u'out': [], u'fu': [u'CPC.inc'], u'in': []}
+NOP 2
+variables:
+(u'tmp_ir', 64)
+statements:
+{u'out': [u'tmp_ir'], u'fu': [u'IReg.read'], u'in': []}
+NOP 3
+variables:
+statements:
+NOP 4
+variables:
+statements:
+NOP 5
+variables:
+statements:
+NOP 6
+variables:
+statements:
+OR global
+variables:
+(u'rt', 5)
+(u'shamt', 8)
+(u'rs', 5)
+(u'rd', 5)
+(u'source0', 32)
+(u'source1', 32)
+(u'result', 32)
+(u'tmp_pc', 32)
+OR 1
+variables:
+(u'current_pc', 32)
+(u'inst0', 64)
+(u'iramaddr_err', 1)
+statements:
+{u'out': [u'current_pc'], u'fu': [u'CPC.read'], u'in': []}
+{u'out': [u'tmp_pc'], u'fu': [u'na'], u'in': [u'current_pc']}
+{u'out': [u'inst0', u'iramaddr_err'], u'fu': [u'Imem.ld_64'], u'in': [u'current_pc']}
+{u'out': [], u'fu': [u'IReg.write'], u'in': [u'inst0']}
+{u'out': [], u'fu': [u'CPC.inc'], u'in': []}
+OR 2
+variables:
+(u'tmp_source0', 32)
+(u'tmp_ir', 64)
+(u'tmp_source1', 32)
+statements:
+{u'out': [u'tmp_ir'], u'fu': [u'IReg.read'], u'in': []}
+{u'out': [u'rs'], u'fu': [u'28:24'], u'in': [u'tmp_ir']}
+{u'out': [u'rt'], u'fu': [u'20:16'], u'in': [u'tmp_ir']}
+{u'out': [u'rd'], u'fu': [u'12:8'], u'in': [u'tmp_ir']}
+{u'out': [u'shamt'], u'fu': [u'7:0'], u'in': [u'tmp_ir']}
+{u'out': [u'tmp_source0'], u'fu': [u'GPR.read0'], u'in': [u'rs']}
+{u'out': [u'tmp_source1'], u'fu': [u'GPR.read1'], u'in': [u'rt']}
+{u'out': [u'source0'], u'fu': [u'FWUL0.forward'], u'in': [u'rs', u'tmp_source0']}
+{u'out': [u'source1'], u'fu': [u'FWUL1.forward'], u'in': [u'rt', u'tmp_source1']}
+OR 3
+variables:
+(u'flag', 4)
+statements:
+{u'out': [u'result', u'flag'], u'fu': [u'ALU1.or'], u'in': [u'source0', u'source1']}
+{u'out': [], u'fu': [u'FWUL0.forward1'], u'in': [u'rd', u'result']}
+{u'out': [], u'fu': [u'FWUL1.forward1'], u'in': [u'rd', u'result']}
+{u'out': [], u'fu': [u'FWUL2.forward1'], u'in': [u'rd', u'result']}
+{u'out': [], u'fu': [u'FWUL3.forward1'], u'in': [u'rd', u'result']}
+OR 4
+variables:
+statements:
+{u'out': [], u'fu': [u'FWUL0.forward3'], u'in': [u'rd', u'result']}
+{u'out': [], u'fu': [u'FWUL1.forward3'], u'in': [u'rd', u'result']}
+{u'out': [], u'fu': [u'FWUL2.forward3'], u'in': [u'rd', u'result']}
+{u'out': [], u'fu': [u'FWUL3.forward3'], u'in': [u'rd', u'result']}
+OR 5
+variables:
+statements:
+{u'out': [], u'fu': [u'FWUL0.forward5'], u'in': [u'rd', u'result']}
+{u'out': [], u'fu': [u'FWUL1.forward5'], u'in': [u'rd', u'result']}
+{u'out': [], u'fu': [u'FWUL2.forward5'], u'in': [u'rd', u'result']}
+{u'out': [], u'fu': [u'FWUL3.forward5'], u'in': [u'rd', u'result']}
+OR 6
+variables:
+statements:
+{u'out': [], u'fu': [u'GPR.write0'], u'in': [u'rd', u'result']}
+{u'out': [], u'fu': [u'FWUL0.forward7'], u'in': [u'rd', u'result']}
+{u'out': [], u'fu': [u'FWUL1.forward7'], u'in': [u'rd', u'result']}
+{u'out': [], u'fu': [u'FWUL2.forward7'], u'in': [u'rd', u'result']}
+{u'out': [], u'fu': [u'FWUL3.forward7'], u'in': [u'rd', u'result']}
+MTHI global
+variables:
+(u'rt', 5)
+(u'shamt', 8)
+(u'rs', 5)
+(u'rd', 5)
+(u'source0', 32)
+(u'tmp_pc', 32)
+MTHI 1
+variables:
+(u'current_pc', 32)
+(u'inst0', 64)
+(u'iramaddr_err', 1)
+statements:
+{u'out': [u'current_pc'], u'fu': [u'CPC.read'], u'in': []}
+{u'out': [u'tmp_pc'], u'fu': [u'na'], u'in': [u'current_pc']}
+{u'out': [u'inst0', u'iramaddr_err'], u'fu': [u'Imem.ld_64'], u'in': [u'current_pc']}
+{u'out': [], u'fu': [u'IReg.write'], u'in': [u'inst0']}
+{u'out': [], u'fu': [u'CPC.inc'], u'in': []}
+MTHI 2
+variables:
+(u'tmp_source0', 32)
+(u'tmp_ir', 64)
+statements:
+{u'out': [u'tmp_ir'], u'fu': [u'IReg.read'], u'in': []}
+{u'out': [u'rs'], u'fu': [u'28:24'], u'in': [u'tmp_ir']}
+{u'out': [u'rt'], u'fu': [u'20:16'], u'in': [u'tmp_ir']}
+{u'out': [u'rd'], u'fu': [u'12:8'], u'in': [u'tmp_ir']}
+{u'out': [u'shamt'], u'fu': [u'7:0'], u'in': [u'tmp_ir']}
+{u'out': [u'tmp_source0'], u'fu': [u'GPR.read0'], u'in': [u'rs']}
+{u'out': [u'source0'], u'fu': [u'FWUL0.forward'], u'in': [u'rs', u'tmp_source0']}
+MTHI 3
+variables:
+statements:
+{u'out': [], u'fu': [u'HI.write'], u'in': [u'source0']}
+MTHI 4
+variables:
+statements:
+MTHI 5
+variables:
+statements:
+MTHI 6
+variables:
+statements:

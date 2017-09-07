@@ -1,0 +1,123 @@
+!_TAG_FILE_FORMAT	2	/extended format; --format=1 will not append ;" to lines/
+!_TAG_FILE_SORTED	1	/0=unsorted, 1=sorted, 2=foldcase/
+!_TAG_PROGRAM_AUTHOR	Darren Hiebert	/dhiebert@users.sourceforge.net/
+!_TAG_PROGRAM_NAME	Exuberant Ctags	//
+!_TAG_PROGRAM_URL	http://ctags.sourceforge.net	/official site/
+!_TAG_PROGRAM_VERSION	5.9~svn20110310	//
+ABS_LVL_ARCH	pdb_index.py	/^ABS_LVL_ARCH = 'AbsLevelArch'$/;"	v
+ABS_LVL_ARCH_RE	pdb_index.py	/^ABS_LVL_ARCH_RE = re.compile(ABS_LVL_ARCH+LBRA)  $/;"	v
+APOS	ppd_scan.py	/^APOS = '\\''$/;"	v
+ASM_GEN	pdb_index.py	/^ASM_GEN = 'ASM_Generation'$/;"	v
+ASM_GEN_RE	pdb_index.py	/^ASM_GEN_RE = re.compile(ASM_GEN+LBRA)$/;"	v
+BIN_REGEX	ppd_scan.py	/^BIN_REGEX = re.compile('[01]+')$/;"	v
+COMP_COMMENT_BEGIN	ppd_scan.py	/^COMP_COMMENT_BEGIN = '\/*'$/;"	v
+COMP_COMMENT_END	ppd_scan.py	/^COMP_COMMENT_END = '*\/'$/;"	v
+COMP_COMMENT_REGEX	ppd_scan.py	/^COMP_COMMENT_REGEX = re.compile('\/\\*.*?\\*\/',re.DOTALL)$/;"	v
+C_DEF_DECL	pdb_index.py	/^C_DEF_DECL = 'CdefinitionDecl'$/;"	v
+C_DEF_DECL_RE	pdb_index.py	/^C_DEF_DECL_RE = re.compile(C_DEF_DECL+LBRA)  $/;"	v
+DATABASE	pdb_index.py	/^DATABASE = 'Database'$/;"	v
+DATABASE_RE	pdb_index.py	/^DATABASE_RE = re.compile(DATABASE+LBRA)  $/;"	v
+ENT_DECL	pdb_index.py	/^ENT_DECL = 'EntityDecl'$/;"	v
+ENT_DECL_RE	pdb_index.py	/^ENT_DECL_RE = re.compile(ENT_DECL+LBRA)  $/;"	v
+EST	pdb_index.py	/^EST = 'Estimation'$/;"	v
+EST_RE	pdb_index.py	/^EST_RE = re.compile(EST+LBRA)$/;"	v
+FILETYPE	pdb_index.py	/^FILETYPE = 'FileType'$/;"	v
+FILETYPE_RE	pdb_index.py	/^FILETYPE_RE = re.compile(FILETYPE+LBRA) $/;"	v
+FU	ppd_scan.py	/^FU = 'fu'$/;"	v
+GEN	pdb_index.py	/^GEN = 'Generation'$/;"	v
+GEN_RE	pdb_index.py	/^GEN_RE = re.compile(GEN+LBRA)$/;"	v
+IN	ppd_scan.py	/^IN = 'in'$/;"	v
+INSTRUCTION	ppd_scan.py	/^INSTRUCTION = 'instruction'$/;"	v
+INSTR_BEGIN_STR	ppd_scan.py	/^INSTR_BEGIN_STR = '\/* Instruction *\/\\n'$/;"	v
+INSTR_DECL	pdb_index.py	/^INSTR_DECL = 'InstructionDecl'$/;"	v
+INSTR_DECL_RE	pdb_index.py	/^INSTR_DECL_RE = re.compile(INSTR_DECL+LBRA)  $/;"	v
+IO_BEGIN_STR	ppd_scan.py	/^IO_BEGIN_STR = '\/* I\/O Port *\/\\n'$/;"	v
+LBRA	pdb_index.py	/^LBRA = '{'$/;"	v
+LBRACE	ppd_scan.py	/^LBRACE = '{'$/;"	v
+LBRACK	ppd_scan.py	/^LBRACK = '['$/;"	v
+LCHEV	ppd_scan.py	/^LCHEV = '<'$/;"	v
+LPAREN	ppd_scan.py	/^LPAREN = '('$/;"	v
+MOD	pdb_index.py	/^MOD = 'MOD'$/;"	v
+MOD_RE	pdb_index.py	/^MOD_RE = re.compile(MOD+LBRA)$/;"	v
+NA	ppd_scan.py	/^NA = 'na'$/;"	v
+NUL	ppd_scan.py	/^NUL = 'null'$/;"	v
+OPCODE	ppd_scan.py	/^OPCODE = 'opcode'$/;"	v
+OPECODE	ppd_scan.py	/^OPECODE = 'opecode'$/;"	v
+OPERAND	ppd_scan.py	/^OPERAND = 'operand'$/;"	v
+OPERAND_KW_REGEX	ppd_scan.py	/^OPERAND_KW_REGEX = re.compile(OPERAND)$/;"	v
+OPERAND_VAR_REGEX	ppd_scan.py	/^OPERAND_VAR_REGEX = re.compile('\\s+(\\w+)')$/;"	v
+OP_DESC	pdb_index.py	/^OP_DESC = 'OperationDesc'$/;"	v
+OP_DESC_RE	pdb_index.py	/^OP_DESC_RE = re.compile(OP_DESC+LBRA)  $/;"	v
+OUT	ppd_scan.py	/^OUT = 'out'$/;"	v
+PART_SEL_REGEX	ppd_scan.py	/^PART_SEL_REGEX = re.compile('\\[(\\d*:?\\d+)\\]')$/;"	v
+PREF	pdb_index.py	/^PREF = 'Preference'$/;"	v
+PREF_RE	pdb_index.py	/^PREF_RE = re.compile(PREF+LBRA)$/;"	v
+QUOT	ppd_scan.py	/^QUOT = '\\"'$/;"	v
+RBRA	pdb_index.py	/^RBRA = '}'$/;"	v
+RBRACE	ppd_scan.py	/^RBRACE = '}'$/;"	v
+RBRACK	ppd_scan.py	/^RBRACK = ']'$/;"	v
+RCHEV	ppd_scan.py	/^RCHEV = '>'$/;"	v
+RES_DECL	pdb_index.py	/^RES_DECL = 'ResourceDecl'$/;"	v
+RES_DECL_RE	pdb_index.py	/^RES_DECL_RE = re.compile(RES_DECL+LBRA) $/;"	v
+RPAREN	ppd_scan.py	/^RPAREN = ')'$/;"	v
+SEL	ppd_scan.py	/^SEL = 'sel'$/;"	v
+SEMICOLON	ppd_scan.py	/^SEMICOLON = ';'$/;"	v
+SIMP_COMMENT	ppd_scan.py	/^SIMP_COMMENT = '\/\/'$/;"	v
+SIMP_COMMENT_REGEX	ppd_scan.py	/^SIMP_COMMENT_REGEX = re.compile('\/\/.*\\n')$/;"	v
+SIMP_WORD_REGEX	ppd_scan.py	/^SIMP_WORD_REGEX = re.compile('\\w+')$/;"	v
+SPLIT_STMT_REGEX	ppd_scan.py	/^SPLIT_STMT_REGEX = re.compile(EQUAL)$/;"	v
+STAGE	ppd_scan.py	/^STAGE = 'stage'$/;"	v
+STMT	ppd_scan.py	/^STMT = 'stmt'$/;"	v
+STO_SPEC	pdb_index.py	/^STO_SPEC = 'StorageSpec'$/;"	v
+STO_SPEC_RE	pdb_index.py	/^STO_SPEC_RE = re.compile(STO_SPEC+LBRA)  $/;"	v
+SW_GEN	pdb_index.py	/^SW_GEN = 'SW_Generation'$/;"	v
+SW_GEN_RE	pdb_index.py	/^SW_GEN_RE = re.compile(SW_GEN+LBRA)$/;"	v
+SYMBOL_REGEX	ppd_scan.py	/^SYMBOL_REGEX = re.compile('\\W+')$/;"	v
+TOP_DIVS	pdb_index.py	/^TOP_DIVS = (VER,FILETYPE,DATABASE,PREF,ABS_LVL_ARCH,ENT_DECL,$/;"	v
+TYPE	ppd_scan.py	/^TYPE = 'type'$/;"	v
+TYPE_BEGIN_STR	ppd_scan.py	/^TYPE_BEGIN_STR = '\/* Instruction Type *\/\\n'$/;"	v
+VAR	ppd_scan.py	/^VAR = 'var'$/;"	v
+VAR_REGEX	ppd_scan.py	/^VAR_REGEX = re.compile('wire\\s?\\[(\\d+):0\\]\\s?(\\w+)')$/;"	v
+VER	pdb_index.py	/^VER = 'Version'$/;"	v
+VER_RE	pdb_index.py	/^VER_RE = re.compile(VER+LBRA)$/;"	v
+WIRE	ppd_scan.py	/^WIRE = 'wire'$/;"	v
+cur_instr	ppd_scan.py	/^cur_instr = None$/;"	v
+db	ppd_scan.py	/^db = {}$/;"	v
+decl_gen	pdb_gen.py	/^def decl_gen():$/;"	f
+index_instr_decl	pdb_index.py	/^def index_instr_decl(txt):$/;"	f
+index_instr_decl_instr	pdb_index.py	/^def index_instr_decl_instr(txt):$/;"	f
+index_mod	pdb_index.py	/^def index_mod(txt):$/;"	f
+index_mod_instr	pdb_index.py	/^def index_mod_instr(txt):$/;"	f
+index_resource	pdb_index.py	/^def index_resource(txt):$/;"	f
+index_resource_instance	pdb_index.py	/^def index_resource_instance(txt):$/;"	f
+index_top	pdb_index.py	/^def index_top(txt):$/;"	f
+init	ppd_scan.py	/^def init(ppd_lines):$/;"	f
+io_gen	pdb_gen.py	/^def io_gen():$/;"	f
+left_gen	pdb_gen.py	/^def left_gen(out_vars):$/;"	f
+main	extract.py	/^def main():$/;"	f
+main	pdb_gen.py	/^def main():$/;"	f
+main	pdb_index.py	/^def main():$/;"	f
+main	ppd_scan.py	/^def main():$/;"	f
+mod_gen	pdb_gen.py	/^def mod_gen(graph):$/;"	f
+parse	ppd_scan.py	/^def parse(instr_lines):$/;"	f
+parse_bin_const_expr	ppd_scan.py	/^def parse_bin_const_expr(line):$/;"	f
+parse_bit_comp_var_exprs	ppd_scan.py	/^def parse_bit_comp_var_exprs(line):$/;"	f
+parse_cond_assign_expr	ppd_scan.py	/^def parse_cond_assign_expr(line):$/;"	f
+parse_cond_func_expr	ppd_scan.py	/^def parse_cond_func_expr(line):$/;"	f
+parse_func_expr	ppd_scan.py	/^def parse_func_expr(line):$/;"	f
+parse_instr	ppd_scan.py	/^def parse_instr(instr_lines):$/;"	f
+parse_left	ppd_scan.py	/^def parse_left(line):$/;"	f
+parse_opcode	ppd_scan.py	/^def parse_opcode(tokens):$/;"	f
+parse_part_sel_expr	ppd_scan.py	/^def parse_part_sel_expr(line):$/;"	f
+parse_right	ppd_scan.py	/^def parse_right(line):$/;"	f
+parse_set_expr	ppd_scan.py	/^def parse_set_expr(line):$/;"	f
+parse_stmt	ppd_scan.py	/^def parse_stmt(line):$/;"	f
+parse_var	ppd_scan.py	/^def parse_var(line):$/;"	f
+read_pdb	pdb_index.py	/^def read_pdb(file_name):$/;"	f
+read_ppd	ppd_scan.py	/^def read_ppd(file_name):$/;"	f
+reserved_vars	ppd_scan.py	/^reserved_vars=set()$/;"	v
+right_gen	pdb_gen.py	/^def right_gen(in_vars,funcs):$/;"	f
+scope_val	ppd_scan.py	/^scope_val = 0$/;"	v
+simp_right_gen	pdb_gen.py	/^def simp_right_gen(in_vars):$/;"	f
+statement_gen	pdb_gen.py	/^def statement_gen(g_stmt):$/;"	f
+wire_decl_gen	pdb_gen.py	/^def wire_decl_gen(g_var):$/;"	f

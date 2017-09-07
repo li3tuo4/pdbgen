@@ -1,0 +1,16 @@
+code_field  meaning
+0	    event: read=00/write=01/stall(resconf)=10
+1	    resource: reg=000/mem=001/pc=010/fwd=011/adder2=100
+2	    address: reg=[5b]/mem=[32b]/pc=[0b]
+3       value: 32b
+4	    time/cycle#: 32b
+5       pc: 32b
+6       stage#: IF=000/ID=001/EX=010/M1=011/M2=100/WB=101
+
+width = 2+3+32+32+32+32+3=136
+
+instr   op[bin]             op[hex]
+LB      16b100000           0020
+LBm 
+LW      16b101000           0028
+LWm     0101000000101000    5028

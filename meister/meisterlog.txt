@@ -1,0 +1,2572 @@
+ Copyright (C) 2011 ASIP Solutions, Inc. All rights reserved. 
+6/20/14 3:51 PM : "Main menu" start.
+6/20/14 3:51 PM : Load file "ASIPmeisterStd.ini".
+6/20/14 3:51 PM : Load file "pisa-forma-v0.pdb".
+6/20/14 3:51 PM : "Micro Op. Description" complete.
+6/20/14 3:51 PM : "Micro Op. Description" start browse.
+6/20/14 3:51 PM : "Micro Op. Description" re-edit.
+6/20/14 3:58 PM : "Micro Op. Description" save
+6/20/14 3:58 PM : "Micro Op. Description" complete.
+6/20/14 3:58 PM : "Micro Op. Description" finish browse.
+6/20/14 3:58 PM :  modelgen sim pisa-forma-v0 pisa-forma-v0_mod.log VHDL finished as normally.
+6/20/14 3:58 PM : Load file "pisa-forma-v0_mod.log".
+6/20/14 3:58 PM : "HDL Generation" complete.
+6/20/14 4:03 PM :  modelgen sim pisa-forma-v0 pisa-forma-v0_mod.log VHDL finished as normally.
+6/20/14 4:03 PM : Load file "pisa-forma-v0_mod.log".
+6/20/14 4:03 PM : "HDL Generation" complete.
+6/20/14 4:04 PM : "Micro Op. Description" start browse.
+6/20/14 4:04 PM : "Micro Op. Description" re-edit.
+6/20/14 5:18 PM : "Micro Op. Description" save
+6/20/14 5:18 PM : "Micro Op. Description" finish edit.
+6/20/14 5:18 PM : Save file "pisa-forma-v0.pdb".
+6/20/14 5:18 PM : "Main menu" quit.
+6/22/14 9:32 PM : "Main menu" start.
+6/22/14 9:32 PM : Load file "ASIPmeisterStd.ini".
+6/22/14 9:32 PM : Load file "pisa-forma-v0.pdb".
+6/22/14 9:32 PM : "Micro Op. Description" start edit.
+6/22/14 9:37 PM : "Micro Op. Description" save
+6/22/14 9:37 PM : "Micro Op. Description" finish edit.
+6/22/14 9:37 PM : Save file "pisa-forma-v0.pdb".
+6/22/14 9:37 PM : "Main menu" quit.
+6/22/14 9:41 PM : "Main menu" start.
+6/22/14 9:41 PM : Load file "ASIPmeisterStd.ini".
+6/22/14 9:41 PM : Load file "pisa-forma-v0.pdb".
+6/22/14 9:41 PM : "Main menu" quit.
+6/22/14 9:44 PM : "Main menu" start.
+6/22/14 9:44 PM : Load file "ASIPmeisterStd.ini".
+6/22/14 9:44 PM : Load file "pisa-forma-v0.pdb".
+6/22/14 9:44 PM : "Main menu" quit.
+6/22/14 9:45 PM : "Main menu" start.
+6/22/14 9:45 PM : Load file "ASIPmeisterStd.ini".
+6/22/14 9:45 PM : Load file "pisa-forma-v0.pdb".
+6/22/14 9:45 PM : "Main menu" quit.
+6/22/14 9:46 PM : "Main menu" start.
+6/22/14 9:46 PM : Load file "ASIPmeisterStd.ini".
+6/22/14 9:46 PM : Load file "pisa-forma-v0.pdb".
+6/22/14 9:46 PM : "Main menu" quit.
+6/22/14 9:47 PM : "Main menu" start.
+6/22/14 9:47 PM : Load file "ASIPmeisterStd.ini".
+6/22/14 9:47 PM : Load file "pisa-forma-v0.pdb".
+6/22/14 9:47 PM : "Main menu" quit.
+6/22/14 9:48 PM : "Main menu" start.
+6/22/14 9:48 PM : Load file "ASIPmeisterStd.ini".
+6/22/14 9:48 PM : Load file "pisa-forma-v0.pdb".
+6/22/14 9:48 PM : "Main menu" quit.
+6/22/14 9:51 PM : "Main menu" start.
+6/22/14 9:51 PM : Load file "ASIPmeisterStd.ini".
+6/22/14 9:51 PM : Load file "pisa-forma-v0.pdb".
+6/22/14 9:51 PM : "Main menu" quit.
+6/22/14 9:55 PM : "Main menu" start.
+6/22/14 9:55 PM : Load file "ASIPmeisterStd.ini".
+6/22/14 9:55 PM : Load file "pisa-forma-v0.pdb".
+6/22/14 9:55 PM : "Main menu" quit.
+6/22/14 9:58 PM : "Main menu" start.
+6/22/14 9:58 PM : Load file "ASIPmeisterStd.ini".
+6/22/14 9:58 PM : Load file "pisa-forma-v0.pdb".
+6/22/14 9:58 PM : "Micro Op. Description" start edit.
+6/22/14 10:00 PM : "Micro Op. Description" save
+6/22/14 10:00 PM : "Micro Op. Description" finish edit.
+6/22/14 10:00 PM : Save file "pisa-forma-v0.pdb".
+6/22/14 10:00 PM : "Main menu" quit.
+6/23/14 9:52 AM : "Main menu" start.
+6/23/14 9:52 AM : Load file "ASIPmeisterStd.ini".
+6/23/14 9:52 AM : Load file "pisa-forma-v0.pdb".
+6/23/14 9:52 AM : "Micro Op. Description" start edit.
+6/23/14 10:16 AM : "Micro Op. Description" save
+6/23/14 10:16 AM : "Micro Op. Description" finish edit.
+6/23/14 10:16 AM : "Instruction Definition" complete.
+6/23/14 10:16 AM : "Instruction Definition" start browse.
+6/23/14 10:17 AM : "Instruction Definition" re-edit.
+6/23/14 2:14 PM : "Instruction Definition" save
+6/23/14 2:14 PM : "Instruction Definition" complete.
+6/23/14 2:14 PM : "Instruction Definition" finish browse.
+6/23/14 2:14 PM : "Micro Op. Description" start edit.
+6/23/14 4:26 PM : "Micro Op. Description" save
+6/23/14 4:26 PM : "Micro Op. Description" finish edit.
+6/23/14 4:26 PM : Save file "pisa-forma-v0.pdb".
+6/23/14 4:26 PM : "Main menu" quit.
+6/24/14 11:34 AM : "Main menu" start.
+6/24/14 11:34 AM : Load file "ASIPmeisterStd.ini".
+6/24/14 11:34 AM : Load file "pisa-forma-v0.pdb".
+6/24/14 11:34 AM : "Micro Op. Description" start edit.
+6/24/14 1:29 PM : "Micro Op. Description" save
+6/24/14 4:23 PM : "Micro Op. Description" save
+6/24/14 4:23 PM : "Micro Op. Description" finish edit.
+6/24/14 4:28 PM : Save file "pisa-forma-v0.pdb".
+6/24/14 4:28 PM : "Main menu" quit.
+7/2/14 1:36 PM : "Main menu" start.
+7/2/14 1:36 PM : Load file "ASIPmeisterStd.ini".
+7/2/14 1:36 PM : Load file "pisa-forma-v0.pdb".
+7/2/14 1:37 PM : "Micro Op. Description" start edit.
+7/2/14 1:37 PM : "Micro Op. Description" finish edit.
+7/2/14 1:45 PM : "Micro Op. Description" start edit.
+7/2/14 4:56 PM : "Micro Op. Description" save
+7/2/14 4:56 PM : "Micro Op. Description" finish edit.
+7/2/14 4:56 PM : Save file "pisa-forma-v0.pdb".
+7/2/14 4:56 PM : "Main menu" quit.
+7/9/14 12:54 PM : "Main menu" start.
+7/9/14 12:54 PM : Load file "ASIPmeisterStd.ini".
+7/9/14 12:54 PM : Load file "pisa-forma-v0.pdb".
+7/9/14 12:54 PM : "Micro Op. Description" start edit.
+7/9/14 12:54 PM : "Micro Op. Description" save
+7/9/14 12:54 PM : "Micro Op. Description" complete.
+7/9/14 12:54 PM : "Micro Op. Description" finish browse.
+7/9/14 12:55 PM :  modelgen sim pisa-forma-v0 pisa-forma-v0_mod.log VHDL finished as normally.
+7/9/14 12:55 PM : Load file "pisa-forma-v0_mod.log".
+7/9/14 12:55 PM : "HDL Generation" complete.
+7/9/14 12:55 PM : Save file "pisa-forma-v0.pdb".
+7/9/14 12:55 PM : "Main menu" quit.
+7/9/14 1:24 PM : "Main menu" start.
+7/9/14 1:24 PM : Load file "ASIPmeisterStd.ini".
+7/9/14 1:24 PM : Load file "pisa-forma-v0.pdb".
+7/9/14 1:24 PM : "Main menu" quit.
+7/9/14 3:06 PM : "Main menu" start.
+7/9/14 3:06 PM : Load file "ASIPmeisterStd.ini".
+7/9/14 3:06 PM : Load file "pisa-forma-v0.pdb".
+7/9/14 3:06 PM : "Main menu" quit.
+9/16/14 12:58 PM : "Main menu" start.
+9/16/14 12:58 PM : Load file "ASIPmeisterStd.ini".
+9/16/14 12:58 PM : Load file "lb_ctrlwire.pdb".
+9/16/14 12:58 PM : "Instruction Definition" complete.
+9/16/14 12:58 PM : "Instruction Definition" start browse.
+9/16/14 12:58 PM : "Instruction Definition" re-edit.
+9/16/14 1:00 PM : "Instruction Definition" save
+9/16/14 1:00 PM : "Instruction Definition" complete.
+9/16/14 1:00 PM : "Instruction Definition" finish browse.
+9/16/14 1:00 PM : "Micro Op. Description" start edit.
+9/16/14 1:39 PM : "Micro Op. Description" save
+9/16/14 1:39 PM : "Micro Op. Description" complete.
+9/16/14 1:39 PM : "Micro Op. Description" finish browse.
+9/16/14 1:40 PM : Query "parameter(alu,synthesis)" finished as normally.
+9/16/14 1:40 PM : Query "parameter(adder,synthesis)" finished as normally.
+9/16/14 1:40 PM : Query "parameter(divider,synthesis)" finished as normally.
+9/16/14 1:40 PM : Query "parameter(extender,synthesis)" finished as normally.
+9/16/14 1:40 PM : Query "parameter(multiplier,synthesis)" finished as normally.
+9/16/14 1:40 PM : Query "parameter(register,synthesis)" finished as normally.
+9/16/14 1:40 PM : Query "parameter(register,synthesis)" finished as normally.
+9/16/14 1:40 PM : Query "parameter(registerfile,synthesis)" finished as normally.
+9/16/14 1:40 PM : Query "parameter(register,synthesis)" finished as normally.
+9/16/14 1:40 PM : Query "parameter(mifu,synthesis)" finished as normally.
+9/16/14 1:40 PM : Query "parameter(pcu,synthesis)" finished as normally.
+9/16/14 1:40 PM : Query "parameter(shifter,synthesis)" finished as normally.
+9/16/14 1:40 PM : Query "parameter(adder,synthesis)" finished as normally.
+9/16/14 1:40 PM : Query "parameter(register,synthesis)" finished as normally.
+9/16/14 1:40 PM : Query "parameter(wire_out,synthesis)" finished as normally.
+9/16/14 1:40 PM : Query "parameter(wire_in,synthesis)" finished as normally.
+9/16/14 1:40 PM : Query "parameter(fwu,synthesis)" finished as normally.
+9/16/14 1:40 PM : Query "parameter(fwu,synthesis)" finished as normally.
+9/16/14 1:40 PM : Query "parameter(fwu,synthesis)" finished as normally.
+9/16/14 1:40 PM : Query "parameter(fwu,synthesis)" finished as normally.
+9/16/14 1:40 PM : Query "parameter(adder,synthesis)" finished as normally.
+9/16/14 1:40 PM : Query "parameter(mifu,synthesis)" finished as normally.
+9/16/14 1:40 PM : Query "parameter(register,synthesis)" finished as normally.
+9/16/14 1:40 PM : Query "parameter(register,synthesis)" finished as normally.
+9/16/14 1:40 PM : Query "parameter(register,synthesis)" finished as normally.
+9/16/14 1:40 PM : Query "parameter(comparator,synthesis)" finished as normally.
+9/16/14 1:40 PM : Query "parameter(registerfile,synthesis)" finished as normally.
+9/16/14 1:40 PM : Query "parameter(register,synthesis)" finished as normally.
+9/16/14 1:40 PM : Query "parameter(multiplexor,synthesis)" finished as normally.
+9/16/14 1:40 PM : Query "parameter(wire_out,synthesis)" finished as normally.
+9/16/14 1:40 PM : Query "parameter(wire_out,synthesis)" finished as normally.
+9/16/14 1:40 PM : Query "parameter(wire_out,synthesis)" finished as normally.
+9/16/14 1:40 PM : Query "parameter(wire_out,synthesis)" finished as normally.
+9/16/14 1:40 PM : Query "parameter(wire_in,synthesis)" finished as normally.
+9/16/14 1:40 PM : Query "parameter(pcu,synthesis)" finished as normally.
+9/16/14 1:40 PM : Query "parameter(register,synthesis)" finished as normally.
+9/16/14 1:40 PM : Query "parameter(register,synthesis)" finished as normally.
+9/16/14 1:40 PM : Query "parameter(register,synthesis)" finished as normally.
+9/16/14 1:40 PM : Query "parameter(register,synthesis)" finished as normally.
+9/16/14 1:40 PM : Query "parameter(register,synthesis)" finished as normally.
+9/16/14 1:40 PM : Query "parameter(register,synthesis)" finished as normally.
+9/16/14 1:40 PM : Query "parameter(pcu,synthesis)" finished as normally.
+9/16/14 1:40 PM : Query "parameter(wire_in,synthesis)" finished as normally.
+9/16/14 1:40 PM : Query "parameter(wire_out,synthesis)" finished as normally.
+9/16/14 1:40 PM : Query "parameter(pcu,synthesis)" finished as normally.
+9/16/14 1:40 PM : Query "parameter(wire_out,synthesis)" finished as normally.
+9/16/14 1:40 PM : Query "parameter(wire_out,synthesis)" finished as normally.
+9/16/14 1:40 PM : Query "parameter(wire_in,synthesis)" finished as normally.
+9/16/14 1:40 PM : Query "parameter(wire_out,synthesis)" finished as normally.
+9/16/14 1:40 PM : Query "parameter(wire_out,synthesis)" finished as normally.
+9/16/14 1:40 PM : Query "parameter(wire_out,synthesis)" finished as normally.
+9/16/14 1:40 PM : Query "parameter(wire_in,synthesis)" finished as normally.
+9/16/14 1:40 PM : Query "parameter(register,synthesis)" finished as normally.
+9/16/14 1:40 PM : Query "parameter(register,synthesis)" finished as normally.
+9/16/14 1:40 PM : Query "parameter(register,synthesis)" finished as normally.
+9/16/14 1:40 PM : Query "parameter(mifu,synthesis)" finished as normally.
+9/16/14 1:40 PM : Query "parameter(wire_out,synthesis)" finished as normally.
+9/16/14 1:40 PM : Query "parameter(mifu,synthesis)" finished as normally.
+9/16/14 1:40 PM : Query "parameter(mifu,synthesis)" finished as normally.
+9/16/14 1:40 PM : Query "parameter(register,synthesis)" finished as normally.
+9/16/14 1:40 PM : Query "parameter(register,synthesis)" finished as normally.
+9/16/14 1:40 PM : Query "parameter(register,synthesis)" finished as normally.
+9/16/14 1:40 PM : Query "parameter(comparator,synthesis)" finished as normally.
+9/16/14 1:40 PM : Query "parameter(comparator,synthesis)" finished as normally.
+9/16/14 1:40 PM : Query "parameter(register,synthesis)" finished as normally.
+9/16/14 1:40 PM : Query "parameter(comparator,synthesis)" finished as normally.
+9/16/14 1:40 PM : Query "parameter(comparator,synthesis)" finished as normally.
+9/16/14 1:40 PM : Query "parameter(register,synthesis)" finished as normally.
+9/16/14 1:40 PM : Query "parameter(comparator,synthesis)" finished as normally.
+9/16/14 1:40 PM : Query "parameter(comparator,synthesis)" finished as normally.
+9/16/14 1:40 PM : Query "parameter(comparator,synthesis)" finished as normally.
+9/16/14 1:40 PM : Query "parameter(comparator,synthesis)" finished as normally.
+9/16/14 1:40 PM : Query "parameter(wire_out,synthesis)" finished as normally.
+9/16/14 1:40 PM : Query "parameter(wire_out,synthesis)" finished as normally.
+9/16/14 1:40 PM : Query "parameter(wire_in,synthesis)" finished as normally.
+9/16/14 1:40 PM : Query "parameter(wire_out,synthesis)" finished as normally.
+9/16/14 1:40 PM : Query "parameter(wire_in,synthesis)" finished as normally.
+9/16/14 1:40 PM : Query "parameter(wire_out,synthesis)" finished as normally.
+9/16/14 1:40 PM : Query "parameter(wire_in,synthesis)" finished as normally.
+9/16/14 1:40 PM : Query "parameter(wire_out,synthesis)" finished as normally.
+9/16/14 1:40 PM : Query "parameter(wire_out,synthesis)" finished as normally.
+9/16/14 1:40 PM : Query "parameter(wire_out,synthesis)" finished as normally.
+9/16/14 1:40 PM : Query "parameter(wire_out,synthesis)" finished as normally.
+9/16/14 1:40 PM : Query "parameter(wire_out,synthesis)" finished as normally.
+9/16/14 1:40 PM : Query "parameter(wire_out,synthesis)" finished as normally.
+9/16/14 1:40 PM : Query "parameter(wire_out,synthesis)" finished as normally.
+9/16/14 1:40 PM : Query "parameter(register,synthesis)" finished as normally.
+9/16/14 1:40 PM : Query "parameter(fwu,synthesis)" finished as normally.
+9/16/14 1:40 PM : Query "parameter(fwu_lock,synthesis)" finished as normally.
+9/16/14 1:40 PM : Query "parameter(fwu_lock,synthesis)" finished as normally.
+9/16/14 1:40 PM : Query "parameter(fwu_lock,synthesis)" finished as normally.
+9/16/14 1:40 PM : Query "parameter(fwu_lock,synthesis)" finished as normally.
+9/16/14 1:40 PM : Query "parameter(multiplexor,synthesis)" finished as normally.
+9/16/14 1:40 PM : "Resource Declaration" start browse.
+9/16/14 1:40 PM : "Resource Declaration" re-edit.
+9/16/14 1:40 PM : Query "search()" finished as normally.
+9/16/14 1:40 PM : Query "search()" finished as normally.
+9/16/14 1:41 PM : Query "parameter(wire_out,synthesis)" finished as normally.
+9/16/14 1:41 PM : Query "function(wire_out,synthesis,bit_width=1:default_output=fix_to_0)" finished as normally.
+9/16/14 1:41 PM : Query "portinfo(wire_out,synthesis,bit_width=1:default_output=fix_to_0)" finished as normally.
+9/16/14 1:41 PM : Query "parameter(wire_in,synthesis)" finished as normally.
+9/16/14 1:41 PM : Query "function(wire_in,synthesis,bit_width=1)" finished as normally.
+9/16/14 1:41 PM : Query "portinfo(wire_in,synthesis,bit_width=1)" finished as normally.
+9/16/14 1:42 PM : Query "parameter(wire_in,synthesis)" finished as normally.
+9/16/14 1:42 PM : Query "parameter(wire_in,synthesis)" finished as normally.
+9/16/14 1:42 PM : Query "parameter(wire_out,synthesis)" finished as normally.
+9/16/14 1:42 PM : Query "function(wire_out,synthesis,bit_width=1:default_output=fix_to_0)" finished as normally.
+9/16/14 1:42 PM : Query "portinfo(wire_out,synthesis,bit_width=1:default_output=fix_to_0)" finished as normally.
+9/16/14 1:43 PM : "Resource Declaration" save
+9/16/14 1:43 PM : "peas3.StorageSpec:HIDE CALL" start edit.
+9/16/14 1:43 PM : "peas3.StorageSpec:HIDE CALL" save
+9/16/14 1:43 PM : "peas3.StorageSpec:HIDE CALL" finish edit.
+9/16/14 1:43 PM : "Resource Declaration" finish edit.
+9/16/14 1:43 PM : Save file "lb_ctrlwire.pdb".
+9/16/14 1:43 PM : "Main menu" quit.
+9/16/14 1:50 PM : "Main menu" start.
+9/16/14 1:50 PM : Load file "ASIPmeisterStd.ini".
+9/16/14 1:50 PM : Load file "lb_ctrlwire.pdb".
+9/16/14 1:50 PM : Query "parameter(alu,synthesis)" finished as normally.
+9/16/14 1:50 PM : Query "parameter(adder,synthesis)" finished as normally.
+9/16/14 1:50 PM : Query "parameter(divider,synthesis)" finished as normally.
+9/16/14 1:50 PM : Query "parameter(extender,synthesis)" finished as normally.
+9/16/14 1:50 PM : Query "parameter(multiplier,synthesis)" finished as normally.
+9/16/14 1:50 PM : Query "parameter(register,synthesis)" finished as normally.
+9/16/14 1:50 PM : Query "parameter(register,synthesis)" finished as normally.
+9/16/14 1:50 PM : Query "parameter(registerfile,synthesis)" finished as normally.
+9/16/14 1:50 PM : Query "parameter(register,synthesis)" finished as normally.
+9/16/14 1:50 PM : Query "parameter(mifu,synthesis)" finished as normally.
+9/16/14 1:50 PM : Query "parameter(pcu,synthesis)" finished as normally.
+9/16/14 1:50 PM : Query "parameter(shifter,synthesis)" finished as normally.
+9/16/14 1:50 PM : Query "parameter(adder,synthesis)" finished as normally.
+9/16/14 1:50 PM : Query "parameter(register,synthesis)" finished as normally.
+9/16/14 1:50 PM : Query "parameter(wire_out,synthesis)" finished as normally.
+9/16/14 1:50 PM : Query "parameter(wire_in,synthesis)" finished as normally.
+9/16/14 1:50 PM : Query "parameter(fwu,synthesis)" finished as normally.
+9/16/14 1:50 PM : Query "parameter(fwu,synthesis)" finished as normally.
+9/16/14 1:50 PM : Query "parameter(fwu,synthesis)" finished as normally.
+9/16/14 1:50 PM : Query "parameter(fwu,synthesis)" finished as normally.
+9/16/14 1:50 PM : Query "parameter(adder,synthesis)" finished as normally.
+9/16/14 1:50 PM : Query "parameter(mifu,synthesis)" finished as normally.
+9/16/14 1:50 PM : Query "parameter(register,synthesis)" finished as normally.
+9/16/14 1:50 PM : Query "parameter(register,synthesis)" finished as normally.
+9/16/14 1:50 PM : Query "parameter(register,synthesis)" finished as normally.
+9/16/14 1:51 PM : Query "parameter(comparator,synthesis)" finished as normally.
+9/16/14 1:51 PM : Query "parameter(registerfile,synthesis)" finished as normally.
+9/16/14 1:51 PM : Query "parameter(register,synthesis)" finished as normally.
+9/16/14 1:51 PM : Query "parameter(multiplexor,synthesis)" finished as normally.
+9/16/14 1:51 PM : Query "parameter(wire_out,synthesis)" finished as normally.
+9/16/14 1:51 PM : Query "parameter(wire_out,synthesis)" finished as normally.
+9/16/14 1:51 PM : Query "parameter(wire_out,synthesis)" finished as normally.
+9/16/14 1:51 PM : Query "parameter(wire_out,synthesis)" finished as normally.
+9/16/14 1:51 PM : Query "parameter(wire_in,synthesis)" finished as normally.
+9/16/14 1:51 PM : Query "parameter(pcu,synthesis)" finished as normally.
+9/16/14 1:51 PM : Query "parameter(register,synthesis)" finished as normally.
+9/16/14 1:51 PM : Query "parameter(register,synthesis)" finished as normally.
+9/16/14 1:51 PM : Query "parameter(register,synthesis)" finished as normally.
+9/16/14 1:51 PM : Query "parameter(register,synthesis)" finished as normally.
+9/16/14 1:51 PM : Query "parameter(register,synthesis)" finished as normally.
+9/16/14 1:51 PM : Query "parameter(register,synthesis)" finished as normally.
+9/16/14 1:51 PM : Query "parameter(pcu,synthesis)" finished as normally.
+9/16/14 1:51 PM : Query "parameter(wire_in,synthesis)" finished as normally.
+9/16/14 1:51 PM : Query "parameter(wire_out,synthesis)" finished as normally.
+9/16/14 1:51 PM : Query "parameter(pcu,synthesis)" finished as normally.
+9/16/14 1:51 PM : Query "parameter(wire_out,synthesis)" finished as normally.
+9/16/14 1:51 PM : Query "parameter(wire_out,synthesis)" finished as normally.
+9/16/14 1:51 PM : Query "parameter(wire_in,synthesis)" finished as normally.
+9/16/14 1:51 PM : Query "parameter(wire_out,synthesis)" finished as normally.
+9/16/14 1:51 PM : Query "parameter(wire_out,synthesis)" finished as normally.
+9/16/14 1:51 PM : Query "parameter(wire_out,synthesis)" finished as normally.
+9/16/14 1:51 PM : Query "parameter(wire_in,synthesis)" finished as normally.
+9/16/14 1:51 PM : Query "parameter(register,synthesis)" finished as normally.
+9/16/14 1:51 PM : Query "parameter(register,synthesis)" finished as normally.
+9/16/14 1:51 PM : Query "parameter(register,synthesis)" finished as normally.
+9/16/14 1:51 PM : Query "parameter(mifu,synthesis)" finished as normally.
+9/16/14 1:51 PM : Query "parameter(wire_out,synthesis)" finished as normally.
+9/16/14 1:51 PM : Query "parameter(mifu,synthesis)" finished as normally.
+9/16/14 1:51 PM : Query "parameter(mifu,synthesis)" finished as normally.
+9/16/14 1:51 PM : Query "parameter(register,synthesis)" finished as normally.
+9/16/14 1:51 PM : Query "parameter(register,synthesis)" finished as normally.
+9/16/14 1:51 PM : Query "parameter(register,synthesis)" finished as normally.
+9/16/14 1:51 PM : Query "parameter(comparator,synthesis)" finished as normally.
+9/16/14 1:51 PM : Query "parameter(comparator,synthesis)" finished as normally.
+9/16/14 1:51 PM : Query "parameter(register,synthesis)" finished as normally.
+9/16/14 1:51 PM : Query "parameter(comparator,synthesis)" finished as normally.
+9/16/14 1:51 PM : Query "parameter(comparator,synthesis)" finished as normally.
+9/16/14 1:51 PM : Query "parameter(register,synthesis)" finished as normally.
+9/16/14 1:51 PM : Query "parameter(comparator,synthesis)" finished as normally.
+9/16/14 1:51 PM : Query "parameter(comparator,synthesis)" finished as normally.
+9/16/14 1:51 PM : Query "parameter(comparator,synthesis)" finished as normally.
+9/16/14 1:51 PM : Query "parameter(comparator,synthesis)" finished as normally.
+9/16/14 1:51 PM : Query "parameter(wire_out,synthesis)" finished as normally.
+9/16/14 1:51 PM : Query "parameter(wire_out,synthesis)" finished as normally.
+9/16/14 1:51 PM : Query "parameter(wire_in,synthesis)" finished as normally.
+9/16/14 1:51 PM : Query "parameter(wire_out,synthesis)" finished as normally.
+9/16/14 1:51 PM : Query "parameter(wire_in,synthesis)" finished as normally.
+9/16/14 1:51 PM : Query "parameter(wire_out,synthesis)" finished as normally.
+9/16/14 1:51 PM : Query "parameter(wire_in,synthesis)" finished as normally.
+9/16/14 1:51 PM : Query "parameter(wire_out,synthesis)" finished as normally.
+9/16/14 1:51 PM : Query "parameter(wire_out,synthesis)" finished as normally.
+9/16/14 1:51 PM : Query "parameter(wire_out,synthesis)" finished as normally.
+9/16/14 1:51 PM : Query "parameter(wire_out,synthesis)" finished as normally.
+9/16/14 1:51 PM : Query "parameter(wire_out,synthesis)" finished as normally.
+9/16/14 1:51 PM : Query "parameter(wire_out,synthesis)" finished as normally.
+9/16/14 1:51 PM : Query "parameter(wire_out,synthesis)" finished as normally.
+9/16/14 1:51 PM : Query "parameter(register,synthesis)" finished as normally.
+9/16/14 1:51 PM : Query "parameter(fwu,synthesis)" finished as normally.
+9/16/14 1:51 PM : Query "parameter(fwu_lock,synthesis)" finished as normally.
+9/16/14 1:51 PM : Query "parameter(fwu_lock,synthesis)" finished as normally.
+9/16/14 1:51 PM : Query "parameter(fwu_lock,synthesis)" finished as normally.
+9/16/14 1:51 PM : Query "parameter(fwu_lock,synthesis)" finished as normally.
+9/16/14 1:51 PM : Query "parameter(multiplexor,synthesis)" finished as normally.
+9/16/14 1:51 PM : Query "parameter(wire_in,synthesis)" finished as normally.
+9/16/14 1:51 PM : "Resource Declaration" start edit.
+9/16/14 1:51 PM : Query "search()" finished as normally.
+9/16/14 1:51 PM : Query "search()" finished as normally.
+9/16/14 1:51 PM : Query "parameter(wire_out,synthesis)" finished as normally.
+9/16/14 1:51 PM : Query "function(wire_out,synthesis,bit_width=1:default_output=fix_to_0)" finished as normally.
+9/16/14 1:51 PM : Query "portinfo(wire_out,synthesis,bit_width=1:default_output=fix_to_0)" finished as normally.
+9/16/14 1:51 PM : "Resource Declaration" save
+9/16/14 1:51 PM : "peas3.StorageSpec:HIDE CALL" start edit.
+9/16/14 1:51 PM : "peas3.StorageSpec:HIDE CALL" save
+9/16/14 1:51 PM : "peas3.StorageSpec:HIDE CALL" finish edit.
+9/16/14 1:51 PM : "Resource Declaration" finish edit.
+9/16/14 1:51 PM : Save file "lb_ctrlwire.pdb".
+9/16/14 1:51 PM : "Main menu" quit.
+9/16/14 1:56 PM : "Main menu" start.
+9/16/14 1:56 PM : Load file "ASIPmeisterStd.ini".
+9/16/14 1:56 PM : Load file "lb_ctrlwire.pdb".
+9/16/14 1:56 PM : Query "parameter(alu,synthesis)" finished as normally.
+9/16/14 1:56 PM : Query "parameter(adder,synthesis)" finished as normally.
+9/16/14 1:56 PM : Query "parameter(divider,synthesis)" finished as normally.
+9/16/14 1:56 PM : Query "parameter(extender,synthesis)" finished as normally.
+9/16/14 1:56 PM : Query "parameter(multiplier,synthesis)" finished as normally.
+9/16/14 1:56 PM : Query "parameter(register,synthesis)" finished as normally.
+9/16/14 1:56 PM : Query "parameter(register,synthesis)" finished as normally.
+9/16/14 1:56 PM : Query "parameter(registerfile,synthesis)" finished as normally.
+9/16/14 1:56 PM : Query "parameter(register,synthesis)" finished as normally.
+9/16/14 1:56 PM : Query "parameter(mifu,synthesis)" finished as normally.
+9/16/14 1:56 PM : Query "parameter(pcu,synthesis)" finished as normally.
+9/16/14 1:56 PM : Query "parameter(shifter,synthesis)" finished as normally.
+9/16/14 1:56 PM : Query "parameter(adder,synthesis)" finished as normally.
+9/16/14 1:56 PM : Query "parameter(register,synthesis)" finished as normally.
+9/16/14 1:56 PM : Query "parameter(wire_out,synthesis)" finished as normally.
+9/16/14 1:56 PM : Query "parameter(wire_in,synthesis)" finished as normally.
+9/16/14 1:56 PM : Query "parameter(fwu,synthesis)" finished as normally.
+9/16/14 1:56 PM : Query "parameter(fwu,synthesis)" finished as normally.
+9/16/14 1:56 PM : Query "parameter(fwu,synthesis)" finished as normally.
+9/16/14 1:56 PM : Query "parameter(fwu,synthesis)" finished as normally.
+9/16/14 1:56 PM : Query "parameter(adder,synthesis)" finished as normally.
+9/16/14 1:56 PM : Query "parameter(mifu,synthesis)" finished as normally.
+9/16/14 1:56 PM : Query "parameter(register,synthesis)" finished as normally.
+9/16/14 1:56 PM : Query "parameter(register,synthesis)" finished as normally.
+9/16/14 1:56 PM : Query "parameter(register,synthesis)" finished as normally.
+9/16/14 1:56 PM : Query "parameter(comparator,synthesis)" finished as normally.
+9/16/14 1:56 PM : Query "parameter(registerfile,synthesis)" finished as normally.
+9/16/14 1:56 PM : Query "parameter(register,synthesis)" finished as normally.
+9/16/14 1:56 PM : Query "parameter(multiplexor,synthesis)" finished as normally.
+9/16/14 1:56 PM : Query "parameter(wire_out,synthesis)" finished as normally.
+9/16/14 1:56 PM : Query "parameter(wire_out,synthesis)" finished as normally.
+9/16/14 1:56 PM : Query "parameter(wire_out,synthesis)" finished as normally.
+9/16/14 1:56 PM : Query "parameter(wire_out,synthesis)" finished as normally.
+9/16/14 1:56 PM : Query "parameter(wire_in,synthesis)" finished as normally.
+9/16/14 1:56 PM : Query "parameter(pcu,synthesis)" finished as normally.
+9/16/14 1:56 PM : Query "parameter(register,synthesis)" finished as normally.
+9/16/14 1:56 PM : Query "parameter(register,synthesis)" finished as normally.
+9/16/14 1:56 PM : Query "parameter(register,synthesis)" finished as normally.
+9/16/14 1:56 PM : Query "parameter(register,synthesis)" finished as normally.
+9/16/14 1:56 PM : Query "parameter(register,synthesis)" finished as normally.
+9/16/14 1:56 PM : Query "parameter(register,synthesis)" finished as normally.
+9/16/14 1:56 PM : Query "parameter(pcu,synthesis)" finished as normally.
+9/16/14 1:56 PM : Query "parameter(wire_in,synthesis)" finished as normally.
+9/16/14 1:56 PM : Query "parameter(wire_out,synthesis)" finished as normally.
+9/16/14 1:56 PM : Query "parameter(pcu,synthesis)" finished as normally.
+9/16/14 1:56 PM : Query "parameter(wire_out,synthesis)" finished as normally.
+9/16/14 1:56 PM : Query "parameter(wire_out,synthesis)" finished as normally.
+9/16/14 1:56 PM : Query "parameter(wire_in,synthesis)" finished as normally.
+9/16/14 1:56 PM : Query "parameter(wire_out,synthesis)" finished as normally.
+9/16/14 1:56 PM : Query "parameter(wire_out,synthesis)" finished as normally.
+9/16/14 1:56 PM : Query "parameter(wire_out,synthesis)" finished as normally.
+9/16/14 1:56 PM : Query "parameter(wire_in,synthesis)" finished as normally.
+9/16/14 1:56 PM : Query "parameter(register,synthesis)" finished as normally.
+9/16/14 1:56 PM : Query "parameter(register,synthesis)" finished as normally.
+9/16/14 1:56 PM : Query "parameter(register,synthesis)" finished as normally.
+9/16/14 1:56 PM : Query "parameter(mifu,synthesis)" finished as normally.
+9/16/14 1:56 PM : Query "parameter(wire_out,synthesis)" finished as normally.
+9/16/14 1:56 PM : Query "parameter(mifu,synthesis)" finished as normally.
+9/16/14 1:56 PM : Query "parameter(mifu,synthesis)" finished as normally.
+9/16/14 1:56 PM : Query "parameter(register,synthesis)" finished as normally.
+9/16/14 1:56 PM : Query "parameter(register,synthesis)" finished as normally.
+9/16/14 1:56 PM : Query "parameter(register,synthesis)" finished as normally.
+9/16/14 1:56 PM : Query "parameter(comparator,synthesis)" finished as normally.
+9/16/14 1:56 PM : Query "parameter(comparator,synthesis)" finished as normally.
+9/16/14 1:56 PM : Query "parameter(register,synthesis)" finished as normally.
+9/16/14 1:56 PM : Query "parameter(comparator,synthesis)" finished as normally.
+9/16/14 1:56 PM : Query "parameter(comparator,synthesis)" finished as normally.
+9/16/14 1:56 PM : Query "parameter(register,synthesis)" finished as normally.
+9/16/14 1:56 PM : Query "parameter(comparator,synthesis)" finished as normally.
+9/16/14 1:56 PM : Query "parameter(comparator,synthesis)" finished as normally.
+9/16/14 1:56 PM : Query "parameter(comparator,synthesis)" finished as normally.
+9/16/14 1:56 PM : Query "parameter(comparator,synthesis)" finished as normally.
+9/16/14 1:56 PM : Query "parameter(wire_out,synthesis)" finished as normally.
+9/16/14 1:56 PM : Query "parameter(wire_out,synthesis)" finished as normally.
+9/16/14 1:56 PM : Query "parameter(wire_in,synthesis)" finished as normally.
+9/16/14 1:56 PM : Query "parameter(wire_out,synthesis)" finished as normally.
+9/16/14 1:56 PM : Query "parameter(wire_in,synthesis)" finished as normally.
+9/16/14 1:56 PM : Query "parameter(wire_out,synthesis)" finished as normally.
+9/16/14 1:56 PM : Query "parameter(wire_in,synthesis)" finished as normally.
+9/16/14 1:56 PM : Query "parameter(wire_out,synthesis)" finished as normally.
+9/16/14 1:56 PM : Query "parameter(wire_out,synthesis)" finished as normally.
+9/16/14 1:56 PM : Query "parameter(wire_out,synthesis)" finished as normally.
+9/16/14 1:56 PM : Query "parameter(wire_out,synthesis)" finished as normally.
+9/16/14 1:56 PM : Query "parameter(wire_out,synthesis)" finished as normally.
+9/16/14 1:56 PM : Query "parameter(wire_out,synthesis)" finished as normally.
+9/16/14 1:56 PM : Query "parameter(wire_out,synthesis)" finished as normally.
+9/16/14 1:56 PM : Query "parameter(register,synthesis)" finished as normally.
+9/16/14 1:56 PM : Query "parameter(fwu,synthesis)" finished as normally.
+9/16/14 1:56 PM : Query "parameter(fwu_lock,synthesis)" finished as normally.
+9/16/14 1:56 PM : Query "parameter(fwu_lock,synthesis)" finished as normally.
+9/16/14 1:56 PM : Query "parameter(fwu_lock,synthesis)" finished as normally.
+9/16/14 1:56 PM : Query "parameter(fwu_lock,synthesis)" finished as normally.
+9/16/14 1:56 PM : Query "parameter(multiplexor,synthesis)" finished as normally.
+9/16/14 1:56 PM : Query "parameter(wire_in,synthesis)" finished as normally.
+9/16/14 1:56 PM : "Resource Declaration" start edit.
+9/16/14 1:56 PM : Query "search()" finished as normally.
+9/16/14 1:56 PM : Query "search()" finished as normally.
+9/16/14 1:56 PM : Query "parameter(wire_out,synthesis)" finished as normally.
+9/16/14 1:56 PM : Query "function(wire_out,synthesis,bit_width=1:default_output=fix_to_0)" finished as normally.
+9/16/14 1:56 PM : Query "portinfo(wire_out,synthesis,bit_width=1:default_output=fix_to_0)" finished as normally.
+9/16/14 1:57 PM : "Resource Declaration" save
+9/16/14 1:57 PM : "peas3.StorageSpec:HIDE CALL" start edit.
+9/16/14 1:57 PM : "peas3.StorageSpec:HIDE CALL" save
+9/16/14 1:57 PM : "peas3.StorageSpec:HIDE CALL" finish edit.
+9/16/14 1:57 PM : "Resource Declaration" finish edit.
+9/16/14 1:57 PM : Save file "lb_ctrlwire.pdb".
+9/16/14 1:57 PM : "Main menu" quit.
+9/16/14 2:05 PM : "Main menu" start.
+9/16/14 2:05 PM : Load file "ASIPmeisterStd.ini".
+9/16/14 2:05 PM : Load file "lb_ctrlwire.pdb".
+9/16/14 2:05 PM : Query "parameter(alu,synthesis)" finished as normally.
+9/16/14 2:05 PM : Query "parameter(adder,synthesis)" finished as normally.
+9/16/14 2:05 PM : Query "parameter(divider,synthesis)" finished as normally.
+9/16/14 2:05 PM : Query "parameter(extender,synthesis)" finished as normally.
+9/16/14 2:05 PM : Query "parameter(multiplier,synthesis)" finished as normally.
+9/16/14 2:05 PM : Query "parameter(register,synthesis)" finished as normally.
+9/16/14 2:05 PM : Query "parameter(register,synthesis)" finished as normally.
+9/16/14 2:05 PM : Query "parameter(registerfile,synthesis)" finished as normally.
+9/16/14 2:05 PM : Query "parameter(register,synthesis)" finished as normally.
+9/16/14 2:05 PM : Query "parameter(mifu,synthesis)" finished as normally.
+9/16/14 2:05 PM : Query "parameter(pcu,synthesis)" finished as normally.
+9/16/14 2:05 PM : Query "parameter(shifter,synthesis)" finished as normally.
+9/16/14 2:05 PM : Query "parameter(adder,synthesis)" finished as normally.
+9/16/14 2:05 PM : Query "parameter(register,synthesis)" finished as normally.
+9/16/14 2:05 PM : Query "parameter(wire_out,synthesis)" finished as normally.
+9/16/14 2:05 PM : Query "parameter(wire_in,synthesis)" finished as normally.
+9/16/14 2:05 PM : Query "parameter(fwu,synthesis)" finished as normally.
+9/16/14 2:05 PM : Query "parameter(fwu,synthesis)" finished as normally.
+9/16/14 2:05 PM : Query "parameter(fwu,synthesis)" finished as normally.
+9/16/14 2:05 PM : Query "parameter(fwu,synthesis)" finished as normally.
+9/16/14 2:05 PM : Query "parameter(adder,synthesis)" finished as normally.
+9/16/14 2:05 PM : Query "parameter(mifu,synthesis)" finished as normally.
+9/16/14 2:05 PM : Query "parameter(register,synthesis)" finished as normally.
+9/16/14 2:05 PM : Query "parameter(register,synthesis)" finished as normally.
+9/16/14 2:05 PM : Query "parameter(register,synthesis)" finished as normally.
+9/16/14 2:05 PM : Query "parameter(comparator,synthesis)" finished as normally.
+9/16/14 2:05 PM : Query "parameter(registerfile,synthesis)" finished as normally.
+9/16/14 2:05 PM : Query "parameter(register,synthesis)" finished as normally.
+9/16/14 2:05 PM : Query "parameter(multiplexor,synthesis)" finished as normally.
+9/16/14 2:05 PM : Query "parameter(wire_out,synthesis)" finished as normally.
+9/16/14 2:05 PM : Query "parameter(wire_out,synthesis)" finished as normally.
+9/16/14 2:05 PM : Query "parameter(wire_out,synthesis)" finished as normally.
+9/16/14 2:05 PM : Query "parameter(wire_out,synthesis)" finished as normally.
+9/16/14 2:05 PM : Query "parameter(wire_in,synthesis)" finished as normally.
+9/16/14 2:05 PM : Query "parameter(pcu,synthesis)" finished as normally.
+9/16/14 2:05 PM : Query "parameter(register,synthesis)" finished as normally.
+9/16/14 2:05 PM : Query "parameter(register,synthesis)" finished as normally.
+9/16/14 2:05 PM : Query "parameter(register,synthesis)" finished as normally.
+9/16/14 2:05 PM : Query "parameter(register,synthesis)" finished as normally.
+9/16/14 2:05 PM : Query "parameter(register,synthesis)" finished as normally.
+9/16/14 2:05 PM : Query "parameter(register,synthesis)" finished as normally.
+9/16/14 2:05 PM : Query "parameter(pcu,synthesis)" finished as normally.
+9/16/14 2:05 PM : Query "parameter(wire_in,synthesis)" finished as normally.
+9/16/14 2:05 PM : Query "parameter(wire_out,synthesis)" finished as normally.
+9/16/14 2:05 PM : Query "parameter(pcu,synthesis)" finished as normally.
+9/16/14 2:05 PM : Query "parameter(wire_out,synthesis)" finished as normally.
+9/16/14 2:05 PM : Query "parameter(wire_out,synthesis)" finished as normally.
+9/16/14 2:05 PM : Query "parameter(wire_in,synthesis)" finished as normally.
+9/16/14 2:05 PM : Query "parameter(wire_out,synthesis)" finished as normally.
+9/16/14 2:05 PM : Query "parameter(wire_out,synthesis)" finished as normally.
+9/16/14 2:05 PM : Query "parameter(wire_out,synthesis)" finished as normally.
+9/16/14 2:05 PM : Query "parameter(wire_in,synthesis)" finished as normally.
+9/16/14 2:05 PM : Query "parameter(register,synthesis)" finished as normally.
+9/16/14 2:05 PM : Query "parameter(register,synthesis)" finished as normally.
+9/16/14 2:05 PM : Query "parameter(register,synthesis)" finished as normally.
+9/16/14 2:05 PM : Query "parameter(mifu,synthesis)" finished as normally.
+9/16/14 2:05 PM : Query "parameter(wire_out,synthesis)" finished as normally.
+9/16/14 2:05 PM : Query "parameter(mifu,synthesis)" finished as normally.
+9/16/14 2:05 PM : Query "parameter(mifu,synthesis)" finished as normally.
+9/16/14 2:05 PM : Query "parameter(register,synthesis)" finished as normally.
+9/16/14 2:05 PM : Query "parameter(register,synthesis)" finished as normally.
+9/16/14 2:05 PM : Query "parameter(register,synthesis)" finished as normally.
+9/16/14 2:05 PM : Query "parameter(comparator,synthesis)" finished as normally.
+9/16/14 2:05 PM : Query "parameter(comparator,synthesis)" finished as normally.
+9/16/14 2:05 PM : Query "parameter(register,synthesis)" finished as normally.
+9/16/14 2:05 PM : Query "parameter(comparator,synthesis)" finished as normally.
+9/16/14 2:05 PM : Query "parameter(comparator,synthesis)" finished as normally.
+9/16/14 2:05 PM : Query "parameter(register,synthesis)" finished as normally.
+9/16/14 2:05 PM : Query "parameter(comparator,synthesis)" finished as normally.
+9/16/14 2:05 PM : Query "parameter(comparator,synthesis)" finished as normally.
+9/16/14 2:05 PM : Query "parameter(comparator,synthesis)" finished as normally.
+9/16/14 2:05 PM : Query "parameter(comparator,synthesis)" finished as normally.
+9/16/14 2:05 PM : Query "parameter(wire_out,synthesis)" finished as normally.
+9/16/14 2:05 PM : Query "parameter(wire_out,synthesis)" finished as normally.
+9/16/14 2:05 PM : Query "parameter(wire_in,synthesis)" finished as normally.
+9/16/14 2:05 PM : Query "parameter(wire_out,synthesis)" finished as normally.
+9/16/14 2:05 PM : Query "parameter(wire_in,synthesis)" finished as normally.
+9/16/14 2:05 PM : Query "parameter(wire_out,synthesis)" finished as normally.
+9/16/14 2:05 PM : Query "parameter(wire_in,synthesis)" finished as normally.
+9/16/14 2:05 PM : Query "parameter(wire_out,synthesis)" finished as normally.
+9/16/14 2:05 PM : Query "parameter(wire_out,synthesis)" finished as normally.
+9/16/14 2:05 PM : Query "parameter(wire_out,synthesis)" finished as normally.
+9/16/14 2:05 PM : Query "parameter(wire_out,synthesis)" finished as normally.
+9/16/14 2:05 PM : Query "parameter(wire_out,synthesis)" finished as normally.
+9/16/14 2:05 PM : Query "parameter(wire_out,synthesis)" finished as normally.
+9/16/14 2:05 PM : Query "parameter(wire_out,synthesis)" finished as normally.
+9/16/14 2:05 PM : Query "parameter(register,synthesis)" finished as normally.
+9/16/14 2:05 PM : Query "parameter(fwu,synthesis)" finished as normally.
+9/16/14 2:05 PM : Query "parameter(fwu_lock,synthesis)" finished as normally.
+9/16/14 2:05 PM : Query "parameter(fwu_lock,synthesis)" finished as normally.
+9/16/14 2:05 PM : Query "parameter(fwu_lock,synthesis)" finished as normally.
+9/16/14 2:05 PM : Query "parameter(fwu_lock,synthesis)" finished as normally.
+9/16/14 2:05 PM : Query "parameter(multiplexor,synthesis)" finished as normally.
+9/16/14 2:05 PM : Query "parameter(wire_in,synthesis)" finished as normally.
+9/16/14 2:05 PM : "Resource Declaration" start edit.
+9/16/14 2:05 PM : Query "search()" finished as normally.
+9/16/14 2:05 PM : Query "search()" finished as normally.
+9/16/14 2:05 PM : Query "parameter(wire_out,synthesis)" finished as normally.
+9/16/14 2:05 PM : Query "function(wire_out,synthesis,bit_width=1:default_output=fix_to_0)" finished as normally.
+9/16/14 2:05 PM : Query "portinfo(wire_out,synthesis,bit_width=1:default_output=fix_to_0)" finished as normally.
+9/16/14 2:06 PM : Query "parameter(wire_out,synthesis)" finished as normally.
+9/16/14 2:06 PM : Query "parameter(wire_out,synthesis)" finished as normally.
+9/16/14 2:06 PM : Query "parameter(wire_in,synthesis)" finished as normally.
+9/16/14 2:06 PM : Query "function(wire_in,synthesis,bit_width=1)" finished as normally.
+9/16/14 2:06 PM : Query "portinfo(wire_in,synthesis,bit_width=1)" finished as normally.
+9/16/14 2:07 PM : Query "parameter(wire_in,synthesis)" finished as normally.
+9/16/14 2:07 PM : Query "parameter(wire_in,synthesis)" finished as normally.
+9/16/14 2:07 PM : Query "function(wire_out,synthesis,bit_width=136:default_output=fix_to_0)" finished as normally.
+9/16/14 2:07 PM : Query "portinfo(wire_out,synthesis,bit_width=136:default_output=fix_to_0)" finished as normally.
+9/16/14 2:07 PM : Query "shape(area,wire_out,synthesis,priority=delay:bit_width=136:default_output=fix_to_0)" finished as normally.
+9/16/14 2:07 PM : Query "timing(delay,wire_out,synthesis,priority=delay:bit_width=136:default_output=fix_to_0)" finished as normally.
+9/16/14 2:07 PM : Query "power(power,wire_out,synthesis,priority=delay:bit_width=136:default_output=fix_to_0)" finished as normally.
+9/16/14 2:07 PM : Query "function(wire_in,synthesis,bit_width=1)" finished as normally.
+9/16/14 2:07 PM : Query "portinfo(wire_in,synthesis,bit_width=1)" finished as normally.
+9/16/14 2:07 PM : Query "shape(area,wire_in,synthesis,priority=delay:bit_width=1)" finished as normally.
+9/16/14 2:07 PM : Query "timing(delay,wire_in,synthesis,priority=delay:bit_width=1)" finished as normally.
+9/16/14 2:07 PM : Query "power(power,wire_in,synthesis,priority=delay:bit_width=1)" finished as normally.
+9/16/14 2:07 PM : "Resource Declaration" save
+9/16/14 2:07 PM : "Resource Declaration" complete.
+9/16/14 2:07 PM : "Resource Declaration" finish browse.
+9/16/14 2:07 PM : "Storage Spec" start edit.
+9/16/14 2:07 PM : "Storage Spec" save
+9/16/14 2:07 PM : "Storage Spec" complete.
+9/16/14 2:07 PM : "Storage Spec" finish browse.
+9/16/14 2:07 PM : "Instruction Definition" start edit.
+9/16/14 2:07 PM : "Instruction Definition" save
+9/16/14 2:07 PM : "Instruction Definition" complete.
+9/16/14 2:07 PM : "Instruction Definition" finish browse.
+9/16/14 2:07 PM : "Micro Op. Description" start edit.
+9/16/14 2:07 PM : "Micro Op. Description" save
+9/16/14 2:07 PM : "Micro Op. Description" complete.
+9/16/14 2:07 PM : "Micro Op. Description" finish browse.
+9/16/14 2:08 PM :  modelgen sim lb_ctrlwire lb_ctrlwire_mod.log VHDL finished as normally.
+9/16/14 2:08 PM : Load file "lb_ctrlwire_mod.log".
+9/16/14 2:08 PM : "HDL Generation" complete.
+9/16/14 2:08 PM : "Micro Op. Description" start browse.
+9/16/14 2:08 PM : "Micro Op. Description" re-edit.
+9/16/14 2:09 PM : "Micro Op. Description" save
+9/16/14 2:09 PM : "Micro Op. Description" complete.
+9/16/14 2:09 PM : "Micro Op. Description" finish browse.
+9/16/14 2:10 PM :  modelgen sim lb_ctrlwire lb_ctrlwire_mod.log VHDL finished as normally.
+9/16/14 2:10 PM : Load file "lb_ctrlwire_mod.log".
+9/16/14 2:10 PM : "HDL Generation" complete.
+9/16/14 2:10 PM : "Micro Op. Description" start browse.
+9/16/14 2:10 PM : "Micro Op. Description" re-edit.
+9/16/14 2:10 PM : "Micro Op. Description" save
+9/16/14 2:10 PM : "Micro Op. Description" complete.
+9/16/14 2:10 PM : "Micro Op. Description" finish browse.
+9/16/14 2:10 PM :  modelgen sim lb_ctrlwire lb_ctrlwire_mod.log VHDL finished as normally.
+9/16/14 2:10 PM : Load file "lb_ctrlwire_mod.log".
+9/16/14 2:10 PM : "HDL Generation" complete.
+9/16/14 2:11 PM : Save file "lb_ctrlwire.pdb".
+9/16/14 2:11 PM : "Main menu" quit.
+9/16/14 3:49 PM : "Main menu" start.
+9/16/14 3:49 PM : Load file "ASIPmeisterStd.ini".
+9/16/14 3:49 PM : Load file "lw_ctrlwire.pdb".
+9/16/14 3:50 PM : "Micro Op. Description" complete.
+9/16/14 3:50 PM : "Micro Op. Description" start browse.
+9/16/14 3:50 PM : "Micro Op. Description" re-edit.
+9/16/14 3:50 PM : "Micro Op. Description" save
+9/16/14 3:50 PM : "Micro Op. Description" complete.
+9/16/14 3:50 PM : "Micro Op. Description" finish browse.
+9/16/14 3:50 PM : "Instruction Definition" complete.
+9/16/14 3:50 PM : "Instruction Definition" start browse.
+9/16/14 3:50 PM : "Instruction Definition" re-edit.
+9/16/14 3:52 PM : "Instruction Definition" save
+9/16/14 3:52 PM : "Instruction Definition" complete.
+9/16/14 3:52 PM : "Instruction Definition" finish browse.
+9/16/14 3:52 PM : "Micro Op. Description" start edit.
+9/16/14 3:56 PM : "Micro Op. Description" save
+9/16/14 3:56 PM : "Micro Op. Description" complete.
+9/16/14 3:56 PM : "Micro Op. Description" finish browse.
+9/16/14 3:56 PM : "Instruction Definition" start browse.
+9/16/14 3:56 PM : "Instruction Definition" re-edit.
+9/16/14 3:56 PM : "Instruction Definition" save
+9/16/14 3:56 PM : "Instruction Definition" complete.
+9/16/14 3:56 PM : "Instruction Definition" finish browse.
+9/16/14 3:56 PM : "Micro Op. Description" start edit.
+9/16/14 3:58 PM : "Micro Op. Description" save
+9/16/14 3:58 PM : "Micro Op. Description" complete.
+9/16/14 3:58 PM : "Micro Op. Description" finish browse.
+9/16/14 3:58 PM : Query "parameter(alu,synthesis)" finished as normally.
+9/16/14 3:58 PM : Query "parameter(adder,synthesis)" finished as normally.
+9/16/14 3:58 PM : Query "parameter(divider,synthesis)" finished as normally.
+9/16/14 3:58 PM : Query "parameter(extender,synthesis)" finished as normally.
+9/16/14 3:58 PM : Query "parameter(multiplier,synthesis)" finished as normally.
+9/16/14 3:58 PM : Query "parameter(register,synthesis)" finished as normally.
+9/16/14 3:58 PM : Query "parameter(register,synthesis)" finished as normally.
+9/16/14 3:58 PM : Query "parameter(registerfile,synthesis)" finished as normally.
+9/16/14 3:58 PM : Query "parameter(register,synthesis)" finished as normally.
+9/16/14 3:58 PM : Query "parameter(mifu,synthesis)" finished as normally.
+9/16/14 3:58 PM : Query "parameter(pcu,synthesis)" finished as normally.
+9/16/14 3:58 PM : Query "parameter(shifter,synthesis)" finished as normally.
+9/16/14 3:58 PM : Query "parameter(adder,synthesis)" finished as normally.
+9/16/14 3:58 PM : Query "parameter(register,synthesis)" finished as normally.
+9/16/14 3:58 PM : Query "parameter(wire_out,synthesis)" finished as normally.
+9/16/14 3:58 PM : Query "parameter(wire_in,synthesis)" finished as normally.
+9/16/14 3:58 PM : Query "parameter(fwu,synthesis)" finished as normally.
+9/16/14 3:58 PM : Query "parameter(fwu,synthesis)" finished as normally.
+9/16/14 3:58 PM : Query "parameter(fwu,synthesis)" finished as normally.
+9/16/14 3:58 PM : Query "parameter(fwu,synthesis)" finished as normally.
+9/16/14 3:58 PM : Query "parameter(adder,synthesis)" finished as normally.
+9/16/14 3:58 PM : Query "parameter(mifu,synthesis)" finished as normally.
+9/16/14 3:58 PM : Query "parameter(register,synthesis)" finished as normally.
+9/16/14 3:58 PM : Query "parameter(register,synthesis)" finished as normally.
+9/16/14 3:58 PM : Query "parameter(register,synthesis)" finished as normally.
+9/16/14 3:58 PM : Query "parameter(comparator,synthesis)" finished as normally.
+9/16/14 3:58 PM : Query "parameter(registerfile,synthesis)" finished as normally.
+9/16/14 3:58 PM : Query "parameter(register,synthesis)" finished as normally.
+9/16/14 3:58 PM : Query "parameter(multiplexor,synthesis)" finished as normally.
+9/16/14 3:58 PM : Query "parameter(wire_out,synthesis)" finished as normally.
+9/16/14 3:58 PM : Query "parameter(wire_out,synthesis)" finished as normally.
+9/16/14 3:58 PM : Query "parameter(wire_out,synthesis)" finished as normally.
+9/16/14 3:58 PM : Query "parameter(wire_out,synthesis)" finished as normally.
+9/16/14 3:58 PM : Query "parameter(wire_in,synthesis)" finished as normally.
+9/16/14 3:58 PM : Query "parameter(pcu,synthesis)" finished as normally.
+9/16/14 3:58 PM : Query "parameter(register,synthesis)" finished as normally.
+9/16/14 3:58 PM : Query "parameter(register,synthesis)" finished as normally.
+9/16/14 3:58 PM : Query "parameter(register,synthesis)" finished as normally.
+9/16/14 3:58 PM : Query "parameter(register,synthesis)" finished as normally.
+9/16/14 3:58 PM : Query "parameter(register,synthesis)" finished as normally.
+9/16/14 3:58 PM : Query "parameter(register,synthesis)" finished as normally.
+9/16/14 3:58 PM : Query "parameter(pcu,synthesis)" finished as normally.
+9/16/14 3:58 PM : Query "parameter(wire_in,synthesis)" finished as normally.
+9/16/14 3:58 PM : Query "parameter(wire_out,synthesis)" finished as normally.
+9/16/14 3:58 PM : Query "parameter(pcu,synthesis)" finished as normally.
+9/16/14 3:58 PM : Query "parameter(wire_out,synthesis)" finished as normally.
+9/16/14 3:58 PM : Query "parameter(wire_out,synthesis)" finished as normally.
+9/16/14 3:58 PM : Query "parameter(wire_in,synthesis)" finished as normally.
+9/16/14 3:58 PM : Query "parameter(wire_out,synthesis)" finished as normally.
+9/16/14 3:58 PM : Query "parameter(wire_out,synthesis)" finished as normally.
+9/16/14 3:58 PM : Query "parameter(wire_out,synthesis)" finished as normally.
+9/16/14 3:58 PM : Query "parameter(wire_in,synthesis)" finished as normally.
+9/16/14 3:58 PM : Query "parameter(register,synthesis)" finished as normally.
+9/16/14 3:58 PM : Query "parameter(register,synthesis)" finished as normally.
+9/16/14 3:58 PM : Query "parameter(register,synthesis)" finished as normally.
+9/16/14 3:58 PM : Query "parameter(mifu,synthesis)" finished as normally.
+9/16/14 3:58 PM : Query "parameter(wire_out,synthesis)" finished as normally.
+9/16/14 3:58 PM : Query "parameter(mifu,synthesis)" finished as normally.
+9/16/14 3:58 PM : Query "parameter(mifu,synthesis)" finished as normally.
+9/16/14 3:58 PM : Query "parameter(register,synthesis)" finished as normally.
+9/16/14 3:58 PM : Query "parameter(register,synthesis)" finished as normally.
+9/16/14 3:58 PM : Query "parameter(register,synthesis)" finished as normally.
+9/16/14 3:58 PM : Query "parameter(comparator,synthesis)" finished as normally.
+9/16/14 3:58 PM : Query "parameter(comparator,synthesis)" finished as normally.
+9/16/14 3:58 PM : Query "parameter(register,synthesis)" finished as normally.
+9/16/14 3:58 PM : Query "parameter(comparator,synthesis)" finished as normally.
+9/16/14 3:58 PM : Query "parameter(comparator,synthesis)" finished as normally.
+9/16/14 3:58 PM : Query "parameter(register,synthesis)" finished as normally.
+9/16/14 3:58 PM : Query "parameter(comparator,synthesis)" finished as normally.
+9/16/14 3:58 PM : Query "parameter(comparator,synthesis)" finished as normally.
+9/16/14 3:58 PM : Query "parameter(comparator,synthesis)" finished as normally.
+9/16/14 3:58 PM : Query "parameter(comparator,synthesis)" finished as normally.
+9/16/14 3:58 PM : Query "parameter(wire_out,synthesis)" finished as normally.
+9/16/14 3:58 PM : Query "parameter(wire_out,synthesis)" finished as normally.
+9/16/14 3:58 PM : Query "parameter(wire_in,synthesis)" finished as normally.
+9/16/14 3:58 PM : Query "parameter(wire_out,synthesis)" finished as normally.
+9/16/14 3:58 PM : Query "parameter(wire_in,synthesis)" finished as normally.
+9/16/14 3:58 PM : Query "parameter(wire_out,synthesis)" finished as normally.
+9/16/14 3:58 PM : Query "parameter(wire_in,synthesis)" finished as normally.
+9/16/14 3:58 PM : Query "parameter(wire_out,synthesis)" finished as normally.
+9/16/14 3:58 PM : Query "parameter(wire_out,synthesis)" finished as normally.
+9/16/14 3:58 PM : Query "parameter(wire_out,synthesis)" finished as normally.
+9/16/14 3:58 PM : Query "parameter(wire_out,synthesis)" finished as normally.
+9/16/14 3:58 PM : Query "parameter(wire_out,synthesis)" finished as normally.
+9/16/14 3:58 PM : Query "parameter(wire_out,synthesis)" finished as normally.
+9/16/14 3:58 PM : Query "parameter(wire_out,synthesis)" finished as normally.
+9/16/14 3:58 PM : Query "parameter(register,synthesis)" finished as normally.
+9/16/14 3:58 PM : Query "parameter(fwu,synthesis)" finished as normally.
+9/16/14 3:58 PM : Query "parameter(fwu_lock,synthesis)" finished as normally.
+9/16/14 3:58 PM : Query "parameter(fwu_lock,synthesis)" finished as normally.
+9/16/14 3:59 PM : Query "parameter(fwu_lock,synthesis)" finished as normally.
+9/16/14 3:59 PM : Query "parameter(fwu_lock,synthesis)" finished as normally.
+9/16/14 3:59 PM : Query "parameter(multiplexor,synthesis)" finished as normally.
+9/16/14 3:59 PM : Query "parameter(wire_in,synthesis)" finished as normally.
+9/16/14 3:59 PM : Query "parameter(wire_out,synthesis)" finished as normally.
+9/16/14 3:59 PM : Query "parameter(wire_in,synthesis)" finished as normally.
+9/16/14 3:59 PM : "Resource Declaration" start browse.
+9/16/14 3:59 PM : Query "function(wire_in,synthesis,bit_width=1)" finished as normally.
+9/16/14 3:59 PM : Query "portinfo(wire_in,synthesis,bit_width=1)" finished as normally.
+9/16/14 3:59 PM : Query "shape(area,wire_in,synthesis,priority=delay:bit_width=1)" finished as normally.
+9/16/14 3:59 PM : Query "timing(delay,wire_in,synthesis,priority=delay:bit_width=1)" finished as normally.
+9/16/14 3:59 PM : Query "power(power,wire_in,synthesis,priority=delay:bit_width=1)" finished as normally.
+9/16/14 3:59 PM : "Resource Declaration" re-edit.
+9/16/14 3:59 PM : Query "function(wire_out,synthesis,bit_width=136:default_output=fix_to_0)" finished as normally.
+9/16/14 3:59 PM : Query "portinfo(wire_out,synthesis,bit_width=136:default_output=fix_to_0)" finished as normally.
+9/16/14 3:59 PM : Query "shape(area,wire_out,synthesis,priority=delay:bit_width=136:default_output=fix_to_0)" finished as normally.
+9/16/14 3:59 PM : Query "timing(delay,wire_out,synthesis,priority=delay:bit_width=136:default_output=fix_to_0)" finished as normally.
+9/16/14 3:59 PM : Query "power(power,wire_out,synthesis,priority=delay:bit_width=136:default_output=fix_to_0)" finished as normally.
+9/16/14 3:59 PM : Query "function(wire_in,synthesis,bit_width=32)" finished as normally.
+9/16/14 3:59 PM : Query "portinfo(wire_in,synthesis,bit_width=32)" finished as normally.
+9/16/14 3:59 PM : Query "shape(area,wire_in,synthesis,priority=delay:bit_width=32)" finished as normally.
+9/16/14 3:59 PM : Query "timing(delay,wire_in,synthesis,priority=delay:bit_width=32)" finished as normally.
+9/16/14 3:59 PM : Query "power(power,wire_in,synthesis,priority=delay:bit_width=32)" finished as normally.
+9/16/14 3:59 PM : Query "function(wire_out,synthesis,bit_width=136:default_output=fix_to_0)" finished as normally.
+9/16/14 3:59 PM : Query "portinfo(wire_out,synthesis,bit_width=136:default_output=fix_to_0)" finished as normally.
+9/16/14 3:59 PM : Query "shape(area,wire_out,synthesis,priority=delay:bit_width=136:default_output=fix_to_0)" finished as normally.
+9/16/14 3:59 PM : Query "timing(delay,wire_out,synthesis,priority=delay:bit_width=136:default_output=fix_to_0)" finished as normally.
+9/16/14 3:59 PM : Query "power(power,wire_out,synthesis,priority=delay:bit_width=136:default_output=fix_to_0)" finished as normally.
+9/16/14 3:59 PM : Query "search()" finished as normally.
+9/16/14 3:59 PM : Query "search()" finished as normally.
+9/16/14 3:59 PM : Query "parameter(wire_inout,synthesis)" finished as normally.
+9/16/14 3:59 PM : Query "function(wire_inout,synthesis,bit_width=1)" finished as normally.
+9/16/14 3:59 PM : Query "portinfo(wire_inout,synthesis,bit_width=1)" finished as normally.
+9/16/14 3:59 PM : Query "parameter(wire_out,synthesis)" finished as normally.
+9/16/14 3:59 PM : Query "function(wire_out,synthesis,bit_width=1:default_output=fix_to_0)" finished as normally.
+9/16/14 3:59 PM : Query "portinfo(wire_out,synthesis,bit_width=1:default_output=fix_to_0)" finished as normally.
+9/16/14 3:59 PM : Query "parameter(wire_in,synthesis)" finished as normally.
+9/16/14 3:59 PM : Query "function(wire_in,synthesis,bit_width=1)" finished as normally.
+9/16/14 3:59 PM : Query "portinfo(wire_in,synthesis,bit_width=1)" finished as normally.
+9/16/14 4:00 PM : Query "parameter(wire_in,synthesis)" finished as normally.
+9/16/14 4:00 PM : Query "parameter(wire_in,synthesis)" finished as normally.
+9/16/14 4:00 PM : Query "parameter(wire_out,synthesis)" finished as normally.
+9/16/14 4:00 PM : Query "function(wire_out,synthesis,bit_width=1:default_output=fix_to_0)" finished as normally.
+9/16/14 4:00 PM : Query "portinfo(wire_out,synthesis,bit_width=1:default_output=fix_to_0)" finished as normally.
+9/16/14 4:00 PM : Query "parameter(wire_in,synthesis)" finished as normally.
+9/16/14 4:00 PM : Query "function(wire_in,synthesis,bit_width=1)" finished as normally.
+9/16/14 4:00 PM : Query "portinfo(wire_in,synthesis,bit_width=1)" finished as normally.
+9/16/14 4:00 PM : Query "parameter(wire_in,synthesis)" finished as normally.
+9/16/14 4:00 PM : Query "parameter(wire_in,synthesis)" finished as normally.
+9/16/14 4:01 PM : "Resource Declaration" save
+9/16/14 4:01 PM : "Resource Declaration" complete.
+9/16/14 4:01 PM : "Resource Declaration" finish browse.
+9/16/14 4:01 PM : "Storage Spec" start edit.
+9/16/14 4:01 PM : "Storage Spec" save
+9/16/14 4:01 PM : "Storage Spec" complete.
+9/16/14 4:01 PM : "Storage Spec" finish browse.
+9/16/14 4:01 PM : "Instruction Definition" start edit.
+9/16/14 4:01 PM : "Instruction Definition" save
+9/16/14 4:01 PM : "Instruction Definition" complete.
+9/16/14 4:01 PM : "Instruction Definition" finish browse.
+9/16/14 4:01 PM : "Micro Op. Description" start edit.
+9/16/14 4:01 PM : "Micro Op. Description" save
+9/16/14 4:01 PM : "Micro Op. Description" complete.
+9/16/14 4:01 PM : "Micro Op. Description" finish browse.
+9/16/14 4:01 PM :  modelgen sim lw_ctrlwire lw_ctrlwire_mod.log VHDL finished as normally.
+9/16/14 4:01 PM : Load file "lw_ctrlwire_mod.log".
+9/16/14 4:01 PM : "HDL Generation" complete.
+9/16/14 4:01 PM : Save file "lw_ctrlwire.pdb".
+9/16/14 4:01 PM : "Main menu" quit.
+9/16/14 4:32 PM : "Main menu" start.
+9/16/14 4:32 PM : Load file "ASIPmeisterStd.ini".
+9/16/14 4:32 PM : Load file "lw_ctrlwire.pdb".
+9/16/14 4:32 PM : Query "parameter(alu,synthesis)" finished as normally.
+9/16/14 4:32 PM : Query "parameter(adder,synthesis)" finished as normally.
+9/16/14 4:32 PM : Query "parameter(divider,synthesis)" finished as normally.
+9/16/14 4:32 PM : Query "parameter(extender,synthesis)" finished as normally.
+9/16/14 4:32 PM : Query "parameter(multiplier,synthesis)" finished as normally.
+9/16/14 4:32 PM : Query "parameter(register,synthesis)" finished as normally.
+9/16/14 4:32 PM : Query "parameter(register,synthesis)" finished as normally.
+9/16/14 4:32 PM : Query "parameter(registerfile,synthesis)" finished as normally.
+9/16/14 4:32 PM : Query "parameter(register,synthesis)" finished as normally.
+9/16/14 4:32 PM : Query "parameter(mifu,synthesis)" finished as normally.
+9/16/14 4:32 PM : Query "parameter(pcu,synthesis)" finished as normally.
+9/16/14 4:32 PM : Query "parameter(shifter,synthesis)" finished as normally.
+9/16/14 4:32 PM : Query "parameter(adder,synthesis)" finished as normally.
+9/16/14 4:32 PM : Query "parameter(register,synthesis)" finished as normally.
+9/16/14 4:32 PM : Query "parameter(wire_out,synthesis)" finished as normally.
+9/16/14 4:32 PM : Query "parameter(wire_in,synthesis)" finished as normally.
+9/16/14 4:32 PM : Query "parameter(fwu,synthesis)" finished as normally.
+9/16/14 4:32 PM : Query "parameter(fwu,synthesis)" finished as normally.
+9/16/14 4:32 PM : Query "parameter(fwu,synthesis)" finished as normally.
+9/16/14 4:32 PM : Query "parameter(fwu,synthesis)" finished as normally.
+9/16/14 4:32 PM : Query "parameter(adder,synthesis)" finished as normally.
+9/16/14 4:32 PM : Query "parameter(mifu,synthesis)" finished as normally.
+9/16/14 4:32 PM : Query "parameter(register,synthesis)" finished as normally.
+9/16/14 4:32 PM : Query "parameter(register,synthesis)" finished as normally.
+9/16/14 4:32 PM : Query "parameter(register,synthesis)" finished as normally.
+9/16/14 4:32 PM : Query "parameter(comparator,synthesis)" finished as normally.
+9/16/14 4:32 PM : Query "parameter(registerfile,synthesis)" finished as normally.
+9/16/14 4:32 PM : Query "parameter(register,synthesis)" finished as normally.
+9/16/14 4:32 PM : Query "parameter(multiplexor,synthesis)" finished as normally.
+9/16/14 4:32 PM : Query "parameter(wire_out,synthesis)" finished as normally.
+9/16/14 4:32 PM : Query "parameter(wire_out,synthesis)" finished as normally.
+9/16/14 4:32 PM : Query "parameter(wire_out,synthesis)" finished as normally.
+9/16/14 4:32 PM : Query "parameter(wire_out,synthesis)" finished as normally.
+9/16/14 4:32 PM : Query "parameter(wire_in,synthesis)" finished as normally.
+9/16/14 4:32 PM : Query "parameter(pcu,synthesis)" finished as normally.
+9/16/14 4:32 PM : Query "parameter(register,synthesis)" finished as normally.
+9/16/14 4:32 PM : Query "parameter(register,synthesis)" finished as normally.
+9/16/14 4:32 PM : Query "parameter(register,synthesis)" finished as normally.
+9/16/14 4:32 PM : Query "parameter(register,synthesis)" finished as normally.
+9/16/14 4:32 PM : Query "parameter(register,synthesis)" finished as normally.
+9/16/14 4:32 PM : Query "parameter(register,synthesis)" finished as normally.
+9/16/14 4:32 PM : Query "parameter(pcu,synthesis)" finished as normally.
+9/16/14 4:32 PM : Query "parameter(wire_in,synthesis)" finished as normally.
+9/16/14 4:32 PM : Query "parameter(wire_out,synthesis)" finished as normally.
+9/16/14 4:32 PM : Query "parameter(pcu,synthesis)" finished as normally.
+9/16/14 4:32 PM : Query "parameter(wire_out,synthesis)" finished as normally.
+9/16/14 4:32 PM : Query "parameter(wire_out,synthesis)" finished as normally.
+9/16/14 4:32 PM : Query "parameter(wire_in,synthesis)" finished as normally.
+9/16/14 4:32 PM : Query "parameter(wire_out,synthesis)" finished as normally.
+9/16/14 4:32 PM : Query "parameter(wire_out,synthesis)" finished as normally.
+9/16/14 4:32 PM : Query "parameter(wire_out,synthesis)" finished as normally.
+9/16/14 4:32 PM : Query "parameter(wire_in,synthesis)" finished as normally.
+9/16/14 4:32 PM : Query "parameter(register,synthesis)" finished as normally.
+9/16/14 4:32 PM : Query "parameter(register,synthesis)" finished as normally.
+9/16/14 4:32 PM : Query "parameter(register,synthesis)" finished as normally.
+9/16/14 4:32 PM : Query "parameter(mifu,synthesis)" finished as normally.
+9/16/14 4:32 PM : Query "parameter(wire_out,synthesis)" finished as normally.
+9/16/14 4:32 PM : Query "parameter(mifu,synthesis)" finished as normally.
+9/16/14 4:32 PM : Query "parameter(mifu,synthesis)" finished as normally.
+9/16/14 4:32 PM : Query "parameter(register,synthesis)" finished as normally.
+9/16/14 4:32 PM : Query "parameter(register,synthesis)" finished as normally.
+9/16/14 4:32 PM : Query "parameter(register,synthesis)" finished as normally.
+9/16/14 4:32 PM : Query "parameter(comparator,synthesis)" finished as normally.
+9/16/14 4:32 PM : Query "parameter(comparator,synthesis)" finished as normally.
+9/16/14 4:32 PM : Query "parameter(register,synthesis)" finished as normally.
+9/16/14 4:32 PM : Query "parameter(comparator,synthesis)" finished as normally.
+9/16/14 4:32 PM : Query "parameter(comparator,synthesis)" finished as normally.
+9/16/14 4:32 PM : Query "parameter(register,synthesis)" finished as normally.
+9/16/14 4:32 PM : Query "parameter(comparator,synthesis)" finished as normally.
+9/16/14 4:32 PM : Query "parameter(comparator,synthesis)" finished as normally.
+9/16/14 4:32 PM : Query "parameter(comparator,synthesis)" finished as normally.
+9/16/14 4:32 PM : Query "parameter(comparator,synthesis)" finished as normally.
+9/16/14 4:32 PM : Query "parameter(wire_out,synthesis)" finished as normally.
+9/16/14 4:32 PM : Query "parameter(wire_out,synthesis)" finished as normally.
+9/16/14 4:32 PM : Query "parameter(wire_in,synthesis)" finished as normally.
+9/16/14 4:32 PM : Query "parameter(wire_out,synthesis)" finished as normally.
+9/16/14 4:32 PM : Query "parameter(wire_in,synthesis)" finished as normally.
+9/16/14 4:32 PM : Query "parameter(wire_out,synthesis)" finished as normally.
+9/16/14 4:32 PM : Query "parameter(wire_in,synthesis)" finished as normally.
+9/16/14 4:32 PM : Query "parameter(wire_out,synthesis)" finished as normally.
+9/16/14 4:32 PM : Query "parameter(wire_out,synthesis)" finished as normally.
+9/16/14 4:32 PM : Query "parameter(wire_out,synthesis)" finished as normally.
+9/16/14 4:32 PM : Query "parameter(wire_out,synthesis)" finished as normally.
+9/16/14 4:32 PM : Query "parameter(wire_out,synthesis)" finished as normally.
+9/16/14 4:32 PM : Query "parameter(wire_out,synthesis)" finished as normally.
+9/16/14 4:32 PM : Query "parameter(wire_out,synthesis)" finished as normally.
+9/16/14 4:32 PM : Query "parameter(register,synthesis)" finished as normally.
+9/16/14 4:32 PM : Query "parameter(fwu,synthesis)" finished as normally.
+9/16/14 4:32 PM : Query "parameter(fwu_lock,synthesis)" finished as normally.
+9/16/14 4:32 PM : Query "parameter(fwu_lock,synthesis)" finished as normally.
+9/16/14 4:32 PM : Query "parameter(fwu_lock,synthesis)" finished as normally.
+9/16/14 4:32 PM : Query "parameter(fwu_lock,synthesis)" finished as normally.
+9/16/14 4:32 PM : Query "parameter(multiplexor,synthesis)" finished as normally.
+9/16/14 4:32 PM : Query "parameter(wire_in,synthesis)" finished as normally.
+9/16/14 4:32 PM : Query "parameter(wire_out,synthesis)" finished as normally.
+9/16/14 4:32 PM : Query "parameter(wire_in,synthesis)" finished as normally.
+9/16/14 4:32 PM : Query "parameter(wire_in,synthesis)" finished as normally.
+9/16/14 4:32 PM : Query "parameter(wire_in,synthesis)" finished as normally.
+9/16/14 4:32 PM : "Resource Declaration" start browse.
+9/16/14 4:33 PM : "Resource Declaration" re-edit.
+9/16/14 4:33 PM : Query "function(wire_in,synthesis,bit_width=1)" finished as normally.
+9/16/14 4:33 PM : Query "portinfo(wire_in,synthesis,bit_width=1)" finished as normally.
+9/16/14 4:33 PM : Query "shape(area,wire_in,synthesis,priority=delay:bit_width=1)" finished as normally.
+9/16/14 4:33 PM : Query "timing(delay,wire_in,synthesis,priority=delay:bit_width=1)" finished as normally.
+9/16/14 4:33 PM : Query "power(power,wire_in,synthesis,priority=delay:bit_width=1)" finished as normally.
+9/16/14 4:33 PM : "Resource Declaration" save
+9/16/14 4:33 PM : "Resource Declaration" complete.
+9/16/14 4:33 PM : "Resource Declaration" finish browse.
+9/16/14 4:33 PM : "Main menu" quit.
+9/16/14 8:28 PM : "Main menu" start.
+9/16/14 8:28 PM : Load file "ASIPmeisterStd.ini".
+9/16/14 8:28 PM : Load file "lw_ctrlwire.pdb".
+9/16/14 8:28 PM : "Micro Op. Description" complete.
+9/16/14 8:28 PM : "Micro Op. Description" start browse.
+9/16/14 8:44 PM : "Micro Op. Description with Macro Expansion" finish edit.
+9/16/14 8:44 PM : "Micro Op. Description" finish browse.
+9/16/14 8:44 PM : "Instruction Definition" complete.
+9/16/14 8:44 PM : "Instruction Definition" start browse.
+9/16/14 9:09 PM : "Instruction Definition" finish browse.
+9/16/14 9:09 PM : "Main menu" quit.
+9/17/14 1:51 PM : "Main menu" start.
+9/17/14 1:51 PM : Load file "ASIPmeisterStd.ini".
+9/17/14 1:51 PM : Load file "pisa-forma-v0.pdb".
+9/17/14 1:51 PM :  modelgen syn pisa-forma-v0 pisa-forma-v0_mod.log VHDL finished as normally.
+9/17/14 1:51 PM : Load file "pisa-forma-v0_mod.log".
+9/17/14 1:51 PM : "HDL Generation" complete.
+9/17/14 1:51 PM : "Main menu" quit.
+9/19/14 10:09 AM : "Main menu" start.
+9/19/14 10:09 AM : Load file "ASIPmeisterStd.ini".
+9/19/14 10:09 AM : Load file "lb.pdb".
+9/19/14 10:09 AM : "Micro Op. Description" complete.
+9/19/14 10:09 AM : "Micro Op. Description" start browse.
+9/19/14 10:10 AM : "Micro Op. Description" re-edit.
+9/19/14 12:01 PM : "Micro Op. Description" save
+9/19/14 12:01 PM : "Micro Op. Description" complete.
+9/19/14 12:01 PM : "Micro Op. Description" finish browse.
+9/19/14 12:01 PM : "Micro Op. Description" start browse.
+9/19/14 12:07 PM : "Micro Op. Description" re-edit.
+9/19/14 12:22 PM : "Micro Op. Description" save
+9/19/14 12:22 PM : "Micro Op. Description" complete.
+9/19/14 12:22 PM : "Micro Op. Description" finish browse.
+9/19/14 12:22 PM : Query "parameter(alu,synthesis)" finished as normally.
+9/19/14 12:22 PM : Query "parameter(adder,synthesis)" finished as normally.
+9/19/14 12:22 PM : Query "parameter(divider,synthesis)" finished as normally.
+9/19/14 12:22 PM : Query "parameter(extender,synthesis)" finished as normally.
+9/19/14 12:22 PM : Query "parameter(multiplier,synthesis)" finished as normally.
+9/19/14 12:22 PM : Query "parameter(register,synthesis)" finished as normally.
+9/19/14 12:22 PM : Query "parameter(register,synthesis)" finished as normally.
+9/19/14 12:22 PM : Query "parameter(registerfile,synthesis)" finished as normally.
+9/19/14 12:22 PM : Query "parameter(register,synthesis)" finished as normally.
+9/19/14 12:22 PM : Query "parameter(mifu,synthesis)" finished as normally.
+9/19/14 12:22 PM : Query "parameter(pcu,synthesis)" finished as normally.
+9/19/14 12:22 PM : Query "parameter(shifter,synthesis)" finished as normally.
+9/19/14 12:22 PM : Query "parameter(adder,synthesis)" finished as normally.
+9/19/14 12:22 PM : Query "parameter(register,synthesis)" finished as normally.
+9/19/14 12:22 PM : Query "parameter(wire_out,synthesis)" finished as normally.
+9/19/14 12:22 PM : Query "parameter(wire_in,synthesis)" finished as normally.
+9/19/14 12:22 PM : Query "parameter(fwu,synthesis)" finished as normally.
+9/19/14 12:22 PM : Query "parameter(fwu,synthesis)" finished as normally.
+9/19/14 12:22 PM : Query "parameter(fwu,synthesis)" finished as normally.
+9/19/14 12:22 PM : Query "parameter(fwu,synthesis)" finished as normally.
+9/19/14 12:22 PM : Query "parameter(adder,synthesis)" finished as normally.
+9/19/14 12:22 PM : Query "parameter(mifu,synthesis)" finished as normally.
+9/19/14 12:22 PM : Query "parameter(register,synthesis)" finished as normally.
+9/19/14 12:22 PM : Query "parameter(register,synthesis)" finished as normally.
+9/19/14 12:22 PM : Query "parameter(register,synthesis)" finished as normally.
+9/19/14 12:22 PM : Query "parameter(comparator,synthesis)" finished as normally.
+9/19/14 12:22 PM : Query "parameter(registerfile,synthesis)" finished as normally.
+9/19/14 12:22 PM : Query "parameter(register,synthesis)" finished as normally.
+9/19/14 12:22 PM : Query "parameter(multiplexor,synthesis)" finished as normally.
+9/19/14 12:22 PM : Query "parameter(wire_out,synthesis)" finished as normally.
+9/19/14 12:22 PM : Query "parameter(wire_out,synthesis)" finished as normally.
+9/19/14 12:22 PM : Query "parameter(wire_out,synthesis)" finished as normally.
+9/19/14 12:22 PM : Query "parameter(wire_out,synthesis)" finished as normally.
+9/19/14 12:22 PM : Query "parameter(wire_in,synthesis)" finished as normally.
+9/19/14 12:22 PM : Query "parameter(pcu,synthesis)" finished as normally.
+9/19/14 12:22 PM : Query "parameter(register,synthesis)" finished as normally.
+9/19/14 12:22 PM : Query "parameter(register,synthesis)" finished as normally.
+9/19/14 12:22 PM : Query "parameter(register,synthesis)" finished as normally.
+9/19/14 12:22 PM : Query "parameter(register,synthesis)" finished as normally.
+9/19/14 12:22 PM : Query "parameter(register,synthesis)" finished as normally.
+9/19/14 12:22 PM : Query "parameter(register,synthesis)" finished as normally.
+9/19/14 12:22 PM : Query "parameter(pcu,synthesis)" finished as normally.
+9/19/14 12:22 PM : Query "parameter(wire_in,synthesis)" finished as normally.
+9/19/14 12:22 PM : Query "parameter(wire_out,synthesis)" finished as normally.
+9/19/14 12:22 PM : Query "parameter(pcu,synthesis)" finished as normally.
+9/19/14 12:22 PM : Query "parameter(wire_out,synthesis)" finished as normally.
+9/19/14 12:22 PM : Query "parameter(wire_out,synthesis)" finished as normally.
+9/19/14 12:22 PM : Query "parameter(wire_in,synthesis)" finished as normally.
+9/19/14 12:22 PM : Query "parameter(wire_out,synthesis)" finished as normally.
+9/19/14 12:22 PM : Query "parameter(wire_out,synthesis)" finished as normally.
+9/19/14 12:22 PM : Query "parameter(wire_out,synthesis)" finished as normally.
+9/19/14 12:22 PM : Query "parameter(wire_in,synthesis)" finished as normally.
+9/19/14 12:22 PM : Query "parameter(register,synthesis)" finished as normally.
+9/19/14 12:22 PM : Query "parameter(register,synthesis)" finished as normally.
+9/19/14 12:22 PM : Query "parameter(register,synthesis)" finished as normally.
+9/19/14 12:22 PM : Query "parameter(mifu,synthesis)" finished as normally.
+9/19/14 12:22 PM : Query "parameter(wire_out,synthesis)" finished as normally.
+9/19/14 12:22 PM : Query "parameter(mifu,synthesis)" finished as normally.
+9/19/14 12:22 PM : Query "parameter(mifu,synthesis)" finished as normally.
+9/19/14 12:22 PM : Query "parameter(register,synthesis)" finished as normally.
+9/19/14 12:22 PM : Query "parameter(register,synthesis)" finished as normally.
+9/19/14 12:22 PM : Query "parameter(register,synthesis)" finished as normally.
+9/19/14 12:22 PM : Query "parameter(comparator,synthesis)" finished as normally.
+9/19/14 12:22 PM : Query "parameter(comparator,synthesis)" finished as normally.
+9/19/14 12:22 PM : Query "parameter(register,synthesis)" finished as normally.
+9/19/14 12:22 PM : Query "parameter(comparator,synthesis)" finished as normally.
+9/19/14 12:22 PM : Query "parameter(comparator,synthesis)" finished as normally.
+9/19/14 12:22 PM : Query "parameter(register,synthesis)" finished as normally.
+9/19/14 12:22 PM : Query "parameter(comparator,synthesis)" finished as normally.
+9/19/14 12:22 PM : Query "parameter(comparator,synthesis)" finished as normally.
+9/19/14 12:22 PM : Query "parameter(comparator,synthesis)" finished as normally.
+9/19/14 12:22 PM : Query "parameter(comparator,synthesis)" finished as normally.
+9/19/14 12:22 PM : Query "parameter(wire_out,synthesis)" finished as normally.
+9/19/14 12:22 PM : Query "parameter(wire_out,synthesis)" finished as normally.
+9/19/14 12:22 PM : Query "parameter(wire_in,synthesis)" finished as normally.
+9/19/14 12:22 PM : Query "parameter(wire_out,synthesis)" finished as normally.
+9/19/14 12:22 PM : Query "parameter(wire_in,synthesis)" finished as normally.
+9/19/14 12:22 PM : Query "parameter(wire_out,synthesis)" finished as normally.
+9/19/14 12:22 PM : Query "parameter(wire_in,synthesis)" finished as normally.
+9/19/14 12:22 PM : Query "parameter(wire_out,synthesis)" finished as normally.
+9/19/14 12:22 PM : Query "parameter(wire_out,synthesis)" finished as normally.
+9/19/14 12:22 PM : Query "parameter(wire_out,synthesis)" finished as normally.
+9/19/14 12:22 PM : Query "parameter(wire_out,synthesis)" finished as normally.
+9/19/14 12:22 PM : Query "parameter(wire_out,synthesis)" finished as normally.
+9/19/14 12:22 PM : Query "parameter(wire_out,synthesis)" finished as normally.
+9/19/14 12:22 PM : Query "parameter(wire_out,synthesis)" finished as normally.
+9/19/14 12:22 PM : Query "parameter(register,synthesis)" finished as normally.
+9/19/14 12:22 PM : Query "parameter(fwu,synthesis)" finished as normally.
+9/19/14 12:22 PM : Query "parameter(fwu_lock,synthesis)" finished as normally.
+9/19/14 12:22 PM : Query "parameter(fwu_lock,synthesis)" finished as normally.
+9/19/14 12:22 PM : Query "parameter(fwu_lock,synthesis)" finished as normally.
+9/19/14 12:22 PM : Query "parameter(fwu_lock,synthesis)" finished as normally.
+9/19/14 12:22 PM : Query "parameter(multiplexor,synthesis)" finished as normally.
+9/19/14 12:22 PM : Query "parameter(wire_in,synthesis)" finished as normally.
+9/19/14 12:22 PM : Query "parameter(wire_out,synthesis)" finished as normally.
+9/19/14 12:22 PM : Query "parameter(wire_in,synthesis)" finished as normally.
+9/19/14 12:22 PM : "Resource Declaration" start browse.
+9/19/14 12:22 PM : "Resource Declaration" re-edit.
+9/19/14 12:22 PM : Query "function(wire_in,synthesis,bit_width=32)" finished as normally.
+9/19/14 12:22 PM : Query "portinfo(wire_in,synthesis,bit_width=32)" finished as normally.
+9/19/14 12:22 PM : Query "shape(area,wire_in,synthesis,priority=delay:bit_width=32)" finished as normally.
+9/19/14 12:22 PM : Query "timing(delay,wire_in,synthesis,priority=delay:bit_width=32)" finished as normally.
+9/19/14 12:22 PM : Query "power(power,wire_in,synthesis,priority=delay:bit_width=32)" finished as normally.
+9/19/14 12:22 PM : Query "search()" finished as normally.
+9/19/14 12:22 PM : Query "search()" finished as normally.
+9/19/14 12:22 PM : Query "parameter(wire_in,synthesis)" finished as normally.
+9/19/14 12:22 PM : Query "function(wire_in,synthesis,bit_width=1)" finished as normally.
+9/19/14 12:22 PM : Query "portinfo(wire_in,synthesis,bit_width=1)" finished as normally.
+9/19/14 12:23 PM : Query "parameter(wire_in,synthesis)" finished as normally.
+9/19/14 12:23 PM : Query "parameter(wire_in,synthesis)" finished as normally.
+9/19/14 12:23 PM : Query "parameter(wire_in,synthesis)" finished as normally.
+9/19/14 12:23 PM : Query "parameter(wire_in,synthesis)" finished as normally.
+9/19/14 12:23 PM : Query "parameter(wire_in,synthesis)" finished as normally.
+9/19/14 12:23 PM : Query "parameter(wire_in,synthesis)" finished as normally.
+9/19/14 12:23 PM : Query "parameter(wire_in,synthesis)" finished as normally.
+9/19/14 12:23 PM : Query "parameter(wire_in,synthesis)" finished as normally.
+9/19/14 12:24 PM : Query "function(wire_in,synthesis,bit_width=1)" finished as normally.
+9/19/14 12:24 PM : Query "portinfo(wire_in,synthesis,bit_width=1)" finished as normally.
+9/19/14 12:24 PM : Query "shape(area,wire_in,synthesis,priority=delay:bit_width=1)" finished as normally.
+9/19/14 12:24 PM : Query "timing(delay,wire_in,synthesis,priority=delay:bit_width=1)" finished as normally.
+9/19/14 12:24 PM : Query "power(power,wire_in,synthesis,priority=delay:bit_width=1)" finished as normally.
+9/19/14 12:24 PM : Query "search()" finished as normally.
+9/19/14 12:24 PM : Query "search()" finished as normally.
+9/19/14 12:24 PM : Query "parameter(wire_in,synthesis)" finished as normally.
+9/19/14 12:24 PM : Query "function(wire_in,synthesis,bit_width=1)" finished as normally.
+9/19/14 12:24 PM : Query "portinfo(wire_in,synthesis,bit_width=1)" finished as normally.
+9/19/14 12:24 PM : Query "parameter(wire_out,synthesis)" finished as normally.
+9/19/14 12:24 PM : Query "function(wire_out,synthesis,bit_width=1:default_output=fix_to_0)" finished as normally.
+9/19/14 12:24 PM : Query "portinfo(wire_out,synthesis,bit_width=1:default_output=fix_to_0)" finished as normally.
+9/19/14 12:24 PM : Query "parameter(wire_in,synthesis)" finished as normally.
+9/19/14 12:24 PM : Query "function(wire_in,synthesis,bit_width=1)" finished as normally.
+9/19/14 12:24 PM : Query "portinfo(wire_in,synthesis,bit_width=1)" finished as normally.
+9/19/14 12:24 PM : Query "parameter(wire_in,synthesis)" finished as normally.
+9/19/14 12:24 PM : Query "parameter(wire_in,synthesis)" finished as normally.
+9/19/14 12:25 PM : Query "parameter(wire_in,synthesis)" finished as normally.
+9/19/14 12:25 PM : Query "parameter(wire_in,synthesis)" finished as normally.
+9/19/14 12:25 PM : Query "parameter(wire_in,synthesis)" finished as normally.
+9/19/14 12:25 PM : Query "parameter(wire_in,synthesis)" finished as normally.
+9/19/14 12:25 PM : Query "parameter(wire_in,synthesis)" finished as normally.
+9/19/14 12:25 PM : Query "parameter(wire_in,synthesis)" finished as normally.
+9/19/14 12:25 PM : Query "parameter(wire_in,synthesis)" finished as normally.
+9/19/14 12:25 PM : Query "parameter(wire_in,synthesis)" finished as normally.
+9/19/14 12:25 PM : Query "parameter(wire_in,synthesis)" finished as normally.
+9/19/14 12:25 PM : Query "parameter(wire_in,synthesis)" finished as normally.
+9/19/14 12:25 PM : Query "parameter(wire_in,synthesis)" finished as normally.
+9/19/14 12:25 PM : Query "parameter(wire_in,synthesis)" finished as normally.
+9/19/14 12:25 PM : Query "parameter(wire_in,synthesis)" finished as normally.
+9/19/14 12:25 PM : Query "parameter(wire_in,synthesis)" finished as normally.
+9/19/14 12:25 PM : Query "parameter(wire_in,synthesis)" finished as normally.
+9/19/14 12:25 PM : Query "parameter(wire_in,synthesis)" finished as normally.
+9/19/14 12:31 PM : Query "function(wire_out,synthesis,bit_width=136:default_output=fix_to_0)" finished as normally.
+9/19/14 12:31 PM : Query "portinfo(wire_out,synthesis,bit_width=136:default_output=fix_to_0)" finished as normally.
+9/19/14 12:31 PM : Query "shape(area,wire_out,synthesis,priority=delay:bit_width=136:default_output=fix_to_0)" finished as normally.
+9/19/14 12:31 PM : Query "timing(delay,wire_out,synthesis,priority=delay:bit_width=136:default_output=fix_to_0)" finished as normally.
+9/19/14 12:31 PM : Query "power(power,wire_out,synthesis,priority=delay:bit_width=136:default_output=fix_to_0)" finished as normally.
+9/19/14 12:32 PM : Query "search()" finished as normally.
+9/19/14 12:32 PM : Query "search()" finished as normally.
+9/19/14 12:32 PM : Query "parameter(wire_in,synthesis)" finished as normally.
+9/19/14 12:32 PM : Query "function(wire_in,synthesis,bit_width=1)" finished as normally.
+9/19/14 12:32 PM : Query "portinfo(wire_in,synthesis,bit_width=1)" finished as normally.
+9/19/14 12:32 PM : Query "parameter(wire_out,synthesis)" finished as normally.
+9/19/14 12:32 PM : Query "function(wire_out,synthesis,bit_width=1:default_output=fix_to_0)" finished as normally.
+9/19/14 12:32 PM : Query "portinfo(wire_out,synthesis,bit_width=1:default_output=fix_to_0)" finished as normally.
+9/19/14 12:33 PM : Query "parameter(wire_out,synthesis)" finished as normally.
+9/19/14 12:33 PM : Query "parameter(wire_out,synthesis)" finished as normally.
+9/19/14 12:33 PM : Query "parameter(wire_out,synthesis)" finished as normally.
+9/19/14 12:33 PM : Query "parameter(wire_out,synthesis)" finished as normally.
+9/19/14 12:33 PM : Query "parameter(wire_out,synthesis)" finished as normally.
+9/19/14 12:33 PM : Query "parameter(wire_out,synthesis)" finished as normally.
+9/19/14 12:34 PM : Query "parameter(wire_out,synthesis)" finished as normally.
+9/19/14 12:34 PM : Query "parameter(wire_out,synthesis)" finished as normally.
+9/19/14 12:34 PM : Query "parameter(wire_out,synthesis)" finished as normally.
+9/19/14 12:34 PM : Query "parameter(wire_out,synthesis)" finished as normally.
+9/19/14 12:34 PM : Query "parameter(wire_out,synthesis)" finished as normally.
+9/19/14 12:34 PM : Query "parameter(wire_out,synthesis)" finished as normally.
+9/19/14 12:34 PM : Query "parameter(wire_out,synthesis)" finished as normally.
+9/19/14 12:34 PM : Query "parameter(wire_out,synthesis)" finished as normally.
+9/19/14 12:34 PM : Query "parameter(wire_out,synthesis)" finished as normally.
+9/19/14 12:34 PM : Query "parameter(wire_out,synthesis)" finished as normally.
+9/19/14 12:34 PM : Query "parameter(wire_out,synthesis)" finished as normally.
+9/19/14 12:34 PM : Query "parameter(wire_out,synthesis)" finished as normally.
+9/19/14 12:34 PM : Query "parameter(wire_out,synthesis)" finished as normally.
+9/19/14 12:34 PM : Query "parameter(wire_out,synthesis)" finished as normally.
+9/19/14 12:34 PM : Query "parameter(wire_out,synthesis)" finished as normally.
+9/19/14 12:34 PM : Query "parameter(wire_out,synthesis)" finished as normally.
+9/19/14 12:34 PM : Query "parameter(wire_out,synthesis)" finished as normally.
+9/19/14 12:34 PM : Query "parameter(wire_out,synthesis)" finished as normally.
+9/19/14 12:35 PM : Query "parameter(wire_out,synthesis)" finished as normally.
+9/19/14 12:35 PM : Query "parameter(wire_out,synthesis)" finished as normally.
+9/19/14 12:35 PM : "Resource Declaration" save
+9/19/14 12:35 PM : "Resource Declaration" complete.
+9/19/14 12:35 PM : "Resource Declaration" finish browse.
+9/19/14 12:35 PM : "Storage Spec" start edit.
+9/19/14 12:35 PM : "Storage Spec" save
+9/19/14 12:35 PM : "Storage Spec" complete.
+9/19/14 12:35 PM : "Storage Spec" finish browse.
+9/19/14 12:35 PM : "Instruction Definition" start edit.
+9/19/14 12:35 PM : "Instruction Definition" save
+9/19/14 12:35 PM : "Instruction Definition" complete.
+9/19/14 12:35 PM : "Instruction Definition" finish browse.
+9/19/14 12:35 PM : "Micro Op. Description" start edit.
+9/19/14 12:37 PM : "Micro Op. Description" save
+9/19/14 12:37 PM : "Micro Op. Description" complete.
+9/19/14 12:37 PM : "Micro Op. Description" finish browse.
+9/19/14 12:37 PM :  modelgen sim lb lb_mod.log VHDL finished as normally.
+9/19/14 12:37 PM : Load file "lb_mod.log".
+9/19/14 12:37 PM : "HDL Generation" complete.
+9/19/14 12:37 PM : "Micro Op. Description" start browse.
+9/19/14 12:37 PM : "Micro Op. Description" re-edit.
+9/19/14 12:39 PM : "Micro Op. Description" save
+9/19/14 12:39 PM : "Micro Op. Description" complete.
+9/19/14 12:39 PM : "Micro Op. Description" finish browse.
+9/19/14 12:39 PM :  modelgen sim lb lb_mod.log VHDL finished as normally.
+9/19/14 12:39 PM : Load file "lb_mod.log".
+9/19/14 12:39 PM : "HDL Generation" complete.
+9/19/14 12:41 PM : "Micro Op. Description" start browse.
+9/19/14 12:41 PM : "Micro Op. Description" re-edit.
+9/19/14 12:42 PM : "Micro Op. Description" save
+9/19/14 12:42 PM : "Micro Op. Description" complete.
+9/19/14 12:42 PM : "Micro Op. Description" finish browse.
+9/19/14 12:42 PM :  modelgen sim lb lb_mod.log VHDL finished as normally.
+9/19/14 12:42 PM : Load file "lb_mod.log".
+9/19/14 12:42 PM : "HDL Generation" complete.
+9/19/14 12:43 PM : "Micro Op. Description" start browse.
+9/19/14 12:43 PM : "Micro Op. Description" re-edit.
+9/19/14 12:43 PM : "Micro Op. Description" save
+9/19/14 12:43 PM : "Micro Op. Description" complete.
+9/19/14 12:43 PM : "Micro Op. Description" finish browse.
+9/19/14 12:43 PM :  modelgen sim lb lb_mod.log VHDL finished as normally.
+9/19/14 12:43 PM : Load file "lb_mod.log".
+9/19/14 12:43 PM : "HDL Generation" complete.
+9/19/14 12:44 PM : "Micro Op. Description" start browse.
+9/19/14 12:44 PM : "Micro Op. Description" re-edit.
+9/19/14 12:47 PM : "Micro Op. Description" save
+9/19/14 12:47 PM : "Micro Op. Description" complete.
+9/19/14 12:47 PM : "Micro Op. Description" finish browse.
+9/19/14 12:47 PM :  modelgen sim lb lb_mod.log VHDL finished as normally.
+9/19/14 12:47 PM : Load file "lb_mod.log".
+9/19/14 12:47 PM : "HDL Generation" complete.
+9/19/14 12:48 PM : "Micro Op. Description" start browse.
+9/19/14 12:48 PM : "Micro Op. Description" re-edit.
+9/19/14 12:49 PM : "Micro Op. Description" save
+9/19/14 12:49 PM : "Micro Op. Description" complete.
+9/19/14 12:49 PM : "Micro Op. Description" finish browse.
+9/19/14 12:50 PM :  modelgen sim lb lb_mod.log VHDL finished as normally.
+9/19/14 12:50 PM : Load file "lb_mod.log".
+9/19/14 12:50 PM : "HDL Generation" complete.
+9/19/14 12:50 PM : "Micro Op. Description" start browse.
+9/19/14 12:50 PM : "Micro Op. Description" re-edit.
+9/19/14 12:51 PM : "Micro Op. Description" save
+9/19/14 12:51 PM : "Micro Op. Description" finish edit.
+9/19/14 12:51 PM : Query "parameter(alu,synthesis)" finished as normally.
+9/19/14 12:51 PM : Query "parameter(adder,synthesis)" finished as normally.
+9/19/14 12:51 PM : Query "parameter(divider,synthesis)" finished as normally.
+9/19/14 12:51 PM : Query "parameter(extender,synthesis)" finished as normally.
+9/19/14 12:51 PM : Query "parameter(multiplier,synthesis)" finished as normally.
+9/19/14 12:51 PM : Query "parameter(register,synthesis)" finished as normally.
+9/19/14 12:51 PM : Query "parameter(register,synthesis)" finished as normally.
+9/19/14 12:51 PM : Query "parameter(registerfile,synthesis)" finished as normally.
+9/19/14 12:51 PM : Query "parameter(register,synthesis)" finished as normally.
+9/19/14 12:51 PM : Query "parameter(mifu,synthesis)" finished as normally.
+9/19/14 12:51 PM : Query "parameter(pcu,synthesis)" finished as normally.
+9/19/14 12:51 PM : Query "parameter(shifter,synthesis)" finished as normally.
+9/19/14 12:51 PM : Query "parameter(adder,synthesis)" finished as normally.
+9/19/14 12:51 PM : Query "parameter(register,synthesis)" finished as normally.
+9/19/14 12:51 PM : Query "parameter(wire_out,synthesis)" finished as normally.
+9/19/14 12:51 PM : Query "parameter(wire_in,synthesis)" finished as normally.
+9/19/14 12:51 PM : Query "parameter(fwu,synthesis)" finished as normally.
+9/19/14 12:51 PM : Query "parameter(fwu,synthesis)" finished as normally.
+9/19/14 12:51 PM : Query "parameter(fwu,synthesis)" finished as normally.
+9/19/14 12:51 PM : Query "parameter(fwu,synthesis)" finished as normally.
+9/19/14 12:51 PM : Query "parameter(adder,synthesis)" finished as normally.
+9/19/14 12:51 PM : Query "parameter(mifu,synthesis)" finished as normally.
+9/19/14 12:51 PM : Query "parameter(register,synthesis)" finished as normally.
+9/19/14 12:51 PM : Query "parameter(register,synthesis)" finished as normally.
+9/19/14 12:51 PM : Query "parameter(register,synthesis)" finished as normally.
+9/19/14 12:51 PM : Query "parameter(comparator,synthesis)" finished as normally.
+9/19/14 12:51 PM : Query "parameter(registerfile,synthesis)" finished as normally.
+9/19/14 12:51 PM : Query "parameter(register,synthesis)" finished as normally.
+9/19/14 12:51 PM : Query "parameter(multiplexor,synthesis)" finished as normally.
+9/19/14 12:51 PM : Query "parameter(wire_out,synthesis)" finished as normally.
+9/19/14 12:51 PM : Query "parameter(wire_out,synthesis)" finished as normally.
+9/19/14 12:51 PM : Query "parameter(wire_out,synthesis)" finished as normally.
+9/19/14 12:51 PM : Query "parameter(wire_out,synthesis)" finished as normally.
+9/19/14 12:51 PM : Query "parameter(wire_in,synthesis)" finished as normally.
+9/19/14 12:51 PM : Query "parameter(pcu,synthesis)" finished as normally.
+9/19/14 12:51 PM : Query "parameter(register,synthesis)" finished as normally.
+9/19/14 12:51 PM : Query "parameter(register,synthesis)" finished as normally.
+9/19/14 12:51 PM : Query "parameter(register,synthesis)" finished as normally.
+9/19/14 12:51 PM : Query "parameter(register,synthesis)" finished as normally.
+9/19/14 12:51 PM : Query "parameter(register,synthesis)" finished as normally.
+9/19/14 12:51 PM : Query "parameter(register,synthesis)" finished as normally.
+9/19/14 12:51 PM : Query "parameter(pcu,synthesis)" finished as normally.
+9/19/14 12:51 PM : Query "parameter(wire_in,synthesis)" finished as normally.
+9/19/14 12:51 PM : Query "parameter(wire_out,synthesis)" finished as normally.
+9/19/14 12:51 PM : Query "parameter(pcu,synthesis)" finished as normally.
+9/19/14 12:51 PM : Query "parameter(wire_out,synthesis)" finished as normally.
+9/19/14 12:51 PM : Query "parameter(wire_out,synthesis)" finished as normally.
+9/19/14 12:51 PM : Query "parameter(wire_in,synthesis)" finished as normally.
+9/19/14 12:51 PM : Query "parameter(wire_out,synthesis)" finished as normally.
+9/19/14 12:51 PM : Query "parameter(wire_out,synthesis)" finished as normally.
+9/19/14 12:51 PM : Query "parameter(wire_out,synthesis)" finished as normally.
+9/19/14 12:51 PM : Query "parameter(wire_in,synthesis)" finished as normally.
+9/19/14 12:51 PM : Query "parameter(register,synthesis)" finished as normally.
+9/19/14 12:51 PM : Query "parameter(register,synthesis)" finished as normally.
+9/19/14 12:51 PM : Query "parameter(register,synthesis)" finished as normally.
+9/19/14 12:51 PM : Query "parameter(mifu,synthesis)" finished as normally.
+9/19/14 12:51 PM : Query "parameter(wire_out,synthesis)" finished as normally.
+9/19/14 12:51 PM : Query "parameter(mifu,synthesis)" finished as normally.
+9/19/14 12:51 PM : Query "parameter(mifu,synthesis)" finished as normally.
+9/19/14 12:51 PM : Query "parameter(register,synthesis)" finished as normally.
+9/19/14 12:51 PM : Query "parameter(register,synthesis)" finished as normally.
+9/19/14 12:51 PM : Query "parameter(register,synthesis)" finished as normally.
+9/19/14 12:51 PM : Query "parameter(comparator,synthesis)" finished as normally.
+9/19/14 12:51 PM : Query "parameter(comparator,synthesis)" finished as normally.
+9/19/14 12:51 PM : Query "parameter(register,synthesis)" finished as normally.
+9/19/14 12:51 PM : Query "parameter(comparator,synthesis)" finished as normally.
+9/19/14 12:51 PM : Query "parameter(comparator,synthesis)" finished as normally.
+9/19/14 12:51 PM : Query "parameter(register,synthesis)" finished as normally.
+9/19/14 12:51 PM : Query "parameter(comparator,synthesis)" finished as normally.
+9/19/14 12:51 PM : Query "parameter(comparator,synthesis)" finished as normally.
+9/19/14 12:51 PM : Query "parameter(comparator,synthesis)" finished as normally.
+9/19/14 12:51 PM : Query "parameter(comparator,synthesis)" finished as normally.
+9/19/14 12:51 PM : Query "parameter(wire_out,synthesis)" finished as normally.
+9/19/14 12:51 PM : Query "parameter(wire_out,synthesis)" finished as normally.
+9/19/14 12:51 PM : Query "parameter(wire_in,synthesis)" finished as normally.
+9/19/14 12:51 PM : Query "parameter(wire_out,synthesis)" finished as normally.
+9/19/14 12:51 PM : Query "parameter(wire_in,synthesis)" finished as normally.
+9/19/14 12:51 PM : Query "parameter(wire_out,synthesis)" finished as normally.
+9/19/14 12:51 PM : Query "parameter(wire_in,synthesis)" finished as normally.
+9/19/14 12:51 PM : Query "parameter(wire_out,synthesis)" finished as normally.
+9/19/14 12:51 PM : Query "parameter(wire_out,synthesis)" finished as normally.
+9/19/14 12:51 PM : Query "parameter(wire_out,synthesis)" finished as normally.
+9/19/14 12:51 PM : Query "parameter(wire_out,synthesis)" finished as normally.
+9/19/14 12:51 PM : Query "parameter(wire_out,synthesis)" finished as normally.
+9/19/14 12:51 PM : Query "parameter(wire_out,synthesis)" finished as normally.
+9/19/14 12:51 PM : Query "parameter(wire_out,synthesis)" finished as normally.
+9/19/14 12:51 PM : Query "parameter(register,synthesis)" finished as normally.
+9/19/14 12:51 PM : Query "parameter(fwu,synthesis)" finished as normally.
+9/19/14 12:51 PM : Query "parameter(fwu_lock,synthesis)" finished as normally.
+9/19/14 12:51 PM : Query "parameter(fwu_lock,synthesis)" finished as normally.
+9/19/14 12:51 PM : Query "parameter(fwu_lock,synthesis)" finished as normally.
+9/19/14 12:51 PM : Query "parameter(fwu_lock,synthesis)" finished as normally.
+9/19/14 12:51 PM : Query "parameter(multiplexor,synthesis)" finished as normally.
+9/19/14 12:51 PM : Query "parameter(wire_in,synthesis)" finished as normally.
+9/19/14 12:51 PM : Query "parameter(wire_out,synthesis)" finished as normally.
+9/19/14 12:51 PM : Query "parameter(wire_in,synthesis)" finished as normally.
+9/19/14 12:51 PM : Query "parameter(wire_in,synthesis)" finished as normally.
+9/19/14 12:51 PM : Query "parameter(wire_in,synthesis)" finished as normally.
+9/19/14 12:51 PM : Query "parameter(wire_in,synthesis)" finished as normally.
+9/19/14 12:51 PM : Query "parameter(wire_in,synthesis)" finished as normally.
+9/19/14 12:51 PM : Query "parameter(wire_in,synthesis)" finished as normally.
+9/19/14 12:51 PM : Query "parameter(wire_in,synthesis)" finished as normally.
+9/19/14 12:51 PM : Query "parameter(wire_in,synthesis)" finished as normally.
+9/19/14 12:51 PM : Query "parameter(wire_in,synthesis)" finished as normally.
+9/19/14 12:51 PM : Query "parameter(wire_in,synthesis)" finished as normally.
+9/19/14 12:51 PM : Query "parameter(wire_in,synthesis)" finished as normally.
+9/19/14 12:51 PM : Query "parameter(wire_in,synthesis)" finished as normally.
+9/19/14 12:51 PM : Query "parameter(wire_in,synthesis)" finished as normally.
+9/19/14 12:51 PM : Query "parameter(wire_in,synthesis)" finished as normally.
+9/19/14 12:51 PM : Query "parameter(wire_out,synthesis)" finished as normally.
+9/19/14 12:51 PM : Query "parameter(wire_out,synthesis)" finished as normally.
+9/19/14 12:51 PM : Query "parameter(wire_out,synthesis)" finished as normally.
+9/19/14 12:51 PM : Query "parameter(wire_out,synthesis)" finished as normally.
+9/19/14 12:51 PM : Query "parameter(wire_out,synthesis)" finished as normally.
+9/19/14 12:51 PM : Query "parameter(wire_out,synthesis)" finished as normally.
+9/19/14 12:51 PM : Query "parameter(wire_out,synthesis)" finished as normally.
+9/19/14 12:51 PM : Query "parameter(wire_out,synthesis)" finished as normally.
+9/19/14 12:51 PM : Query "parameter(wire_out,synthesis)" finished as normally.
+9/19/14 12:51 PM : Query "parameter(wire_out,synthesis)" finished as normally.
+9/19/14 12:51 PM : Query "parameter(wire_out,synthesis)" finished as normally.
+9/19/14 12:51 PM : Query "parameter(wire_out,synthesis)" finished as normally.
+9/19/14 12:51 PM : Query "parameter(wire_out,synthesis)" finished as normally.
+9/19/14 12:51 PM : "Resource Declaration" start browse.
+9/19/14 12:51 PM : Query "function(wire_out,synthesis,bit_width=136:default_output=fix_to_0)" finished as normally.
+9/19/14 12:51 PM : Query "portinfo(wire_out,synthesis,bit_width=136:default_output=fix_to_0)" finished as normally.
+9/19/14 12:51 PM : Query "shape(area,wire_out,synthesis,priority=delay:bit_width=136:default_output=fix_to_0)" finished as normally.
+9/19/14 12:51 PM : Query "timing(delay,wire_out,synthesis,priority=delay:bit_width=136:default_output=fix_to_0)" finished as normally.
+9/19/14 12:51 PM : Query "power(power,wire_out,synthesis,priority=delay:bit_width=136:default_output=fix_to_0)" finished as normally.
+9/19/14 12:51 PM : "Resource Declaration" re-edit.
+9/19/14 12:51 PM : Query "search()" finished as normally.
+9/19/14 12:51 PM : Query "search()" finished as normally.
+9/19/14 12:51 PM : Query "parameter(wire_out,synthesis)" finished as normally.
+9/19/14 12:51 PM : Query "function(wire_out,synthesis,bit_width=1:default_output=fix_to_0)" finished as normally.
+9/19/14 12:51 PM : Query "portinfo(wire_out,synthesis,bit_width=1:default_output=fix_to_0)" finished as normally.
+9/19/14 12:51 PM : Query "parameter(wire_out,synthesis)" finished as normally.
+9/19/14 12:51 PM : Query "function(wire_out,synthesis,bit_width=1:default_output=fix_to_0)" finished as normally.
+9/19/14 12:51 PM : Query "portinfo(wire_out,synthesis,bit_width=1:default_output=fix_to_0)" finished as normally.
+9/19/14 12:52 PM : Query "parameter(wire_out,synthesis)" finished as normally.
+9/19/14 12:52 PM : Query "parameter(wire_out,synthesis)" finished as normally.
+9/19/14 12:52 PM : "Resource Declaration" save
+9/19/14 12:52 PM : "Resource Declaration" complete.
+9/19/14 12:52 PM : "Resource Declaration" finish browse.
+9/19/14 12:52 PM : "Storage Spec" start edit.
+9/19/14 12:52 PM : "Storage Spec" save
+9/19/14 12:52 PM : "Storage Spec" complete.
+9/19/14 12:52 PM : "Storage Spec" finish browse.
+9/19/14 12:52 PM : "Instruction Definition" start edit.
+9/19/14 12:52 PM : "Instruction Definition" save
+9/19/14 12:52 PM : "Instruction Definition" complete.
+9/19/14 12:52 PM : "Instruction Definition" finish browse.
+9/19/14 12:52 PM : "Micro Op. Description" start edit.
+9/19/14 12:52 PM : "Micro Op. Description" save
+9/19/14 12:52 PM : "Micro Op. Description" complete.
+9/19/14 12:52 PM : "Micro Op. Description" finish browse.
+9/19/14 12:52 PM :  modelgen sim lb lb_mod.log VHDL finished as normally.
+9/19/14 12:52 PM : Load file "lb_mod.log".
+9/19/14 12:52 PM : "HDL Generation" complete.
+9/19/14 12:52 PM : "Micro Op. Description" start browse.
+9/19/14 12:52 PM : "Micro Op. Description" re-edit.
+9/19/14 12:53 PM : "Micro Op. Description" save
+9/19/14 12:53 PM : "Micro Op. Description" complete.
+9/19/14 12:53 PM : "Micro Op. Description" finish browse.
+9/19/14 12:53 PM :  modelgen sim lb lb_mod.log VHDL finished as normally.
+9/19/14 12:53 PM : Load file "lb_mod.log".
+9/19/14 12:53 PM : "HDL Generation" complete.
+9/19/14 12:53 PM : "Micro Op. Description" start browse.
+9/19/14 12:54 PM : "Micro Op. Description" re-edit.
+9/19/14 12:54 PM : "Micro Op. Description" save
+9/19/14 12:54 PM : "Micro Op. Description" complete.
+9/19/14 12:54 PM : "Micro Op. Description" finish browse.
+9/19/14 12:55 PM :  modelgen sim lb lb_mod.log VHDL finished as normally.
+9/19/14 12:55 PM : Load file "lb_mod.log".
+9/19/14 12:55 PM : "HDL Generation" complete.
+9/19/14 1:39 PM : Query "parameter(alu,synthesis)" finished as normally.
+9/19/14 1:39 PM : Query "parameter(adder,synthesis)" finished as normally.
+9/19/14 1:39 PM : Query "parameter(divider,synthesis)" finished as normally.
+9/19/14 1:39 PM : Query "parameter(extender,synthesis)" finished as normally.
+9/19/14 1:39 PM : Query "parameter(multiplier,synthesis)" finished as normally.
+9/19/14 1:39 PM : Query "parameter(register,synthesis)" finished as normally.
+9/19/14 1:39 PM : Query "parameter(register,synthesis)" finished as normally.
+9/19/14 1:39 PM : Query "parameter(registerfile,synthesis)" finished as normally.
+9/19/14 1:39 PM : Query "parameter(register,synthesis)" finished as normally.
+9/19/14 1:39 PM : Query "parameter(mifu,synthesis)" finished as normally.
+9/19/14 1:39 PM : Query "parameter(pcu,synthesis)" finished as normally.
+9/19/14 1:39 PM : Query "parameter(shifter,synthesis)" finished as normally.
+9/19/14 1:39 PM : Query "parameter(adder,synthesis)" finished as normally.
+9/19/14 1:39 PM : Query "parameter(register,synthesis)" finished as normally.
+9/19/14 1:39 PM : Query "parameter(wire_out,synthesis)" finished as normally.
+9/19/14 1:39 PM : Query "parameter(wire_in,synthesis)" finished as normally.
+9/19/14 1:39 PM : Query "parameter(fwu,synthesis)" finished as normally.
+9/19/14 1:39 PM : Query "parameter(fwu,synthesis)" finished as normally.
+9/19/14 1:39 PM : Query "parameter(fwu,synthesis)" finished as normally.
+9/19/14 1:39 PM : Query "parameter(fwu,synthesis)" finished as normally.
+9/19/14 1:39 PM : Query "parameter(adder,synthesis)" finished as normally.
+9/19/14 1:39 PM : Query "parameter(mifu,synthesis)" finished as normally.
+9/19/14 1:39 PM : Query "parameter(register,synthesis)" finished as normally.
+9/19/14 1:39 PM : Query "parameter(register,synthesis)" finished as normally.
+9/19/14 1:39 PM : Query "parameter(register,synthesis)" finished as normally.
+9/19/14 1:39 PM : Query "parameter(comparator,synthesis)" finished as normally.
+9/19/14 1:39 PM : Query "parameter(registerfile,synthesis)" finished as normally.
+9/19/14 1:39 PM : Query "parameter(register,synthesis)" finished as normally.
+9/19/14 1:39 PM : Query "parameter(multiplexor,synthesis)" finished as normally.
+9/19/14 1:39 PM : Query "parameter(wire_out,synthesis)" finished as normally.
+9/19/14 1:39 PM : Query "parameter(wire_out,synthesis)" finished as normally.
+9/19/14 1:39 PM : Query "parameter(wire_out,synthesis)" finished as normally.
+9/19/14 1:39 PM : Query "parameter(wire_out,synthesis)" finished as normally.
+9/19/14 1:39 PM : Query "parameter(wire_in,synthesis)" finished as normally.
+9/19/14 1:39 PM : Query "parameter(pcu,synthesis)" finished as normally.
+9/19/14 1:39 PM : Query "parameter(register,synthesis)" finished as normally.
+9/19/14 1:39 PM : Query "parameter(register,synthesis)" finished as normally.
+9/19/14 1:39 PM : Query "parameter(register,synthesis)" finished as normally.
+9/19/14 1:39 PM : Query "parameter(register,synthesis)" finished as normally.
+9/19/14 1:39 PM : Query "parameter(register,synthesis)" finished as normally.
+9/19/14 1:39 PM : Query "parameter(register,synthesis)" finished as normally.
+9/19/14 1:39 PM : Query "parameter(pcu,synthesis)" finished as normally.
+9/19/14 1:39 PM : Query "parameter(wire_in,synthesis)" finished as normally.
+9/19/14 1:39 PM : Query "parameter(wire_out,synthesis)" finished as normally.
+9/19/14 1:39 PM : Query "parameter(pcu,synthesis)" finished as normally.
+9/19/14 1:39 PM : Query "parameter(wire_out,synthesis)" finished as normally.
+9/19/14 1:39 PM : Query "parameter(wire_out,synthesis)" finished as normally.
+9/19/14 1:39 PM : Query "parameter(wire_in,synthesis)" finished as normally.
+9/19/14 1:39 PM : Query "parameter(wire_out,synthesis)" finished as normally.
+9/19/14 1:39 PM : Query "parameter(wire_out,synthesis)" finished as normally.
+9/19/14 1:39 PM : Query "parameter(wire_out,synthesis)" finished as normally.
+9/19/14 1:39 PM : Query "parameter(wire_in,synthesis)" finished as normally.
+9/19/14 1:39 PM : Query "parameter(register,synthesis)" finished as normally.
+9/19/14 1:39 PM : Query "parameter(register,synthesis)" finished as normally.
+9/19/14 1:39 PM : Query "parameter(register,synthesis)" finished as normally.
+9/19/14 1:39 PM : Query "parameter(mifu,synthesis)" finished as normally.
+9/19/14 1:39 PM : Query "parameter(wire_out,synthesis)" finished as normally.
+9/19/14 1:39 PM : Query "parameter(mifu,synthesis)" finished as normally.
+9/19/14 1:39 PM : Query "parameter(mifu,synthesis)" finished as normally.
+9/19/14 1:39 PM : Query "parameter(register,synthesis)" finished as normally.
+9/19/14 1:39 PM : Query "parameter(register,synthesis)" finished as normally.
+9/19/14 1:39 PM : Query "parameter(register,synthesis)" finished as normally.
+9/19/14 1:39 PM : Query "parameter(comparator,synthesis)" finished as normally.
+9/19/14 1:39 PM : Query "parameter(comparator,synthesis)" finished as normally.
+9/19/14 1:39 PM : Query "parameter(register,synthesis)" finished as normally.
+9/19/14 1:39 PM : Query "parameter(comparator,synthesis)" finished as normally.
+9/19/14 1:39 PM : Query "parameter(comparator,synthesis)" finished as normally.
+9/19/14 1:39 PM : Query "parameter(register,synthesis)" finished as normally.
+9/19/14 1:39 PM : Query "parameter(comparator,synthesis)" finished as normally.
+9/19/14 1:39 PM : Query "parameter(comparator,synthesis)" finished as normally.
+9/19/14 1:39 PM : Query "parameter(comparator,synthesis)" finished as normally.
+9/19/14 1:39 PM : Query "parameter(comparator,synthesis)" finished as normally.
+9/19/14 1:39 PM : Query "parameter(wire_out,synthesis)" finished as normally.
+9/19/14 1:39 PM : Query "parameter(wire_out,synthesis)" finished as normally.
+9/19/14 1:39 PM : Query "parameter(wire_in,synthesis)" finished as normally.
+9/19/14 1:39 PM : Query "parameter(wire_out,synthesis)" finished as normally.
+9/19/14 1:39 PM : Query "parameter(wire_in,synthesis)" finished as normally.
+9/19/14 1:39 PM : Query "parameter(wire_out,synthesis)" finished as normally.
+9/19/14 1:39 PM : Query "parameter(wire_in,synthesis)" finished as normally.
+9/19/14 1:39 PM : Query "parameter(wire_out,synthesis)" finished as normally.
+9/19/14 1:39 PM : Query "parameter(wire_out,synthesis)" finished as normally.
+9/19/14 1:39 PM : Query "parameter(wire_out,synthesis)" finished as normally.
+9/19/14 1:39 PM : Query "parameter(wire_out,synthesis)" finished as normally.
+9/19/14 1:39 PM : Query "parameter(wire_out,synthesis)" finished as normally.
+9/19/14 1:40 PM : Query "parameter(wire_out,synthesis)" finished as normally.
+9/19/14 1:40 PM : Query "parameter(wire_out,synthesis)" finished as normally.
+9/19/14 1:40 PM : Query "parameter(register,synthesis)" finished as normally.
+9/19/14 1:40 PM : Query "parameter(fwu,synthesis)" finished as normally.
+9/19/14 1:40 PM : Query "parameter(fwu_lock,synthesis)" finished as normally.
+9/19/14 1:40 PM : Query "parameter(fwu_lock,synthesis)" finished as normally.
+9/19/14 1:40 PM : Query "parameter(fwu_lock,synthesis)" finished as normally.
+9/19/14 1:40 PM : Query "parameter(fwu_lock,synthesis)" finished as normally.
+9/19/14 1:40 PM : Query "parameter(multiplexor,synthesis)" finished as normally.
+9/19/14 1:40 PM : Query "parameter(wire_in,synthesis)" finished as normally.
+9/19/14 1:40 PM : Query "parameter(wire_out,synthesis)" finished as normally.
+9/19/14 1:40 PM : Query "parameter(wire_in,synthesis)" finished as normally.
+9/19/14 1:40 PM : Query "parameter(wire_in,synthesis)" finished as normally.
+9/19/14 1:40 PM : Query "parameter(wire_in,synthesis)" finished as normally.
+9/19/14 1:40 PM : Query "parameter(wire_in,synthesis)" finished as normally.
+9/19/14 1:40 PM : Query "parameter(wire_in,synthesis)" finished as normally.
+9/19/14 1:40 PM : Query "parameter(wire_in,synthesis)" finished as normally.
+9/19/14 1:40 PM : Query "parameter(wire_in,synthesis)" finished as normally.
+9/19/14 1:40 PM : Query "parameter(wire_in,synthesis)" finished as normally.
+9/19/14 1:40 PM : Query "parameter(wire_in,synthesis)" finished as normally.
+9/19/14 1:40 PM : Query "parameter(wire_in,synthesis)" finished as normally.
+9/19/14 1:40 PM : Query "parameter(wire_in,synthesis)" finished as normally.
+9/19/14 1:40 PM : Query "parameter(wire_in,synthesis)" finished as normally.
+9/19/14 1:40 PM : Query "parameter(wire_in,synthesis)" finished as normally.
+9/19/14 1:40 PM : Query "parameter(wire_in,synthesis)" finished as normally.
+9/19/14 1:40 PM : Query "parameter(wire_out,synthesis)" finished as normally.
+9/19/14 1:40 PM : Query "parameter(wire_out,synthesis)" finished as normally.
+9/19/14 1:40 PM : Query "parameter(wire_out,synthesis)" finished as normally.
+9/19/14 1:40 PM : Query "parameter(wire_out,synthesis)" finished as normally.
+9/19/14 1:40 PM : Query "parameter(wire_out,synthesis)" finished as normally.
+9/19/14 1:40 PM : Query "parameter(wire_out,synthesis)" finished as normally.
+9/19/14 1:40 PM : Query "parameter(wire_out,synthesis)" finished as normally.
+9/19/14 1:40 PM : Query "parameter(wire_out,synthesis)" finished as normally.
+9/19/14 1:40 PM : Query "parameter(wire_out,synthesis)" finished as normally.
+9/19/14 1:40 PM : Query "parameter(wire_out,synthesis)" finished as normally.
+9/19/14 1:40 PM : Query "parameter(wire_out,synthesis)" finished as normally.
+9/19/14 1:40 PM : Query "parameter(wire_out,synthesis)" finished as normally.
+9/19/14 1:40 PM : Query "parameter(wire_out,synthesis)" finished as normally.
+9/19/14 1:40 PM : Query "parameter(wire_out,synthesis)" finished as normally.
+9/19/14 1:40 PM : "Resource Declaration" start browse.
+9/19/14 1:40 PM : Query "search()" finished as normally.
+9/19/14 1:40 PM : Query "search()" finished as normally.
+9/19/14 1:40 PM : Query "parameter(wire_out,synthesis)" finished as normally.
+9/19/14 1:40 PM : Query "function(wire_out,synthesis,bit_width=1:default_output=fix_to_0)" finished as normally.
+9/19/14 1:40 PM : Query "portinfo(wire_out,synthesis,bit_width=1:default_output=fix_to_0)" finished as normally.
+9/19/14 1:40 PM : Query "parameter(adder,synthesis)" finished as normally.
+9/19/14 1:40 PM : Query "function(adder,synthesis,bit_width=1:algorithm=default)" finished as normally.
+9/19/14 1:40 PM : Query "portinfo(adder,synthesis,bit_width=1:algorithm=default)" finished as normally.
+9/19/14 1:40 PM : Query "parameter(extender,synthesis)" finished as normally.
+9/19/14 1:40 PM : Query "function(extender,synthesis,bit_width=1:bit_width_out=8)" finished as normally.
+9/19/14 1:40 PM : Query "portinfo(extender,synthesis,bit_width=1:bit_width_out=8)" finished as normally.
+9/19/14 1:40 PM : Query "parameter(multiplier,synthesis)" finished as normally.
+9/19/14 1:40 PM : Query "function(multiplier,synthesis,bit_width=4:algorithm=default:adder_algorithm=default:data_type=unsigned)" finished as normally.
+9/19/14 1:40 PM : Query "portinfo(multiplier,synthesis,bit_width=4:algorithm=default:adder_algorithm=default:data_type=unsigned)" finished as normally.
+9/19/14 1:40 PM : Query "parameter(rotator,synthesis)" finished as normally.
+9/19/14 1:40 PM : Query "function(rotator,synthesis,bit_width=4)" finished as normally.
+9/19/14 1:40 PM : Query "portinfo(rotator,synthesis,bit_width=4)" finished as normally.
+9/19/14 1:40 PM : Query "parameter(multiplexor,synthesis)" finished as normally.
+9/19/14 1:40 PM : Query "function(multiplexor,synthesis,bit_width=1:number_of_ports=2)" finished as normally.
+9/19/14 1:40 PM : Query "portinfo(multiplexor,synthesis,bit_width=1:number_of_ports=2)" finished as normally.
+9/19/14 1:40 PM : Query "parameter(comparator,synthesis)" finished as normally.
+9/19/14 1:40 PM : Query "function(comparator,synthesis,bit_width=1:algorithm=rca)" finished as normally.
+9/19/14 1:40 PM : Query "portinfo(comparator,synthesis,bit_width=1:algorithm=rca)" finished as normally.
+9/19/14 1:40 PM : "Resource Declaration" finish browse.
+9/19/14 2:40 PM : Query "parameter(alu,synthesis)" finished as normally.
+9/19/14 2:40 PM : Query "parameter(adder,synthesis)" finished as normally.
+9/19/14 2:40 PM : Query "parameter(divider,synthesis)" finished as normally.
+9/19/14 2:40 PM : Query "parameter(extender,synthesis)" finished as normally.
+9/19/14 2:40 PM : Query "parameter(multiplier,synthesis)" finished as normally.
+9/19/14 2:40 PM : Query "parameter(register,synthesis)" finished as normally.
+9/19/14 2:40 PM : Query "parameter(register,synthesis)" finished as normally.
+9/19/14 2:40 PM : Query "parameter(registerfile,synthesis)" finished as normally.
+9/19/14 2:40 PM : Query "parameter(register,synthesis)" finished as normally.
+9/19/14 2:40 PM : Query "parameter(mifu,synthesis)" finished as normally.
+9/19/14 2:40 PM : Query "parameter(pcu,synthesis)" finished as normally.
+9/19/14 2:40 PM : Query "parameter(shifter,synthesis)" finished as normally.
+9/19/14 2:40 PM : Query "parameter(adder,synthesis)" finished as normally.
+9/19/14 2:40 PM : Query "parameter(register,synthesis)" finished as normally.
+9/19/14 2:40 PM : Query "parameter(wire_out,synthesis)" finished as normally.
+9/19/14 2:40 PM : Query "parameter(wire_in,synthesis)" finished as normally.
+9/19/14 2:40 PM : Query "parameter(fwu,synthesis)" finished as normally.
+9/19/14 2:40 PM : Query "parameter(fwu,synthesis)" finished as normally.
+9/19/14 2:40 PM : Query "parameter(fwu,synthesis)" finished as normally.
+9/19/14 2:40 PM : Query "parameter(fwu,synthesis)" finished as normally.
+9/19/14 2:40 PM : Query "parameter(adder,synthesis)" finished as normally.
+9/19/14 2:40 PM : Query "parameter(mifu,synthesis)" finished as normally.
+9/19/14 2:40 PM : Query "parameter(register,synthesis)" finished as normally.
+9/19/14 2:40 PM : Query "parameter(register,synthesis)" finished as normally.
+9/19/14 2:40 PM : Query "parameter(register,synthesis)" finished as normally.
+9/19/14 2:40 PM : Query "parameter(comparator,synthesis)" finished as normally.
+9/19/14 2:40 PM : Query "parameter(registerfile,synthesis)" finished as normally.
+9/19/14 2:40 PM : Query "parameter(register,synthesis)" finished as normally.
+9/19/14 2:40 PM : Query "parameter(multiplexor,synthesis)" finished as normally.
+9/19/14 2:40 PM : Query "parameter(wire_out,synthesis)" finished as normally.
+9/19/14 2:40 PM : Query "parameter(wire_out,synthesis)" finished as normally.
+9/19/14 2:40 PM : Query "parameter(wire_out,synthesis)" finished as normally.
+9/19/14 2:40 PM : Query "parameter(wire_out,synthesis)" finished as normally.
+9/19/14 2:40 PM : Query "parameter(wire_in,synthesis)" finished as normally.
+9/19/14 2:40 PM : Query "parameter(pcu,synthesis)" finished as normally.
+9/19/14 2:40 PM : Query "parameter(register,synthesis)" finished as normally.
+9/19/14 2:40 PM : Query "parameter(register,synthesis)" finished as normally.
+9/19/14 2:40 PM : Query "parameter(register,synthesis)" finished as normally.
+9/19/14 2:40 PM : Query "parameter(register,synthesis)" finished as normally.
+9/19/14 2:40 PM : Query "parameter(register,synthesis)" finished as normally.
+9/19/14 2:40 PM : Query "parameter(register,synthesis)" finished as normally.
+9/19/14 2:40 PM : Query "parameter(pcu,synthesis)" finished as normally.
+9/19/14 2:40 PM : Query "parameter(wire_in,synthesis)" finished as normally.
+9/19/14 2:40 PM : Query "parameter(wire_out,synthesis)" finished as normally.
+9/19/14 2:40 PM : Query "parameter(pcu,synthesis)" finished as normally.
+9/19/14 2:40 PM : Query "parameter(wire_out,synthesis)" finished as normally.
+9/19/14 2:40 PM : Query "parameter(wire_out,synthesis)" finished as normally.
+9/19/14 2:40 PM : Query "parameter(wire_in,synthesis)" finished as normally.
+9/19/14 2:40 PM : Query "parameter(wire_out,synthesis)" finished as normally.
+9/19/14 2:40 PM : Query "parameter(wire_out,synthesis)" finished as normally.
+9/19/14 2:40 PM : Query "parameter(wire_out,synthesis)" finished as normally.
+9/19/14 2:40 PM : Query "parameter(wire_in,synthesis)" finished as normally.
+9/19/14 2:40 PM : Query "parameter(register,synthesis)" finished as normally.
+9/19/14 2:40 PM : Query "parameter(register,synthesis)" finished as normally.
+9/19/14 2:40 PM : Query "parameter(register,synthesis)" finished as normally.
+9/19/14 2:40 PM : Query "parameter(mifu,synthesis)" finished as normally.
+9/19/14 2:40 PM : Query "parameter(wire_out,synthesis)" finished as normally.
+9/19/14 2:40 PM : Query "parameter(mifu,synthesis)" finished as normally.
+9/19/14 2:40 PM : Query "parameter(mifu,synthesis)" finished as normally.
+9/19/14 2:40 PM : Query "parameter(register,synthesis)" finished as normally.
+9/19/14 2:40 PM : Query "parameter(register,synthesis)" finished as normally.
+9/19/14 2:40 PM : Query "parameter(register,synthesis)" finished as normally.
+9/19/14 2:40 PM : Query "parameter(comparator,synthesis)" finished as normally.
+9/19/14 2:40 PM : Query "parameter(comparator,synthesis)" finished as normally.
+9/19/14 2:40 PM : Query "parameter(register,synthesis)" finished as normally.
+9/19/14 2:40 PM : Query "parameter(comparator,synthesis)" finished as normally.
+9/19/14 2:40 PM : Query "parameter(comparator,synthesis)" finished as normally.
+9/19/14 2:40 PM : Query "parameter(register,synthesis)" finished as normally.
+9/19/14 2:40 PM : Query "parameter(comparator,synthesis)" finished as normally.
+9/19/14 2:40 PM : Query "parameter(comparator,synthesis)" finished as normally.
+9/19/14 2:40 PM : Query "parameter(comparator,synthesis)" finished as normally.
+9/19/14 2:40 PM : Query "parameter(comparator,synthesis)" finished as normally.
+9/19/14 2:40 PM : Query "parameter(wire_out,synthesis)" finished as normally.
+9/19/14 2:40 PM : Query "parameter(wire_out,synthesis)" finished as normally.
+9/19/14 2:40 PM : Query "parameter(wire_in,synthesis)" finished as normally.
+9/19/14 2:40 PM : Query "parameter(wire_out,synthesis)" finished as normally.
+9/19/14 2:40 PM : Query "parameter(wire_in,synthesis)" finished as normally.
+9/19/14 2:40 PM : Query "parameter(wire_out,synthesis)" finished as normally.
+9/19/14 2:40 PM : Query "parameter(wire_in,synthesis)" finished as normally.
+9/19/14 2:40 PM : Query "parameter(wire_out,synthesis)" finished as normally.
+9/19/14 2:40 PM : Query "parameter(wire_out,synthesis)" finished as normally.
+9/19/14 2:40 PM : Query "parameter(wire_out,synthesis)" finished as normally.
+9/19/14 2:40 PM : Query "parameter(wire_out,synthesis)" finished as normally.
+9/19/14 2:40 PM : Query "parameter(wire_out,synthesis)" finished as normally.
+9/19/14 2:40 PM : Query "parameter(wire_out,synthesis)" finished as normally.
+9/19/14 2:40 PM : Query "parameter(wire_out,synthesis)" finished as normally.
+9/19/14 2:40 PM : Query "parameter(register,synthesis)" finished as normally.
+9/19/14 2:40 PM : Query "parameter(fwu,synthesis)" finished as normally.
+9/19/14 2:40 PM : Query "parameter(fwu_lock,synthesis)" finished as normally.
+9/19/14 2:40 PM : Query "parameter(fwu_lock,synthesis)" finished as normally.
+9/19/14 2:40 PM : Query "parameter(fwu_lock,synthesis)" finished as normally.
+9/19/14 2:40 PM : Query "parameter(fwu_lock,synthesis)" finished as normally.
+9/19/14 2:40 PM : Query "parameter(multiplexor,synthesis)" finished as normally.
+9/19/14 2:40 PM : Query "parameter(wire_in,synthesis)" finished as normally.
+9/19/14 2:40 PM : Query "parameter(wire_out,synthesis)" finished as normally.
+9/19/14 2:40 PM : Query "parameter(wire_in,synthesis)" finished as normally.
+9/19/14 2:40 PM : Query "parameter(wire_in,synthesis)" finished as normally.
+9/19/14 2:40 PM : Query "parameter(wire_in,synthesis)" finished as normally.
+9/19/14 2:40 PM : Query "parameter(wire_in,synthesis)" finished as normally.
+9/19/14 2:40 PM : Query "parameter(wire_in,synthesis)" finished as normally.
+9/19/14 2:40 PM : Query "parameter(wire_in,synthesis)" finished as normally.
+9/19/14 2:40 PM : Query "parameter(wire_in,synthesis)" finished as normally.
+9/19/14 2:40 PM : Query "parameter(wire_in,synthesis)" finished as normally.
+9/19/14 2:40 PM : Query "parameter(wire_in,synthesis)" finished as normally.
+9/19/14 2:40 PM : Query "parameter(wire_in,synthesis)" finished as normally.
+9/19/14 2:40 PM : Query "parameter(wire_in,synthesis)" finished as normally.
+9/19/14 2:40 PM : Query "parameter(wire_in,synthesis)" finished as normally.
+9/19/14 2:40 PM : Query "parameter(wire_in,synthesis)" finished as normally.
+9/19/14 2:40 PM : Query "parameter(wire_in,synthesis)" finished as normally.
+9/19/14 2:40 PM : Query "parameter(wire_out,synthesis)" finished as normally.
+9/19/14 2:40 PM : Query "parameter(wire_out,synthesis)" finished as normally.
+9/19/14 2:40 PM : Query "parameter(wire_out,synthesis)" finished as normally.
+9/19/14 2:40 PM : Query "parameter(wire_out,synthesis)" finished as normally.
+9/19/14 2:40 PM : Query "parameter(wire_out,synthesis)" finished as normally.
+9/19/14 2:40 PM : Query "parameter(wire_out,synthesis)" finished as normally.
+9/19/14 2:40 PM : Query "parameter(wire_out,synthesis)" finished as normally.
+9/19/14 2:40 PM : Query "parameter(wire_out,synthesis)" finished as normally.
+9/19/14 2:40 PM : Query "parameter(wire_out,synthesis)" finished as normally.
+9/19/14 2:40 PM : Query "parameter(wire_out,synthesis)" finished as normally.
+9/19/14 2:40 PM : Query "parameter(wire_out,synthesis)" finished as normally.
+9/19/14 2:40 PM : Query "parameter(wire_out,synthesis)" finished as normally.
+9/19/14 2:40 PM : Query "parameter(wire_out,synthesis)" finished as normally.
+9/19/14 2:40 PM : Query "parameter(wire_out,synthesis)" finished as normally.
+9/19/14 2:40 PM : "Resource Declaration" start browse.
+9/19/14 2:40 PM : "Resource Declaration" finish browse.
+9/19/14 2:40 PM : "Main menu" quit.
+9/19/14 2:45 PM : "Main menu" start.
+9/19/14 2:45 PM : Load file "ASIPmeisterStd.ini".
+9/19/14 2:45 PM : Load file "lb.pdb".
+9/19/14 2:45 PM : "Micro Op. Description" complete.
+9/19/14 2:45 PM : "Micro Op. Description" start browse.
+9/19/14 2:59 PM : "Micro Op. Description" re-edit.
+9/19/14 3:05 PM : "Micro Op. Description" save
+9/19/14 3:05 PM : "Micro Op. Description" save
+9/19/14 3:05 PM : "Micro Op. Description" finish edit.
+9/19/14 3:05 PM : Query "parameter(alu,synthesis)" finished as normally.
+9/19/14 3:05 PM : Query "parameter(adder,synthesis)" finished as normally.
+9/19/14 3:05 PM : Query "parameter(divider,synthesis)" finished as normally.
+9/19/14 3:05 PM : Query "parameter(extender,synthesis)" finished as normally.
+9/19/14 3:05 PM : Query "parameter(multiplier,synthesis)" finished as normally.
+9/19/14 3:05 PM : Query "parameter(register,synthesis)" finished as normally.
+9/19/14 3:05 PM : Query "parameter(register,synthesis)" finished as normally.
+9/19/14 3:05 PM : Query "parameter(registerfile,synthesis)" finished as normally.
+9/19/14 3:05 PM : Query "parameter(register,synthesis)" finished as normally.
+9/19/14 3:05 PM : Query "parameter(mifu,synthesis)" finished as normally.
+9/19/14 3:05 PM : Query "parameter(pcu,synthesis)" finished as normally.
+9/19/14 3:05 PM : Query "parameter(shifter,synthesis)" finished as normally.
+9/19/14 3:05 PM : Query "parameter(adder,synthesis)" finished as normally.
+9/19/14 3:05 PM : Query "parameter(register,synthesis)" finished as normally.
+9/19/14 3:05 PM : Query "parameter(wire_out,synthesis)" finished as normally.
+9/19/14 3:05 PM : Query "parameter(wire_in,synthesis)" finished as normally.
+9/19/14 3:05 PM : Query "parameter(fwu,synthesis)" finished as normally.
+9/19/14 3:05 PM : Query "parameter(fwu,synthesis)" finished as normally.
+9/19/14 3:06 PM : Query "parameter(fwu,synthesis)" finished as normally.
+9/19/14 3:06 PM : Query "parameter(fwu,synthesis)" finished as normally.
+9/19/14 3:06 PM : Query "parameter(adder,synthesis)" finished as normally.
+9/19/14 3:06 PM : Query "parameter(mifu,synthesis)" finished as normally.
+9/19/14 3:06 PM : Query "parameter(register,synthesis)" finished as normally.
+9/19/14 3:06 PM : Query "parameter(register,synthesis)" finished as normally.
+9/19/14 3:06 PM : Query "parameter(register,synthesis)" finished as normally.
+9/19/14 3:06 PM : Query "parameter(comparator,synthesis)" finished as normally.
+9/19/14 3:06 PM : Query "parameter(registerfile,synthesis)" finished as normally.
+9/19/14 3:06 PM : Query "parameter(register,synthesis)" finished as normally.
+9/19/14 3:06 PM : Query "parameter(multiplexor,synthesis)" finished as normally.
+9/19/14 3:06 PM : Query "parameter(wire_out,synthesis)" finished as normally.
+9/19/14 3:06 PM : Query "parameter(wire_out,synthesis)" finished as normally.
+9/19/14 3:06 PM : Query "parameter(wire_out,synthesis)" finished as normally.
+9/19/14 3:06 PM : Query "parameter(wire_out,synthesis)" finished as normally.
+9/19/14 3:06 PM : Query "parameter(wire_in,synthesis)" finished as normally.
+9/19/14 3:06 PM : Query "parameter(pcu,synthesis)" finished as normally.
+9/19/14 3:06 PM : Query "parameter(register,synthesis)" finished as normally.
+9/19/14 3:06 PM : Query "parameter(register,synthesis)" finished as normally.
+9/19/14 3:06 PM : Query "parameter(register,synthesis)" finished as normally.
+9/19/14 3:06 PM : Query "parameter(register,synthesis)" finished as normally.
+9/19/14 3:06 PM : Query "parameter(register,synthesis)" finished as normally.
+9/19/14 3:06 PM : Query "parameter(register,synthesis)" finished as normally.
+9/19/14 3:06 PM : Query "parameter(pcu,synthesis)" finished as normally.
+9/19/14 3:06 PM : Query "parameter(wire_in,synthesis)" finished as normally.
+9/19/14 3:06 PM : Query "parameter(wire_out,synthesis)" finished as normally.
+9/19/14 3:06 PM : Query "parameter(pcu,synthesis)" finished as normally.
+9/19/14 3:06 PM : Query "parameter(wire_out,synthesis)" finished as normally.
+9/19/14 3:06 PM : Query "parameter(wire_out,synthesis)" finished as normally.
+9/19/14 3:06 PM : Query "parameter(wire_in,synthesis)" finished as normally.
+9/19/14 3:06 PM : Query "parameter(wire_out,synthesis)" finished as normally.
+9/19/14 3:06 PM : Query "parameter(wire_out,synthesis)" finished as normally.
+9/19/14 3:06 PM : Query "parameter(wire_out,synthesis)" finished as normally.
+9/19/14 3:06 PM : Query "parameter(wire_in,synthesis)" finished as normally.
+9/19/14 3:06 PM : Query "parameter(register,synthesis)" finished as normally.
+9/19/14 3:06 PM : Query "parameter(register,synthesis)" finished as normally.
+9/19/14 3:06 PM : Query "parameter(register,synthesis)" finished as normally.
+9/19/14 3:06 PM : Query "parameter(mifu,synthesis)" finished as normally.
+9/19/14 3:06 PM : Query "parameter(wire_out,synthesis)" finished as normally.
+9/19/14 3:06 PM : Query "parameter(mifu,synthesis)" finished as normally.
+9/19/14 3:06 PM : Query "parameter(mifu,synthesis)" finished as normally.
+9/19/14 3:06 PM : Query "parameter(register,synthesis)" finished as normally.
+9/19/14 3:06 PM : Query "parameter(register,synthesis)" finished as normally.
+9/19/14 3:06 PM : Query "parameter(register,synthesis)" finished as normally.
+9/19/14 3:06 PM : Query "parameter(comparator,synthesis)" finished as normally.
+9/19/14 3:06 PM : Query "parameter(comparator,synthesis)" finished as normally.
+9/19/14 3:06 PM : Query "parameter(register,synthesis)" finished as normally.
+9/19/14 3:06 PM : Query "parameter(comparator,synthesis)" finished as normally.
+9/19/14 3:06 PM : Query "parameter(comparator,synthesis)" finished as normally.
+9/19/14 3:06 PM : Query "parameter(register,synthesis)" finished as normally.
+9/19/14 3:06 PM : Query "parameter(comparator,synthesis)" finished as normally.
+9/19/14 3:06 PM : Query "parameter(comparator,synthesis)" finished as normally.
+9/19/14 3:06 PM : Query "parameter(comparator,synthesis)" finished as normally.
+9/19/14 3:06 PM : Query "parameter(comparator,synthesis)" finished as normally.
+9/19/14 3:06 PM : Query "parameter(wire_out,synthesis)" finished as normally.
+9/19/14 3:06 PM : Query "parameter(wire_out,synthesis)" finished as normally.
+9/19/14 3:06 PM : Query "parameter(wire_in,synthesis)" finished as normally.
+9/19/14 3:06 PM : Query "parameter(wire_out,synthesis)" finished as normally.
+9/19/14 3:06 PM : Query "parameter(wire_in,synthesis)" finished as normally.
+9/19/14 3:06 PM : Query "parameter(wire_out,synthesis)" finished as normally.
+9/19/14 3:06 PM : Query "parameter(wire_in,synthesis)" finished as normally.
+9/19/14 3:06 PM : Query "parameter(wire_out,synthesis)" finished as normally.
+9/19/14 3:06 PM : Query "parameter(wire_out,synthesis)" finished as normally.
+9/19/14 3:06 PM : Query "parameter(wire_out,synthesis)" finished as normally.
+9/19/14 3:06 PM : Query "parameter(wire_out,synthesis)" finished as normally.
+9/19/14 3:06 PM : Query "parameter(wire_out,synthesis)" finished as normally.
+9/19/14 3:06 PM : Query "parameter(wire_out,synthesis)" finished as normally.
+9/19/14 3:06 PM : Query "parameter(wire_out,synthesis)" finished as normally.
+9/19/14 3:06 PM : Query "parameter(register,synthesis)" finished as normally.
+9/19/14 3:06 PM : Query "parameter(fwu,synthesis)" finished as normally.
+9/19/14 3:06 PM : Query "parameter(fwu_lock,synthesis)" finished as normally.
+9/19/14 3:06 PM : Query "parameter(fwu_lock,synthesis)" finished as normally.
+9/19/14 3:06 PM : Query "parameter(fwu_lock,synthesis)" finished as normally.
+9/19/14 3:06 PM : Query "parameter(fwu_lock,synthesis)" finished as normally.
+9/19/14 3:06 PM : Query "parameter(multiplexor,synthesis)" finished as normally.
+9/19/14 3:06 PM : Query "parameter(wire_in,synthesis)" finished as normally.
+9/19/14 3:06 PM : Query "parameter(wire_out,synthesis)" finished as normally.
+9/19/14 3:06 PM : Query "parameter(wire_in,synthesis)" finished as normally.
+9/19/14 3:06 PM : "Resource Declaration" start browse.
+9/19/14 3:06 PM : "Resource Declaration" re-edit.
+9/19/14 3:06 PM : Query "function(wire_in,synthesis,bit_width=32)" finished as normally.
+9/19/14 3:06 PM : Query "portinfo(wire_in,synthesis,bit_width=32)" finished as normally.
+9/19/14 3:06 PM : Query "shape(area,wire_in,synthesis,priority=delay:bit_width=32)" finished as normally.
+9/19/14 3:06 PM : Query "timing(delay,wire_in,synthesis,priority=delay:bit_width=32)" finished as normally.
+9/19/14 3:06 PM : Query "power(power,wire_in,synthesis,priority=delay:bit_width=32)" finished as normally.
+9/19/14 3:06 PM : Query "search()" finished as normally.
+9/19/14 3:06 PM : Query "search()" finished as normally.
+9/19/14 3:06 PM : Query "parameter(wire_out,synthesis)" finished as normally.
+9/19/14 3:06 PM : Query "function(wire_out,synthesis,bit_width=1:default_output=fix_to_0)" finished as normally.
+9/19/14 3:06 PM : Query "portinfo(wire_out,synthesis,bit_width=1:default_output=fix_to_0)" finished as normally.
+9/19/14 3:06 PM : Query "parameter(wire_in,synthesis)" finished as normally.
+9/19/14 3:06 PM : Query "function(wire_in,synthesis,bit_width=1)" finished as normally.
+9/19/14 3:06 PM : Query "portinfo(wire_in,synthesis,bit_width=1)" finished as normally.
+9/19/14 3:06 PM : Query "parameter(wire_in,synthesis)" finished as normally.
+9/19/14 3:06 PM : Query "parameter(wire_in,synthesis)" finished as normally.
+9/19/14 3:06 PM : Query "parameter(wire_in,synthesis)" finished as normally.
+9/19/14 3:06 PM : Query "parameter(wire_in,synthesis)" finished as normally.
+9/19/14 3:07 PM : Query "parameter(wire_in,synthesis)" finished as normally.
+9/19/14 3:07 PM : Query "parameter(wire_in,synthesis)" finished as normally.
+9/19/14 3:07 PM : Query "parameter(wire_in,synthesis)" finished as normally.
+9/19/14 3:07 PM : Query "parameter(wire_in,synthesis)" finished as normally.
+9/19/14 3:07 PM : Query "parameter(wire_out,synthesis)" finished as normally.
+9/19/14 3:07 PM : Query "function(wire_out,synthesis,bit_width=1:default_output=fix_to_0)" finished as normally.
+9/19/14 3:07 PM : Query "portinfo(wire_out,synthesis,bit_width=1:default_output=fix_to_0)" finished as normally.
+9/19/14 3:07 PM : Query "parameter(wire_in,synthesis)" finished as normally.
+9/19/14 3:07 PM : Query "function(wire_in,synthesis,bit_width=1)" finished as normally.
+9/19/14 3:07 PM : Query "portinfo(wire_in,synthesis,bit_width=1)" finished as normally.
+9/19/14 3:07 PM : Query "function(wire_in,synthesis,bit_width=1)" finished as normally.
+9/19/14 3:07 PM : Query "portinfo(wire_in,synthesis,bit_width=1)" finished as normally.
+9/19/14 3:07 PM : Query "shape(area,wire_in,synthesis,priority=delay:bit_width=1)" finished as normally.
+9/19/14 3:07 PM : Query "timing(delay,wire_in,synthesis,priority=delay:bit_width=1)" finished as normally.
+9/19/14 3:07 PM : Query "power(power,wire_in,synthesis,priority=delay:bit_width=1)" finished as normally.
+9/19/14 3:07 PM : Query "parameter(wire_in,synthesis)" finished as normally.
+9/19/14 3:07 PM : Query "parameter(wire_in,synthesis)" finished as normally.
+9/19/14 3:07 PM : Query "parameter(wire_in,synthesis)" finished as normally.
+9/19/14 3:07 PM : Query "parameter(wire_in,synthesis)" finished as normally.
+9/19/14 3:07 PM : Query "parameter(wire_in,synthesis)" finished as normally.
+9/19/14 3:07 PM : Query "parameter(wire_in,synthesis)" finished as normally.
+9/19/14 3:07 PM : Query "parameter(wire_in,synthesis)" finished as normally.
+9/19/14 3:07 PM : Query "parameter(wire_in,synthesis)" finished as normally.
+9/19/14 3:08 PM : Query "parameter(wire_in,synthesis)" finished as normally.
+9/19/14 3:08 PM : Query "parameter(wire_in,synthesis)" finished as normally.
+9/19/14 3:08 PM : Query "parameter(wire_in,synthesis)" finished as normally.
+9/19/14 3:08 PM : Query "parameter(wire_in,synthesis)" finished as normally.
+9/19/14 3:08 PM : Query "parameter(wire_in,synthesis)" finished as normally.
+9/19/14 3:08 PM : Query "parameter(wire_in,synthesis)" finished as normally.
+9/19/14 3:08 PM : Query "parameter(wire_in,synthesis)" finished as normally.
+9/19/14 3:08 PM : Query "parameter(wire_in,synthesis)" finished as normally.
+9/19/14 3:08 PM : Query "parameter(wire_in,synthesis)" finished as normally.
+9/19/14 3:08 PM : Query "parameter(wire_in,synthesis)" finished as normally.
+9/19/14 3:08 PM : Query "parameter(wire_out,synthesis)" finished as normally.
+9/19/14 3:08 PM : Query "function(wire_out,synthesis,bit_width=1:default_output=fix_to_0)" finished as normally.
+9/19/14 3:08 PM : Query "portinfo(wire_out,synthesis,bit_width=1:default_output=fix_to_0)" finished as normally.
+9/19/14 3:08 PM : Query "function(wire_out,synthesis,bit_width=136:default_output=fix_to_0)" finished as normally.
+9/19/14 3:08 PM : Query "portinfo(wire_out,synthesis,bit_width=136:default_output=fix_to_0)" finished as normally.
+9/19/14 3:08 PM : Query "shape(area,wire_out,synthesis,priority=delay:bit_width=136:default_output=fix_to_0)" finished as normally.
+9/19/14 3:08 PM : Query "timing(delay,wire_out,synthesis,priority=delay:bit_width=136:default_output=fix_to_0)" finished as normally.
+9/19/14 3:08 PM : Query "power(power,wire_out,synthesis,priority=delay:bit_width=136:default_output=fix_to_0)" finished as normally.
+9/19/14 3:09 PM : Query "parameter(wire_out,synthesis)" finished as normally.
+9/19/14 3:09 PM : Query "parameter(wire_out,synthesis)" finished as normally.
+9/19/14 3:09 PM : Query "parameter(wire_out,synthesis)" finished as normally.
+9/19/14 3:09 PM : Query "parameter(wire_out,synthesis)" finished as normally.
+9/19/14 3:09 PM : Query "parameter(wire_out,synthesis)" finished as normally.
+9/19/14 3:09 PM : Query "parameter(wire_out,synthesis)" finished as normally.
+9/19/14 3:09 PM : Query "parameter(wire_out,synthesis)" finished as normally.
+9/19/14 3:09 PM : Query "parameter(wire_out,synthesis)" finished as normally.
+9/19/14 3:10 PM : Query "parameter(wire_out,synthesis)" finished as normally.
+9/19/14 3:10 PM : Query "parameter(wire_out,synthesis)" finished as normally.
+9/19/14 3:10 PM : Query "parameter(wire_out,synthesis)" finished as normally.
+9/19/14 3:10 PM : Query "parameter(wire_out,synthesis)" finished as normally.
+9/19/14 3:10 PM : Query "parameter(wire_out,synthesis)" finished as normally.
+9/19/14 3:10 PM : Query "parameter(wire_out,synthesis)" finished as normally.
+9/19/14 3:10 PM : Query "parameter(wire_out,synthesis)" finished as normally.
+9/19/14 3:10 PM : Query "parameter(wire_out,synthesis)" finished as normally.
+9/19/14 3:10 PM : Query "parameter(wire_out,synthesis)" finished as normally.
+9/19/14 3:10 PM : Query "parameter(wire_out,synthesis)" finished as normally.
+9/19/14 3:10 PM : Query "parameter(wire_out,synthesis)" finished as normally.
+9/19/14 3:10 PM : Query "parameter(wire_out,synthesis)" finished as normally.
+9/19/14 3:10 PM : Query "parameter(wire_out,synthesis)" finished as normally.
+9/19/14 3:10 PM : Query "parameter(wire_out,synthesis)" finished as normally.
+9/19/14 3:10 PM : Query "parameter(wire_out,synthesis)" finished as normally.
+9/19/14 3:10 PM : Query "parameter(wire_out,synthesis)" finished as normally.
+9/19/14 3:10 PM : Query "parameter(wire_out,synthesis)" finished as normally.
+9/19/14 3:10 PM : Query "parameter(wire_out,synthesis)" finished as normally.
+9/19/14 3:11 PM : Query "parameter(wire_out,synthesis)" finished as normally.
+9/19/14 3:11 PM : Query "parameter(wire_out,synthesis)" finished as normally.
+9/19/14 3:11 PM : "Resource Declaration" save
+9/19/14 3:11 PM : "Resource Declaration" complete.
+9/19/14 3:11 PM : "Resource Declaration" finish browse.
+9/19/14 3:11 PM : "Storage Spec" start edit.
+9/19/14 3:11 PM : "Storage Spec" save
+9/19/14 3:11 PM : "Storage Spec" complete.
+9/19/14 3:11 PM : "Storage Spec" finish browse.
+9/19/14 3:11 PM : "Instruction Definition" start edit.
+9/19/14 3:11 PM : "Instruction Definition" save
+9/19/14 3:11 PM : "Instruction Definition" complete.
+9/19/14 3:11 PM : "Instruction Definition" finish browse.
+9/19/14 3:11 PM : "Micro Op. Description" start edit.
+9/19/14 3:11 PM : "Micro Op. Description" save
+9/19/14 3:11 PM : "Micro Op. Description" complete.
+9/19/14 3:11 PM : "Micro Op. Description" finish browse.
+9/19/14 3:11 PM :  modelgen sim lb lb_mod.log VHDL finished as normally.
+9/19/14 3:11 PM : Load file "lb_mod.log".
+9/19/14 3:11 PM : "HDL Generation" complete.
+9/19/14 3:11 PM : "Micro Op. Description" start browse.
+9/19/14 3:11 PM : "Micro Op. Description" re-edit.
+9/19/14 3:12 PM : "Micro Op. Description" save
+9/19/14 3:12 PM : "Micro Op. Description" complete.
+9/19/14 3:12 PM : "Micro Op. Description" finish browse.
+9/19/14 3:12 PM :  modelgen sim lb lb_mod.log VHDL finished as normally.
+9/19/14 3:12 PM : Load file "lb_mod.log".
+9/19/14 3:12 PM : "HDL Generation" complete.
+9/19/14 3:12 PM : "Micro Op. Description" start browse.
+9/19/14 3:12 PM : "Micro Op. Description" re-edit.
+9/19/14 3:13 PM : "Micro Op. Description" save
+9/19/14 3:13 PM : "Micro Op. Description" finish edit.
+9/19/14 3:13 PM : Query "parameter(alu,synthesis)" finished as normally.
+9/19/14 3:13 PM : Query "parameter(adder,synthesis)" finished as normally.
+9/19/14 3:13 PM : Query "parameter(divider,synthesis)" finished as normally.
+9/19/14 3:13 PM : Query "parameter(extender,synthesis)" finished as normally.
+9/19/14 3:13 PM : Query "parameter(multiplier,synthesis)" finished as normally.
+9/19/14 3:13 PM : Query "parameter(register,synthesis)" finished as normally.
+9/19/14 3:13 PM : Query "parameter(register,synthesis)" finished as normally.
+9/19/14 3:13 PM : Query "parameter(registerfile,synthesis)" finished as normally.
+9/19/14 3:13 PM : Query "parameter(register,synthesis)" finished as normally.
+9/19/14 3:13 PM : Query "parameter(mifu,synthesis)" finished as normally.
+9/19/14 3:13 PM : Query "parameter(pcu,synthesis)" finished as normally.
+9/19/14 3:13 PM : Query "parameter(shifter,synthesis)" finished as normally.
+9/19/14 3:13 PM : Query "parameter(adder,synthesis)" finished as normally.
+9/19/14 3:13 PM : Query "parameter(register,synthesis)" finished as normally.
+9/19/14 3:13 PM : Query "parameter(wire_out,synthesis)" finished as normally.
+9/19/14 3:13 PM : Query "parameter(wire_in,synthesis)" finished as normally.
+9/19/14 3:13 PM : Query "parameter(fwu,synthesis)" finished as normally.
+9/19/14 3:13 PM : Query "parameter(fwu,synthesis)" finished as normally.
+9/19/14 3:13 PM : Query "parameter(fwu,synthesis)" finished as normally.
+9/19/14 3:13 PM : Query "parameter(fwu,synthesis)" finished as normally.
+9/19/14 3:13 PM : Query "parameter(adder,synthesis)" finished as normally.
+9/19/14 3:14 PM : Query "parameter(mifu,synthesis)" finished as normally.
+9/19/14 3:14 PM : Query "parameter(register,synthesis)" finished as normally.
+9/19/14 3:14 PM : Query "parameter(register,synthesis)" finished as normally.
+9/19/14 3:14 PM : Query "parameter(register,synthesis)" finished as normally.
+9/19/14 3:14 PM : Query "parameter(comparator,synthesis)" finished as normally.
+9/19/14 3:14 PM : Query "parameter(registerfile,synthesis)" finished as normally.
+9/19/14 3:14 PM : Query "parameter(register,synthesis)" finished as normally.
+9/19/14 3:14 PM : Query "parameter(multiplexor,synthesis)" finished as normally.
+9/19/14 3:14 PM : Query "parameter(wire_out,synthesis)" finished as normally.
+9/19/14 3:14 PM : Query "parameter(wire_out,synthesis)" finished as normally.
+9/19/14 3:14 PM : Query "parameter(wire_out,synthesis)" finished as normally.
+9/19/14 3:14 PM : Query "parameter(wire_out,synthesis)" finished as normally.
+9/19/14 3:14 PM : Query "parameter(wire_in,synthesis)" finished as normally.
+9/19/14 3:14 PM : Query "parameter(pcu,synthesis)" finished as normally.
+9/19/14 3:14 PM : Query "parameter(register,synthesis)" finished as normally.
+9/19/14 3:14 PM : Query "parameter(register,synthesis)" finished as normally.
+9/19/14 3:14 PM : Query "parameter(register,synthesis)" finished as normally.
+9/19/14 3:14 PM : Query "parameter(register,synthesis)" finished as normally.
+9/19/14 3:14 PM : Query "parameter(register,synthesis)" finished as normally.
+9/19/14 3:14 PM : Query "parameter(register,synthesis)" finished as normally.
+9/19/14 3:14 PM : Query "parameter(pcu,synthesis)" finished as normally.
+9/19/14 3:14 PM : Query "parameter(wire_in,synthesis)" finished as normally.
+9/19/14 3:14 PM : Query "parameter(wire_out,synthesis)" finished as normally.
+9/19/14 3:14 PM : Query "parameter(pcu,synthesis)" finished as normally.
+9/19/14 3:14 PM : Query "parameter(wire_out,synthesis)" finished as normally.
+9/19/14 3:14 PM : Query "parameter(wire_out,synthesis)" finished as normally.
+9/19/14 3:14 PM : Query "parameter(wire_in,synthesis)" finished as normally.
+9/19/14 3:14 PM : Query "parameter(wire_out,synthesis)" finished as normally.
+9/19/14 3:14 PM : Query "parameter(wire_out,synthesis)" finished as normally.
+9/19/14 3:14 PM : Query "parameter(wire_out,synthesis)" finished as normally.
+9/19/14 3:14 PM : Query "parameter(wire_in,synthesis)" finished as normally.
+9/19/14 3:14 PM : Query "parameter(register,synthesis)" finished as normally.
+9/19/14 3:14 PM : Query "parameter(register,synthesis)" finished as normally.
+9/19/14 3:14 PM : Query "parameter(register,synthesis)" finished as normally.
+9/19/14 3:14 PM : Query "parameter(mifu,synthesis)" finished as normally.
+9/19/14 3:14 PM : Query "parameter(wire_out,synthesis)" finished as normally.
+9/19/14 3:14 PM : Query "parameter(mifu,synthesis)" finished as normally.
+9/19/14 3:14 PM : Query "parameter(mifu,synthesis)" finished as normally.
+9/19/14 3:14 PM : Query "parameter(register,synthesis)" finished as normally.
+9/19/14 3:14 PM : Query "parameter(register,synthesis)" finished as normally.
+9/19/14 3:14 PM : Query "parameter(register,synthesis)" finished as normally.
+9/19/14 3:14 PM : Query "parameter(comparator,synthesis)" finished as normally.
+9/19/14 3:14 PM : Query "parameter(comparator,synthesis)" finished as normally.
+9/19/14 3:14 PM : Query "parameter(register,synthesis)" finished as normally.
+9/19/14 3:14 PM : Query "parameter(comparator,synthesis)" finished as normally.
+9/19/14 3:14 PM : Query "parameter(comparator,synthesis)" finished as normally.
+9/19/14 3:14 PM : Query "parameter(register,synthesis)" finished as normally.
+9/19/14 3:14 PM : Query "parameter(comparator,synthesis)" finished as normally.
+9/19/14 3:14 PM : Query "parameter(comparator,synthesis)" finished as normally.
+9/19/14 3:14 PM : Query "parameter(comparator,synthesis)" finished as normally.
+9/19/14 3:14 PM : Query "parameter(comparator,synthesis)" finished as normally.
+9/19/14 3:14 PM : Query "parameter(wire_out,synthesis)" finished as normally.
+9/19/14 3:14 PM : Query "parameter(wire_out,synthesis)" finished as normally.
+9/19/14 3:14 PM : Query "parameter(wire_in,synthesis)" finished as normally.
+9/19/14 3:14 PM : Query "parameter(wire_out,synthesis)" finished as normally.
+9/19/14 3:14 PM : Query "parameter(wire_in,synthesis)" finished as normally.
+9/19/14 3:14 PM : Query "parameter(wire_out,synthesis)" finished as normally.
+9/19/14 3:14 PM : Query "parameter(wire_in,synthesis)" finished as normally.
+9/19/14 3:14 PM : Query "parameter(wire_out,synthesis)" finished as normally.
+9/19/14 3:14 PM : Query "parameter(wire_out,synthesis)" finished as normally.
+9/19/14 3:14 PM : Query "parameter(wire_out,synthesis)" finished as normally.
+9/19/14 3:14 PM : Query "parameter(wire_out,synthesis)" finished as normally.
+9/19/14 3:14 PM : Query "parameter(wire_out,synthesis)" finished as normally.
+9/19/14 3:14 PM : Query "parameter(wire_out,synthesis)" finished as normally.
+9/19/14 3:14 PM : Query "parameter(wire_out,synthesis)" finished as normally.
+9/19/14 3:14 PM : Query "parameter(register,synthesis)" finished as normally.
+9/19/14 3:14 PM : Query "parameter(fwu,synthesis)" finished as normally.
+9/19/14 3:14 PM : Query "parameter(fwu_lock,synthesis)" finished as normally.
+9/19/14 3:14 PM : Query "parameter(fwu_lock,synthesis)" finished as normally.
+9/19/14 3:14 PM : Query "parameter(fwu_lock,synthesis)" finished as normally.
+9/19/14 3:14 PM : Query "parameter(fwu_lock,synthesis)" finished as normally.
+9/19/14 3:14 PM : Query "parameter(multiplexor,synthesis)" finished as normally.
+9/19/14 3:14 PM : Query "parameter(wire_in,synthesis)" finished as normally.
+9/19/14 3:14 PM : Query "parameter(wire_out,synthesis)" finished as normally.
+9/19/14 3:14 PM : Query "parameter(wire_in,synthesis)" finished as normally.
+9/19/14 3:14 PM : Query "parameter(wire_in,synthesis)" finished as normally.
+9/19/14 3:14 PM : Query "parameter(wire_in,synthesis)" finished as normally.
+9/19/14 3:14 PM : Query "parameter(wire_in,synthesis)" finished as normally.
+9/19/14 3:14 PM : Query "parameter(wire_in,synthesis)" finished as normally.
+9/19/14 3:14 PM : Query "parameter(wire_in,synthesis)" finished as normally.
+9/19/14 3:14 PM : Query "parameter(wire_in,synthesis)" finished as normally.
+9/19/14 3:14 PM : Query "parameter(wire_in,synthesis)" finished as normally.
+9/19/14 3:14 PM : Query "parameter(wire_in,synthesis)" finished as normally.
+9/19/14 3:14 PM : Query "parameter(wire_in,synthesis)" finished as normally.
+9/19/14 3:14 PM : Query "parameter(wire_in,synthesis)" finished as normally.
+9/19/14 3:14 PM : Query "parameter(wire_in,synthesis)" finished as normally.
+9/19/14 3:14 PM : Query "parameter(wire_in,synthesis)" finished as normally.
+9/19/14 3:14 PM : Query "parameter(wire_in,synthesis)" finished as normally.
+9/19/14 3:14 PM : Query "parameter(wire_out,synthesis)" finished as normally.
+9/19/14 3:14 PM : Query "parameter(wire_out,synthesis)" finished as normally.
+9/19/14 3:14 PM : Query "parameter(wire_out,synthesis)" finished as normally.
+9/19/14 3:14 PM : Query "parameter(wire_out,synthesis)" finished as normally.
+9/19/14 3:14 PM : Query "parameter(wire_out,synthesis)" finished as normally.
+9/19/14 3:14 PM : Query "parameter(wire_out,synthesis)" finished as normally.
+9/19/14 3:14 PM : Query "parameter(wire_out,synthesis)" finished as normally.
+9/19/14 3:14 PM : Query "parameter(wire_out,synthesis)" finished as normally.
+9/19/14 3:14 PM : Query "parameter(wire_out,synthesis)" finished as normally.
+9/19/14 3:14 PM : Query "parameter(wire_out,synthesis)" finished as normally.
+9/19/14 3:14 PM : Query "parameter(wire_out,synthesis)" finished as normally.
+9/19/14 3:14 PM : Query "parameter(wire_out,synthesis)" finished as normally.
+9/19/14 3:14 PM : Query "parameter(wire_out,synthesis)" finished as normally.
+9/19/14 3:14 PM : Query "parameter(wire_out,synthesis)" finished as normally.
+9/19/14 3:14 PM : "Resource Declaration" start browse.
+9/19/14 3:14 PM : "Resource Declaration" re-edit.
+9/19/14 3:14 PM : Query "function(wire_in,synthesis,bit_width=32)" finished as normally.
+9/19/14 3:14 PM : Query "portinfo(wire_in,synthesis,bit_width=32)" finished as normally.
+9/19/14 3:14 PM : Query "shape(area,wire_in,synthesis,priority=delay:bit_width=32)" finished as normally.
+9/19/14 3:14 PM : Query "timing(delay,wire_in,synthesis,priority=delay:bit_width=32)" finished as normally.
+9/19/14 3:14 PM : Query "power(power,wire_in,synthesis,priority=delay:bit_width=32)" finished as normally.
+9/19/14 3:14 PM : Query "function(wire_in,synthesis,bit_width=1)" finished as normally.
+9/19/14 3:14 PM : Query "portinfo(wire_in,synthesis,bit_width=1)" finished as normally.
+9/19/14 3:14 PM : Query "shape(area,wire_in,synthesis,priority=delay:bit_width=1)" finished as normally.
+9/19/14 3:14 PM : Query "timing(delay,wire_in,synthesis,priority=delay:bit_width=1)" finished as normally.
+9/19/14 3:14 PM : Query "power(power,wire_in,synthesis,priority=delay:bit_width=1)" finished as normally.
+9/19/14 3:14 PM : Query "function(wire_in,synthesis,bit_width=32)" finished as normally.
+9/19/14 3:14 PM : Query "portinfo(wire_in,synthesis,bit_width=32)" finished as normally.
+9/19/14 3:14 PM : Query "shape(area,wire_in,synthesis,priority=delay:bit_width=32)" finished as normally.
+9/19/14 3:14 PM : Query "timing(delay,wire_in,synthesis,priority=delay:bit_width=32)" finished as normally.
+9/19/14 3:14 PM : Query "power(power,wire_in,synthesis,priority=delay:bit_width=32)" finished as normally.
+9/19/14 3:14 PM : Query "function(wire_in,synthesis,bit_width=32)" finished as normally.
+9/19/14 3:14 PM : Query "portinfo(wire_in,synthesis,bit_width=32)" finished as normally.
+9/19/14 3:14 PM : Query "shape(area,wire_in,synthesis,priority=delay:bit_width=32)" finished as normally.
+9/19/14 3:14 PM : Query "timing(delay,wire_in,synthesis,priority=delay:bit_width=32)" finished as normally.
+9/19/14 3:14 PM : Query "power(power,wire_in,synthesis,priority=delay:bit_width=32)" finished as normally.
+9/19/14 3:14 PM : Query "function(wire_in,synthesis,bit_width=1)" finished as normally.
+9/19/14 3:14 PM : Query "portinfo(wire_in,synthesis,bit_width=1)" finished as normally.
+9/19/14 3:14 PM : Query "shape(area,wire_in,synthesis,priority=delay:bit_width=1)" finished as normally.
+9/19/14 3:14 PM : Query "timing(delay,wire_in,synthesis,priority=delay:bit_width=1)" finished as normally.
+9/19/14 3:14 PM : Query "power(power,wire_in,synthesis,priority=delay:bit_width=1)" finished as normally.
+9/19/14 3:14 PM : Query "function(wire_in,synthesis,bit_width=32)" finished as normally.
+9/19/14 3:14 PM : Query "portinfo(wire_in,synthesis,bit_width=32)" finished as normally.
+9/19/14 3:14 PM : Query "shape(area,wire_in,synthesis,priority=delay:bit_width=32)" finished as normally.
+9/19/14 3:14 PM : Query "timing(delay,wire_in,synthesis,priority=delay:bit_width=32)" finished as normally.
+9/19/14 3:14 PM : Query "power(power,wire_in,synthesis,priority=delay:bit_width=32)" finished as normally.
+9/19/14 3:14 PM : Query "function(wire_in,synthesis,bit_width=32)" finished as normally.
+9/19/14 3:14 PM : Query "portinfo(wire_in,synthesis,bit_width=32)" finished as normally.
+9/19/14 3:14 PM : Query "shape(area,wire_in,synthesis,priority=delay:bit_width=32)" finished as normally.
+9/19/14 3:14 PM : Query "timing(delay,wire_in,synthesis,priority=delay:bit_width=32)" finished as normally.
+9/19/14 3:14 PM : Query "power(power,wire_in,synthesis,priority=delay:bit_width=32)" finished as normally.
+9/19/14 3:14 PM : Query "function(wire_in,synthesis,bit_width=1)" finished as normally.
+9/19/14 3:14 PM : Query "portinfo(wire_in,synthesis,bit_width=1)" finished as normally.
+9/19/14 3:14 PM : Query "shape(area,wire_in,synthesis,priority=delay:bit_width=1)" finished as normally.
+9/19/14 3:14 PM : Query "timing(delay,wire_in,synthesis,priority=delay:bit_width=1)" finished as normally.
+9/19/14 3:14 PM : Query "power(power,wire_in,synthesis,priority=delay:bit_width=1)" finished as normally.
+9/19/14 3:14 PM : Query "function(wire_in,synthesis,bit_width=32)" finished as normally.
+9/19/14 3:14 PM : Query "portinfo(wire_in,synthesis,bit_width=32)" finished as normally.
+9/19/14 3:14 PM : Query "shape(area,wire_in,synthesis,priority=delay:bit_width=32)" finished as normally.
+9/19/14 3:14 PM : Query "timing(delay,wire_in,synthesis,priority=delay:bit_width=32)" finished as normally.
+9/19/14 3:14 PM : Query "power(power,wire_in,synthesis,priority=delay:bit_width=32)" finished as normally.
+9/19/14 3:14 PM : Query "function(wire_in,synthesis,bit_width=1)" finished as normally.
+9/19/14 3:14 PM : Query "portinfo(wire_in,synthesis,bit_width=1)" finished as normally.
+9/19/14 3:14 PM : Query "shape(area,wire_in,synthesis,priority=delay:bit_width=1)" finished as normally.
+9/19/14 3:14 PM : Query "timing(delay,wire_in,synthesis,priority=delay:bit_width=1)" finished as normally.
+9/19/14 3:14 PM : Query "power(power,wire_in,synthesis,priority=delay:bit_width=1)" finished as normally.
+9/19/14 3:14 PM : Query "function(wire_in,synthesis,bit_width=32)" finished as normally.
+9/19/14 3:14 PM : Query "portinfo(wire_in,synthesis,bit_width=32)" finished as normally.
+9/19/14 3:14 PM : Query "shape(area,wire_in,synthesis,priority=delay:bit_width=32)" finished as normally.
+9/19/14 3:14 PM : Query "timing(delay,wire_in,synthesis,priority=delay:bit_width=32)" finished as normally.
+9/19/14 3:14 PM : Query "power(power,wire_in,synthesis,priority=delay:bit_width=32)" finished as normally.
+9/19/14 3:14 PM : Query "function(wire_in,synthesis,bit_width=32)" finished as normally.
+9/19/14 3:14 PM : Query "portinfo(wire_in,synthesis,bit_width=32)" finished as normally.
+9/19/14 3:14 PM : Query "shape(area,wire_in,synthesis,priority=delay:bit_width=32)" finished as normally.
+9/19/14 3:14 PM : Query "timing(delay,wire_in,synthesis,priority=delay:bit_width=32)" finished as normally.
+9/19/14 3:14 PM : Query "power(power,wire_in,synthesis,priority=delay:bit_width=32)" finished as normally.
+9/19/14 3:14 PM : Query "function(wire_in,synthesis,bit_width=1)" finished as normally.
+9/19/14 3:14 PM : Query "portinfo(wire_in,synthesis,bit_width=1)" finished as normally.
+9/19/14 3:14 PM : Query "shape(area,wire_in,synthesis,priority=delay:bit_width=1)" finished as normally.
+9/19/14 3:14 PM : Query "timing(delay,wire_in,synthesis,priority=delay:bit_width=1)" finished as normally.
+9/19/14 3:14 PM : Query "power(power,wire_in,synthesis,priority=delay:bit_width=1)" finished as normally.
+9/19/14 3:15 PM : Query "function(wire_in,synthesis,bit_width=32)" finished as normally.
+9/19/14 3:15 PM : Query "portinfo(wire_in,synthesis,bit_width=32)" finished as normally.
+9/19/14 3:15 PM : Query "shape(area,wire_in,synthesis,priority=delay:bit_width=32)" finished as normally.
+9/19/14 3:15 PM : Query "timing(delay,wire_in,synthesis,priority=delay:bit_width=32)" finished as normally.
+9/19/14 3:15 PM : Query "power(power,wire_in,synthesis,priority=delay:bit_width=32)" finished as normally.
+9/19/14 3:15 PM : Query "function(wire_in,synthesis,bit_width=32)" finished as normally.
+9/19/14 3:15 PM : Query "portinfo(wire_in,synthesis,bit_width=32)" finished as normally.
+9/19/14 3:15 PM : Query "shape(area,wire_in,synthesis,priority=delay:bit_width=32)" finished as normally.
+9/19/14 3:15 PM : Query "timing(delay,wire_in,synthesis,priority=delay:bit_width=32)" finished as normally.
+9/19/14 3:15 PM : Query "power(power,wire_in,synthesis,priority=delay:bit_width=32)" finished as normally.
+9/19/14 3:15 PM : "Resource Declaration" save
+9/19/14 3:15 PM : "Resource Declaration" complete.
+9/19/14 3:15 PM : "Resource Declaration" finish browse.
+9/19/14 3:15 PM : "Storage Spec" start edit.
+9/19/14 3:15 PM : "Storage Spec" save
+9/19/14 3:15 PM : "Storage Spec" complete.
+9/19/14 3:15 PM : "Storage Spec" finish browse.
+9/19/14 3:15 PM : "Instruction Definition" start edit.
+9/19/14 3:15 PM : "Instruction Definition" save
+9/19/14 3:15 PM : "Instruction Definition" complete.
+9/19/14 3:15 PM : "Instruction Definition" finish browse.
+9/19/14 3:15 PM : "Micro Op. Description" start edit.
+9/19/14 3:15 PM : "Micro Op. Description" save
+9/19/14 3:15 PM : "Micro Op. Description" complete.
+9/19/14 3:15 PM : "Micro Op. Description" finish browse.
+9/19/14 3:15 PM :  modelgen sim lb lb_mod.log VHDL finished as normally.
+9/19/14 3:15 PM : Load file "lb_mod.log".
+9/19/14 3:15 PM : "HDL Generation" complete.
+9/19/14 3:16 PM : "Micro Op. Description" start browse.
+9/19/14 3:16 PM : "Micro Op. Description" re-edit.
+9/19/14 3:16 PM : "Micro Op. Description" save
+9/19/14 3:16 PM : "Micro Op. Description" complete.
+9/19/14 3:16 PM : "Micro Op. Description" finish browse.
+9/19/14 3:16 PM :  modelgen sim lb lb_mod.log VHDL finished as normally.
+9/19/14 3:16 PM : Load file "lb_mod.log".
+9/19/14 3:16 PM : "HDL Generation" complete.
+9/19/14 3:17 PM : "Micro Op. Description" start browse.
+9/19/14 3:17 PM : "Micro Op. Description" re-edit.
+9/19/14 3:20 PM : "Micro Op. Description" save
+9/19/14 3:20 PM : "Micro Op. Description" complete.
+9/19/14 3:20 PM : "Micro Op. Description" re-edit.
+9/19/14 3:20 PM : "Micro Op. Description" save
+9/19/14 3:20 PM : "Micro Op. Description" complete.
+9/19/14 3:20 PM : "Micro Op. Description" finish browse.
+9/19/14 3:20 PM :  modelgen sim lb lb_mod.log VHDL finished as normally.
+9/19/14 3:20 PM : Load file "lb_mod.log".
+9/19/14 3:20 PM : "HDL Generation" complete.
+9/19/14 3:28 PM : Save file "lb.pdb".
+9/19/14 3:32 PM : "Instruction Definition" start browse.
+9/19/14 3:32 PM : "Instruction Definition" re-edit.
+9/19/14 4:36 PM : "Instruction Definition" save
+9/19/14 4:36 PM : "Instruction Definition" complete.
+9/19/14 4:36 PM : "Instruction Definition" finish browse.
+9/19/14 4:36 PM : "Micro Op. Description" start edit.
+9/19/14 4:40 PM : "Micro Op. Description" save
+9/19/14 4:40 PM : "Micro Op. Description" complete.
+9/19/14 4:40 PM : "Micro Op. Description" finish browse.
+9/19/14 4:40 PM : Save file "lb.pdb".
+9/19/14 4:40 PM :  modelgen sim lb lb_mod.log VHDL finished as normally.
+9/19/14 4:40 PM : Load file "lb_mod.log".
+9/19/14 4:40 PM : "HDL Generation" complete.
+9/19/14 4:41 PM : "Instruction Definition" start browse.
+9/19/14 4:41 PM : "Instruction Definition" re-edit.
+9/19/14 4:41 PM : "Instruction Definition" save
+9/19/14 4:41 PM : "Instruction Definition" complete.
+9/19/14 4:41 PM : "Instruction Definition" finish browse.
+9/19/14 4:42 PM : "Micro Op. Description" start edit.
+9/19/14 4:48 PM : "Micro Op. Description" save
+9/19/14 4:49 PM : "Micro Op. Description" save
+9/19/14 4:50 PM : "Micro Op. Description" save
+9/19/14 4:53 PM : "Micro Op. Description" save
+9/19/14 4:54 PM : "Micro Op. Description" save
+9/19/14 4:55 PM : "Micro Op. Description" save
+9/19/14 4:59 PM : "Micro Op. Description with Macro Expansion" finish edit.
+9/19/14 5:19 PM : "Micro Op. Description" save
+9/19/14 6:52 PM : "Micro Op. Description" save
+9/19/14 6:52 PM : "Micro Op. Description" complete.
+9/19/14 6:52 PM : "Micro Op. Description" finish browse.
+9/19/14 6:53 PM :  modelgen sim lb lb_mod.log VHDL finished as normally.
+9/19/14 6:53 PM : Load file "lb_mod.log".
+9/19/14 6:53 PM : "HDL Generation" complete.
+9/19/14 6:53 PM : "Micro Op. Description" start browse.
+9/19/14 6:53 PM : "Micro Op. Description" re-edit.
+9/19/14 7:00 PM : "Micro Op. Description" save
+9/19/14 7:00 PM : "Micro Op. Description" complete.
+9/19/14 7:00 PM : "Micro Op. Description" finish browse.
+9/19/14 7:01 PM :  modelgen sim lb lb_mod.log VHDL finished as normally.
+9/19/14 7:01 PM : Load file "lb_mod.log".
+9/19/14 7:01 PM : "HDL Generation" complete.
+9/19/14 7:01 PM : "Micro Op. Description" start browse.
+9/19/14 7:03 PM : "Micro Op. Description" re-edit.
+9/19/14 7:06 PM : "Micro Op. Description" save
+9/19/14 7:06 PM : "Micro Op. Description" complete.
+9/19/14 7:06 PM : "Micro Op. Description" finish browse.
+9/19/14 7:06 PM :  modelgen sim lb lb_mod.log VHDL finished as normally.
+9/19/14 7:06 PM : Load file "lb_mod.log".
+9/19/14 7:06 PM : "HDL Generation" complete.
+9/19/14 7:06 PM : "Micro Op. Description" start browse.
+9/19/14 7:07 PM : "Micro Op. Description" re-edit.
+9/19/14 7:14 PM : "Micro Op. Description" save
+9/19/14 7:14 PM : "Micro Op. Description" complete.
+9/19/14 7:14 PM : "Micro Op. Description" re-edit.
+9/19/14 7:14 PM : "Micro Op. Description" save
+9/19/14 7:14 PM : "Micro Op. Description" complete.
+9/19/14 7:14 PM : "Micro Op. Description" finish browse.
+9/19/14 7:14 PM :  modelgen sim lb lb_mod.log VHDL finished as normally.
+9/19/14 7:14 PM : Load file "lb_mod.log".
+9/19/14 7:14 PM : "HDL Generation" complete.
+9/19/14 8:00 PM : "Micro Op. Description" start browse.
+9/19/14 8:01 PM : "Micro Op. Description" re-edit.
+9/19/14 8:39 PM : "Micro Op. Description" save
+9/19/14 8:39 PM : "Micro Op. Description" complete.
+9/19/14 8:39 PM : "Micro Op. Description" finish browse.
+9/19/14 8:39 PM : Query "parameter(alu,synthesis)" finished as normally.
+9/19/14 8:39 PM : Query "parameter(adder,synthesis)" finished as normally.
+9/19/14 8:39 PM : Query "parameter(divider,synthesis)" finished as normally.
+9/19/14 8:39 PM : Query "parameter(extender,synthesis)" finished as normally.
+9/19/14 8:39 PM : Query "parameter(multiplier,synthesis)" finished as normally.
+9/19/14 8:39 PM : Query "parameter(register,synthesis)" finished as normally.
+9/19/14 8:39 PM : Query "parameter(register,synthesis)" finished as normally.
+9/19/14 8:39 PM : Query "parameter(registerfile,synthesis)" finished as normally.
+9/19/14 8:39 PM : Query "parameter(register,synthesis)" finished as normally.
+9/19/14 8:39 PM : Query "parameter(mifu,synthesis)" finished as normally.
+9/19/14 8:39 PM : Query "parameter(pcu,synthesis)" finished as normally.
+9/19/14 8:39 PM : Query "parameter(shifter,synthesis)" finished as normally.
+9/19/14 8:39 PM : Query "parameter(adder,synthesis)" finished as normally.
+9/19/14 8:39 PM : Query "parameter(register,synthesis)" finished as normally.
+9/19/14 8:39 PM : Query "parameter(wire_out,synthesis)" finished as normally.
+9/19/14 8:39 PM : Query "parameter(wire_in,synthesis)" finished as normally.
+9/19/14 8:39 PM : Query "parameter(fwu,synthesis)" finished as normally.
+9/19/14 8:39 PM : Query "parameter(fwu,synthesis)" finished as normally.
+9/19/14 8:39 PM : Query "parameter(fwu,synthesis)" finished as normally.
+9/19/14 8:39 PM : Query "parameter(fwu,synthesis)" finished as normally.
+9/19/14 8:39 PM : Query "parameter(adder,synthesis)" finished as normally.
+9/19/14 8:39 PM : Query "parameter(mifu,synthesis)" finished as normally.
+9/19/14 8:39 PM : Query "parameter(register,synthesis)" finished as normally.
+9/19/14 8:39 PM : Query "parameter(register,synthesis)" finished as normally.
+9/19/14 8:39 PM : Query "parameter(register,synthesis)" finished as normally.
+9/19/14 8:39 PM : Query "parameter(comparator,synthesis)" finished as normally.
+9/19/14 8:39 PM : Query "parameter(registerfile,synthesis)" finished as normally.
+9/19/14 8:39 PM : Query "parameter(register,synthesis)" finished as normally.
+9/19/14 8:39 PM : Query "parameter(multiplexor,synthesis)" finished as normally.
+9/19/14 8:39 PM : Query "parameter(wire_out,synthesis)" finished as normally.
+9/19/14 8:39 PM : Query "parameter(wire_out,synthesis)" finished as normally.
+9/19/14 8:39 PM : Query "parameter(wire_out,synthesis)" finished as normally.
+9/19/14 8:39 PM : Query "parameter(wire_out,synthesis)" finished as normally.
+9/19/14 8:39 PM : Query "parameter(wire_in,synthesis)" finished as normally.
+9/19/14 8:39 PM : Query "parameter(pcu,synthesis)" finished as normally.
+9/19/14 8:39 PM : Query "parameter(register,synthesis)" finished as normally.
+9/19/14 8:39 PM : Query "parameter(register,synthesis)" finished as normally.
+9/19/14 8:39 PM : Query "parameter(register,synthesis)" finished as normally.
+9/19/14 8:39 PM : Query "parameter(register,synthesis)" finished as normally.
+9/19/14 8:39 PM : Query "parameter(register,synthesis)" finished as normally.
+9/19/14 8:39 PM : Query "parameter(register,synthesis)" finished as normally.
+9/19/14 8:39 PM : Query "parameter(pcu,synthesis)" finished as normally.
+9/19/14 8:39 PM : Query "parameter(wire_in,synthesis)" finished as normally.
+9/19/14 8:39 PM : Query "parameter(wire_out,synthesis)" finished as normally.
+9/19/14 8:39 PM : Query "parameter(pcu,synthesis)" finished as normally.
+9/19/14 8:39 PM : Query "parameter(wire_out,synthesis)" finished as normally.
+9/19/14 8:39 PM : Query "parameter(wire_out,synthesis)" finished as normally.
+9/19/14 8:39 PM : Query "parameter(wire_in,synthesis)" finished as normally.
+9/19/14 8:39 PM : Query "parameter(wire_out,synthesis)" finished as normally.
+9/19/14 8:39 PM : Query "parameter(wire_out,synthesis)" finished as normally.
+9/19/14 8:39 PM : Query "parameter(wire_out,synthesis)" finished as normally.
+9/19/14 8:39 PM : Query "parameter(wire_in,synthesis)" finished as normally.
+9/19/14 8:39 PM : Query "parameter(register,synthesis)" finished as normally.
+9/19/14 8:39 PM : Query "parameter(register,synthesis)" finished as normally.
+9/19/14 8:39 PM : Query "parameter(register,synthesis)" finished as normally.
+9/19/14 8:39 PM : Query "parameter(mifu,synthesis)" finished as normally.
+9/19/14 8:39 PM : Query "parameter(wire_out,synthesis)" finished as normally.
+9/19/14 8:39 PM : Query "parameter(mifu,synthesis)" finished as normally.
+9/19/14 8:39 PM : Query "parameter(mifu,synthesis)" finished as normally.
+9/19/14 8:39 PM : Query "parameter(register,synthesis)" finished as normally.
+9/19/14 8:39 PM : Query "parameter(register,synthesis)" finished as normally.
+9/19/14 8:39 PM : Query "parameter(register,synthesis)" finished as normally.
+9/19/14 8:39 PM : Query "parameter(comparator,synthesis)" finished as normally.
+9/19/14 8:39 PM : Query "parameter(comparator,synthesis)" finished as normally.
+9/19/14 8:39 PM : Query "parameter(register,synthesis)" finished as normally.
+9/19/14 8:39 PM : Query "parameter(comparator,synthesis)" finished as normally.
+9/19/14 8:39 PM : Query "parameter(comparator,synthesis)" finished as normally.
+9/19/14 8:39 PM : Query "parameter(register,synthesis)" finished as normally.
+9/19/14 8:39 PM : Query "parameter(comparator,synthesis)" finished as normally.
+9/19/14 8:39 PM : Query "parameter(comparator,synthesis)" finished as normally.
+9/19/14 8:39 PM : Query "parameter(comparator,synthesis)" finished as normally.
+9/19/14 8:39 PM : Query "parameter(comparator,synthesis)" finished as normally.
+9/19/14 8:39 PM : Query "parameter(wire_out,synthesis)" finished as normally.
+9/19/14 8:39 PM : Query "parameter(wire_out,synthesis)" finished as normally.
+9/19/14 8:39 PM : Query "parameter(wire_in,synthesis)" finished as normally.
+9/19/14 8:39 PM : Query "parameter(wire_out,synthesis)" finished as normally.
+9/19/14 8:39 PM : Query "parameter(wire_in,synthesis)" finished as normally.
+9/19/14 8:39 PM : Query "parameter(wire_out,synthesis)" finished as normally.
+9/19/14 8:39 PM : Query "parameter(wire_in,synthesis)" finished as normally.
+9/19/14 8:39 PM : Query "parameter(wire_out,synthesis)" finished as normally.
+9/19/14 8:39 PM : Query "parameter(wire_out,synthesis)" finished as normally.
+9/19/14 8:39 PM : Query "parameter(wire_out,synthesis)" finished as normally.
+9/19/14 8:39 PM : Query "parameter(wire_out,synthesis)" finished as normally.
+9/19/14 8:39 PM : Query "parameter(wire_out,synthesis)" finished as normally.
+9/19/14 8:39 PM : Query "parameter(wire_out,synthesis)" finished as normally.
+9/19/14 8:39 PM : Query "parameter(wire_out,synthesis)" finished as normally.
+9/19/14 8:39 PM : Query "parameter(register,synthesis)" finished as normally.
+9/19/14 8:39 PM : Query "parameter(fwu,synthesis)" finished as normally.
+9/19/14 8:39 PM : Query "parameter(fwu_lock,synthesis)" finished as normally.
+9/19/14 8:39 PM : Query "parameter(fwu_lock,synthesis)" finished as normally.
+9/19/14 8:39 PM : Query "parameter(fwu_lock,synthesis)" finished as normally.
+9/19/14 8:39 PM : Query "parameter(fwu_lock,synthesis)" finished as normally.
+9/19/14 8:39 PM : Query "parameter(multiplexor,synthesis)" finished as normally.
+9/19/14 8:39 PM : Query "parameter(wire_in,synthesis)" finished as normally.
+9/19/14 8:39 PM : Query "parameter(wire_out,synthesis)" finished as normally.
+9/19/14 8:39 PM : Query "parameter(wire_in,synthesis)" finished as normally.
+9/19/14 8:39 PM : Query "parameter(wire_in,synthesis)" finished as normally.
+9/19/14 8:39 PM : Query "parameter(wire_in,synthesis)" finished as normally.
+9/19/14 8:39 PM : Query "parameter(wire_in,synthesis)" finished as normally.
+9/19/14 8:39 PM : Query "parameter(wire_in,synthesis)" finished as normally.
+9/19/14 8:39 PM : Query "parameter(wire_in,synthesis)" finished as normally.
+9/19/14 8:39 PM : Query "parameter(wire_in,synthesis)" finished as normally.
+9/19/14 8:39 PM : Query "parameter(wire_in,synthesis)" finished as normally.
+9/19/14 8:39 PM : Query "parameter(wire_in,synthesis)" finished as normally.
+9/19/14 8:39 PM : Query "parameter(wire_in,synthesis)" finished as normally.
+9/19/14 8:39 PM : Query "parameter(wire_in,synthesis)" finished as normally.
+9/19/14 8:39 PM : Query "parameter(wire_in,synthesis)" finished as normally.
+9/19/14 8:39 PM : Query "parameter(wire_in,synthesis)" finished as normally.
+9/19/14 8:39 PM : Query "parameter(wire_in,synthesis)" finished as normally.
+9/19/14 8:39 PM : Query "parameter(wire_out,synthesis)" finished as normally.
+9/19/14 8:39 PM : Query "parameter(wire_out,synthesis)" finished as normally.
+9/19/14 8:39 PM : Query "parameter(wire_out,synthesis)" finished as normally.
+9/19/14 8:39 PM : Query "parameter(wire_out,synthesis)" finished as normally.
+9/19/14 8:39 PM : Query "parameter(wire_out,synthesis)" finished as normally.
+9/19/14 8:39 PM : Query "parameter(wire_out,synthesis)" finished as normally.
+9/19/14 8:39 PM : Query "parameter(wire_out,synthesis)" finished as normally.
+9/19/14 8:39 PM : Query "parameter(wire_out,synthesis)" finished as normally.
+9/19/14 8:39 PM : Query "parameter(wire_out,synthesis)" finished as normally.
+9/19/14 8:39 PM : Query "parameter(wire_out,synthesis)" finished as normally.
+9/19/14 8:39 PM : Query "parameter(wire_out,synthesis)" finished as normally.
+9/19/14 8:39 PM : Query "parameter(wire_out,synthesis)" finished as normally.
+9/19/14 8:39 PM : Query "parameter(wire_out,synthesis)" finished as normally.
+9/19/14 8:39 PM : Query "parameter(wire_out,synthesis)" finished as normally.
+9/19/14 8:39 PM : "Resource Declaration" start browse.
+9/19/14 8:40 PM : "Resource Declaration" re-edit.
+9/19/14 8:40 PM : Query "search()" finished as normally.
+9/19/14 8:40 PM : Query "search()" finished as normally.
+9/19/14 8:40 PM : Query "parameter(wire_out,synthesis)" finished as normally.
+9/19/14 8:40 PM : Query "function(wire_out,synthesis,bit_width=1:default_output=fix_to_0)" finished as normally.
+9/19/14 8:40 PM : Query "portinfo(wire_out,synthesis,bit_width=1:default_output=fix_to_0)" finished as normally.
+9/19/14 8:40 PM : Query "parameter(wire_out,synthesis)" finished as normally.
+9/19/14 8:40 PM : Query "function(wire_out,synthesis,bit_width=1:default_output=fix_to_0)" finished as normally.
+9/19/14 8:40 PM : Query "portinfo(wire_out,synthesis,bit_width=1:default_output=fix_to_0)" finished as normally.
+9/19/14 8:40 PM : Query "parameter(wire_out,synthesis)" finished as normally.
+9/19/14 8:40 PM : Query "parameter(wire_out,synthesis)" finished as normally.
+9/19/14 8:41 PM : Query "parameter(wire_out,synthesis)" finished as normally.
+9/19/14 8:41 PM : Query "parameter(wire_out,synthesis)" finished as normally.
+9/19/14 8:46 PM : "Resource Declaration" save
+9/19/14 8:46 PM : "Resource Declaration" complete.
+9/19/14 8:46 PM : "Resource Declaration" finish browse.
+9/19/14 8:46 PM : "Storage Spec" start edit.
+9/19/14 8:46 PM : "Storage Spec" save
+9/19/14 8:46 PM : "Storage Spec" complete.
+9/19/14 8:46 PM : "Storage Spec" finish browse.
+9/19/14 8:46 PM : "Instruction Definition" start edit.
+9/19/14 8:46 PM : "Instruction Definition" save
+9/19/14 8:46 PM : "Instruction Definition" complete.
+9/19/14 8:46 PM : "Instruction Definition" save
+9/19/14 8:46 PM : "Instruction Definition" finish browse.
+9/19/14 8:46 PM : "Micro Op. Description" start edit.
+9/19/14 9:05 PM : "Micro Op. Description" save
+9/19/14 9:05 PM : "Micro Op. Description" complete.
+9/19/14 9:05 PM : "Micro Op. Description" finish browse.
+9/19/14 9:05 PM : Query "parameter(alu,synthesis)" finished as normally.
+9/19/14 9:05 PM : Query "parameter(adder,synthesis)" finished as normally.
+9/19/14 9:05 PM : Query "parameter(divider,synthesis)" finished as normally.
+9/19/14 9:05 PM : Query "parameter(extender,synthesis)" finished as normally.
+9/19/14 9:05 PM : Query "parameter(multiplier,synthesis)" finished as normally.
+9/19/14 9:05 PM : Query "parameter(register,synthesis)" finished as normally.
+9/19/14 9:05 PM : Query "parameter(register,synthesis)" finished as normally.
+9/19/14 9:05 PM : Query "parameter(registerfile,synthesis)" finished as normally.
+9/19/14 9:05 PM : Query "parameter(register,synthesis)" finished as normally.
+9/19/14 9:05 PM : Query "parameter(mifu,synthesis)" finished as normally.
+9/19/14 9:05 PM : Query "parameter(pcu,synthesis)" finished as normally.
+9/19/14 9:05 PM : Query "parameter(shifter,synthesis)" finished as normally.
+9/19/14 9:05 PM : Query "parameter(adder,synthesis)" finished as normally.
+9/19/14 9:05 PM : Query "parameter(register,synthesis)" finished as normally.
+9/19/14 9:05 PM : Query "parameter(wire_out,synthesis)" finished as normally.
+9/19/14 9:05 PM : Query "parameter(wire_in,synthesis)" finished as normally.
+9/19/14 9:05 PM : Query "parameter(fwu,synthesis)" finished as normally.
+9/19/14 9:05 PM : Query "parameter(fwu,synthesis)" finished as normally.
+9/19/14 9:05 PM : Query "parameter(fwu,synthesis)" finished as normally.
+9/19/14 9:05 PM : Query "parameter(fwu,synthesis)" finished as normally.
+9/19/14 9:05 PM : Query "parameter(adder,synthesis)" finished as normally.
+9/19/14 9:05 PM : Query "parameter(mifu,synthesis)" finished as normally.
+9/19/14 9:05 PM : Query "parameter(register,synthesis)" finished as normally.
+9/19/14 9:05 PM : Query "parameter(register,synthesis)" finished as normally.
+9/19/14 9:05 PM : Query "parameter(register,synthesis)" finished as normally.
+9/19/14 9:05 PM : Query "parameter(comparator,synthesis)" finished as normally.
+9/19/14 9:05 PM : Query "parameter(registerfile,synthesis)" finished as normally.
+9/19/14 9:05 PM : Query "parameter(register,synthesis)" finished as normally.
+9/19/14 9:05 PM : Query "parameter(multiplexor,synthesis)" finished as normally.
+9/19/14 9:05 PM : Query "parameter(wire_out,synthesis)" finished as normally.
+9/19/14 9:05 PM : Query "parameter(wire_out,synthesis)" finished as normally.
+9/19/14 9:05 PM : Query "parameter(wire_out,synthesis)" finished as normally.
+9/19/14 9:05 PM : Query "parameter(wire_out,synthesis)" finished as normally.
+9/19/14 9:05 PM : Query "parameter(wire_in,synthesis)" finished as normally.
+9/19/14 9:05 PM : Query "parameter(pcu,synthesis)" finished as normally.
+9/19/14 9:05 PM : Query "parameter(register,synthesis)" finished as normally.
+9/19/14 9:05 PM : Query "parameter(register,synthesis)" finished as normally.
+9/19/14 9:05 PM : Query "parameter(register,synthesis)" finished as normally.
+9/19/14 9:05 PM : Query "parameter(register,synthesis)" finished as normally.
+9/19/14 9:05 PM : Query "parameter(register,synthesis)" finished as normally.
+9/19/14 9:05 PM : Query "parameter(register,synthesis)" finished as normally.
+9/19/14 9:05 PM : Query "parameter(pcu,synthesis)" finished as normally.
+9/19/14 9:05 PM : Query "parameter(wire_in,synthesis)" finished as normally.
+9/19/14 9:05 PM : Query "parameter(wire_out,synthesis)" finished as normally.
+9/19/14 9:05 PM : Query "parameter(pcu,synthesis)" finished as normally.
+9/19/14 9:06 PM : Query "parameter(wire_out,synthesis)" finished as normally.
+9/19/14 9:06 PM : Query "parameter(wire_out,synthesis)" finished as normally.
+9/19/14 9:06 PM : Query "parameter(wire_in,synthesis)" finished as normally.
+9/19/14 9:06 PM : Query "parameter(wire_out,synthesis)" finished as normally.
+9/19/14 9:06 PM : Query "parameter(wire_out,synthesis)" finished as normally.
+9/19/14 9:06 PM : Query "parameter(wire_out,synthesis)" finished as normally.
+9/19/14 9:06 PM : Query "parameter(wire_in,synthesis)" finished as normally.
+9/19/14 9:06 PM : Query "parameter(register,synthesis)" finished as normally.
+9/19/14 9:06 PM : Query "parameter(register,synthesis)" finished as normally.
+9/19/14 9:06 PM : Query "parameter(register,synthesis)" finished as normally.
+9/19/14 9:06 PM : Query "parameter(mifu,synthesis)" finished as normally.
+9/19/14 9:06 PM : Query "parameter(wire_out,synthesis)" finished as normally.
+9/19/14 9:06 PM : Query "parameter(mifu,synthesis)" finished as normally.
+9/19/14 9:06 PM : Query "parameter(mifu,synthesis)" finished as normally.
+9/19/14 9:06 PM : Query "parameter(register,synthesis)" finished as normally.
+9/19/14 9:06 PM : Query "parameter(register,synthesis)" finished as normally.
+9/19/14 9:06 PM : Query "parameter(register,synthesis)" finished as normally.
+9/19/14 9:06 PM : Query "parameter(comparator,synthesis)" finished as normally.
+9/19/14 9:06 PM : Query "parameter(comparator,synthesis)" finished as normally.
+9/19/14 9:06 PM : Query "parameter(register,synthesis)" finished as normally.
+9/19/14 9:06 PM : Query "parameter(comparator,synthesis)" finished as normally.
+9/19/14 9:06 PM : Query "parameter(comparator,synthesis)" finished as normally.
+9/19/14 9:06 PM : Query "parameter(register,synthesis)" finished as normally.
+9/19/14 9:06 PM : Query "parameter(comparator,synthesis)" finished as normally.
+9/19/14 9:06 PM : Query "parameter(comparator,synthesis)" finished as normally.
+9/19/14 9:06 PM : Query "parameter(comparator,synthesis)" finished as normally.
+9/19/14 9:06 PM : Query "parameter(comparator,synthesis)" finished as normally.
+9/19/14 9:06 PM : Query "parameter(wire_out,synthesis)" finished as normally.
+9/19/14 9:06 PM : Query "parameter(wire_out,synthesis)" finished as normally.
+9/19/14 9:06 PM : Query "parameter(wire_in,synthesis)" finished as normally.
+9/19/14 9:06 PM : Query "parameter(wire_out,synthesis)" finished as normally.
+9/19/14 9:06 PM : Query "parameter(wire_in,synthesis)" finished as normally.
+9/19/14 9:06 PM : Query "parameter(wire_out,synthesis)" finished as normally.
+9/19/14 9:06 PM : Query "parameter(wire_in,synthesis)" finished as normally.
+9/19/14 9:06 PM : Query "parameter(wire_out,synthesis)" finished as normally.
+9/19/14 9:06 PM : Query "parameter(wire_out,synthesis)" finished as normally.
+9/19/14 9:06 PM : Query "parameter(wire_out,synthesis)" finished as normally.
+9/19/14 9:06 PM : Query "parameter(wire_out,synthesis)" finished as normally.
+9/19/14 9:06 PM : Query "parameter(wire_out,synthesis)" finished as normally.
+9/19/14 9:06 PM : Query "parameter(wire_out,synthesis)" finished as normally.
+9/19/14 9:06 PM : Query "parameter(wire_out,synthesis)" finished as normally.
+9/19/14 9:06 PM : Query "parameter(register,synthesis)" finished as normally.
+9/19/14 9:06 PM : Query "parameter(fwu,synthesis)" finished as normally.
+9/19/14 9:06 PM : Query "parameter(fwu_lock,synthesis)" finished as normally.
+9/19/14 9:06 PM : Query "parameter(fwu_lock,synthesis)" finished as normally.
+9/19/14 9:06 PM : Query "parameter(fwu_lock,synthesis)" finished as normally.
+9/19/14 9:06 PM : Query "parameter(fwu_lock,synthesis)" finished as normally.
+9/19/14 9:06 PM : Query "parameter(multiplexor,synthesis)" finished as normally.
+9/19/14 9:06 PM : Query "parameter(wire_in,synthesis)" finished as normally.
+9/19/14 9:06 PM : Query "parameter(wire_out,synthesis)" finished as normally.
+9/19/14 9:06 PM : Query "parameter(wire_in,synthesis)" finished as normally.
+9/19/14 9:06 PM : Query "parameter(wire_in,synthesis)" finished as normally.
+9/19/14 9:06 PM : Query "parameter(wire_in,synthesis)" finished as normally.
+9/19/14 9:06 PM : Query "parameter(wire_in,synthesis)" finished as normally.
+9/19/14 9:06 PM : Query "parameter(wire_in,synthesis)" finished as normally.
+9/19/14 9:06 PM : Query "parameter(wire_in,synthesis)" finished as normally.
+9/19/14 9:06 PM : Query "parameter(wire_in,synthesis)" finished as normally.
+9/19/14 9:06 PM : Query "parameter(wire_in,synthesis)" finished as normally.
+9/19/14 9:06 PM : Query "parameter(wire_in,synthesis)" finished as normally.
+9/19/14 9:06 PM : Query "parameter(wire_in,synthesis)" finished as normally.
+9/19/14 9:06 PM : Query "parameter(wire_in,synthesis)" finished as normally.
+9/19/14 9:06 PM : Query "parameter(wire_in,synthesis)" finished as normally.
+9/19/14 9:06 PM : Query "parameter(wire_in,synthesis)" finished as normally.
+9/19/14 9:06 PM : Query "parameter(wire_in,synthesis)" finished as normally.
+9/19/14 9:06 PM : Query "parameter(wire_out,synthesis)" finished as normally.
+9/19/14 9:06 PM : Query "parameter(wire_out,synthesis)" finished as normally.
+9/19/14 9:06 PM : Query "parameter(wire_out,synthesis)" finished as normally.
+9/19/14 9:06 PM : Query "parameter(wire_out,synthesis)" finished as normally.
+9/19/14 9:06 PM : Query "parameter(wire_out,synthesis)" finished as normally.
+9/19/14 9:06 PM : Query "parameter(wire_out,synthesis)" finished as normally.
+9/19/14 9:06 PM : Query "parameter(wire_out,synthesis)" finished as normally.
+9/19/14 9:06 PM : Query "parameter(wire_out,synthesis)" finished as normally.
+9/19/14 9:06 PM : Query "parameter(wire_out,synthesis)" finished as normally.
+9/19/14 9:06 PM : Query "parameter(wire_out,synthesis)" finished as normally.
+9/19/14 9:06 PM : Query "parameter(wire_out,synthesis)" finished as normally.
+9/19/14 9:06 PM : Query "parameter(wire_out,synthesis)" finished as normally.
+9/19/14 9:06 PM : Query "parameter(wire_out,synthesis)" finished as normally.
+9/19/14 9:06 PM : Query "parameter(wire_out,synthesis)" finished as normally.
+9/19/14 9:06 PM : Query "parameter(wire_out,synthesis)" finished as normally.
+9/19/14 9:06 PM : Query "parameter(wire_out,synthesis)" finished as normally.
+9/19/14 9:06 PM : "Resource Declaration" start browse.
+9/19/14 9:06 PM : Query "function(wire_out,synthesis,bit_width=136:default_output=fix_to_0)" finished as normally.
+9/19/14 9:06 PM : Query "portinfo(wire_out,synthesis,bit_width=136:default_output=fix_to_0)" finished as normally.
+9/19/14 9:06 PM : Query "shape(area,wire_out,synthesis,priority=delay:bit_width=136:default_output=fix_to_0)" finished as normally.
+9/19/14 9:06 PM : Query "timing(delay,wire_out,synthesis,priority=delay:bit_width=136:default_output=fix_to_0)" finished as normally.
+9/19/14 9:06 PM : Query "power(power,wire_out,synthesis,priority=delay:bit_width=136:default_output=fix_to_0)" finished as normally.
+9/19/14 9:06 PM : "Resource Declaration" re-edit.
+9/19/14 9:06 PM : Query "search()" finished as normally.
+9/19/14 9:06 PM : Query "search()" finished as normally.
+9/19/14 9:06 PM : Query "parameter(wire_out,synthesis)" finished as normally.
+9/19/14 9:06 PM : Query "function(wire_out,synthesis,bit_width=1:default_output=fix_to_0)" finished as normally.
+9/19/14 9:06 PM : Query "portinfo(wire_out,synthesis,bit_width=1:default_output=fix_to_0)" finished as normally.
+9/19/14 9:07 PM : Query "parameter(wire_out,synthesis)" finished as normally.
+9/19/14 9:07 PM : Query "function(wire_out,synthesis,bit_width=1:default_output=fix_to_0)" finished as normally.
+9/19/14 9:07 PM : Query "portinfo(wire_out,synthesis,bit_width=1:default_output=fix_to_0)" finished as normally.
+9/19/14 9:07 PM : Query "parameter(wire_out,synthesis)" finished as normally.
+9/19/14 9:07 PM : Query "parameter(wire_out,synthesis)" finished as normally.
+9/19/14 9:07 PM : Query "parameter(wire_out,synthesis)" finished as normally.
+9/19/14 9:07 PM : Query "parameter(wire_out,synthesis)" finished as normally.
+9/19/14 9:07 PM : "Resource Declaration" save
+9/19/14 9:07 PM : "Resource Declaration" complete.
+9/19/14 9:07 PM : "Resource Declaration" finish browse.
+9/19/14 9:07 PM : "Storage Spec" start edit.
+9/19/14 9:07 PM : "Storage Spec" save
+9/19/14 9:07 PM : "Storage Spec" complete.
+9/19/14 9:07 PM : "Storage Spec" finish browse.
+9/19/14 9:07 PM : "Instruction Definition" start edit.
+9/19/14 9:07 PM : "Instruction Definition" save
+9/19/14 9:07 PM : "Instruction Definition" complete.
+9/19/14 9:08 PM : "Instruction Definition" finish browse.
+9/19/14 9:08 PM : "Micro Op. Description" start edit.
+9/19/14 9:08 PM : "Micro Op. Description" save
+9/19/14 9:08 PM : "Micro Op. Description" complete.
+9/19/14 9:08 PM : "Micro Op. Description" finish browse.
+9/19/14 9:08 PM :  modelgen sim lb lb_mod.log VHDL finished as normally.
+9/19/14 9:08 PM : Load file "lb_mod.log".
+9/19/14 9:08 PM : "HDL Generation" complete.
+9/19/14 9:08 PM : "Micro Op. Description" start browse.
+9/19/14 9:08 PM : "Micro Op. Description" re-edit.
+9/19/14 9:10 PM : "Micro Op. Description" save
+9/19/14 9:10 PM : "Micro Op. Description" complete.
+9/19/14 9:10 PM : "Micro Op. Description" finish browse.
+9/19/14 9:10 PM :  modelgen sim lb lb_mod.log VHDL finished as normally.
+9/19/14 9:10 PM : Load file "lb_mod.log".
+9/19/14 9:10 PM : "HDL Generation" complete.
+9/19/14 9:10 PM : "Micro Op. Description" start browse.
+9/19/14 9:10 PM : "Micro Op. Description" re-edit.
+9/19/14 9:11 PM : "Micro Op. Description" save
+9/19/14 9:11 PM : "Micro Op. Description" complete.
+9/19/14 9:11 PM : "Micro Op. Description" finish browse.
+9/19/14 9:11 PM :  modelgen sim lb lb_mod.log VHDL finished as normally.
+9/19/14 9:11 PM : Load file "lb_mod.log".
+9/19/14 9:11 PM : "HDL Generation" complete.
+9/19/14 9:12 PM : "Micro Op. Description" start browse.
+9/19/14 9:12 PM : "Micro Op. Description" re-edit.
+9/19/14 9:12 PM : "Micro Op. Description" save
+9/19/14 9:12 PM : "Micro Op. Description" complete.
+9/19/14 9:12 PM : "Micro Op. Description" finish browse.
+9/19/14 9:12 PM :  modelgen sim lb lb_mod.log VHDL finished as normally.
+9/19/14 9:12 PM : Load file "lb_mod.log".
+9/19/14 9:12 PM : "HDL Generation" complete.
+9/19/14 9:13 PM : "Micro Op. Description" start browse.
+9/19/14 9:13 PM : "Micro Op. Description" re-edit.
+9/19/14 9:14 PM : "Micro Op. Description" save
+9/19/14 9:14 PM : "Micro Op. Description" complete.
+9/19/14 9:14 PM : "Micro Op. Description" finish browse.
+9/19/14 9:14 PM :  modelgen sim lb lb_mod.log VHDL finished as normally.
+9/19/14 9:14 PM : Load file "lb_mod.log".
+9/19/14 9:14 PM : "HDL Generation" complete.
+9/19/14 9:14 PM : "Micro Op. Description" start browse.
+9/19/14 9:14 PM : "Micro Op. Description" re-edit.
+9/19/14 9:15 PM : "Micro Op. Description" save
+9/19/14 9:15 PM : "Micro Op. Description" complete.
+9/19/14 9:15 PM : "Micro Op. Description" finish browse.
+9/19/14 9:15 PM : "Micro Op. Description" start browse.
+9/19/14 9:15 PM : "Micro Op. Description" finish browse.
+9/19/14 9:15 PM :  modelgen sim lb lb_mod.log VHDL finished as normally.
+9/19/14 9:15 PM : Load file "lb_mod.log".
+9/19/14 9:15 PM : "HDL Generation" complete.
+9/19/14 9:15 PM : "Micro Op. Description" start browse.
+9/19/14 9:15 PM : "Micro Op. Description" re-edit.
+9/19/14 9:16 PM : "Micro Op. Description" save
+9/19/14 9:16 PM : "Micro Op. Description" complete.
+9/19/14 9:16 PM : "Micro Op. Description" finish browse.
+9/19/14 9:16 PM :  modelgen sim lb lb_mod.log VHDL finished as normally.
+9/19/14 9:16 PM : Load file "lb_mod.log".
+9/19/14 9:16 PM : "HDL Generation" complete.
+9/19/14 9:16 PM : "Micro Op. Description" start browse.
+9/19/14 9:16 PM : "Micro Op. Description" re-edit.
+9/19/14 9:18 PM : "Micro Op. Description" save
+9/19/14 9:18 PM : "Micro Op. Description" complete.
+9/19/14 9:18 PM : "Micro Op. Description" finish browse.
+9/19/14 9:18 PM :  modelgen sim lb lb_mod.log VHDL finished as normally.
+9/19/14 9:18 PM : Load file "lb_mod.log".
+9/19/14 9:18 PM : "HDL Generation" complete.
+9/19/14 9:18 PM : "Micro Op. Description" start browse.
+9/20/14 12:04 AM : "Micro Op. Description" finish browse.
+9/20/14 12:04 AM : Save file "lb.pdb".
+9/20/14 12:04 AM : "Main menu" quit.
+6/14/16 5:00 PM : "Main menu" start.
+6/14/16 5:00 PM : Load file "ASIPmeisterStd.ini".
+6/14/16 5:00 PM : Load file "pisa-forma-v0.pdb".
+6/14/16 5:01 PM :  modelgen sim pisa-forma-v0 pisa-forma-v0_mod.log VHDL finished as normally.
+6/14/16 5:01 PM : Load file "pisa-forma-v0_mod.log".
+6/14/16 5:01 PM : "HDL Generation" complete.
+6/14/16 5:07 PM :  modelgen sim pisa-forma-v0 pisa-forma-v0_mod.log VHDL finished as normally.
+6/14/16 5:07 PM : Load file "pisa-forma-v0_mod.log".
+6/14/16 5:07 PM : "HDL Generation" complete.
+6/14/16 5:07 PM : "Main menu" quit.
